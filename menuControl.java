@@ -51,8 +51,8 @@ public class menuControl extends JFrame {
 		JMenuItem mntmScore = new JMenuItem("Score");
 		mnFile.add(mntmScore);
 		
-		JMenu mnNewMenu_1 = new JMenu("New menu");
-		mnFile.add(mnNewMenu_1);
+		JMenu mnSection_1 = new JMenu("Sections");
+		mnFile.add(mnSection_1);
 		
 		JMenu mnCalculator = new JMenu("Intro");
 		menuBar.add(mnCalculator);
@@ -76,7 +76,14 @@ public class menuControl extends JFrame {
 		mnNewMenu.add(mntmShorthand);
 		
 		JMenuItem mntmPalindrom = new JMenuItem("Palindrom 3");
+		mntmPalindrom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				palindrome p = new palindrome();
+				p.Palindrome();			
+			}
+		});
 		mnNewMenu.add(mntmPalindrom);
+		
 		
 		JMenu mnSprint = new JMenu("Sprint 2");
 		menuBar.add(mnSprint);
