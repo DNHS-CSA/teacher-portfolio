@@ -19,9 +19,9 @@ public class palindromeUI extends menuControl {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-
+	private JTextField pali_input;
+	private JTextField pali_result;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -55,24 +55,25 @@ public class palindromeUI extends menuControl {
 		lblPalindromeTester.setBounds(6, 6, 184, 26);
 		contentPane.add(lblPalindromeTester);
 		
-		textField = new JTextField();
-		textField.setBounds(6, 38, 438, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		pali_input = new JTextField();
+		pali_input.setBounds(6, 38, 438, 26);
+		contentPane.add(pali_input);
+		pali_input.setColumns(10);
 		
 		JButton btnTestPalindrome = new JButton("Test");
 		btnTestPalindrome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				pali_result.setText(palindrome.isPaliLog(pali_input.getText()));
 			}
 		});
 		btnTestPalindrome.setBounds(153, 81, 145, 29);
 		contentPane.add(btnTestPalindrome);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(6, 129, 438, 143);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		pali_result = new JTextField();
+		pali_result.setEditable(false);
+		pali_result.setBounds(6, 129, 438, 143);
+		contentPane.add(pali_result);
+		pali_result.setColumns(10);
 	}
 
 }

@@ -1,26 +1,66 @@
 
 public class palindrome
 {
-    
-    public void Palindrome()
+	private String Candidate;
+	private String Log;
+	
+	public String getPaliCandidate() {
+		return Candidate;
+	}
+	
+	public String getPaliLog() {
+		return Log;
+	}
+
+	public boolean isPali(String candidate) {
+		Candidate = candidate;
+		return palindromeTest();
+	}
+	
+	public static String isPaliLog(String candidate)
     {
-        isolatedIO.println("enter a word");
-      
-        String testword = "";
-        Boolean pali= false;
+		palindrome test = new palindrome();
+        test.isPali(candidate);
+        return test.getPaliLog();
+    }
+	
+	public static void isPaliByConsole()
+    {
+		palindrome test = new palindrome();
+        String candidate = isolatedIO.inputString("enter a word");
+        test.isPali(candidate);
+        System.out.println(test.getPaliLog());
+    }
+
+	private boolean palindromeTest()
+    {
+		// initialize and check
+		String WordOrPhrase = this.Candidate;
+		if (WordOrPhrase.length() < 2) {
+    		this.setLog(WordOrPhrase +" is to small to test");
+			return false;
+		}
+        setLog("");
         
-        testword = isolatedIO.inputString(testword);
-        testword = testword.toLowerCase( ).replaceAll("\\W","");
-                
+        // remove extraneous characters
+        String testword = WordOrPhrase.toLowerCase( ).replaceAll("\\W","");
+
+        String ijmsg = "palindrome by IJ method";
         for (int i = 0, j = testword.length() - 1; i < j;i++,j--)
         {
         	if(testword.charAt(i) != testword.charAt(j)) {
-        		System.out.println(testword +" is not a palindrome");
-        		return;
+        		this.setLog("-" + WordOrPhrase +"- is not " + ijmsg);
+        		return false;
         	}
 
         }
-        System.out.println(testword +" is a palindrome");
+		this.setLog("*" + WordOrPhrase +"* is " + ijmsg);
+		return true;
    }
-
+    
+    private void setLog(String log) {
+		Log = log;
+	}
+	
+    
 }
