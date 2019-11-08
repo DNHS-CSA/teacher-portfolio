@@ -42,18 +42,6 @@ public class menuControl extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnFile = new JMenu("Midterm");
-		menuBar.add(mnFile);
-		
-		JMenuItem mntmStartrestart = new JMenuItem("Start/Restart");
-		mnFile.add(mntmStartrestart);
-		
-		JMenuItem mntmScore = new JMenuItem("Score");
-		mnFile.add(mntmScore);
-		
-		JMenu mnSection_1 = new JMenu("Sections");
-		mnFile.add(mnSection_1);
-		
 		JMenu mnCalculator = new JMenu("Intro");
 		menuBar.add(mnCalculator);
 		
@@ -69,7 +57,7 @@ public class menuControl extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Pythagorus");
 		mnCalculator.add(mntmNewMenuItem);
 		
-		JMenu mnNewMenu = new JMenu("Sprint 1");
+		JMenu mnNewMenu = new JMenu("String Labs");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmShorthand = new JMenuItem("Shorthand");
@@ -78,14 +66,14 @@ public class menuControl extends JFrame {
 		JMenuItem mntmPalindrom = new JMenuItem("Palindrom 3");
 		mntmPalindrom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				palindrome p = new palindrome();
-				p.Palindrome();			
+				palindromeUI frame = new palindromeUI();
+				frame.setVisible(true);			
 			}
 		});
 		mnNewMenu.add(mntmPalindrom);
 		
 		
-		JMenu mnSprint = new JMenu("Sprint 2");
+		JMenu mnSprint = new JMenu("Jigsaw");
 		menuBar.add(mnSprint);
 		
 		JMenuItem mntmCalculator = new JMenuItem("Calculator");

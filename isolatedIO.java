@@ -5,8 +5,8 @@ public class isolatedIO {
    public static String inputString(String txt)
    {
 	   System.out.println(txt);
-	   Scanner e = new Scanner (System.in);
-	   return e.nextLine();
+	   Scanner input = new Scanner (System.in);
+	   return input.nextLine();
    }
    
    public static void printChar(char txt)
@@ -22,8 +22,8 @@ public class isolatedIO {
    public static int inputInt(String txt)
    {
 	   System.out.println(txt);
-	   Scanner e = new Scanner(System.in);
-	   return e.nextInt();
+	   Scanner input = new Scanner(System.in);
+	   return input.nextInt();
    }
 	   
 }
