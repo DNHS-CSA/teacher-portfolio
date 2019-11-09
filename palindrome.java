@@ -1,7 +1,7 @@
 
 public class palindrome
 {
-	// instance variables - replace the example below with your own
+	// instance variables
     private char[] aCandidate;
     private int Length; 
 	private String Candidate;
@@ -38,9 +38,9 @@ public class palindrome
 		case 1:
 			return palindromeTestIJ();
 		case 2:
-			return palindromeTestRecursion();
+			return palindromeRecurseDriver();
 		case 3:
-			return palindromeTestIJ();
+			return palindromeReplace();
 		default:
     		this.setPaliLog(WordOrPhrase +" not run " + method + " unkown");
     		return false;
@@ -63,10 +63,24 @@ public class palindrome
         System.out.println(test.getPaliLog());
     }
 
+	private boolean palindromeReplace()
+	{
+		// Entering replace method
+        String msg = "by replace method";
+		String forwardStr = Candidate.toLowerCase().replaceAll("[^a-z0-9]", "");
+		String reverseStr = new StringBuilder(forwardStr).reverse().toString();
+		
+        isolatedIO.println( String.format( "forward %s, reverse %s" ,forwardStr, reverseStr ));
+        boolean result = (forwardStr.equals(reverseStr)); 
+		if (result) updateLog(true, msg); else updateLog(false, msg);
+		
+		return result;	
+	}
+
 	private boolean palindromeTestIJ()
     {	
 		// Entering IJ method
-        String ijmsg = "by IJ method";
+        String msg = "by IJ method";
         isolatedIO.println( String.format("i = %s j = %d" ,Candidate, Length) );
         for (int i=0, j=this.Length; i < j;) 
         {
@@ -81,16 +95,17 @@ public class palindrome
             } else if ( lchar == rchar) {
                 i++; j--;
             } else {
-            	updateLog(false, ijmsg);
+            	updateLog(false, msg);
                 return false;
             }
         }
-        updateLog(true, ijmsg);
+        updateLog(true, msg);
         return true;
     }
 	
 	private boolean palindromeTestRecurse(String shrinker)
 	{
+		// Entering recursion method
         isolatedIO.println( String.format("%s" ,shrinker));
         int lindex = 0;
         int rindex = shrinker.length();
@@ -112,9 +127,9 @@ public class palindrome
 		return ( lindex >= rindex ? true : palindromeTestRecurse(shrinker.substring(lindex,rindex)) );		
 	}
 
-	private boolean palindromeTestRecursion()
+	private boolean palindromeRecurseDriver()
     {	
-		// Entering recursion method
+		// Entering recursion driver
         String msg = "by recursion method";
         String testStr = Candidate;
         if ( palindromeTestRecurse(testStr) ) {
