@@ -1,3 +1,12 @@
+/**
+ * Evaluates String as palindrome
+ * a word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
+ * 
+ * Contains 3 methods of evaluation: Loop, Recursion, Built in replace and compare
+ * 
+ * @version 1.0
+ * @author John Mortensen
+ */
 public class Palindrome
 {
 	// Instance variables
