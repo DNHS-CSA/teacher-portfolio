@@ -7,22 +7,14 @@
  * @version 1.0
  * @author John Mortensen
  */
+
 public class Palindrome
 {
 	// Instance variables
 	private String Candidate;
 	private String Log;
 	
-	public static String isPaliLog(String candidate, int method)	// Biz logic driver
-    {
-		// Tests candidate and returns result message
-		Palindrome test = new Palindrome();
-		test.setPaliCandidate(candidate);
-        test.isPali(method);
-        return test.getPaliLog();
-    }
-	
-	public static void isPaliByConsole() 							// Console driver
+	public static void main() 										// Console driver
     {
 		// Input using console
         String candidate = ConsoleMethods.inputString("Enter a word or phrase: ");
@@ -33,6 +25,15 @@ public class Palindrome
         test.isPali(1);
         test.isPali(2);
         test.isPali(3);
+    }
+	
+	public static String isPaliLog(String candidate, int method)	// Business logic driver
+    {
+		// Tests candidate and returns result message
+		Palindrome test = new Palindrome();
+		test.setPaliCandidate(candidate);
+        test.isPali(method);
+        return test.getPaliLog();
     }
 	
 	public String getPaliCandidate() {

@@ -36,12 +36,11 @@ public class PalindromeUI extends MenuControl {
 	/**
 	 * Launch the application.
 	 */
-/*
-	public static void main(String[] args) {
+	public static void main() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					palindromeUI frame = new palindromeUI();
+					PalindromeUI frame = new PalindromeUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +48,6 @@ public class PalindromeUI extends MenuControl {
 			}
 		});
 	}
-*/
 
 	/**
 	 * Create the frame.
