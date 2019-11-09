@@ -12,7 +12,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class palindromeUI extends menuControl {
+public class PalindromeUI extends MenuControl {
 
 	/**
 	 * 
@@ -45,7 +45,7 @@ public class palindromeUI extends menuControl {
 	/**
 	 * Create the frame.
 	 */
-	public palindromeUI() {
+	public PalindromeUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -67,17 +67,17 @@ public class palindromeUI extends menuControl {
 			public void actionPerformed(ActionEvent e) {
 				// read comments backwards 
 				pali_resultIJ.setText(					// Set Pali return log to IJ answer
-						palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+						Palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
 								pali_input.getText(), 	// Get text from user input ^
 								1));
 				// read comments backwards 
 				pali_resultRecursion.setText(					// Set Pali return log to IJ answer
-						palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+						Palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
 								pali_input.getText(), 	// Get text from user input ^
 								2));
 				// read comments backwards 
 				pali_resultReplace.setText(					// Set Pali return log to IJ answer
-						palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+						Palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
 								pali_input.getText(), 	// Get text from user input ^
 								3));
 			}

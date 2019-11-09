@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class isolatedIO {
+public class ConsoleMethods {
 
    public static String inputString(String txt)
    {

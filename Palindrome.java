@@ -1,39 +1,73 @@
-
-public class palindrome
+public class Palindrome
 {
-	// instance variables
-    private char[] aCandidate;
-    private int Length; 
+	// Instance variables
 	private String Candidate;
 	private String Log;
 	
+	public static String isPaliLog(String candidate, int method)	// Biz logic driver
+    {
+		// Tests candidate and returns result message
+		Palindrome test = new Palindrome();
+		test.setPaliCandidate(candidate);
+        test.isPali(method);
+        return test.getPaliLog();
+    }
+	
+	public static void isPaliByConsole() 							// Console driver
+    {
+		// Input using console
+        String candidate = ConsoleMethods.inputString("Enter a word or phrase: ");
+
+        // Evaluate by all methods
+		Palindrome test = new Palindrome();
+		test.setPaliCandidate(candidate);
+        test.isPali(1);
+        test.isPali(2);
+        test.isPali(3);
+    }
+	
 	public String getPaliCandidate() {
+		// Getter
 		return Candidate;
 	}
 	
 	public String getPaliLog() {
+		// Getter
 		return Log;
 	}
 	
-	public void setPaliLog(String log) {
+	private void setPaliCandidate(String candidate) {
+		// Setter
+		Candidate = candidate;
+	}
+	
+	private void setPaliLog(String log) {
+		// Setter
 		Log = log;
 	}
 	
-	private void isPaliHelper()
-	{
-		this.Length = Candidate.length()-1;
-		this.aCandidate  = Candidate.toCharArray();
-	}
+	private void setPaliLog(boolean isPali, String method)
+    {
+    	// Log to persist in Object
+		this.setPaliLog( String.format ("\"%s\"  %s  %s",
+			Candidate,
+			isPali 
+			? "Is pali :)" 
+			: "Not pali :(",
+			method
+			) );
+        ConsoleMethods.println( this.getPaliLog() );
+    }
 	
-	public boolean isPali(String candidate, int method) {
-		Candidate = candidate;
-		// initialize and check
-		String WordOrPhrase = this.Candidate;
-		if (WordOrPhrase.length() < 2) {
-    		this.setPaliLog(WordOrPhrase +" is to small to test");
-			return false;
+	private boolean isPali(int method) 
+	{
+		// Base condition, no need to test 0 or 1 condition
+		if (Candidate.length() < 2) {
+    		this.setPaliLog(Candidate +" is to small to test");
+			return true;
 		}
-		isPaliHelper();
+		
+		// Select testing method
 		switch (method) {
 		case 1:
 			return palindromeTestIJ();
@@ -42,37 +76,36 @@ public class palindrome
 		case 3:
 			return palindromeReplace();
 		default:
-    		this.setPaliLog(WordOrPhrase +" not run " + method + " unkown");
+    		this.setPaliLog(Candidate +" not run " + method + " unkown");
     		return false;
 		}
 
 	}
-	
-	public static String isPaliLog(String candidate, int method)
-    {
-		palindrome test = new palindrome();
-        test.isPali(candidate, method);
-        return test.getPaliLog();
-    }
-	
-	public static void isPaliByConsole(int method)
-    {
-		palindrome test = new palindrome();
-        String candidate = isolatedIO.inputString("Enter a word or phrase: ");
-        test.isPali(candidate,method);
-        System.out.println(test.getPaliLog());
-    }
 
 	private boolean palindromeReplace()
 	{
-		// Entering replace method
-        String msg = "by replace method";
-		String forwardStr = Candidate.toLowerCase().replaceAll("[^a-z0-9]", "");
+		// Entering Replace (Built-in) method
+        String msg = "Replace method";
+        ConsoleMethods.println( String.format("\n%s, Candidate: \"%s\",  Length = %d" ,msg, Candidate, Candidate.length()) );
+    	int step = 0;
+
+
+        // Built in methods to remove special characters by regular expression (regex)
+        String forwardStr = Candidate.replaceAll("[^a-zA-Z0-9]", "");
+        ConsoleMethods.println( String.format( "Step %d: Prepare string one \"%s\" to  \"%s\"", step++, Candidate, forwardStr ));
+
+        // Built in method in StringBuilder to reverse string and convert back to string
 		String reverseStr = new StringBuilder(forwardStr).reverse().toString();
-		
-        isolatedIO.println( String.format( "forward %s, reverse %s" ,forwardStr, reverseStr ));
-        boolean result = (forwardStr.equals(reverseStr)); 
-		if (result) updateLog(true, msg); else updateLog(false, msg);
+        ConsoleMethods.println( String.format( "Step %d: Prepare string two \"%s\" to  \"%s\"", step++, forwardStr, reverseStr ));
+
+		// Compare strings by ignoring case
+        ConsoleMethods.println( String.format( "Step %d: Compare ignoring case \"%s\" to reverse \"%s\"", step++,forwardStr, reverseStr ));
+        boolean result = (forwardStr.equalsIgnoreCase(reverseStr)); 
+		if (result) {
+			setPaliLog(true, msg);
+		} else {
+			setPaliLog(false, msg);
+		}
 		
 		return result;	
 	}
@@ -80,78 +113,81 @@ public class palindrome
 	private boolean palindromeTestIJ()
     {	
 		// Entering IJ method
-        String msg = "by IJ method";
-        isolatedIO.println( String.format("i = %s j = %d" ,Candidate, Length) );
-        for (int i=0, j=this.Length; i < j;) 
+        String msg = "IJ method";
+        ConsoleMethods.println( String.format("\n%s, Candidate: \"%s\",  Length = %d" ,msg, Candidate, Candidate.length()) );
+        
+    	int length = Candidate.length()-1;
+    	int step = 0;
+        for (int i=0, j=length; i < j; step++ ) 
         {
-        	char lchar = Character.toLowerCase(aCandidate[i]);
-        	char rchar = Character.toLowerCase(aCandidate[j]);
+        	char lchar = Character.toLowerCase(Candidate.charAt(i)); 
+        	char rchar = Character.toLowerCase(Candidate.charAt(j));
         	
-            isolatedIO.println( String.format( "i = %c j = %c" ,lchar, rchar ));
-            if ( !(Character.isLetter(lchar)) ) { 
+    		// Compare is Character by Character
+            ConsoleMethods.println( String.format( "Step %d: Candidate(%d) = %c -- Candidate(%d) = %c" , step, i, lchar, j, rchar ));
+            if ( !(Character.isLetterOrDigit(lchar)) ) {  
+                ConsoleMethods.println( String.format( " skip left %c" ,lchar ));
                 i++;
-            } else if ( !(Character.isLetter(rchar)) ) {
+            } else if ( !(Character.isLetterOrDigit(rchar)) ) {
+                ConsoleMethods.println( String.format( " skip right %c", rchar ));
                 j--;
             } else if ( lchar == rchar) {
+    			ConsoleMethods.println( String.format(" eq left %c = right %c" , lchar, rchar));
                 i++; j--;
             } else {
-            	updateLog(false, msg);
+    			ConsoleMethods.println( String.format(" not eq left %c = right %c" , lchar, rchar));
+            	setPaliLog(false, msg);
                 return false;
             }
         }
-        updateLog(true, msg);
+        setPaliLog(true, msg);
         return true;
     }
 	
-	private boolean palindromeTestRecurse(String shrinker)
+	private boolean palindromeRecurseDriver()
+    {	
+        // Recursion driver,  used to setup recursion method
+		String msg = "Recursion method";
+        ConsoleMethods.println( String.format("\n%s, Candidate: \"%s\",  Length = %d" ,msg, Candidate, Candidate.length()) );
+
+        String testStr = Candidate;
+        boolean result = palindromeTestRecurse(testStr, 0);
+		if (result) {
+			setPaliLog(true, msg);
+		} else {
+			setPaliLog(false, msg);
+		}
+		
+		return result;	
+    }
+	
+	private boolean palindromeTestRecurse(String shrinker, int step)
 	{
 		// Entering recursion method
-        isolatedIO.println( String.format("%s" ,shrinker));
-        int lindex = 0;
+		int lindex = 0;
         int rindex = shrinker.length();
-
+        
+        // String reduces on each recursion
+        ConsoleMethods.println( String.format("Step %d: Candidate \"%s\"" , step, shrinker ) );
 		char lchar = Character.toLowerCase(shrinker.charAt(0));
 		char rchar = Character.toLowerCase(shrinker.charAt(rindex-1));
 
-		if (! (Character.isLetter(lchar) )) {
+		if (! (Character.isLetterOrDigit(lchar) )) {
+	        ConsoleMethods.println( String.format(" skip left %c" , lchar));
 			lindex++;
-		} else if (! (Character.isLetter(rchar) )) {
+		} else if (! (Character.isLetterOrDigit(rchar) )) {
+			ConsoleMethods.println( String.format(" skip right %c" , rchar));
 			rindex--;
 		} else if ( lchar == rchar ) {
+			ConsoleMethods.println( String.format(" eq left %c = right %c" , lchar, rchar));
 			lindex++; rindex--;
 		} else {
+			ConsoleMethods.println( String.format(" not eq left %c = right %c" , lchar, rchar));
 			return false;
 		}
         
-        isolatedIO.println( String.format("%d %d" ,lindex, rindex));
-		return ( lindex >= rindex ? true : palindromeTestRecurse(shrinker.substring(lindex,rindex)) );		
+		// Java recursion acts funny if True and Recursion are not at the end, thus placement and use of indexes
+		return ( ((rindex - lindex) > 2) ? palindromeTestRecurse(shrinker.substring(lindex,rindex), ++step) : true );		
 	}
-
-	private boolean palindromeRecurseDriver()
-    {	
-		// Entering recursion driver
-        String msg = "by recursion method";
-        String testStr = Candidate;
-        if ( palindromeTestRecurse(testStr) ) {
-            isolatedIO.println( "true" );
-            updateLog(true, msg);
-            return true;
-        }
-        isolatedIO.println( "false" );
-        updateLog(false, msg);
-        return false; 
-    }
-    
-    private void updateLog(boolean isPali, String method)
-    {
-		this.setPaliLog( String.format ("** %s - %s %s **",
-			Candidate,
-			isPali 
-			? "Is pali :)" 
-			: "Not pali :(",
-			method
-			) );
-        isolatedIO.println( this.getPaliLog() );
-    }
     
 }

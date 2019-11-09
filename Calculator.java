@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class calculator extends menuControl {
+public class Calculator extends MenuControl {
 
 	/**
 	 * 
@@ -123,7 +123,7 @@ public class calculator extends menuControl {
 	/**
 	 * Create the frame.
 	 */
-	public calculator() {
+	public Calculator() {
 		
 		
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
