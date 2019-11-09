@@ -65,7 +65,21 @@ public class palindromeUI extends menuControl {
 		JButton btnTestPalindrome = new JButton("Test");
 		btnTestPalindrome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pali_resultIJ.setText(palindrome.isPaliLog(pali_input.getText()));
+				// read comments backwards 
+				pali_resultIJ.setText(					// Set Pali return log to IJ answer
+						palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+								pali_input.getText(), 	// Get text from user input ^
+								1));
+				// read comments backwards 
+				pali_resultRecursion.setText(					// Set Pali return log to IJ answer
+						palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+								pali_input.getText(), 	// Get text from user input ^
+								2));
+				// read comments backwards 
+				pali_resultReplace.setText(					// Set Pali return log to IJ answer
+						palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+								pali_input.getText(), 	// Get text from user input ^
+								3));
 			}
 		});
 		btnTestPalindrome.setBounds(152, 49, 145, 29);
