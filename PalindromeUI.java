@@ -74,21 +74,22 @@ public class PalindromeUI extends MenuControl {
 		JButton btnTestPalindrome = new JButton("Test");
 		btnTestPalindrome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// read comments backwards 
-				pali_resultIJ.setText(					// Set Pali return log to IJ answer
-						Palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+				// Three calls to Palindrome 
+				pali_resultIJ.setText(					// Set return value of call to IJ answer
+						Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
 								pali_input.getText(), 	// Get text from user input ^
-								1));
-				// read comments backwards 
-				pali_resultRecursion.setText(					// Set Pali return log to IJ answer
-						Palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+								1));					// Pick Loop IJ (1)
+				
+				pali_resultRecursion.setText(			// Set return value of call to Backwards answer
+						Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
 								pali_input.getText(), 	// Get text from user input ^
-								2));
-				// read comments backwards 
-				pali_resultReplace.setText(					// Set Pali return log to IJ answer
-						Palindrome.isPaliLog(			// Call biz logic, test user input, return Log ^
+								2));					// Pick Recursion (2)
+				
+				pali_resultReplace.setText(				// Set Pali return of call to Replace answer
+						Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
 								pali_input.getText(), 	// Get text from user input ^
-								3));
+								3));					// Pick Replace all (3)
+				
 			}
 		});
 		btnTestPalindrome.setBounds(152, 49, 145, 29);
