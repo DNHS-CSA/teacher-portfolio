@@ -1,3 +1,12 @@
+/**
+ * UI to support pallindrome evaluation
+ * 
+ * support one input and multiple outputs
+ * 
+ * @version 1.0
+ * @author John Mortensen
+ */
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
