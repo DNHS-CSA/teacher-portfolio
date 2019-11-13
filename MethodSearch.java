@@ -41,11 +41,6 @@ public class MethodSearch
         Log = "";
     }
     
-    public void setTerms(String filenm, String searchTerm) {
-		Filenm = filenm;
-		SearchTerm = searchTerm;
-	}
-    
     public static void main(String filenm, String searchTerm)
     {
         ConsoleMethods.println("In MethodSearch Main");
@@ -53,6 +48,20 @@ public class MethodSearch
     	test.setTerms(filenm, searchTerm);
     	test.scan();
     }
+    
+    public static ArrayList<String> getMethods(String filenm, String searchTerm)	// Business logic driver
+    {
+        ConsoleMethods.println("In MethodSearch getMethods");
+    	MethodSearch test = new MethodSearch();
+    	test.setTerms(filenm, searchTerm);
+    	test.scan();
+        return test.Methods;
+    }
+    
+    private void setTerms(String filenm, String searchTerm) {
+		Filenm = filenm;
+		SearchTerm = searchTerm;
+	}
     
     private void scan ()
     {

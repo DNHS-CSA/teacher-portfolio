@@ -19,9 +19,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JList;
 
 public class MethodSearchUI extends MenuControl {
 
@@ -84,7 +86,7 @@ public class MethodSearchUI extends MenuControl {
 		JButton buttonTest = new JButton("Test");
 		buttonTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MethodSearch.main(filename.getText(), searchTerm.getText());
+				ArrayList<String> methods = MethodSearch.getMethods(filename.getText(), searchTerm.getText());
 			}
 		});
 		buttonTest.setBounds(275, 0, 145, 29);
@@ -95,15 +97,13 @@ public class MethodSearchUI extends MenuControl {
 		buttonTestConsole.setBackground(Color.LIGHT_GRAY);
 		buttonTestConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		buttonTestConsole.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) { 
+			public void actionPerformed(ActionEvent e) {
+				MethodSearch.main(filename.getText(), searchTerm.getText());
 			}
 		});
 		buttonTestConsole.setBounds(419, 7, 21, 18);
 		contentPane.add(buttonTestConsole);
-	
-		
-		
-		
+
 		
 	}
 }
