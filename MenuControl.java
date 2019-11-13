@@ -80,10 +80,19 @@ public class MenuControl extends JFrame {
 		mntmCalculator.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Calculator frame = new Calculator();
-				frame.setVisible(true);			
+				frame.setVisible(true);		
 			}
 		});
 		mnSprint.add(mntmCalculator);
+		
+		JMenuItem mntmMethodSearch = new JMenuItem("Method Search");
+		mntmMethodSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MethodSearchUI frame = new MethodSearchUI();
+				frame.setVisible(true);
+			}
+		});
+		mnSprint.add(mntmMethodSearch);
 		
 	}
 	

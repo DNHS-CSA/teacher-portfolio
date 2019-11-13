@@ -1,3 +1,11 @@
+
+
+/**
+ * Static methods related to Console input and output
+ * 
+ * @author John Mortensen
+ * @version 1.0
+ */
 import java.util.Scanner;
 
 public class ConsoleMethods {

@@ -18,11 +18,12 @@ import java.io.*;
 
 public class MethodSearch
 {  
-	 private static boolean Found;
-	 private static ArrayList<String> Lines;   	//Each element of ArrayList contains a line from file
-	 private static ArrayList<String> Methods;	//methods matched will be added to methods ArrayList
-	 private static String Filennm;
-	 private static String Log;
+	 private  boolean Found;
+	 private  ArrayList<String> Lines;   	//Each element of ArrayList contains a line from file
+	 private  ArrayList<String> Methods;	//methods matched will be added to methods ArrayList
+	 private  String Filenm;
+	 private  String SearchTerm;
+	 private  String Log;
 
 	/*
 	public static void main (String[] args)
@@ -37,17 +38,30 @@ public class MethodSearch
     	Found = true;
     	Lines = new ArrayList<String>();
         Methods = new ArrayList<String>();
-        Filennm = "PigLatinator.java";
         Log = "";
     }
     
-    public static void scan (String method)
+    public void setTerms(String filenm, String searchTerm) {
+		Filenm = filenm;
+		SearchTerm = searchTerm;
+	}
+    
+    public static void main(String filenm, String searchTerm)
     {
+        ConsoleMethods.println("In MethodSearch Main");
+    	MethodSearch test = new MethodSearch();
+    	test.setTerms(filenm, searchTerm);
+    	test.scan();
+    }
+    
+    private void scan ()
+    {
+        ConsoleMethods.println("In MethodSearch Scan" + Filenm);
         Scanner sc = null;
 
         try 
         {
-            sc = new Scanner(new File(Filennm));
+            sc = new Scanner(new File(Filenm));
             //Scanner reads every line and adds to ArrayList Lines
             while (sc.hasNextLine()) 
             {   
@@ -68,14 +82,14 @@ public class MethodSearch
                        //if line contains a dot, a method is being called
                        Found = false;
                     }
-                    else if (splitted[i].toLowerCase().contains(method.toLowerCase()) 
+                    else if (splitted[i].toLowerCase().contains(SearchTerm.toLowerCase()) 
                     && Lines.get(j).contains("{")) 
                     {   
                         //to confirm a method,there must be a curley bracket
                         Methods.add(splitted[i]);
                     }
                     //checks if curley bracket is in the next line
-                    else if ((i+1) < length && splitted[i].toLowerCase().contains(method.toLowerCase()) 
+                    else if ((i+1) < length && splitted[i].toLowerCase().contains(SearchTerm.toLowerCase()) 
                     && Lines.get(j+1).contains("{")) 
                     {
                         Methods.add(splitted[i]);
@@ -86,12 +100,13 @@ public class MethodSearch
                     }
                 }
             }
+            sc.close(); 
         } 
         catch (FileNotFoundException e) 
         {
             ConsoleMethods.println("File Not found");
         }
-
-        sc.close(); 
+        ConsoleMethods.println("In MethodSearch Scan" + Methods);
     }
+
 }

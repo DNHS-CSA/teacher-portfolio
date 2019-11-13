@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=MethodSearch
+comment1.params=
+comment1.target=MethodSearch()
+comment1.text=\n\tpublic\ static\ void\ main\ (String[]\ args)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ //method\ name\ to\ be\ searched\n\ \ \ \ \ \ \ \ scan\ ("Vow");\n\ \ \ \ }\ \ \n
+comment2.params=method
+comment2.target=void\ scan(java.lang.String)
+numComments=3
