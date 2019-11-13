@@ -1,17 +1,15 @@
 #BlueJ class context
-comment0.target=MenuControl
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
+comment0.target=MethodSearchUI
+comment1.params=
+comment1.target=void\ main()
 comment1.text=\n\ Launch\ the\ application.\n
 comment2.params=
 comment2.target=void\ run()
 comment3.params=
-comment3.target=MenuControl()
+comment3.target=MethodSearchUI()
 comment3.text=\n\ Create\ the\ frame.\n
 comment4.params=e
 comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment5.params=e
 comment5.target=void\ actionPerformed(java.awt.event.ActionEvent)
-comment6.params=e
-comment6.target=void\ actionPerformed(java.awt.event.ActionEvent)
-numComments=7
+numComments=6
