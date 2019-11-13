@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -64,6 +66,8 @@ public class MethodSearchUI extends MenuControl {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+        DefaultListModel<String> l1 = new DefaultListModel<>();  
+
 		
 		JLabel lblFileName = new JLabel("Search File Name");
 		lblFileName.setBounds(6, 0, 184, 26);
@@ -87,6 +91,9 @@ public class MethodSearchUI extends MenuControl {
 		buttonTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> methods = MethodSearch.getMethods(filename.getText(), searchTerm.getText());
+				for (String method: methods) {
+					l1.addElement(method);
+				}
 			}
 		});
 		buttonTest.setBounds(275, 0, 145, 29);
@@ -103,7 +110,11 @@ public class MethodSearchUI extends MenuControl {
 		});
 		buttonTestConsole.setBounds(419, 7, 21, 18);
 		contentPane.add(buttonTestConsole);
-
+		
+        JList<String> list = new JList<>(l1);  
+        list.setBounds(16,101, 414,137);  
+        contentPane.add(list);  
+         
 		
 	}
 }
