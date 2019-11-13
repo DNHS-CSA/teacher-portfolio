@@ -91,6 +91,7 @@ public class MethodSearchUI extends MenuControl {
 		buttonTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> methods = MethodSearch.getMethods(filename.getText(), searchTerm.getText());
+				l1.clear();
 				for (String method: methods) {
 					l1.addElement(method);
 				}
