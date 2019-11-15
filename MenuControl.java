@@ -47,7 +47,7 @@ public class MenuControl extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JLabel pic = new JLabel("");        
+		JLabel pic = new JLabel("Mr M");        
         java.awt.Image image = new ImageIcon("spongebob-icon.png").getImage();
         pic.setIcon(new ImageIcon(image));
         pic.setBounds(377, 111, 128, 128);
