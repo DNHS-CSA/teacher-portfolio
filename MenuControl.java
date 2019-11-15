@@ -42,22 +42,19 @@ public class MenuControl extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnCalculator = new JMenu("Intro");
+		JMenu mnCalculator = new JMenu("Home");
 		menuBar.add(mnCalculator);
 		
-		JMenu mnJumpers = new JMenu("Jumpers");
-		mnCalculator.add(mnJumpers);
+		JMenu mnJumpers = new JMenu("Intro");
+		menuBar.add(mnJumpers);
 		
-		JMenuItem mntmOriginal = new JMenuItem("Original");
+		JMenuItem mntmOriginal = new JMenuItem("Jumpers");
 		mnJumpers.add(mntmOriginal);
 		
-		JMenuItem mntmInputs = new JMenuItem("Inputs");
+		JMenuItem mntmInputs = new JMenuItem("Pythagorean");
 		mnJumpers.add(mntmInputs);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Pythagorus");
-		mnCalculator.add(mntmNewMenuItem);
-		
-		JMenu mnNewMenu = new JMenu("String Labs");
+		JMenu mnNewMenu = new JMenu("Labs");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmShorthand = new JMenuItem("Shorthand");
@@ -93,6 +90,14 @@ public class MenuControl extends JFrame {
 			}
 		});
 		mnSprint.add(mntmMethodSearch);
+		
+		JMenuItem mntmApExam = new JMenuItem("AP Exam");
+		mntmApExam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AP_Exam.AP_Console.main();
+			}
+		});
+		menuBar.add(mntmApExam);
 		
 	}
 	

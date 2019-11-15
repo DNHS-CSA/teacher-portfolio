@@ -67,8 +67,10 @@ public class MethodSearchUI extends MenuControl {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-        DefaultListModel<String> l1 = new DefaultListModel<>();  // support for JList
-
+		DefaultListModel<String> l1 = new DefaultListModel<>();  // support for JList
+		JList<String> list = new JList<>(l1);  				// l1 is JList working element
+        list.setBounds(16,101, 414,137);  
+        contentPane.add(list); 
 		
 		JLabel lblFileName = new JLabel("Search File Name");
 		lblFileName.setBounds(6, 0, 184, 26);
@@ -111,11 +113,7 @@ public class MethodSearchUI extends MenuControl {
 			}
 		});
 		buttonTestConsole.setBounds(419, 7, 21, 18);
-		contentPane.add(buttonTestConsole);
-		
-        JList<String> list = new JList<>(l1);  				// l1 is JList working element
-        list.setBounds(16,101, 414,137);  
-        contentPane.add(list);  
+		contentPane.add(buttonTestConsole); 
          
 		
 	}
