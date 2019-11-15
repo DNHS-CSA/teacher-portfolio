@@ -1,11 +1,16 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 
 public class MenuControl extends JFrame {
@@ -41,6 +46,15 @@ public class MenuControl extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		
+		JLabel pic = new JLabel("");        
+        java.awt.Image image = new ImageIcon("spongebob-icon.png").getImage();
+        pic.setIcon(new ImageIcon(image));
+        pic.setBounds(377, 111, 128, 128);
+        getContentPane().add(pic);
+        
+        //Color lightBlue= new Color(0,0,182,155);
+        getContentPane().setBackground(new Color(100,100,255));
 		
 		JMenu mnCalculator = new JMenu("Home");
 		menuBar.add(mnCalculator);
