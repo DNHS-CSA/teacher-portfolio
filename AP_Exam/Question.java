@@ -1,5 +1,7 @@
 package AP_Exam;
 
+import Util.ConsoleMethods;
+
 /**
  * Question object is intended to ask operator questions and randomize order
  *
@@ -15,11 +17,17 @@ abstract class Question extends Scoring
     char answerA='A', answerB='B', answerC='C', answerD='D', answerE='E';
     char answerKey;
     
+    /**
+     * setupQuestion arg1, operator, arg2
+     */
     public void setupQuestion(int arg1, char operator, int arg2) {
 		// TODO Auto-generated method stub
 		
 	}
-
+    
+    /**
+     * setupQuestion dataType and number
+     */
 	public void setupQuestion(String dataTypeName, double number) {
 		// TODO Auto-generated method stub
 		
@@ -46,32 +54,30 @@ abstract class Question extends Scoring
         char choice;
         
         // Implement this to randomize order
-        System.out.println(question);
-        System.out.println("A. " + choiceA );
-        System.out.println("B. " + choiceB );
-        System.out.println("C. " + choiceC );
-        System.out.println("D. " + choiceD );
-        System.out.println("E. " + choiceE );
+        ConsoleMethods.println(question);
+        ConsoleMethods.println("A. " + choiceA );
+        ConsoleMethods.println("B. " + choiceB );
+        ConsoleMethods.println("C. " + choiceC );
+        ConsoleMethods.println("D. " + choiceD );
+        ConsoleMethods.println("E. " + choiceE );
         
         // IO logic of getting answer from console
         do {
             choice = Keyinput.inChar("Enter selection (A-E) --> ");
             choice = Character.toUpperCase(choice); // Convert to upper case
             if (choice >= 'A' && choice <= 'E') break;
-            System.out.println(" (invalid) ");
+            ConsoleMethods.println(" (invalid) ");
         } while ( true );                                               // until valid input
         
         if (choice == answerKey) System.out.print("(correct) ");
-        else System.out.print("(missed it!) ");
-        System.out.println(answer);
-        System.out.println();
+        else ConsoleMethods.print("(missed it!) ");
+        ConsoleMethods.println(answer);
+        ConsoleMethods.println();
         
         /*Boolean ansStatus = (choice == answerKey);
         calcResult(ansStatus)
         return ansStatus;*/
         return (choice == answerKey);
     }
-
-	
   
 }

@@ -1,3 +1,4 @@
+package Util;
 
 
 /**
@@ -19,7 +20,17 @@ public class ConsoleMethods {
    
    public static void printChar(char txt)
    {
-	   System.out.println(txt);
+	   System.out.print(txt);
+   }
+   
+   public static void print(String txt)
+   {
+	   System.out.print(txt);
+   }
+   
+   public static void println()
+   {
+	   System.out.println("\n");
    }
    
    public static void println(String txt)

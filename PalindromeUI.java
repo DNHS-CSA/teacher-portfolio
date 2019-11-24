@@ -124,7 +124,6 @@ public class PalindromeUI extends MenuControl {
 		pali_resultReplace.setColumns(10);
 		pali_resultReplace.setBounds(6, 200, 438, 47);
 		contentPane.add(pali_resultReplace);
-		
-		
+			
 	}
 }

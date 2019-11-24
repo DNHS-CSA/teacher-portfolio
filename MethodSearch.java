@@ -13,8 +13,11 @@
  */
 
 import java.util.ArrayList;
-import java.util.*;
+import java.util.Scanner;
 import java.io.*;
+
+import Util.ConsoleMethods;
+
 
 public class MethodSearch
 {  

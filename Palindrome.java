@@ -1,3 +1,5 @@
+import Util.ConsoleMethods;
+
 /**
  * Evaluates String as palindrome
  * a word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.

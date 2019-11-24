@@ -8,7 +8,9 @@ package AP_Exam;
 public class DataTypeQuestions extends Question
 {
     
-    /**
+    private static final double PI = 3.1415926;
+
+	/**
      * Constructor for objects of class MathQuestions
      */
     public DataTypeQuestions()
@@ -16,15 +18,14 @@ public class DataTypeQuestions extends Question
         
     }
     
-
     public static String mainTest ()
     {
     	Question q = new DataTypeQuestions();
-        q.setupQuestion("int", 3.1415926);
+        q.setupQuestion("int", PI);
         q.askQuestion();
-        q.setupQuestion("float", 3.1415926);
+        q.setupQuestion("float", PI);
         q.askQuestion();
-        q.setupQuestion("char", 3.14159263);
+        q.setupQuestion("char", PI);
         q.askQuestion();
         return q.getCounterMsg();
     }
