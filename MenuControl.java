@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.EventQueue;
 
 import javax.imageio.ImageIO;
@@ -8,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -44,35 +46,42 @@ public class MenuControl extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
+		// JLabel with image 
 		JLabel pic = new JLabel("Mr M");        
         java.awt.Image image = new ImageIcon("spongebob-icon.png").getImage();
         pic.setIcon(new ImageIcon(image));
         pic.setBounds(377, 111, 128, 128);
-        getContentPane().add(pic);
         
-        //Color lightBlue= new Color(0,0,182,155);
-        getContentPane().setBackground(new Color(100,100,255));
+        // Content Panel to add Label and Image
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/rootpane.html
+        Container content = getContentPane();
+        content.setBackground(new Color(100,100,255));
+        content.add(pic);
+        
+        // Menu Objects 
+        JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+        
+		JMenu mnHone = new JMenu("Home");
+		menuBar.add(mnHone);
 		
-		JMenu mnCalculator = new JMenu("Home");
-		menuBar.add(mnCalculator);
+		JMenuItem mntmPreferences = new JMenuItem("Preferences");
+		mnHone.add(mntmPreferences);
 		
-		JMenu mnJumpers = new JMenu("Intro");
-		menuBar.add(mnJumpers);
+		JMenu mnIntro = new JMenu("Intro");
+		menuBar.add(mnIntro);
 		
 		JMenuItem mntmOriginal = new JMenuItem("Jumpers");
-		mnJumpers.add(mntmOriginal);
+		mnIntro.add(mntmOriginal);
 		
 		JMenuItem mntmInputs = new JMenuItem("Pythagorean");
-		mnJumpers.add(mntmInputs);
+		mnIntro.add(mntmInputs);
 		
-		JMenu mnNewMenu = new JMenu("Labs");
-		menuBar.add(mnNewMenu);
+		JMenu mnLabs = new JMenu("Labs");
+		menuBar.add(mnLabs);
 		
 		JMenuItem mntmShorthand = new JMenuItem("Shorthand");
-		mnNewMenu.add(mntmShorthand);
+		mnLabs.add(mntmShorthand);
 		
 		JMenuItem mntmPalindrom = new JMenuItem("Palindrom 3");
 		mntmPalindrom.addActionListener(new ActionListener() {
@@ -81,11 +90,10 @@ public class MenuControl extends JFrame {
 				frame.setVisible(true);			
 			}
 		});
-		mnNewMenu.add(mntmPalindrom);
+		mnLabs.add(mntmPalindrom);
 		
-		
-		JMenu mnSprint = new JMenu("Jigsaw");
-		menuBar.add(mnSprint);
+		JMenu mnJig = new JMenu("Jigsaw");
+		menuBar.add(mnJig);
 		
 		JMenuItem mntmCalculator = new JMenuItem("Calculator");
 		mntmCalculator.addActionListener(new ActionListener() {
@@ -94,7 +102,7 @@ public class MenuControl extends JFrame {
 				frame.setVisible(true);		
 			}
 		});
-		mnSprint.add(mntmCalculator);
+		mnJig.add(mntmCalculator);
 		
 		JMenuItem mntmMethodSearch = new JMenuItem("Method Search");
 		mntmMethodSearch.addActionListener(new ActionListener() {
@@ -103,15 +111,16 @@ public class MenuControl extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		mnSprint.add(mntmMethodSearch);
+		mnJig.add(mntmMethodSearch);
 		
-		JMenuItem mntmApExam = new JMenuItem("AP Exam");
-		mntmApExam.addActionListener(new ActionListener() {
+		JMenuItem mnApTest = new JMenuItem("AP Test");
+		mnApTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AP_Exam.AP_Console.main();
+				AP_UI frame = new AP_UI();
+				frame.setVisible(true);
 			}
 		});
-		menuBar.add(mntmApExam);
+		menuBar.add(mnApTest);
 		
 	}
 	

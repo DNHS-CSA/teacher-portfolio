@@ -14,14 +14,21 @@ public class BinaryMathQuestions extends Question
      */
     public BinaryMathQuestions()
     {
-        setupQuestion(7, '&', 3);
-        askQuestion();
-        setupQuestion(7, '|', 3);
-        askQuestion();
-        setupQuestion(7, '+', 3);
-        askQuestion();
-        setupQuestion(7, '-', 3);
-        askQuestion();
+        
+    }
+    
+    public static String mainTest ()
+    {
+    	Question q = new BinaryMathQuestions();
+        q.setupQuestion(7, '&', 3);
+        q.askQuestion();
+        q.setupQuestion(7, '|', 3);
+        q.askQuestion();
+        q.setupQuestion(7, '+', 3);
+        q.askQuestion();
+        q.setupQuestion(7, '-', 3);
+        q.askQuestion();
+        return q.getCounterMsg();
     }
     
     /**
@@ -32,6 +39,7 @@ public class BinaryMathQuestions extends Question
      * @param  arg2      2st argument in math expression (4 bits)
      * @return    error code
      */
+	@Override
     public void setupQuestion(int arg1, char operator, int arg2)
     {
         // maximum binary number for testing is 15, we need to be reasonable

@@ -7,17 +7,22 @@ package AP_Exam;
  * @version (a version number or a date)
  */
 public class MathQuestions extends Question
-{
-    
+{ 
     /**
      * Constructor for objects of class MathQuestions
      */
     public MathQuestions()
     {
-        setupQuestion(46, '/', 7);
-        askQuestion();
-        setupQuestion(46, '%', 7);
-        askQuestion();    
+    }
+    
+    public static String mainTest ()
+    {
+    	Question q = new MathQuestions();
+        q.setupQuestion(46, '/', 7);
+        q.askQuestion();
+        q.setupQuestion(46, '%', 7);
+        q.askQuestion();
+        return q.getCounterMsg();
     }
     
     /**
@@ -28,6 +33,7 @@ public class MathQuestions extends Question
      * @param  arg2      2st argument in math expression
      * @return    error code
      */
+	@Override
     public void setupQuestion(int arg1, char operator, int arg2)
     {        
         // format question
@@ -70,7 +76,5 @@ public class MathQuestions extends Question
         
         
     }
-    
-    
     
 }

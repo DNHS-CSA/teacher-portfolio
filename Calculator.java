@@ -124,6 +124,7 @@ public class Calculator extends MenuControl {
 	 * Create the frame.
 	 */
 	public Calculator() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

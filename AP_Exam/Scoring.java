@@ -34,7 +34,7 @@ abstract class Scoring
         if (isCorrect)
         {
             this.correct++;
-            this.totalCorrect++;
+            Scoring.totalCorrect++;
         }
         questions++;
         totalQuestions++;
@@ -48,7 +48,7 @@ abstract class Scoring
      */
     public void printCounters()
     {
-        System.out.println(this.setCounterMsg());
+        System.out.println(this.getCounterMsg());
     }
     
     /**
@@ -57,7 +57,7 @@ abstract class Scoring
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public String setCounterMsg()
+    public String getCounterMsg()
     {
         return new String("Results: " + this.correct + " of " + this.questions);
     }
@@ -68,9 +68,9 @@ abstract class Scoring
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static String setCounterTotalMsg()
+    public static String getCounterTotalMsg()
     {
-        return new String("Totals:  " + totalCorrect + " of " + totalQuestions);
+        return new String("Totals:  " + Scoring.totalCorrect + " of " + Scoring.totalQuestions);
     }
 
 }

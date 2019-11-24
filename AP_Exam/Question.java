@@ -15,7 +15,17 @@ abstract class Question extends Scoring
     char answerA='A', answerB='B', answerC='C', answerD='D', answerE='E';
     char answerKey;
     
-    /**
+    public void setupQuestion(int arg1, char operator, int arg2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setupQuestion(String dataTypeName, double number) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+	/**
      * Required methods
      *
      */
@@ -31,7 +41,7 @@ abstract class Question extends Scoring
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public boolean getAnswer()
+    private boolean getAnswer()
     {
         char choice;
         
@@ -61,6 +71,7 @@ abstract class Question extends Scoring
         return ansStatus;*/
         return (choice == answerKey);
     }
-    
-    
+
+	
+  
 }

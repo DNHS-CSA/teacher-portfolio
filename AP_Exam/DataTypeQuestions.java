@@ -13,12 +13,20 @@ public class DataTypeQuestions extends Question
      */
     public DataTypeQuestions()
     {
-        setupQuestion("int", 3.1415926);
-        askQuestion();
-        setupQuestion("float", 3.1415926);
-        askQuestion();
-        setupQuestion("char", 3.1415926);
-        askQuestion();
+        
+    }
+    
+
+    public static String mainTest ()
+    {
+    	Question q = new DataTypeQuestions();
+        q.setupQuestion("int", 3.1415926);
+        q.askQuestion();
+        q.setupQuestion("float", 3.1415926);
+        q.askQuestion();
+        q.setupQuestion("char", 3.14159263);
+        q.askQuestion();
+        return q.getCounterMsg();
     }
      
     /**
@@ -28,6 +36,7 @@ public class DataTypeQuestions extends Question
      * @param  number       number in conversion
      * @return    error code
      */
+	@Override
     public void setupQuestion(String dataTypeName, double number)
     {        
         float test1 = (float)number;

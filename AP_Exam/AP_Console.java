@@ -68,19 +68,16 @@ public class AP_Console
         switch (swValue) 
         {
             case 1:
-              MathQuestions math = new MathQuestions();
-              menuMsg[1] = math.setCounterMsg();
-              menuTotalMsg = Scoring.setCounterTotalMsg();
+              menuMsg[1] = MathQuestions.mainTest();
+              menuTotalMsg = Scoring.getCounterTotalMsg();
               break;
             case 2:
-              BinaryMathQuestions binarymath = new BinaryMathQuestions();
-              menuMsg[2] = binarymath.setCounterMsg();
-              menuTotalMsg = Scoring.setCounterTotalMsg();
+              menuMsg[2] = BinaryMathQuestions.mainTest();
+              menuTotalMsg = Scoring.getCounterTotalMsg();
               break;
             case 3:
-              DataTypeQuestions datatype = new DataTypeQuestions();
-              menuMsg[3] = datatype.setCounterMsg();
-              menuTotalMsg = Scoring.setCounterTotalMsg();
+              menuMsg[3] = DataTypeQuestions.mainTest();
+              menuTotalMsg = Scoring.getCounterTotalMsg();
               break;
             case 0:
               System.out.println("Exit selected");
