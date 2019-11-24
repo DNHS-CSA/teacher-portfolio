@@ -1,4 +1,7 @@
 package AP_Exam;
+
+import Util.ConsoleMethods;
+
 /**
  * MidTermTest is intended to teach Object Oriented Methodology, the JAVA language,
  * Computer Science principles, and Agile project methodology while be very active
@@ -38,8 +41,8 @@ public class AP_Console
    */
   public static void main()
   {
-     // BlueJ clear console command
-     System.out.print("\u000C");
+    // BlueJ clear console command
+    ConsoleMethods.clearScreen();
     
     String menuTotalMsg = new String();
     String menuMsg[] = new String[5];
@@ -51,18 +54,18 @@ public class AP_Console
         int swValue;
         
         // Display menu graphics
-        System.out.println("============================");
-        System.out.println("  MidTerm Questions        |");
-        System.out.println("============================");
-        System.out.println("| Options:                 |");
-        System.out.println("|      0. Exit             |");
-        System.out.println("|      1. Math             |"+ menuMsg[1]);
-        System.out.println("|      2. Binary Math      |"+ menuMsg[2]);
-        System.out.println("|      3. Data Conversion  |"+ menuMsg[3]);
-        System.out.println("|                          |"+ menuTotalMsg);
-        System.out.println("============================");
+        ConsoleMethods.println("============================");
+        ConsoleMethods.println("  MidTerm Questions        |");
+        ConsoleMethods.println("============================");
+        ConsoleMethods.println("| Options:                 |");
+        ConsoleMethods.println("|      0. Exit             |");
+        ConsoleMethods.println("|      1. Math             |"+ menuMsg[1]);
+        ConsoleMethods.println("|      2. Binary Math      |"+ menuMsg[2]);
+        ConsoleMethods.println("|      3. Data Conversion  |"+ menuMsg[3]);
+        ConsoleMethods.println("|                          |"+ menuTotalMsg);
+        ConsoleMethods.println("============================");
 
-        swValue = Keyinput.inInt(" Select option: ");
+        swValue = ConsoleMethods.inputInt(" Select option: ");
     
         // Switch construct
         switch (swValue) 
@@ -80,11 +83,11 @@ public class AP_Console
               menuTotalMsg = Scoring.getCounterTotalMsg();
               break;
             case 0:
-              System.out.println("Exit selected");
+              ConsoleMethods.println("Exit selected");
               running = false;
               break;
             default:
-              System.out.println("Invalid selection");
+              ConsoleMethods.println("Invalid selection");
         }
     }
   }

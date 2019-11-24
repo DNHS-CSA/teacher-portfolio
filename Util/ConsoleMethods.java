@@ -11,16 +11,27 @@ import java.util.Scanner;
 
 public class ConsoleMethods {
 
-   public static String inputString(String txt)
-   {
-	   System.out.println(txt);
-	   Scanner input = new Scanner (System.in);
-	   return input.nextLine();
-   }
-   
+  //Method to make sure no data is available in the
+  //input stream
+  public static void inputFlush() {
+	  int dummy;
+	  int bAvail;
+	  try {
+		  while ((System.in.available()) != 0)
+			  dummy = System.in.read();
+	  } catch (java.io.IOException e) {
+		  System.out.println("Input error");
+	  }
+  }
+
    public static void printChar(char txt)
    {
 	   System.out.print(txt);
+   }
+   
+   public static void clearScreen()
+   {
+	   printChar('\u000C');
    }
    
    public static void print(String txt)
@@ -38,11 +49,64 @@ public class ConsoleMethods {
 	   System.out.println(txt);
    }
    
-   public static int inputInt(String txt)
-   {
-	   System.out.println(txt);
-	   Scanner input = new Scanner(System.in);
-	   return input.nextInt();
+   public static void printPrompt(String prompt) {
+	    print(prompt + " ");
+	    System.out.flush();
+	  }
+   
+   public static String inputString(String prompt) {
+	    //inputFlush();
+	    printPrompt(prompt);
+	    return inString();
+	  }
+
+   private static String inString() {
+	   int aChar;
+	   String s = "";
+	   boolean finished = false;
+
+	   while (!finished) {
+		   try {
+			   aChar = System.in.read();
+			   if (aChar < 0 || (char) aChar == '\n')
+				   finished = true;
+			   else if ((char) aChar != '\r')
+				   s = s + (char) aChar; // Enter into string
+		   	}
+			catch (java.io.IOException e) {
+				System.out.println("Input error");
+				finished = true;
+				}
+		}
+	    return s;
+   }
+   
+   public static int inputInt(String prompt) {
+     while (true) {
+       inputFlush();
+       printPrompt(prompt);
+       try {
+         return Integer.valueOf(inString().trim()).intValue();
+       }
+
+       catch (NumberFormatException e) {
+         System.out.println("Invalid input. Not an integer");
+       }
+     }
+   }
+   
+   public static char inputChar(String prompt) {
+	   int aChar = 0;
+	   inputFlush();
+	   printPrompt(prompt);
+	   try {
+		   aChar = System.in.read();
+	   }
+	   catch (java.io.IOException e) {
+		   println("Input error");
+		   }
+	   inputFlush();
+	   return (char) aChar;
    }
 	   
 }

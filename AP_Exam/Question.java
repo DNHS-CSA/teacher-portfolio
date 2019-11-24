@@ -63,7 +63,7 @@ abstract class Question extends Scoring
         
         // IO logic of getting answer from console
         do {
-            choice = Keyinput.inChar("Enter selection (A-E) --> ");
+            choice = ConsoleMethods.inputChar("Enter selection (A-E) --> ");
             choice = Character.toUpperCase(choice); // Convert to upper case
             if (choice >= 'A' && choice <= 'E') break;
             ConsoleMethods.println(" (invalid) ");
