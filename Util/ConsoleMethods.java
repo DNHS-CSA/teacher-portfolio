@@ -1,19 +1,10 @@
 package Util;
 
-
-/**
- * Static methods related to Console input and output
- * 
- * @author John Mortensen
- * @version 1.0
- */
-import java.util.Scanner;
-
 public class ConsoleMethods {
 
   //Method to make sure no data is available in the
   //input stream
-  public static void inputFlush() {
+  private static void inputFlush() {
 	  int dummy;
 	  int bAvail;
 	  try {
