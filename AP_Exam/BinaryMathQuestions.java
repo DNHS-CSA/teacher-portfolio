@@ -1,5 +1,7 @@
 package AP_Exam;
 
+import java.util.Random;
+
 /**
  * Write a description of class MathOps here.
  *
@@ -8,25 +10,23 @@ package AP_Exam;
  */
 public class BinaryMathQuestions extends Question
 {
-    
+	private char[] operators = {'&', '|', '+', '-'};
+
     /**
      * Constructor for objects of class MathQuestions
      */
     public BinaryMathQuestions()
     {
-        
+    	Random rand = new Random();
+    	Integer arg1 = rand.nextInt(16)+1;
+    	Integer arg2 = rand.nextInt(8)+1;
+    	Integer opIndex = rand.nextInt(operators.length);
+    	setupQuestion(arg1, operators[opIndex], arg2);
     }
     
     public static String mainTest ()
     {
     	Question q = new BinaryMathQuestions();
-        q.setupQuestion(7, '&', 3);
-        q.askQuestion();
-        q.setupQuestion(7, '|', 3);
-        q.askQuestion();
-        q.setupQuestion(7, '+', 3);
-        q.askQuestion();
-        q.setupQuestion(7, '-', 3);
         q.askQuestion();
         return q.getCounterMsg();
     }
@@ -96,7 +96,6 @@ public class BinaryMathQuestions extends Question
             " = " + 
             answerString    // answer
             ,operator);     // operator parameter, % requires it (may be hidden feature :)
-  
     }
     
     /**

@@ -69,7 +69,7 @@ abstract class Question extends Scoring
             ConsoleMethods.println(" (invalid) ");
         } while ( true );                                               // until valid input
         
-        if (choice == answerKey) System.out.print("(correct) ");
+        if (choice == answerKey) ConsoleMethods.print("(correct) ");
         else ConsoleMethods.print("(missed it!) ");
         ConsoleMethods.println(answer);
         ConsoleMethods.println();

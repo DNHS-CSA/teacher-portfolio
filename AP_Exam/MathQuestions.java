@@ -1,5 +1,7 @@
 package AP_Exam;
 
+import java.util.Random;
+
 /**
  * Write a description of class MathOps here.
  *
@@ -8,19 +10,24 @@ package AP_Exam;
  */
 public class MathQuestions extends Question
 { 
+	private char[] operators = {'/', '%'};
+	
     /**
      * Constructor for objects of class MathQuestions
      */
     public MathQuestions()
     {
+    	Random rand = new Random();
+    	Integer arg1 = rand.nextInt(50);
+    	Integer arg2 = (int)Math.sqrt((double)arg1);
+    	Integer opIndex = rand.nextInt(operators.length);
+    	setupQuestion(arg1, operators[opIndex], arg2);
     }
+
     
     public static String mainTest ()
     {
     	Question q = new MathQuestions();
-        q.setupQuestion(46, '/', 7);
-        q.askQuestion();
-        q.setupQuestion(46, '%', 7);
         q.askQuestion();
         return q.getCounterMsg();
     }

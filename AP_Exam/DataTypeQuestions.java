@@ -1,4 +1,7 @@
 package AP_Exam;
+
+import java.util.Random;
+
 /**
  * Write a description of class MathOps here.
  *
@@ -7,25 +10,23 @@ package AP_Exam;
  */
 public class DataTypeQuestions extends Question
 {
-    
-    private static final double PI = 3.1415926;
+	private String[] datatype = {"int", "float", "char"};
+	private int[] multiplier = {10, 100, 1000};
 
 	/**
      * Constructor for objects of class MathQuestions
      */
     public DataTypeQuestions()
     {
-        
+    	Random rand = new Random();
+    	double value = rand.nextDouble() * multiplier[rand.nextInt(multiplier.length)];
+    	Integer index = rand.nextInt(datatype.length);
+    	setupQuestion(datatype[index], value);
     }
     
     public static String mainTest ()
     {
     	Question q = new DataTypeQuestions();
-        q.setupQuestion("int", PI);
-        q.askQuestion();
-        q.setupQuestion("float", PI);
-        q.askQuestion();
-        q.setupQuestion("char", PI);
         q.askQuestion();
         return q.getCounterMsg();
     }
