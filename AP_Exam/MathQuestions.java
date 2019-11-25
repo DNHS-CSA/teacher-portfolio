@@ -28,7 +28,7 @@ public class MathQuestions extends Question
     public static String mainTest ()
     {
     	Question q = new MathQuestions();
-        q.askQuestion();
+        q.askQuestionConsole();
         return q.getCounterMsg();
     }
     

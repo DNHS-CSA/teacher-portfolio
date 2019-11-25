@@ -8,7 +8,7 @@ import Util.ConsoleMethods;
  * @author (your name)
  * @version (a version number or a date)
  */
-abstract class Question extends Scoring
+public class Question extends Scoring
 {
     // instance variables - replace the example below with your own
     String question, choiceA, choiceB, choiceC, choiceD, choiceE;
@@ -32,15 +32,29 @@ abstract class Question extends Scoring
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getQuestion() {
+		return question;
+	}
+	
+	public String getChoices() {
+		return String.format(
+	            "A. "+ choiceA + "\n"  + 
+	    	    "B. "+ choiceB + "\n"  + 
+	    	    "C. "+ choiceC + "\n"  + 
+	    	    "D. "+ choiceD + "\n"  + 
+	    	    "E. "+ choiceE + "\n" 
+	            );     
+	}
     
 	/**
-     * Required methods
+     * Console Display methods
      *
      */
-    public void  askQuestion()
+    public void  askQuestionConsole()
     {
         // getAnswer return true if question is correct
-        updateCounters ( getAnswer() );
+        updateCounters ( getAnswerConsole() );
     }
     
     /**
@@ -49,17 +63,13 @@ abstract class Question extends Scoring
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    private boolean getAnswer()
+    private boolean getAnswerConsole()
     {
         char choice;
         
         // Implement this to randomize order
-        ConsoleMethods.println(question);
-        ConsoleMethods.println("A. " + choiceA );
-        ConsoleMethods.println("B. " + choiceB );
-        ConsoleMethods.println("C. " + choiceC );
-        ConsoleMethods.println("D. " + choiceD );
-        ConsoleMethods.println("E. " + choiceE );
+        ConsoleMethods.println(getQuestion());
+        ConsoleMethods.println(getChoices());
         
         // IO logic of getting answer from console
         do {

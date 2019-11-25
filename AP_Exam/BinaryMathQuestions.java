@@ -27,7 +27,7 @@ public class BinaryMathQuestions extends Question
     public static String mainTest ()
     {
     	Question q = new BinaryMathQuestions();
-        q.askQuestion();
+        q.askQuestionConsole();
         return q.getCounterMsg();
     }
     

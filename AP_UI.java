@@ -7,7 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import AP_Exam.AP_Console;
+import AP_Exam.BinaryMathQuestions;
 import AP_Exam.MathQuestions;
+import AP_Exam.Question;
 
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -40,17 +42,30 @@ public class AP_UI extends MenuControl {
 		btnMath_1.setBounds(55, 59, 75, 29);
 		btnMath_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MathQuestions math = new MathQuestions();
+				AP_Exam.Question q = new AP_Exam.MathQuestions();
+				q.askQuestionConsole();
 			}
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btnMath_1);
 		
-		JButton btnConversitions = new JButton("Converstions");
+		JButton btnConversitions = new JButton("Data Types");
+		btnConversitions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AP_Exam.Question q = new AP_Exam.DataTypeQuestions();
+				q.askQuestionConsole();
+			}
+		});
 		btnConversitions.setBounds(135, 59, 131, 29);
 		contentPane.add(btnConversitions);
 		
 		JButton btnBinaryMath = new JButton("Binary Math");
+		btnBinaryMath.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AP_Exam.Question q = new AP_Exam.BinaryMathQuestions();
+				q.askQuestionConsole();
+			}
+		});
 		btnBinaryMath.setBounds(271, 59, 117, 29);
 		contentPane.add(btnBinaryMath);
 		

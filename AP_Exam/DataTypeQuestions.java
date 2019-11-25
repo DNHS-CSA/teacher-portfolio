@@ -27,7 +27,7 @@ public class DataTypeQuestions extends Question
     public static String mainTest ()
     {
     	Question q = new DataTypeQuestions();
-        q.askQuestion();
+        q.askQuestionConsole();
         return q.getCounterMsg();
     }
      
