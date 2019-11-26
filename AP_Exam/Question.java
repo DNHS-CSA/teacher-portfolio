@@ -46,6 +46,10 @@ public class Question extends Scoring
 	    	    "E. "+ choiceE + "\n" 
 	            );     
 	}
+	
+	public String getAnswer() {
+		return answerKey + ": " + answer;
+	}
     
 	/**
      * Console Display methods

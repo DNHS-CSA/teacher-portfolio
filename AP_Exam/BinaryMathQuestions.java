@@ -34,17 +34,17 @@ public class BinaryMathQuestions extends Question
     /**
      * askBinaryMath 
      *
-     * @param  arg1      1st argument in math expression (4 bits)
+     * @param  arg1      1st argument in math expression (6 bits)
      * @param  operator  operator in math expression (&, |, +, or - only)
-     * @param  arg2      2st argument in math expression (4 bits)
+     * @param  arg2      2st argument in math expression (5 bits)
      * @return    error code
      */
 	@Override
     public void setupQuestion(int arg1, char operator, int arg2)
     {
         // maximum binary number for testing is 15, we need to be reasonable
-        int binaryLength = 4;       
-        if (arg1 > 15 || arg2 > 15) return;       // exit if number above 15
+        int binaryLength = 7;       
+        //if (arg1 > 15 || arg2 > 15) return;       // exit if number above 15
         
         // Turn math arguments (numbers) to binary strings
         String carg1 = zeroPadInt2BinaryString(arg1,binaryLength);

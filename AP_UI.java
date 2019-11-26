@@ -26,8 +26,7 @@ public class AP_UI extends MenuControl {
 	private JPanel contentPane;
     private JTextArea testQuestion = new JTextArea();
     private JTextArea testChoices = new JTextArea();
-    private JTextField textField;
-
+    private JTextArea testQuestionAnswer = new JTextArea();
 	
 	/**
 	 * Create the frame.
@@ -38,29 +37,35 @@ public class AP_UI extends MenuControl {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JLabel lblExamSections = new JLabel("Exam Sections");
+		lblExamSections.setBounds(16, 6, 91, 16);
+		contentPane.add(lblExamSections);
 		
-		JButton btnMath_1 = new JButton("Math");
-		btnMath_1.setBounds(59, 21, 75, 29);
-		btnMath_1.addActionListener(new ActionListener() {
+		JButton btnMath = new JButton("Math");
+		btnMath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AP_Exam.Question q = new AP_Exam.MathQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
+				testQuestionAnswer.setText(q.getAnswer());
 			}
 		});
-		contentPane.setLayout(null);
-		contentPane.add(btnMath_1);
+		btnMath.setBounds(59, 21, 75, 29);
+		contentPane.add(btnMath);
 		
-		JButton btnConversitions = new JButton("Data Types");
-		btnConversitions.addActionListener(new ActionListener() {
+		JButton btnDataTypes = new JButton("Data Types");
+		btnDataTypes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AP_Exam.Question q = new AP_Exam.DataTypeQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
+				testQuestionAnswer.setText(q.getAnswer());
 			}
 		});
-		btnConversitions.setBounds(131, 21, 131, 29);
-		contentPane.add(btnConversitions);
+		btnDataTypes.setBounds(131, 21, 131, 29);
+		contentPane.add(btnDataTypes);
 		
 		JButton btnBinaryMath = new JButton("Binary Math");
 		btnBinaryMath.addActionListener(new ActionListener() {
@@ -68,49 +73,42 @@ public class AP_UI extends MenuControl {
 				AP_Exam.Question q = new AP_Exam.BinaryMathQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
+				testQuestionAnswer.setText(q.getAnswer());
 			}
 		});
 		btnBinaryMath.setBounds(260, 21, 117, 29);
 		contentPane.add(btnBinaryMath);
 		
-		JLabel lblExamSections = new JLabel("Exam Sections");
-		lblExamSections.setBounds(16, 6, 91, 16);
-		contentPane.add(lblExamSections);
-		
-		JButton button = new JButton("C");
-		button.addActionListener(new ActionListener() {
+		JButton btnConsole = new JButton("C");
+		btnConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AP_Console.main();
 			}
 		});
-		button.setForeground(Color.RED);
-		button.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		button.setBackground(Color.LIGHT_GRAY);
-		button.setBounds(406, 21, 21, 18);
-		contentPane.add(button);
+		btnConsole.setForeground(Color.RED);
+		btnConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
+		btnConsole.setBackground(Color.LIGHT_GRAY);
+		btnConsole.setBounds(406, 21, 21, 18);
+		contentPane.add(btnConsole);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(16, 51, 438, 16);
-		contentPane.add(separator);
-		
-		testQuestion.setLineWrap(true);
 		testQuestion.setEditable(false);
-		testQuestion.setBounds(16, 79, 418, 39);
+		testQuestion.setLineWrap(true);
+		testQuestion.setBounds(16, 62, 418, 39);
 		contentPane.add(testQuestion);
 	    
-		testChoices.setLineWrap(true);
 		testChoices.setEditable(false);
-		testChoices.setBounds(16, 130, 418, 86);
+		testChoices.setLineWrap(true);
+		testChoices.setBounds(16, 113, 418, 86);
 		contentPane.add(testChoices);
 		
-		JLabel lblResponse = new JLabel("Response");
-		lblResponse.setBounds(16, 228, 61, 16);
-		contentPane.add(lblResponse);
+		JLabel lblAnswer = new JLabel("Answer");
+		lblAnswer.setBounds(16, 211, 61, 16);
+		contentPane.add(lblAnswer);
 		
-		textField = new JTextField();
-		textField.setBounds(77, 223, 36, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		testQuestionAnswer.setEditable(false);
+		testQuestionAnswer.setLineWrap(true);
+		testQuestionAnswer.setBounds(74, 211, 357, 39);
+		contentPane.add(testQuestionAnswer);
 	
 	}
 }
