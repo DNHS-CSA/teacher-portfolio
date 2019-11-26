@@ -64,14 +64,17 @@ public class MenuControl extends JFrame {
 		JMenuItem mntmPreferences = new JMenuItem("Preferences");
 		mnHone.add(mntmPreferences);
 		
-		JMenuItem mntmApTest = new JMenuItem("AP Test");
-		mntmApTest.addActionListener(new ActionListener() {
+		JMenu mnApTest = new JMenu("AP Test");
+		menuBar.add(mnApTest);
+		
+		JMenuItem mntmApReview = new JMenuItem("Review");
+		mntmApReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AP_UI frame = new AP_UI();
 				frame.setVisible(true);
 			}
 		});
-		menuBar.add(mntmApTest);
+		mnApTest.add(mntmApReview);
 		
 		JMenu mnIntro = new JMenu("Intro");
 		menuBar.add(mnIntro);
