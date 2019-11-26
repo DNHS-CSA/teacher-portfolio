@@ -49,58 +49,45 @@ public class DataTypeQuestions extends Question
         // format question
         this.question = String.format(
             "Which represents double " +
-            number +
+            String.format
+             ("%.8f",
+              number) +
             " conversion to a " +
             dataTypeName +
-            " datatype?");
+            "?");
                     
-        // format question choices
+        // format question choices and calc answer
         this.choiceA = String.format
-            ("(float)%f",
-            number);
+            ("(float)%.8f equals %f",
+            number, (float)number);
         this.choiceB = String.format
-            ("(int)%f",
-            number);
+            ("(int)%.8f equals %d",
+            number, (int)number);
         this.choiceC = String.format
-            ("Double.toString(%f).charAt(0)",
-            number);
+            ("Double.toString(%f).charAt(0) equals %c",
+            number, Double.toString(number).charAt(0));
         this.choiceD = String.format
-            ("(double)%f",
-            number);
+            ("(double)%.8f equals %.8f",
+            number, number);
         this.choiceE = "All of the above";
         
-        // real time calc answer based off args AND operator
-        String strEquation, strResult;
         if (dataTypeName == "float")
         {
-            strEquation = this.choiceA;
-            strResult = String.format("%f",test1);
+            answer = this.choiceA;
             this.answerKey = this.answerA;
         } else if ( dataTypeName == "int" ) {
-            strEquation = this.choiceB;
-            strResult = String.format("%d",test2);
+            answer = this.choiceB;
             this.answerKey = this.answerB;
         } else if ( dataTypeName == "char" ) {
-            strEquation = this.choiceC;
-            strResult = String.format("%c",test3);
+            answer = this.choiceC;
             this.answerKey = this.answerC;
         } else if ( dataTypeName == "double" ) {
-            strEquation = this.choiceD;
-            strResult = String.format("%f",test4);
+            answer = this.choiceD;
             this.answerKey = this.answerD;
         } else {
-            strEquation = this.choiceD;
-            strResult = "None";
+            answer = this.choiceE;
             this.answerKey = this.answerE;
         }
-            
-        
-        // format question answer based off of operation calculation
-        this.answer =  String.format
-            (strEquation +
-            " equals " +
-            "("+dataTypeName+")" +
-            strResult);          // answer
         
     }
 }
