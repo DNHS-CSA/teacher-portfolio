@@ -43,8 +43,8 @@ public class MenuControl extends JFrame {
 		setBounds(100, 100, 450, 300);
 		
 		// JLabel with image 
-		JLabel pic = new JLabel("Mr M");        
-        java.awt.Image image = new ImageIcon("spongebob-icon.png").getImage();
+		JLabel pic = new JLabel("");        
+        java.awt.Image image = new ImageIcon("APCompSci.jpeg").getImage();
         pic.setIcon(new ImageIcon(image));
         pic.setBounds(377, 111, 128, 128);
         
@@ -63,6 +63,15 @@ public class MenuControl extends JFrame {
 		
 		JMenuItem mntmPreferences = new JMenuItem("Preferences");
 		mnHone.add(mntmPreferences);
+		
+		JMenuItem mntmApTest = new JMenuItem("AP Test");
+		mntmApTest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AP_UI frame = new AP_UI();
+				frame.setVisible(true);
+			}
+		});
+		menuBar.add(mntmApTest);
 		
 		JMenu mnIntro = new JMenu("Intro");
 		menuBar.add(mnIntro);
@@ -109,14 +118,6 @@ public class MenuControl extends JFrame {
 		});
 		mnJig.add(mntmMethodSearch);
 		
-		JMenuItem mnApTest = new JMenuItem("AP Test");
-		mnApTest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AP_UI frame = new AP_UI();
-				frame.setVisible(true);
-			}
-		});
-		menuBar.add(mnApTest);
 		
 	}
 	
