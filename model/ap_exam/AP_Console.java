@@ -39,7 +39,7 @@ public class AP_Console
    *
    * @param  args  The command line arguments
    */
-  public static void main()
+  public static void main(String[] args)
   {
     // BlueJ clear console command
     ConsoleMethods.clearScreen();
