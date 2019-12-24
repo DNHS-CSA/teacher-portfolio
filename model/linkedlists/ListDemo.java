@@ -18,21 +18,21 @@ public class ListDemo
   /**
    *  Creates a SinglyLinkedList of 5 Integer nodes
    */
-@SuppressWarnings("deprecation")
-public void createList()
+  @SuppressWarnings("deprecation")
+  public void createList()
   {
     for (int k = 1; k <= 10; k++)
     {
-      myList.addFirst(new Integer(k));
+      myList.addLIFO(new Integer(k));
     }
   }
 
   /**
    *  Display the first element of the list
    */
-  public void displayFirst()
+  public void displayLIFO()
   {
-    System.out.println("First Element: " + myList.getFirst());
+    System.out.println("LIFO Element: " + myList.getLIFO());
   }
 
   /**
@@ -42,6 +42,15 @@ public void createList()
   {
     myList.printList();
     System.out.println();
+
+  }
+  
+  /**
+   *  Invert the creation, by removing entries
+   */
+  public void killList()
+  {
+	myList.killList();
   }
 
   /**
@@ -55,7 +64,8 @@ public void createList()
     ListDemo sList = new ListDemo();
 
     sList.createList();
-    sList.displayFirst();
+    sList.displayLIFO();
     sList.print();
+    sList.killList();
   }
 }

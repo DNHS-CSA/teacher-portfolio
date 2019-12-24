@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class SinglyLinkedList
 {
-  private ListNode first;  // first element
+  private ListNode lifo;  // last in first out element
 
   /**
    *  Constructor for the SinglyLinkedList object
@@ -18,22 +18,22 @@ public class SinglyLinkedList
    */
   public SinglyLinkedList()
   {
-    first = null;
+    lifo = null;
   }
 
   /**
-   *  Returns the first element in this list.
+   *  Returns the lifo element in this list.
    *
-   * @return  the first element in the linked list.
+   * @return  the lifo element in the linked list.
    */
-  public Object getFirst()
+  public Object getLIFO()
   {
-    if (first == null)
+    if (lifo == null)
     {
       throw new NoSuchElementException();
     }
     else
-      return first.getValue();
+      return lifo.getValue();
   }
 
   /**
@@ -41,11 +41,11 @@ public class SinglyLinkedList
    *
    * @param  value  the element to be inserted at the beginning of this list.
    */
-  public void addFirst(Object value)
+  public void addLIFO(Object value)
   {
     // note the order that things happen:
     // head is parameter, then assigned
-    first = new ListNode(value, first);
+    lifo = new ListNode(value, lifo);
   }
 
   /**
@@ -53,11 +53,11 @@ public class SinglyLinkedList
    */
   public void printList()
   {
-    ListNode temp = first;// start from the first node
+    ListNode temp = lifo;		// start from the lifo node
     while (temp != null)
     {
       System.out.print(temp.getValue() + " ");
-      temp = temp.getNext();// go to next node
+      temp = temp.getNext();	// go to next node
     }
   }
 
@@ -73,15 +73,25 @@ public class SinglyLinkedList
   {
     String s = "[";
 
-    ListNode temp = first;  // start from the first node
+    ListNode temp = lifo;  	// start from the lifo node
     while (temp != null)
     {
-      s += temp.getValue(); // append the data
-      temp = temp.getNext();      // go to next node
+      s += temp.getValue(); 	// append the data
+      temp = temp.getNext();    // go to next node
       if (temp != null)
         s += ", ";
     }
     s += "]";
     return s;
   }
+  
+  public void killList()
+  {
+	  while (lifo != null) {
+		  lifo = lifo.getNext();	// move in an element 'till noting
+		  printList();
+		  System.out.println();
+	  }
+  }
+  
 }
