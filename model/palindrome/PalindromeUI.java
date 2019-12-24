@@ -1,4 +1,4 @@
-package palindrome;
+package model.palindrome;
 /**
  * UI to support pallindrome evaluation
  * 

@@ -1,4 +1,4 @@
-package methodsearch;
+package model.methodsearch;
 /**
  * UI to support MethodSearch evaluation
  * 

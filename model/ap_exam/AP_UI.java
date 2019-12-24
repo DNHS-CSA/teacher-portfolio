@@ -1,4 +1,4 @@
-package ap_exam;
+package model.ap_exam;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import main.MenuControl;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -17,7 +19,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class AP_UI extends main.MenuControl {
+public class AP_UI extends MenuControl {
 
 	/**
 	 * 
@@ -46,7 +48,7 @@ public class AP_UI extends main.MenuControl {
 		JButton btnMath = new JButton("Math");
 		btnMath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ap_exam.Question q = new ap_exam.MathQuestions();
+				model.ap_exam.Question q = new model.ap_exam.MathQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());
@@ -58,7 +60,7 @@ public class AP_UI extends main.MenuControl {
 		JButton btnDataTypes = new JButton("Data Types");
 		btnDataTypes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ap_exam.Question q = new ap_exam.DataTypeQuestions();
+				model.ap_exam.Question q = new model.ap_exam.DataTypeQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());
@@ -70,7 +72,7 @@ public class AP_UI extends main.MenuControl {
 		JButton btnBinaryMath = new JButton("Binary Math");
 		btnBinaryMath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ap_exam.Question q = new ap_exam.BinaryMathQuestions();
+				model.ap_exam.Question q = new model.ap_exam.BinaryMathQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());

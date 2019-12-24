@@ -1,4 +1,4 @@
-package palindrome;
+package model.palindrome;
 
 import util.ConsoleMethods;
 

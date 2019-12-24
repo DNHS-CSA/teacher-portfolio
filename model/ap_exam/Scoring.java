@@ -1,11 +1,11 @@
-package ap_exam;
+package model.ap_exam;
 /**
  * Keeps score
  *
  * @author (John Mortensen)
  * @version (1.0 Eclipse)
  */
-abstract class Scoring
+public abstract class Scoring
 {
     private static int totalCorrect = 0;  // class variables
     private static int totalQuestions = 0;
