@@ -1,4 +1,4 @@
-package Util;
+package methodsearch;
 
 /**
  * Searches PigLatinator.java for methods that match the input "Vow"
@@ -15,6 +15,9 @@ package Util;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import util.ConsoleMethods;
+
 import java.io.*;
 
 

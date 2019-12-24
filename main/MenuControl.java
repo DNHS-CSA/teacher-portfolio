@@ -1,3 +1,4 @@
+package main;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
@@ -8,8 +9,15 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
+import ap_exam.AP_UI;
+import calculator.Calculator;
+import methodsearch.MethodSearchUI;
+import palindrome.PalindromeUI;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class MenuControl extends JFrame {
 
@@ -44,7 +52,7 @@ public class MenuControl extends JFrame {
 		
 		// JLabel with image 
 		JLabel pic = new JLabel("");        
-        java.awt.Image image = new ImageIcon("APCompSci.jpeg").getImage();
+        java.awt.Image image = new ImageIcon("main/APCompSci.jpeg").getImage();
         pic.setIcon(new ImageIcon(image));
         pic.setBounds(377, 111, 128, 128);
         
@@ -76,31 +84,7 @@ public class MenuControl extends JFrame {
 		});
 		mnApTest.add(mntmApReview);
 		
-		JMenu mnIntro = new JMenu("Intro");
-		menuBar.add(mnIntro);
-		
-		JMenuItem mntmOriginal = new JMenuItem("Jumpers");
-		mnIntro.add(mntmOriginal);
-		
-		JMenuItem mntmInputs = new JMenuItem("Pythagorean");
-		mnIntro.add(mntmInputs);
-		
-		JMenu mnLabs = new JMenu("Labs");
-		menuBar.add(mnLabs);
-		
-		JMenuItem mntmShorthand = new JMenuItem("Shorthand");
-		mnLabs.add(mntmShorthand);
-		
-		JMenuItem mntmPalindrom = new JMenuItem("Palindrom 3");
-		mntmPalindrom.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PalindromeUI frame = new PalindromeUI();
-				frame.setVisible(true);			
-			}
-		});
-		mnLabs.add(mntmPalindrom);
-		
-		JMenu mnJig = new JMenu("Jigsaw");
+		JMenu mnJig = new JMenu("Labs");
 		menuBar.add(mnJig);
 		
 		JMenuItem mntmCalculator = new JMenuItem("Calculator");
@@ -120,6 +104,15 @@ public class MenuControl extends JFrame {
 			}
 		});
 		mnJig.add(mntmMethodSearch);
+		
+		JMenuItem mntmPalindrome = new JMenuItem("Palindrome");
+		mntmPalindrome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PalindromeUI frame = new PalindromeUI();
+				frame.setVisible(true);
+			}
+		});
+		mnJig.add(mntmPalindrome);
 		
 		
 	}

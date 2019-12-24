@@ -1,4 +1,4 @@
-package AP_Exam;
+package ap_exam;
 
 import java.util.Random;
 

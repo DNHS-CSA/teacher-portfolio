@@ -1,6 +1,6 @@
-package AP_Exam;
+package ap_exam;
 
-import Util.ConsoleMethods;
+import util.ConsoleMethods;
 
 /**
  * Question object is intended to ask operator questions and randomize order

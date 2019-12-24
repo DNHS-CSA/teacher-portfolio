@@ -1,6 +1,6 @@
-package AP_Exam;
+package ap_exam;
 
-import Util.ConsoleMethods;
+import util.ConsoleMethods;
 
 /**
  * MidTermTest is intended to teach Object Oriented Methodology, the JAVA language,

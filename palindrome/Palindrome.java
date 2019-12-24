@@ -1,4 +1,6 @@
-package Util;
+package palindrome;
+
+import util.ConsoleMethods;
 
 /**
  * Evaluates String as palindrome

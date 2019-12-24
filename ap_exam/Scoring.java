@@ -1,4 +1,4 @@
-package AP_Exam;
+package ap_exam;
 /**
  * Keeps score
  *

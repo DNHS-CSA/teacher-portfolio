@@ -1,3 +1,4 @@
+package methodsearch;
 /**
  * UI to support MethodSearch evaluation
  * 
@@ -14,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Util.MethodSearch;
+import main.MenuControl;
 
 import java.awt.GridLayout;
 
