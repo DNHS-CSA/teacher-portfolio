@@ -1,11 +1,11 @@
 package model.linkedlists;
-
 /**
  *  Implementation of a node of a singly linked list.
  *
  *  Adapted from the College Board's AP Computer Science AB:
  *  Implementation Classes and Interfaces.
  */
+
 public class ListNode
 {
   private Object value;

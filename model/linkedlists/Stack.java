@@ -5,10 +5,10 @@ import java.util.*;
 /**
  *  Implementation of lists, using singly linked elements.
  *
- * @author     G. Peck
- * @created    April 27, 2002
+ * @author     John Mortensen
+ * @created    December 24, 2019
  */
-public class SinglyLinkedList
+public class Stack
 {
   private ListNode lifo;  // last in first out element
 
@@ -16,15 +16,15 @@ public class SinglyLinkedList
    *  Constructor for the SinglyLinkedList object
    *  Generates an empty list.
    */
-  public SinglyLinkedList()
+  public Stack()
   {
     lifo = null;
   }
 
   /**
-   *  Returns the lifo element in this list.
+   *  Returns the LIFO element in this list.
    *
-   * @return  the lifo element in the linked list.
+   * @return  the LIFO element in the linked list.
    */
   public Object getLIFO()
   {
@@ -47,18 +47,15 @@ public class SinglyLinkedList
     // head is parameter, then assigned
     lifo = new ListNode(value, lifo);
   }
-
+  
   /**
-   *  Print the contents of the entire linked list
+   *  Removes the given element to the next in list.  Garbage collection should destroy element when needed.
+   *
    */
-  public void printList()
+  public void deleteLIFO()
   {
-    ListNode temp = lifo;		// start from the lifo node
-    while (temp != null)
-    {
-      System.out.print(temp.getValue() + " ");
-      temp = temp.getNext();	// go to next node
-    }
+	  if (lifo != null)
+	    lifo = lifo.getNext();
   }
 
   /**
@@ -85,13 +82,6 @@ public class SinglyLinkedList
     return s;
   }
   
-  public void killList()
-  {
-	  while (lifo != null) {
-		  lifo = lifo.getNext();	// move in an element 'till noting
-		  printList();
-		  System.out.println();
-	  }
-  }
+  
   
 }

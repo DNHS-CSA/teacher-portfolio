@@ -40,6 +40,11 @@ public class ConsoleMethods {
 	   System.out.println(txt);
    }
    
+   public static void println(Object obj)
+   {
+	   System.out.println(obj);
+   }
+   
    public static void printPrompt(String prompt) {
 	    print(prompt + " ");
 	    System.out.flush();
