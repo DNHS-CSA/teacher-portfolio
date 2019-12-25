@@ -3,16 +3,16 @@ package model.linkedlists;
 import java.util.*;
 
 /**
- *  Implementation of lists, using singly linked elements.
+ *  Implementation of Queue, using doubly LinkedList (previous and next).
  *
  * @author     John Mortensen
  * @created    December 24, 2019
  */
 public class Queue
 {
-   LinkedList headNode;
-   LinkedList tailNode;
-   LinkedList currentNode;
+   LinkedList headNode;			// 1st element in Queue
+   LinkedList tailNode;			// Last element in Queue
+   LinkedList currentNode;		
 
   /**
    *  Constructor for the SinglyLinkedList object
@@ -26,9 +26,9 @@ public class Queue
   }
 
   /**
-   *  Returns the current (FIFO) objects value.
+   *  Returns the head objects value.
    *
-   * @return  the current objects value in Stack.
+   * @return  the head objects value in Stack.
    */
   public Object getFirstValue()
   {
@@ -41,7 +41,7 @@ public class Queue
   }
 
   /**
-   *  Returns the current (FIFO) objects value.
+   *  Returns the tail objects value.
    *
    * @return  the current objects value in Stack.
    */
@@ -56,7 +56,7 @@ public class Queue
   }
   
   /**
-   *  Returns the current (FIFO) objects value.
+   *  Returns the current objects value.
    *
    * @return  the current objects value in Stack.
    */
@@ -71,42 +71,48 @@ public class Queue
   }
   
   /**
-   *  Inserts a new object at the top of this Stack,
+   *  Inserts a new object at the end of the Queue,
    *
-   * @param  value  is the data to be inserted at the top of the Stack.
+   * @param  value  is the data to be inserted in the Queue object.
    */
   public void add(Object value)
   {
-	  tailNode = new LinkedList();
-	  tailNode.value = value;
-	  tailNode.prevNode = currentNode;
+	  // add new object to end of Queue
+	  // set value
+	  // build previous link of tail (as current)
+	  tailNode = new LinkedList(value, currentNode);
+	  
+	  // build next link of current (as tail)
 	  if (currentNode != null)
-		  currentNode.nextNode = tailNode;
+		  currentNode.setNextNode(tailNode);
+	  
+	  // after links are established current eq tail
 	  currentNode = tailNode;
 
+	  // head eq tail on 1st element only
 	  if (headNode == null) {
 		  headNode = tailNode;
 	  }
   }
   
   /**
-   *  Returns a string representation of this Stack,
+   *  Returns a string representation of this Queue,
    *  polymorphic nature of toString overrides of standard System.out.print behavior
    *
-   * @return    string representation of this list
+   * @return    string representation of this Queue
    */
   public String toString()
   {
     String queueToString = "[";
 
-    LinkedList node = headNode;  	// start from the fifo node
+    LinkedList node = headNode;  			// start from the head
     while (node != null)
     {
     	queueToString += node.getValue(); 	// append the data to output string
-    	node = node.nextNode;    // go to previous node
+    	node = node.getNext();				// go to next node
     	if (node != null)
     		queueToString += ", ";
-    }
+    }										// loop 'till queue ends
     queueToString += "]";
     return queueToString;
   }

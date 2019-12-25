@@ -3,14 +3,14 @@ package model.linkedlists;
 import java.util.*;
 
 /**
- *  Implementation of lists, using singly linked elements.
+ *  Implementation of Stack, using singly LinkedList (previous only).
  *
  * @author     John Mortensen
  * @created    December 24, 2019
  */
 public class Stack
 {
-  private SingleLinkedList lifo;  // last in first out Object of stack
+  private LinkedList lifo;  // last in first out Object of stack
 
   /**
    *  Constructor for the SinglyLinkedList object
@@ -46,7 +46,7 @@ public class Stack
     // note the order that things happen:
 	// the new object becomes current and gets a value
     // current lifo is parameter, it is assigned as previous node in lifo
-    lifo = new SingleLinkedList(value, lifo);
+    lifo = new LinkedList(value, lifo);
   }
   
   /**
@@ -69,14 +69,14 @@ public class Stack
   {
     String stackToString = "[";
 
-    SingleLinkedList node = lifo;  	// start from the lifo node
+    LinkedList node = lifo;  				// start from the back
     while (node != null)
     {
     	stackToString += node.getValue(); 	// append the data to output string
-    	node = node.getPrevious();    // go to previous node
+    	node = node.getPrevious();    		// go to previous node
     	if (node != null)
     	  stackToString += ", ";
-    }
+    }										// loop 'till you reach the beginning
     stackToString += "]";
     return stackToString;
   }
