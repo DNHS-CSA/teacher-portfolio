@@ -8,50 +8,50 @@ package model.linkedlists;
 
 public class LinkedList
 {
+  private LinkedList pointer;
   private Object value;
-  private LinkedList next;
 
   /**
-   *  Constructs a new element with object initValue,
-   *  followed by next element
+   *  Constructs a new element with object objValue,
+   *  followed by object address
    *
-   * @param  initValue  New element object
-   * @param  initNext   Reference to next element
+   * @param  objValue  Value of Object
+   * @param  objAddr   Reference to Object of element
    */
-  public LinkedList(Object initValue, LinkedList initNext)
+  public LinkedList(Object objValue, LinkedList objAddr)
   {
-    value = initValue;
-    next = initNext;
+	value = objValue;
+	pointer = objAddr;
   }
 
   /**
-   *  Constructs a new tail of a list with object initValue
+   *  Constructs a new tail of a list with object objValue
    *
-   * @param  initValue  New element object
+   * @param  objValue  New element object
    */
-  public LinkedList(Object initValue)
+  public LinkedList(Object objValue)
   {
-    this(initValue, null);
+    this(objValue, null);
   }
 
   /**
    *  Sets the value attribute of the LinkedList object
    *
-   * @param  theNewValue  value attribute of the LinkedList object
+   * @param  newValue  value attribute of the LinkedList object
    */
-  public void setValue(Object theNewValue)
+  public void setValue(Object newValue)
   {
-    value = theNewValue;
+    value = newValue;
   }
 
   /**
-   *  Sets reference to new next value
+   *  Sets reference to next object in the list
    *
-   * @param  theNewNext  The new next value
+   * @param  nextObj  The new object
    */
-  public void setNext(LinkedList theNewNext)
+  public void setNext(LinkedList nextObj)
   {
-    next = theNewNext;
+    pointer = nextObj;
   }
 
   /**
@@ -65,12 +65,12 @@ public class LinkedList
   }
 
   /**
-   *  Returns reference to next value in list
+   *  Returns reference to next object in list
    *
-   * @return    The next value in the list
+   * @return    The pointer to next object in the list
    */
   public LinkedList getNext()
   {
-    return next;
+    return pointer;
   }
 }

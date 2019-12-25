@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class Stack
 {
-  private LinkedList lifo;  // last in first out element of stack
+  private LinkedList lifo;  // last in first out Object of stack
 
   /**
    *  Constructor for the SinglyLinkedList object
@@ -22,11 +22,11 @@ public class Stack
   }
 
   /**
-   *  Returns the LIFO element in this list.
+   *  Returns the current (LIFO) objects value.
    *
-   * @return  the LIFO element in the linked list.
+   * @return  the current objects value in Stack.
    */
-  public Object getLIFO()
+  public Object getValue()
   {
     if (lifo == null)
     {
@@ -37,11 +37,11 @@ public class Stack
   }
 
   /**
-   *  Inserts the given element at the beginning of this list.
+   *  Inserts the given element at the top of this Stack.
    *
-   * @param  value  the element to be inserted at the beginning of this list.
+   * @param  value  the value to be inserted at the top of the Stack.
    */
-  public void addLIFO(Object value)
+  public void push(Object value)
   {
     // note the order that things happen:
     // head is parameter, then assigned
@@ -49,37 +49,35 @@ public class Stack
   }
   
   /**
-   *  Removes the given element to the next in list.  Garbage collection should destroy element when needed.
+   *  Removes the top element in the Stack.  Garbage collection should destroy this element when needed.
    *
    */
-  public void deleteLIFO()
+  public void pop()
   {
 	  if (lifo != null)
 	    lifo = lifo.getNext();
   }
 
   /**
-   *  Returns a string representation of this list. The string
-   *  representation consists of the list's elements in order,
-   *  enclosed in square brackets ("[]"). Adjacent elements are
-   *  separated by the characters ", " (comma and space).
+   *  Returns a string representation of this Stack,
+   *  polymorphic nature of toString overrides of standard System.out.print behavior
    *
    * @return    string representation of this list
    */
   public String toString()
   {
-    String s = "[";
+    String stackToString = "[";
 
-    LinkedList temp = lifo;  	// start from the lifo node
-    while (temp != null)
+    LinkedList node = lifo;  	// start from the lifo node
+    while (node != null)
     {
-      s += temp.getValue(); 	// append the data
-      temp = temp.getNext();    // go to next node
-      if (temp != null)
-        s += ", ";
+    	stackToString += node.getValue(); 	// append the data to output string
+    	node = node.getNext();    // go to next node
+    	if (node != null)
+    	  stackToString += ", ";
     }
-    s += "]";
-    return s;
+    stackToString += "]";
+    return stackToString;
   }
   
     
