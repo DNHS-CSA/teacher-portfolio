@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class Stack
 {
-  private LinkedList lifo;  // last in first out Object of stack
+  private SingleLinkedList lifo;  // last in first out Object of stack
 
   /**
    *  Constructor for the SinglyLinkedList object
@@ -37,15 +37,16 @@ public class Stack
   }
 
   /**
-   *  Inserts the given element at the top of this Stack.
+   *  Inserts a new object at the top of this Stack,
    *
-   * @param  value  the value to be inserted at the top of the Stack.
+   * @param  value  is the data to be inserted at the top of the Stack.
    */
   public void push(Object value)
   {
     // note the order that things happen:
-    // head is parameter, then assigned
-    lifo = new LinkedList(value, lifo);
+	// the new object becomes current and gets a value
+    // current lifo is parameter, it is assigned as previous node in lifo
+    lifo = new SingleLinkedList(value, lifo);
   }
   
   /**
@@ -55,7 +56,7 @@ public class Stack
   public void pop()
   {
 	  if (lifo != null)
-	    lifo = lifo.getNext();
+	    lifo = lifo.getPrevious();
   }
 
   /**
@@ -68,11 +69,11 @@ public class Stack
   {
     String stackToString = "[";
 
-    LinkedList node = lifo;  	// start from the lifo node
+    SingleLinkedList node = lifo;  	// start from the lifo node
     while (node != null)
     {
     	stackToString += node.getValue(); 	// append the data to output string
-    	node = node.getNext();    // go to next node
+    	node = node.getPrevious();    // go to previous node
     	if (node != null)
     	  stackToString += ", ";
     }

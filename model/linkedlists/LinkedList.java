@@ -1,57 +1,27 @@
 package model.linkedlists;
 /**
- *  Implementation of a node of a singly linked list.
+ *  Implementation of a node with forward and backward links to previous and next Nodes respectively.
  *
- *  Adapted from the College Board's AP Computer Science AB:
- *  Implementation Classes and Interfaces.
  */
 
 public class LinkedList
 {
-  private LinkedList pointer;
-  private Object value;
+   Object value;
+   LinkedList prevNode;
+   LinkedList nextNode;
 
   /**
    *  Constructs a new element with object objValue,
    *  followed by object address
    *
-   * @param  objValue  Value of Object
-   * @param  objAddr   Reference to Object of element
+   * @param  valueObj  Value of Object
+   * @param  objAddr   Reference to previous Object in list
    */
-  public LinkedList(Object objValue, LinkedList objAddr)
+  public LinkedList()
   {
-	value = objValue;
-	pointer = objAddr;
-  }
-
-  /**
-   *  Constructs a new tail of a list with object objValue
-   *
-   * @param  objValue  New element object
-   */
-  public LinkedList(Object objValue)
-  {
-    this(objValue, null);
-  }
-
-  /**
-   *  Sets the value attribute of the LinkedList object
-   *
-   * @param  newValue  value attribute of the LinkedList object
-   */
-  public void setValue(Object newValue)
-  {
-    value = newValue;
-  }
-
-  /**
-   *  Sets reference to next object in the list
-   *
-   * @param  nextObj  The new object
-   */
-  public void setNext(LinkedList nextObj)
-  {
-    pointer = nextObj;
+	value = null;
+	prevNode = null;
+	nextNode = null;
   }
 
   /**
@@ -65,12 +35,22 @@ public class LinkedList
   }
 
   /**
+   *  Returns reference to previous object in list
+   *
+   * @return    The pointer is to the previous object in the list
+   */
+  public LinkedList getPrevious()
+  {
+    return prevNode;
+  }
+  
+  /**
    *  Returns reference to next object in list
    *
-   * @return    The pointer to next object in the list
+   * @return    The pointer is to the next object in the list
    */
-  public LinkedList getNext()
+  public LinkedList getNexts()
   {
-    return pointer;
+    return nextNode;
   }
 }
