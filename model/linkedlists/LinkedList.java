@@ -6,10 +6,10 @@ package model.linkedlists;
  *  Implementation Classes and Interfaces.
  */
 
-public class ListNode
+public class LinkedList
 {
   private Object value;
-  private ListNode next;
+  private LinkedList next;
 
   /**
    *  Constructs a new element with object initValue,
@@ -18,7 +18,7 @@ public class ListNode
    * @param  initValue  New element object
    * @param  initNext   Reference to next element
    */
-  public ListNode(Object initValue, ListNode initNext)
+  public LinkedList(Object initValue, LinkedList initNext)
   {
     value = initValue;
     next = initNext;
@@ -29,15 +29,15 @@ public class ListNode
    *
    * @param  initValue  New element object
    */
-  public ListNode(Object initValue)
+  public LinkedList(Object initValue)
   {
     this(initValue, null);
   }
 
   /**
-   *  Sets the value attribute of the ListNode object
+   *  Sets the value attribute of the LinkedList object
    *
-   * @param  theNewValue  value attribute of the ListNode object
+   * @param  theNewValue  value attribute of the LinkedList object
    */
   public void setValue(Object theNewValue)
   {
@@ -49,7 +49,7 @@ public class ListNode
    *
    * @param  theNewNext  The new next value
    */
-  public void setNext(ListNode theNewNext)
+  public void setNext(LinkedList theNewNext)
   {
     next = theNewNext;
   }
@@ -69,7 +69,7 @@ public class ListNode
    *
    * @return    The next value in the list
    */
-  public ListNode getNext()
+  public LinkedList getNext()
   {
     return next;
   }

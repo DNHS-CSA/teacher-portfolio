@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class Stack
 {
-  private ListNode lifo;  // last in first out element
+  private LinkedList lifo;  // last in first out element of stack
 
   /**
    *  Constructor for the SinglyLinkedList object
@@ -45,7 +45,7 @@ public class Stack
   {
     // note the order that things happen:
     // head is parameter, then assigned
-    lifo = new ListNode(value, lifo);
+    lifo = new LinkedList(value, lifo);
   }
   
   /**
@@ -70,7 +70,7 @@ public class Stack
   {
     String s = "[";
 
-    ListNode temp = lifo;  	// start from the lifo node
+    LinkedList temp = lifo;  	// start from the lifo node
     while (temp != null)
     {
       s += temp.getValue(); 	// append the data
@@ -82,6 +82,5 @@ public class Stack
     return s;
   }
   
-  
-  
+    
 }
