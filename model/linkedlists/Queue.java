@@ -3,7 +3,7 @@ package model.linkedlists;
 import java.util.*;
 
 /**
- *  Implementation of Queue, using doubly LinkedList (previous and next).
+ *  Implementation of Queue, using LinkedList (previous and next).
  *
  * @author     John Mortensen
  * @created    December 24, 2019

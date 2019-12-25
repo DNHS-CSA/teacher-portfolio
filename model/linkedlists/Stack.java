@@ -3,7 +3,7 @@ package model.linkedlists;
 import java.util.*;
 
 /**
- *  Implementation of Stack, using singly LinkedList (previous only).
+ *  Implementation of Stack, using LinkedList (previous only).
  *
  * @author     John Mortensen
  * @created    December 24, 2019
