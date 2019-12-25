@@ -46,9 +46,7 @@ public class StackDemo
 	  	// popping data off stack with console output
 	  	for (int i = 0; i <= size; i++)
 	  	{
-			 ConsoleMethods.print("Pop:" + mystack.getValue() + " ");						
-			 mystack.pop();		// pop stack
-			 ConsoleMethods.println(mystack);
+			 ConsoleMethods.println("Pop:" + mystack.pop() + " " + mystack);						
 	  	}
   }
 

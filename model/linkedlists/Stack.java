@@ -53,10 +53,16 @@ public class Stack
    *  Removes the top element in the Stack.  Garbage collection should destroy this element when needed.
    *
    */
-  public void pop()
+  public Object pop()
   {
-	  if (lifo != null)
+	  Object value = null;
+	  
+	  if (lifo != null) {
+		value = lifo.getValue();
 	    lifo = lifo.getPrevious();
+	  }
+	  
+	  return value;
   }
 
   /**

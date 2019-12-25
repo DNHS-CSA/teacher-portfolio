@@ -36,6 +36,19 @@ public class QueueDemo
 		}
   }
   
+  /**
+   *  Removes all the user defined objects from Stack,
+   *  this is inverse of createStack,
+   *  stack pops and values are displayed to console 
+   */
+  public void emptyQueue()
+  {
+	  	// popping data off stack with console output
+	  	for (int i = 0; i <= size; i++)
+	  	{
+			 ConsoleMethods.println("Delete:" + myqueue.delete() + " " + myqueue);						
+	  	}
+  }
 
   /**
    *  Display the top element of the list and full stack
@@ -55,9 +68,11 @@ public class QueueDemo
    */
   public static void main(String[] args)
   {
-    QueueDemo stack = new QueueDemo();
+    QueueDemo queue = new QueueDemo();
 
-    stack.createQueue();
-    stack.displayQueue();
+    queue.createQueue();
+    queue.displayQueue();
+    queue.emptyQueue();
+
   }
 }

@@ -10,9 +10,9 @@ import java.util.*;
  */
 public class Queue
 {
-   LinkedList headNode;			// 1st element in Queue
-   LinkedList tailNode;			// Last element in Queue
-   LinkedList currentNode;		
+   private LinkedList headNode;			// 1st element in Queue
+   private LinkedList tailNode;			// Last element in Queue
+   private LinkedList currentNode;		
 
   /**
    *  Constructor for the SinglyLinkedList object
@@ -71,7 +71,7 @@ public class Queue
   }
   
   /**
-   *  Inserts a new object at the end of the Queue,
+   *  Add a new object at the end of the Queue,
    *
    * @param  value  is the data to be inserted in the Queue object.
    */
@@ -93,6 +93,23 @@ public class Queue
 	  if (headNode == null) {
 		  headNode = tailNode;
 	  }
+  }
+  
+  /**
+   *  Delete an object from the front of the Queue,
+   *
+   */
+  public Object delete()
+  {
+	  Object value = null;
+	  
+	  if (headNode != null) {
+		  value = headNode.getValue();
+		  headNode = headNode.getNext();
+		  if (headNode != null)
+			  headNode.setPrevNode(null);
+	  }
+	  return value;
   }
   
   /**
