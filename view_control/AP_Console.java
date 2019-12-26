@@ -1,5 +1,9 @@
-package model_ap_exam;
+package view_control;
 
+import model_ap_exam.BinaryMathQuestions;
+import model_ap_exam.DataTypeQuestions;
+import model_ap_exam.MathQuestions;
+import model_ap_exam.Scoring;
 import util.ConsoleMethods;
 
 /**

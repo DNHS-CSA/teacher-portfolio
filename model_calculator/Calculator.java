@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import main.MenuControl;
+import main.MainMenu;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class Calculator extends MenuControl {
+public class Calculator extends MainMenu {
 
 	/**
 	 * 
@@ -40,12 +40,12 @@ public class Calculator extends MenuControl {
 	/**
 	 * Launch the application.
 	 */
-/*
+
     public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					calculator frame = new calculator();
+					Calculator frame = new Calculator();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class Calculator extends MenuControl {
 			}
 		});
 	}
-*/
+
 	
 	/**
 	 * Calculator control

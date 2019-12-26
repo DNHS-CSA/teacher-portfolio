@@ -1,4 +1,4 @@
-package model_palindrome;
+package view_control;
 /**
  * UI to support pallindrome evaluation
  * 
@@ -15,7 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import main.MenuControl;
+import main.MainMenu;
+import model_palindrome.Palindrome;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -27,7 +28,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 
-public class PalindromeUI extends MenuControl {
+public class PalindromeUI extends MainMenu {
 
 	/**
 	 * 

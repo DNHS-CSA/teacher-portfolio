@@ -1,4 +1,4 @@
-package model_methodsearch;
+package view_control;
 /**
  * UI to support MethodSearch evaluation
  * 
@@ -16,7 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import main.MenuControl;
+import main.MainMenu;
+import model_methodsearch.MethodSearch;
 
 import java.awt.GridLayout;
 
@@ -32,7 +33,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JList;
 
-public class MethodSearchUI extends MenuControl {
+public class MethodSearchUI extends MainMenu {
 
 	/**
 	 * 

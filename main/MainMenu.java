@@ -10,16 +10,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import model_ap_exam.AP_UI;
 import model_calculator.Calculator;
-import model_methodsearch.MethodSearchUI;
-import model_palindrome.PalindromeUI;
+import view_control.AP_UI;
+import view_control.MethodSearchUI;
+import view_control.PalindromeUI;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
-public class MenuControl extends JFrame {
+public class MainMenu extends JFrame {
 
 	/**
 	 * 
@@ -34,7 +34,7 @@ public class MenuControl extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuControl frame = new MenuControl();
+					MainMenu frame = new MainMenu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class MenuControl extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MenuControl() {
+	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		

@@ -1,4 +1,4 @@
-package model_ap_exam;
+package view_control;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import main.MenuControl;
+import main.MainMenu;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -19,7 +19,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class AP_UI extends MenuControl {
+public class AP_UI extends MainMenu {
 
 	/**
 	 * 
