@@ -48,7 +48,7 @@ public class MethodSearchUI extends MainMenu {
 	 * Launch the application.
 	 */
 	
-	public static void main() {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
