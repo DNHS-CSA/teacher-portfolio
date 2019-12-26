@@ -41,7 +41,7 @@ public class StackDemo
    *  this is inverse of createStack,
    *  stack pops and values are displayed to console 
    */
-  public void killStack()
+  public void emptyStack()
   {
 	  	// popping data off stack with console output
 	  	for (int i = 0; i <= size; i++)
@@ -71,6 +71,6 @@ public class StackDemo
 
     stack.createStack();
     stack.displayStack();
-    stack.killStack();
+    stack.emptyStack();
   }
 }
