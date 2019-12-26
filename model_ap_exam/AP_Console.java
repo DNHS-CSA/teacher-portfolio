@@ -1,4 +1,4 @@
-package model.ap_exam;
+package model_ap_exam;
 
 import util.ConsoleMethods;
 

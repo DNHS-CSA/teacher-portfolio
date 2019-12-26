@@ -1,4 +1,4 @@
-package model.linkedlists;
+package model_linkedlists;
 /**
  *  Implementation of a node with forward and backward links to previous and next Nodes respectively.
  *

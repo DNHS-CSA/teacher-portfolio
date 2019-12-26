@@ -10,10 +10,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import model.ap_exam.AP_UI;
-import model.calculator.Calculator;
-import model.methodsearch.MethodSearchUI;
-import model.palindrome.PalindromeUI;
+import model_ap_exam.AP_UI;
+import model_calculator.Calculator;
+import model_methodsearch.MethodSearchUI;
+import model_palindrome.PalindromeUI;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

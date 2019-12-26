@@ -1,4 +1,4 @@
-package model.linkedlists;
+package model_linkedlists;
 
 import util.ConsoleMethods;
 

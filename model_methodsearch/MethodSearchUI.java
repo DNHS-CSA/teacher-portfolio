@@ -1,4 +1,4 @@
-package model.methodsearch;
+package model_methodsearch;
 /**
  * UI to support MethodSearch evaluation
  * 
@@ -13,6 +13,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import main.MenuControl;
@@ -72,10 +73,10 @@ public class MethodSearchUI extends MenuControl {
 		contentPane.setLayout(null);
 
 		DefaultListModel<String> l1 = new DefaultListModel<>();  // support for JList
-		JList<String> list = new JList<>(l1);  				// l1 is JList working element
+		JList<String> list = new JList<>(l1);  					// l1 is JList working element
         list.setBounds(16,101, 414,137);  
         contentPane.add(list); 
-		
+       
 		JLabel lblFileName = new JLabel("Search File Name");
 		lblFileName.setBounds(6, 0, 184, 26);
 		contentPane.add(lblFileName);
@@ -84,6 +85,7 @@ public class MethodSearchUI extends MenuControl {
 		filename.setBounds(6, 21, 438, 26);
 		contentPane.add(filename);
 		filename.setColumns(10);
+		filename.setText("model_ap_exam/BinaryMathQuestions.java");
 		
 		JLabel lblTerm = new JLabel("Search Term");
 		lblTerm.setBounds(6, 38, 184, 26);
@@ -93,7 +95,8 @@ public class MethodSearchUI extends MenuControl {
 		searchTerm.setColumns(10);
 		searchTerm.setBounds(6, 63, 438, 26);
 		contentPane.add(searchTerm);
-		
+		searchTerm.setText("Binary");
+
 		JButton buttonTest = new JButton("Test");
 		buttonTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
