@@ -109,16 +109,22 @@ public class BinaryMathQuestions extends QuestionRandom
         return Integer.toBinaryString( (1 << binaryLength) | arg ).substring(1);
     }
     
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  args		// satisfies default for Java
+     * @return void
+     */
     public static void main(String[] args)
     {
     	ConsoleMethods.println(mainTest());
     }
   
     /**
-     * Main test method to support console execution
+     * MainTest supports console execution and receiving write or wrong return message
      * 
      * @param  void
-     * @return void
+     * @return score / right or wrong
      */
     public static String mainTest ()
     {

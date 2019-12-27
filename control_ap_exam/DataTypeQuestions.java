@@ -95,11 +95,23 @@ public class DataTypeQuestions extends QuestionRandom
         
     }
     
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  args		// satisfies default for Java
+     * @return void
+     */
     public static void main(String[] args)
     {
     	ConsoleMethods.println(mainTest());
     }
     
+    /**
+     * MainTest supports console execution and receiving write or wrong return message
+     * 
+     * @param  void
+     * @return score / right or wrong
+     */
     public static String mainTest ()
     {
     	Question q = new DataTypeQuestions();
