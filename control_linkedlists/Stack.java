@@ -1,4 +1,4 @@
-package model_linkedlists;
+package control_linkedlists;
 
 import java.util.*;
 

@@ -18,7 +18,7 @@ public class Palindrome
 	private String Candidate;
 	private String Log;
 	
-	public static void main() 										// Console driver
+	public static void main(String[] args) 						// Console driver
     {
 		// Input using console
         String candidate = ConsoleMethods.inputString("Enter a word or phrase: ");

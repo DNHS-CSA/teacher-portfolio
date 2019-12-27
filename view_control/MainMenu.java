@@ -1,4 +1,4 @@
-package main;
+package view_control;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
@@ -11,9 +11,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import model_calculator.Calculator;
-import view_control.AP_UI;
-import view_control.MethodSearchUI;
-import view_control.PalindromeUI;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -52,7 +49,7 @@ public class MainMenu extends JFrame {
 		
 		// JLabel with image 
 		JLabel pic = new JLabel("");        
-        java.awt.Image image = new ImageIcon("main/APCompSci.jpeg").getImage();
+        java.awt.Image image = new ImageIcon("view_control/APCompSci.jpeg").getImage();
         pic.setIcon(new ImageIcon(image));
         pic.setBounds(377, 111, 128, 128);
         

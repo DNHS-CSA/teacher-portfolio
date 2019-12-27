@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import main.MainMenu;
 import model_palindrome.Palindrome;
 
 import java.awt.GridLayout;
@@ -106,7 +105,7 @@ public class PalindromeUI extends MainMenu {
 		buttonTestPaliC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Call to Pali Console Tester 
-				Palindrome.main();
+				Palindrome.main(null);
 			}
 		});
 		buttonTestPaliC.setBounds(423, 7, 21, 18);
