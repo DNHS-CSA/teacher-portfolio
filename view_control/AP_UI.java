@@ -133,7 +133,7 @@ public class AP_UI extends MainMenu {
 		btnRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model_ap_exam.Question q = exam.getQuestion();
-				testQuestion.setText(q.getQuestion());
+				testQuestion.setText(q.getID() + ". " + q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());
 			}

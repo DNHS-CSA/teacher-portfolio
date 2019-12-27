@@ -82,9 +82,9 @@ public class Queue
   {
 	currentNode = currentNode.getNext();
 	
-	// never let currentNode be null, hold at tail
+	// never let currentNode be null, wrap to head
 	if (currentNode == null)
-		currentNode = tailNode;
+		currentNode = headNode;
   }
   
   

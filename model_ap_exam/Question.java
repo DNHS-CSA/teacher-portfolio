@@ -10,6 +10,9 @@ import util.ConsoleMethods;
  */
 public class Question extends Scoring
 {
+	// question id or number
+	private int ID;
+
 	// question setup values
 	protected String question, choiceA, choiceB, choiceC, choiceD, choiceE, answer;
 	protected char answerKey;
@@ -76,6 +79,25 @@ public class Question extends Scoring
 		answer = choiceC;
 		answerKey = charC;
     }
+    /**
+     * Question ID setter
+     *
+     * @param  id
+     * @return void
+     */
+	public void setID(int id) {
+		this.ID = id;
+	}
+	
+	/**
+     * Question ID getter
+     *
+     * @param  void
+     * @return ID
+     */
+	public int getID() {
+		return ID;
+	}
 	
 	/**
      * Question getter
@@ -164,7 +186,7 @@ public class Question extends Scoring
 
     public String toString()
     {
-    	String s = getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
+    	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
     	return s;
     }
   

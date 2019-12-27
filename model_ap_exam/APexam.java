@@ -26,20 +26,24 @@ public class APexam {
    *  stack pushes and operations are displayed to console
    */
   public void createTest()
-  {
+  {	
+	  	Question q;
 
 	  	// pushing data to stack with console output
 	  	for (int i = 0; i <= size-1; i++)
 		{
-	  		if ((double)i < (double)(size / 3)) 
-	  			exam.add(new model_ap_exam.MathQuestions());
+	  		if ((double)i < (double)(size / 3))
+	  			q = new model_ap_exam.MathQuestions();
 	  		else if ((double)i < (double)(2 * (size / 3) ))
-	  			exam.add(new model_ap_exam.DataTypeQuestions());
+	  			q = new model_ap_exam.DataTypeQuestions();
 	  		else
-	  			exam.add(new model_ap_exam.BinaryMathQuestions());
+	  			q = new model_ap_exam.BinaryMathQuestions();
+	  		
+	  		q.setID(i+1);
+  			exam.add(q);
 		}
 	  	
-	  	exam.getFirstValue();  // set point to 1st value
+	  	exam.getFirstValue();  // set pointer to 1st value
   }
   
   /**
@@ -75,7 +79,7 @@ public class APexam {
 	  Question q = (Question)exam.getValue();
 	  exam.setNext();
 	  
-	  return (Question)q;	// put object back into Question type
+	  return q;	// put object back into Question type
   }
 
 
