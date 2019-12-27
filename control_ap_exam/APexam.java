@@ -14,6 +14,7 @@ public class APexam {
 
   private Queue exam;
   private int size = 20;	// size of test
+  private boolean init = true;
 
   public APexam()
   {
@@ -44,7 +45,6 @@ public class APexam {
   			exam.add(q);
 		}
 	  	
-	  	exam.getFirstValue();  // set pointer to 1st value
   }
   
   /**
@@ -74,13 +74,37 @@ public class APexam {
   /**
    *  Get current test question and advance pointer
    */
-  public Question getQuestion()
+  public Question getQuestionFwd()
   {
-	  // get current test question and advance in list
-	  Question q = (Question)exam.getValue();
-	  exam.setNext();
+	  Question q;	// put object back into Question type
+
+	  if (init) {
+		  q = (Question)exam.getFirstValue();
+		  init = false;
+	  } else {
+		  exam.setNext();
+		  q = (Question)exam.getValue();
+	  }
 	  
-	  return q;	// put object back into Question type
+	  return q;	
+  }
+  
+  /**
+   *  Get current test question and advance pointer
+   */
+  public Question getQuestionRev()
+  {
+	  Question q;	// put object back into Question type
+
+	  if (init) {
+		  q = (Question)exam.getLastValue();
+		  init = false;
+	  } else {
+		  exam.setPrevious();
+		  q = (Question)exam.getValue();
+	  }
+	  
+	  return q;	
   }
 
 

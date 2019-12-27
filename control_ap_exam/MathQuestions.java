@@ -41,7 +41,7 @@ public class MathQuestions extends QuestionRandom
         
     	// Logic to setup data for Math questions
     	Random rand = new Random();
-    	Integer arg1 = rand.nextInt(50);
+    	Integer arg1 = rand.nextInt(50)+1;
     	Integer arg2 = (int)Math.sqrt((double)arg1);
     	Integer opIndex = rand.nextInt(operators.length);
     	char operator = operators[opIndex];

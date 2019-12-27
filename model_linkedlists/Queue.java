@@ -87,6 +87,19 @@ public class Queue
 		currentNode = headNode;
   }
   
+  /**
+   *  Reverses the current node.
+   *
+   */
+  public void setPrevious()
+  {
+	currentNode = currentNode.getPrevious();
+	
+	// never let currentNode be null, wrap to head
+	if (currentNode == null)
+		currentNode = tailNode;
+  }
+  
   
   /**
    *  Add a new object at the end of the Queue,
