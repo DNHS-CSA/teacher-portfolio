@@ -80,8 +80,11 @@ public class Queue
    */
   public void setNext()
   {
-	if (currentNode != null)
-		currentNode = currentNode.getNext();
+	currentNode = currentNode.getNext();
+	
+	// never let currentNode be null, hold at tail
+	if (currentNode == null)
+		currentNode = tailNode;
   }
   
   

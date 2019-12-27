@@ -71,11 +71,11 @@ public class APexam {
    */
   public Question getQuestion()
   {
-	  // get current test question 
+	  // get current test question and advance in list
 	  Question q = (Question)exam.getValue();
 	  exam.setNext();
 	  
-	  return (Question)q;
+	  return (Question)q;	// put object back into Question type
   }
 
 
