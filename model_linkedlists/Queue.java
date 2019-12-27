@@ -35,9 +35,7 @@ public class Queue
   	currentNode = headNode;
 
     if (headNode == null)
-    {
-      throw new NoSuchElementException();
-    }
+    	return null;
     else
       return headNode.getValue();
   }
@@ -52,9 +50,7 @@ public class Queue
 	currentNode = tailNode;
 
     if (tailNode == null)
-    {
-      throw new NoSuchElementException();
-    }
+  	  return null;
     else
       return tailNode.getValue();
   }
@@ -67,9 +63,7 @@ public class Queue
   public Object getValue()
   {
     if (currentNode == null)
-    {
-      throw new NoSuchElementException();
-    }
+  	  return null;
     else
       return currentNode.getValue();
   }
@@ -133,13 +127,16 @@ public class Queue
   public Object delete()
   {
 	  Object value = null;
-	  
+	  	  
 	  if (headNode != null) {
 		  value = headNode.getValue();
 		  headNode = headNode.getNext();
-		  if (headNode != null)
+		  if (headNode == null)
+			  tailNode = headNode;
+		  else
 			  headNode.setPrevNode(null);
 	  }
+	  		
 	  return value;
   }
   

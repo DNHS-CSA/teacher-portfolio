@@ -20,7 +20,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class AP_UI extends MainMenu {
-
 	/**
 	 * 
 	 */
@@ -29,7 +28,7 @@ public class AP_UI extends MainMenu {
     private JTextArea testQuestion = new JTextArea();
     private JTextArea testChoices = new JTextArea();
     private JTextArea testQuestionAnswer = new JTextArea();
-    private APexam exam = new APexam();
+    private APexam exam = new APexam(20);
 	
     /**
 	 * Launch the application.
@@ -157,6 +156,5 @@ public class AP_UI extends MainMenu {
 		lblqs.setBounds(354, 26, 39, 16);
 		contentPane.add(lblqs);
 		
-	
 	}
 }

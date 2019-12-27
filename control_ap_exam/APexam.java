@@ -13,15 +13,35 @@ import util.ConsoleMethods;;
 public class APexam {
 
   private Queue exam;
-  private int size = 20;	// size of test
+  private int size = 3;	// size of test
   private boolean init = true;
 
+  /**
+   *  APexam with default amount of questions
+   */ 
   public APexam()
+  {
+	  init();
+  }
+
+  /**
+   *  APexam with custom amount of questions
+   */
+  public APexam(int size)
+  {
+	  this.size = size;
+	  init();
+  }
+  
+  /**
+   *  Constructor helper
+   */
+  private void init()
   {
 	  exam = new Queue();
 	  createTest();
   }
-
+  
   /**
    *  Creates a series of user defined objects and populates on Stack,
    *  any type of object can be used,
@@ -115,10 +135,15 @@ public class APexam {
    */
   public static void main(String[] args)
   {
+	// Initialize and show elements
+	ConsoleMethods.println("Initialize exam");
     APexam exam = new APexam();
-
     exam.displayTest();
+    
+    // Empty queue and show elements
+	ConsoleMethods.println("Empty exam");
     exam.emptyTest();
+    exam.displayTest();
   }
 }
 
