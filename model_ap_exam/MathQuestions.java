@@ -48,9 +48,9 @@ public class MathQuestions extends Question
         
         // format question choices
         this.choiceA = String.format("%f",(float)arg1/(float)arg2);
-        this.choiceB = String.format("%x",arg1/arg2);
+        this.choiceB = String.format("%x", (arg2 != 0 ? arg1/arg2 : arg2));
         this.choiceC = String.format("%f",(float)arg1*(float)arg2);
-        this.choiceD = String.format("%x",arg1%arg2);
+        this.choiceD = String.format("%x",(arg2 != 0 ? arg1%arg2 : arg2));
         this.choiceE = "None of the above";
         
         // real time calc answer based off args AND operator

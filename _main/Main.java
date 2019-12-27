@@ -1,4 +1,4 @@
-package begin;
+package _main;
 
 import view_control.MainMenu;
 

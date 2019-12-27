@@ -48,7 +48,7 @@ public class Question extends Scoring
 	}
 	
 	public String getAnswer() {
-		return answerKey + ": " + answer;
+		return answerKey + ". " + answer;
 	}
     
 	/**
@@ -92,6 +92,12 @@ public class Question extends Scoring
         calcResult(ansStatus)
         return ansStatus;*/
         return (choice == answerKey);
+    }
+    
+    public String toString()
+    {
+    	String s = getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
+    	return s;
     }
   
 }
