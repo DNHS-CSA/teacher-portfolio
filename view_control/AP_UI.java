@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model_ap_exam.APexam;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,6 +29,7 @@ public class AP_UI extends MainMenu {
     private JTextArea testQuestion = new JTextArea();
     private JTextArea testChoices = new JTextArea();
     private JTextArea testQuestionAnswer = new JTextArea();
+    private APexam exam = new APexam();
 	
     /**
 	 * Launch the application.
@@ -67,7 +71,7 @@ public class AP_UI extends MainMenu {
 				testQuestionAnswer.setText(q.getAnswer());
 			}
 		});
-		btnMath.setBounds(59, 21, 75, 29);
+		btnMath.setBounds(26, 21, 75, 29);
 		contentPane.add(btnMath);
 		
 		JButton btnDataTypes = new JButton("Data Types");
@@ -79,7 +83,7 @@ public class AP_UI extends MainMenu {
 				testQuestionAnswer.setText(q.getAnswer());
 			}
 		});
-		btnDataTypes.setBounds(131, 21, 131, 29);
+		btnDataTypes.setBounds(90, 21, 131, 29);
 		contentPane.add(btnDataTypes);
 		
 		JButton btnBinaryMath = new JButton("Binary Math");
@@ -91,7 +95,7 @@ public class AP_UI extends MainMenu {
 				testQuestionAnswer.setText(q.getAnswer());
 			}
 		});
-		btnBinaryMath.setBounds(260, 21, 117, 29);
+		btnBinaryMath.setBounds(210, 21, 117, 29);
 		contentPane.add(btnBinaryMath);
 		
 		JButton btnConsole = new JButton("C");
@@ -103,7 +107,7 @@ public class AP_UI extends MainMenu {
 		btnConsole.setForeground(Color.RED);
 		btnConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		btnConsole.setBackground(Color.LIGHT_GRAY);
-		btnConsole.setBounds(406, 21, 21, 18);
+		btnConsole.setBounds(413, 8, 21, 18);
 		contentPane.add(btnConsole);
 		
 		testQuestion.setEditable(false);
@@ -124,6 +128,18 @@ public class AP_UI extends MainMenu {
 		testQuestionAnswer.setLineWrap(true);
 		testQuestionAnswer.setBounds(74, 211, 357, 39);
 		contentPane.add(testQuestionAnswer);
+		
+		JButton btnRandom = new JButton("Random");
+		btnRandom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model_ap_exam.Question q = exam.getQuestion();
+				testQuestion.setText(q.getQuestion());
+				testChoices.setText(q.getChoices());
+				testQuestionAnswer.setText(q.getAnswer());
+			}
+		});
+		btnRandom.setBounds(316, 21, 117, 29);
+		contentPane.add(btnRandom);
 	
 	}
 }

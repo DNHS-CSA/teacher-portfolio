@@ -32,6 +32,8 @@ public class Queue
    */
   public Object getFirstValue()
   {
+  	currentNode = headNode;
+
     if (headNode == null)
     {
       throw new NoSuchElementException();
@@ -47,6 +49,8 @@ public class Queue
    */
   public Object getLastValue()
   {
+	currentNode = tailNode;
+
     if (tailNode == null)
     {
       throw new NoSuchElementException();
@@ -69,6 +73,17 @@ public class Queue
     else
       return currentNode.getValue();
   }
+  
+  /**
+   *  Advances the current node.
+   *
+   */
+  public void setNext()
+  {
+	if (currentNode != null)
+		currentNode = currentNode.getNext();
+  }
+  
   
   /**
    *  Add a new object at the end of the Queue,

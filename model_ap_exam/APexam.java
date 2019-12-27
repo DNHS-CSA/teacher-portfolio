@@ -17,6 +17,7 @@ public class APexam {
   public APexam()
   {
 	  exam = new Queue();
+	  createTest();
   }
 
   /**
@@ -37,6 +38,8 @@ public class APexam {
 	  		else
 	  			exam.add(new model_ap_exam.BinaryMathQuestions());
 		}
+	  	
+	  	exam.getFirstValue();  // set point to 1st value
   }
   
   /**
@@ -62,6 +65,18 @@ public class APexam {
     ConsoleMethods.println("Last Element: " + exam.getLastValue() );
     ConsoleMethods.println("Full Queue: " + exam);
   }
+  
+  /**
+   *  Get current test question and advance pointer
+   */
+  public Question getQuestion()
+  {
+	  // get current test question 
+	  Question q = (Question)exam.getValue();
+	  exam.setNext();
+	  
+	  return (Question)q;
+  }
 
 
   /**
@@ -73,7 +88,6 @@ public class APexam {
   {
     APexam exam = new APexam();
 
-    exam.createTest();
     exam.displayTest();
     exam.emptyTest();
   }
