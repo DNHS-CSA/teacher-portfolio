@@ -1,27 +1,33 @@
 package model_ap_exam;
 
 import java.util.Random;
+import util.ConsoleMethods;
 
 /**
- * Write a description of class MathOps here.
+ * Class to support Data type conversion from double to various data types.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (John Mortensen)
+ * @version (1.1)
  */
-public class DataTypeQuestions extends Question
+public class DataTypeQuestions extends QuestionRandom
 {
-	private String[] datatype = {"int", "float", "char"};
-	private int[] multiplier = {10, 100, 1000};
+	private String[] datatype = {"int", "float", "char"};		// conversions supported (from double)
+	private int[] multiplier = {10, 100, 1000};					// math multipliers used
 
 	/**
-     * Constructor for objects of class MathQuestions
+     * Constructor for objects of class DataTypeQuestions
+     * 
+     * @param  void
      */
     public DataTypeQuestions()
     {
-    	Random rand = new Random();
-    	double value = rand.nextDouble() * multiplier[rand.nextInt(multiplier.length)];
-    	Integer index = rand.nextInt(datatype.length);
-    	setupQuestion(datatype[index], value);
+    	// This outputs constructor being run
+        ConsoleMethods.println("DataTypeQuestions Constructor");
+
+    	
+    	
+    	// Required to organize dynamic structures for Choices after data is defined
+    	super.setupQuestion();
     }
     
     public static String mainTest ()
@@ -32,21 +38,22 @@ public class DataTypeQuestions extends Question
     }
      
     /**
-     * askDataTypeConversion 
+     * Sets up a Data Type question according to instance variables (this...) in Question class 
      *
-     * @param  datatype     datatype of reference
+     * @param  datatype     data type of reference
      * @param  number       number in conversion
-     * @return    error code
+     * @return void
      */
-	@Override
-    public void setupQuestion(String dataTypeName, double number)
+    @Override
+    protected void setupQuestionData()
     {        
-        float test1 = (float)number;
-        int test2 =  (int)number;
-        char test3 =  Double.toString(number).charAt(0);
-        double test4 = (double)number;
-        
-        // format question
+    	// Logic to setup data for Data Conversion questions
+    	Random rand = new Random();
+    	double number = rand.nextDouble() * multiplier[rand.nextInt(multiplier.length)];
+    	Integer index = rand.nextInt(datatype.length);
+    	String dataTypeName = datatype[index];
+    	
+        // format question base off of dataTypeName and number from arguments
         this.question = String.format(
             "Which represents double " +
             String.format
@@ -56,7 +63,7 @@ public class DataTypeQuestions extends Question
             dataTypeName +
             "?");
                     
-        // format question choices and calc answer
+        // format question choices with calculated answer
         this.choiceA = String.format
             ("(float)%.8f equals %f",
             number, (float)number);
@@ -71,22 +78,23 @@ public class DataTypeQuestions extends Question
             number, number);
         this.choiceE = "All of the above";
         
+        // find answer key by dataTypeName in question
         if (dataTypeName == "float")
         {
-            answer = this.choiceA;
-            this.answerKey = this.answerA;
-        } else if ( dataTypeName == "int" ) {
-            answer = this.choiceB;
-            this.answerKey = this.answerB;
-        } else if ( dataTypeName == "char" ) {
-            answer = this.choiceC;
-            this.answerKey = this.answerC;
-        } else if ( dataTypeName == "double" ) {
-            answer = this.choiceD;
-            this.answerKey = this.answerD;
+            this.answer = this.choiceA;
+            this.answerKey = this.charA;
+        } else if (dataTypeName.contentEquals("int")) {
+            this.answer = this.choiceB;
+            this.answerKey = this.charB;
+        } else if (dataTypeName.contentEquals("char")) {
+            this.answer = this.choiceC;
+            this.answerKey = this.charC;
+        } else if (dataTypeName.contentEquals("double")) {
+            this.answer = this.choiceD;
+            this.answerKey = this.charD;
         } else {
-            answer = this.choiceE;
-            this.answerKey = this.answerE;
+            this.answer = this.choiceE;
+            this.answerKey = this.charE;
         }
         
     }

@@ -1,30 +1,37 @@
+
 package model_ap_exam;
 
 import java.util.Random;
 
+import util.ConsoleMethods;
+
 /**
- * Write a description of class MathOps here.
+ * Class to support divide and modulo Math questions.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (John Mortensen)
+ * @version (1.0)
  */
-public class MathQuestions extends Question
+public class MathQuestions extends QuestionRandom
 { 
-	private char[] operators = {'/', '%'};
+	private char[] operators = {'/', '%'};	// operators supported
 	
     /**
      * Constructor for objects of class MathQuestions
+     * 
+     * @param  void
      */
     public MathQuestions()
-    {
-    	Random rand = new Random();
-    	Integer arg1 = rand.nextInt(50);
-    	Integer arg2 = (int)Math.sqrt((double)arg1);
-    	Integer opIndex = rand.nextInt(operators.length);
-    	setupQuestion(arg1, operators[opIndex], arg2);
+    {	    	
+    	// Required to organize dynamic structures for Choices after data is defined
+        super.setupQuestion();
     }
 
-    
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  void
+     * @return void
+     */
     public static String mainTest ()
     {
     	Question q = new MathQuestions();
@@ -33,24 +40,30 @@ public class MathQuestions extends Question
     }
     
     /**
-     * MathDivOps 
+     * Sets up a Math question according to instance variables (this...) in Question class
      *
-     * @param  arg1      1st argument in math expression
-     * @param  operator  operator in math expression (/ or % only)
-     * @param  arg2      2st argument in math expression
-     * @return    error code
+     * @return void
      */
-	@Override
-    public void setupQuestion(int arg1, char operator, int arg2)
-    {        
+    @Override
+    protected void setupQuestionData()
+    {
+    	// This outputs constructor being run
+        ConsoleMethods.println("MathQuestion class setupQuestionData method");
+        
+    	// Logic to setup data for Math questions
+    	Random rand = new Random();
+    	Integer arg1 = rand.nextInt(50);
+    	Integer arg2 = (int)Math.sqrt((double)arg1);
+    	Integer opIndex = rand.nextInt(operators.length);
+    	char operator = operators[opIndex];
         // format question
         this.question = String.format("What is (int)" + arg1 + " " + "%s" + " (int)" + arg2, operator );
         
         // format question choices
         this.choiceA = String.format("%f",(float)arg1/(float)arg2);
-        this.choiceB = String.format("%x", (arg2 != 0 ? arg1/arg2 : arg2));
+        this.choiceB = String.format("%x",arg1/arg2);
         this.choiceC = String.format("%f",(float)arg1*(float)arg2);
-        this.choiceD = String.format("%x",(arg2 != 0 ? arg1%arg2 : arg2));
+        this.choiceD = String.format("%x",arg1%arg2);
         this.choiceE = "None of the above";
         
         // real time calc answer based off args AND operator
@@ -59,11 +72,11 @@ public class MathQuestions extends Question
         {
             case '/':
                 answerCalc = arg1 / arg2;
-                this.answerKey = this.answerB;
+                this.answerKey = this.charB;
                 break;
             case '%':
                 answerCalc = arg1 % arg2;
-                this.answerKey = this.answerD;
+                this.answerKey = this.charD;
                 break;
             default: // not supported
                 return;

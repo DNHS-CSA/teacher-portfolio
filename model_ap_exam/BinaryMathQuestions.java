@@ -3,27 +3,31 @@ package model_ap_exam;
 import java.util.Random;
 
 /**
- * Write a description of class MathOps here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Class to support Binary Math operations
+ * 
+ * @author (John Mortensen)
+ * @version (1.0)
  */
-public class BinaryMathQuestions extends Question
+public class BinaryMathQuestions extends QuestionRandom
 {
 	private char[] operators = {'&', '|', '+', '-'};
 
-    /**
-     * Constructor for objects of class MathQuestions
+	/**
+     * Constructor for objects of class BinaryMathQuestions
+     * 
+     * @param  void
      */
     public BinaryMathQuestions()
-    {
-    	Random rand = new Random();
-    	Integer arg1 = rand.nextInt(16)+1;
-    	Integer arg2 = rand.nextInt(8)+1;
-    	Integer opIndex = rand.nextInt(operators.length);
-    	setupQuestion(arg1, operators[opIndex], arg2);
+    {   	  	
+    	super.setupQuestion();
     }
     
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  void
+     * @return void
+     */
     public static String mainTest ()
     {
     	Question q = new BinaryMathQuestions();
@@ -32,16 +36,20 @@ public class BinaryMathQuestions extends Question
     }
     
     /**
-     * askBinaryMath 
+     * Sets up a Binary Math questions according to instance variables (this...) in Question class
      *
-     * @param  arg1      1st argument in math expression (6 bits)
-     * @param  operator  operator in math expression (&, |, +, or - only)
-     * @param  arg2      2st argument in math expression (5 bits)
-     * @return    error code
+     * @return    void
      */
-	@Override
-    public void setupQuestion(int arg1, char operator, int arg2)
+    @Override
+    protected void setupQuestionData()
     {
+    	// Logic to setup data for Binary Math questions
+    	Random rand = new Random();
+    	Integer arg1 = rand.nextInt(16)+1;
+    	Integer arg2 = rand.nextInt(8)+1;
+    	Integer opIndex = rand.nextInt(operators.length);
+    	char operator = operators[opIndex];
+    	
         // maximum binary number for testing is 15, we need to be reasonable
         int binaryLength = 7;       
         //if (arg1 > 15 || arg2 > 15) return;       // exit if number above 15
@@ -66,20 +74,20 @@ public class BinaryMathQuestions extends Question
         {
             case '&':
                 answerCalc = arg1 & arg2;
-                this.answerKey = this.answerA;
+                this.answerKey = this.charA;
                 break;
             case '|':
                 answerCalc = arg1 | arg2;
-                this.answerKey = this.answerB;
+                this.answerKey = this.charB;
                 break;
              case '+':
                 answerCalc = arg1 + arg2;
                 if (answerCalc > 15) binaryLength++;
-                this.answerKey = this.answerC;
+                this.answerKey = this.charC;
                 break; 
              case '-':
                 answerCalc = arg1 - arg2;
-                this.answerKey = this.answerD;
+                this.answerKey = this.charD;
                 break;
             default:
                 return;
@@ -99,13 +107,13 @@ public class BinaryMathQuestions extends Question
     }
     
     /**
-     * zeroPadInt2BinaryString 
+     * Zero pad binary number to supplied binary length 
      *
      * @param  arg1             number to convert to binary
      * @param  binaryLength     number of bits for number (ie 4 bits)
      * @return    the binary String with leading 0s
      */
-    String zeroPadInt2BinaryString(int arg, int binaryLength)
+    private String zeroPadInt2BinaryString(int arg, int binaryLength)
     {
         return Integer.toBinaryString( (1 << binaryLength) | arg ).substring(1);
     }

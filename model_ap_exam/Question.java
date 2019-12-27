@@ -3,69 +3,137 @@ package model_ap_exam;
 import util.ConsoleMethods;
 
 /**
- * Question object is intended to ask operator questions and randomize order
+ * Question class is intended to support asking question on test
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (John Mortensen)
+ * @version (1.0)
  */
 public class Question extends Scoring
 {
-    // instance variables - replace the example below with your own
-    String question, choiceA, choiceB, choiceC, choiceD, choiceE;
-    String answer;
+	// question setup values
+	protected String question, choiceA, choiceB, choiceC, choiceD, choiceE, answer;
+	protected char answerKey;
     
-    char answerA='A', answerB='B', answerC='C', answerD='D', answerE='E';
-    char answerKey;
+    // internal control values, these are never change
+    protected final char charA = 'A', charB = 'B', charC = 'C', charD = 'D', charE = 'E'; 	// Multiple choice default letters
+	protected final char[] answers = {charA, charB, charC, charD, charE};					// Multiple choice default order
+   	protected int aOffset = 0, bOffset = 1, cOffset = 2, dOffset = 3, eOffset = 4;			// Multiple choice index value
+    
+    // defaults for choice
+   	protected int choiceOffset = 0;						// choiceOffset is used when scrambled to move answers around
+    protected boolean choiceEfixed = true;				// used to keep choice E fixed versus randomization
+	protected String[] choices = {"", "", "", "", ""};
+
     
     /**
-     * setupQuestion arg1, operator, arg2
+     * Constructor for objects of class Question
+     * 
+     * @param  void
      */
-    public void setupQuestion(int arg1, char operator, int arg2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Question()
+    {
+    	// This outputs constructor being run
+        ConsoleMethods.println("Question class constructor");
+        
+        // turn scrambled off for backward compatibility
+        choiceOffset = 0;
+        choiceEfixed = true;  
+    }
     
+      
     /**
-     * setupQuestion dataType and number
+     * setup question choices and answer
+     * 
+     * @param  void
      */
-	public void setupQuestion(String dataTypeName, double number) {
-		// TODO Auto-generated method stub
-		
-	}
+     protected void setupQuestion() {
+    	// This outputs constructor being run
+        ConsoleMethods.println("Question class setupQuestion method");
+    	setupQuestionData();
+        
+    	// choice assignment
+    	choices[aOffset] = choiceA;
+    	choices[bOffset] = choiceB;
+    	choices[cOffset] = choiceC;
+    	choices[dOffset] = choiceD;
+    	choices[eOffset] = choiceE;   	
+    }
+ 
+     /**
+      * setup question data default, expectation is this will changed through polymorphism
+      *
+      * @param  void
+      */
+    protected void setupQuestionData() {
+    	// This outputs constructor being run
+        ConsoleMethods.println("Question class setupQuestionData method");
+        
+    	question = "What type of programming language is Java?";
+		choiceA = "Data-oriented";
+		choiceB = "Iterative";
+		choiceC = "Object-oriented";
+		choiceD = "Imperative";
+		answer = choiceC;
+		answerKey = charC;
+    }
 	
+	/**
+     * Question getter
+     *
+     * @param  void
+     * @return String	contents of question
+     */
 	public String getQuestion() {
 		return question;
 	}
 	
+	/**
+     * Choices getter for Multiple Choice
+     *
+     * @param  void
+     * @return String 	content of choices with ABCDEF formatting
+     */
 	public String getChoices() {
 		return String.format(
-	            "A. "+ choiceA + "\n"  + 
-	    	    "B. "+ choiceB + "\n"  + 
-	    	    "C. "+ choiceC + "\n"  + 
-	    	    "D. "+ choiceD + "\n"  + 
-	    	    "E. "+ choiceE + "\n" 
-	            );     
+            charA + ": " + choices[0] + "\n"  + 
+    	    charB + ": " + choices[1] + "\n"  + 
+    	    charC + ": " + choices[2] + "\n"  + 
+    	    charD + ": " + choices[3] + "\n"  + 
+    	    charE + ": " + choices[4] + "\n"
+            );    
 	}
 	
-	public String getAnswer() {
-		return answerKey + ". " + answer;
+	/**
+     * Answer getter with formatting to correspond to getChoices
+     *
+     * @param  void
+     * @return String 	correct answer with letter prefex of right answer (A or B or C...)
+     */
+	public String getAnswer() {	
+		
+		// This outputs randomization of letters
+    	ConsoleMethods.println("Answer:" + answerKey);
+		
+		return answerKey + ": " + answer;
 	}
     
 	/**
-     * Console Display methods
+     * Console support wrapper for asking question, getting result, and calculating results
      *
+     * @param  void
+     * @return void
      */
-    public void  askQuestionConsole()
+    protected void  askQuestionConsole()
     {
         // getAnswer return true if question is correct
         updateCounters ( getAnswerConsole() );
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * Console support for asking question and getting result
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  void
+     * @return void
      */
     private boolean getAnswerConsole()
     {
@@ -79,7 +147,7 @@ public class Question extends Scoring
         do {
             choice = ConsoleMethods.inputChar("Enter selection (A-E) --> ");
             choice = Character.toUpperCase(choice); // Convert to upper case
-            if (choice >= 'A' && choice <= 'E') break;
+            if (choice >= charA && choice <= charE) break;
             ConsoleMethods.println(" (invalid) ");
         } while ( true );                                               // until valid input
         
@@ -93,7 +161,7 @@ public class Question extends Scoring
         return ansStatus;*/
         return (choice == answerKey);
     }
-    
+
     public String toString()
     {
     	String s = getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
