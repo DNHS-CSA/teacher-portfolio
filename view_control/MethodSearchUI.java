@@ -85,7 +85,7 @@ public class MethodSearchUI extends MainMenu {
 		filename.setBounds(6, 21, 438, 26);
 		contentPane.add(filename);
 		filename.setColumns(10);
-		filename.setText("model_ap_exam/BinaryMathQuestions.java");
+		filename.setText("control_ap_exam/BinaryMathQuestions.java");
 		
 		JLabel lblTerm = new JLabel("Search Term");
 		lblTerm.setBounds(6, 38, 184, 26);
