@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model_palindrome.Palindrome;
+import control_palindrome.Palindrome;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;

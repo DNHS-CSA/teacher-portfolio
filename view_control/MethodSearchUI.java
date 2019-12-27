@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import model_methodsearch.MethodSearch;
+import control_methodsearch.MethodSearch;
 
 import java.awt.GridLayout;
 

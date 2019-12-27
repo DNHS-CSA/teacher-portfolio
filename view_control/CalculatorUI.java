@@ -1,19 +1,17 @@
-package model_calculator;
+package view_control;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import view_control.MainMenu;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import util.Math.OPERATOR;;
 
-public class Calculator extends MainMenu {
+public class CalculatorUI extends MainMenu {
 
 	/**
 	 * 
@@ -31,7 +29,6 @@ public class Calculator extends MainMenu {
 	private STATE mathState;
 	
 	// calculator values
-	private enum OPERATOR { NOOP, PLUS, MINUS, DIVIDE, MULTIPLY };
     private OPERATOR mathOp;
 	private double arg1;
     private double arg2;
@@ -45,7 +42,7 @@ public class Calculator extends MainMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Calculator frame = new Calculator();
+					CalculatorUI frame = new CalculatorUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,23 +57,9 @@ public class Calculator extends MainMenu {
 	 */
 	private void calculateAnswer()  // method to perform calculation
 	{
-	    switch(mathOp)
-	    {
-	        case PLUS:
-	            calcAnswer = arg1 + arg2;
-	            break;
-	        case MINUS:
-	            calcAnswer = arg1 - arg2;
-	            break;
-	        case DIVIDE:
-	            calcAnswer = arg1 / arg2;
-	            break;
-	        case MULTIPLY:
-	            calcAnswer = arg1 * arg2;
-	            break;
-	        case NOOP:
-	            calcAnswer = arg1;
-	    }
+	    // 
+	    calcAnswer = util.Math.calculateIt(arg1, mathOp, arg2);
+
 		calcArea.setText(String.valueOf(calcAnswer));
 	    arg1 = Double.valueOf(calcArea.getText());
 	    mathState = STATE.CALC;
@@ -127,7 +110,7 @@ public class Calculator extends MainMenu {
 	/**
 	 * Create the frame.
 	 */
-	public Calculator() {
+	public CalculatorUI() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		

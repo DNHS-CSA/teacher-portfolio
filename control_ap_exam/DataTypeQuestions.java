@@ -1,6 +1,9 @@
-package model_ap_exam;
+package control_ap_exam;
 
 import java.util.Random;
+
+import model_ap_exam.Question;
+import model_ap_exam.QuestionRandom;
 import util.ConsoleMethods;
 
 /**
@@ -29,14 +32,7 @@ public class DataTypeQuestions extends QuestionRandom
     	// Required to organize dynamic structures for Choices after data is defined
     	super.setupQuestion();
     }
-    
-    public static String mainTest ()
-    {
-    	Question q = new DataTypeQuestions();
-        q.askQuestionConsole();
-        return q.getCounterMsg();
-    }
-     
+      
     /**
      * Sets up a Data Type question according to instance variables (this...) in Question class 
      *
@@ -97,5 +93,17 @@ public class DataTypeQuestions extends QuestionRandom
             this.answerKey = this.charE;
         }
         
+    }
+    
+    public static void main(String[] args)
+    {
+    	ConsoleMethods.println(mainTest());
+    }
+    
+    public static String mainTest ()
+    {
+    	Question q = new DataTypeQuestions();
+        q.askQuestionConsole();
+        return q.getCounterMsg();
     }
 }

@@ -1,7 +1,8 @@
-package model_ap_exam;
+package control_ap_exam;
 
-import util.ConsoleMethods;
-import control_linkedlists.Queue;;
+import model_ap_exam.Question;
+import model_linkedlists.Queue;
+import util.ConsoleMethods;;
 
 /**
  *  Establish  a set of random questions.
@@ -33,11 +34,11 @@ public class APexam {
 	  	for (int i = 0; i <= size-1; i++)
 		{
 	  		if ((double)i < (double)(size / 3))
-	  			q = new model_ap_exam.MathQuestions();
+	  			q = new control_ap_exam.MathQuestions();
 	  		else if ((double)i < (double)(2 * (size / 3) ))
-	  			q = new model_ap_exam.DataTypeQuestions();
+	  			q = new control_ap_exam.DataTypeQuestions();
 	  		else
-	  			q = new model_ap_exam.BinaryMathQuestions();
+	  			q = new control_ap_exam.BinaryMathQuestions();
 	  		
 	  		q.setID(i+1);
   			exam.add(q);

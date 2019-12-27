@@ -1,6 +1,10 @@
-package model_ap_exam;
+package control_ap_exam;
 
 import java.util.Random;
+
+import model_ap_exam.Question;
+import model_ap_exam.QuestionRandom;
+import util.ConsoleMethods;
 
 /**
  * Class to support Binary Math operations
@@ -20,19 +24,6 @@ public class BinaryMathQuestions extends QuestionRandom
     public BinaryMathQuestions()
     {   	  	
     	super.setupQuestion();
-    }
-    
-    /**
-     * Main test method to support console execution
-     * 
-     * @param  void
-     * @return void
-     */
-    public static String mainTest ()
-    {
-    	Question q = new BinaryMathQuestions();
-        q.askQuestionConsole();
-        return q.getCounterMsg();
     }
     
     /**
@@ -117,5 +108,24 @@ public class BinaryMathQuestions extends QuestionRandom
     {
         return Integer.toBinaryString( (1 << binaryLength) | arg ).substring(1);
     }
+    
+    public static void main(String[] args)
+    {
+    	ConsoleMethods.println(mainTest());
+    }
+  
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  void
+     * @return void
+     */
+    public static String mainTest ()
+    {
+    	Question q = new BinaryMathQuestions();
+        q.askQuestionConsole();
+        return q.getCounterMsg();
+    }
+    
     
 }

@@ -1,4 +1,4 @@
-package model_methodsearch;
+package control_methodsearch;
 
 /**
  * Searches PigLatinator.java for methods that match the input "Vow"

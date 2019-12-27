@@ -10,8 +10,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import model_calculator.Calculator;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
@@ -87,7 +85,7 @@ public class MainMenu extends JFrame {
 		JMenuItem mntmCalculator = new JMenuItem("Calculator");
 		mntmCalculator.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Calculator frame = new Calculator();
+				CalculatorUI frame = new CalculatorUI();
 				frame.setVisible(true);		
 			}
 		});

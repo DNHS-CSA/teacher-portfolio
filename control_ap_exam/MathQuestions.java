@@ -1,8 +1,10 @@
 
-package model_ap_exam;
+package control_ap_exam;
 
 import java.util.Random;
 
+import model_ap_exam.Question;
+import model_ap_exam.QuestionRandom;
 import util.ConsoleMethods;
 
 /**
@@ -24,19 +26,6 @@ public class MathQuestions extends QuestionRandom
     {	    	
     	// Required to organize dynamic structures for Choices after data is defined
         super.setupQuestion();
-    }
-
-    /**
-     * Main test method to support console execution
-     * 
-     * @param  void
-     * @return void
-     */
-    public static String mainTest ()
-    {
-    	Question q = new MathQuestions();
-        q.askQuestionConsole();
-        return q.getCounterMsg();
     }
     
     /**
@@ -92,9 +81,25 @@ public class MathQuestions extends QuestionRandom
             " = " + 
             answerCalc              // answer
             ,operator);             // operator parameter % 
-                                    // requires var (may be hidden feature :)
-        
+                                    // requires var (may be hidden feature :)        
         
     }
     
+    public static void main(String[] args)
+    {
+    	ConsoleMethods.println(mainTest());
+    }
+    
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  void
+     * @return void
+     */
+    public static String mainTest()
+    {
+    	Question q = new MathQuestions();
+        q.askQuestionConsole();
+        return q.getCounterMsg();
+    }
 }
