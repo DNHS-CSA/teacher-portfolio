@@ -84,8 +84,9 @@ import util.ConsoleMethods;
 	            } catch(NumberFormatException e) {
 	                int aa = 1;
 	            } 
-	        
-	            ConsoleMethods.println( control_prog_lang.AttributesSearch.main(input2));
+	            
+	            // re-implement
+	            //ConsoleMethods.println( control_prog_lang.AttributesSearch.main(input2));
 	            
 	            break;
 	        

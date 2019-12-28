@@ -23,6 +23,7 @@ import control_prog_lang.Java;
 import control_prog_lang.ProgLangManager;
 import control_prog_lang.Python;
 import control_prog_lang.Ruby;
+import util.ConsoleMethods;
 
 public class ProgLang_UI extends JFrame {
 	/**
@@ -30,7 +31,7 @@ public class ProgLang_UI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField txtPleaseEnterThe;
+	private JTextField txtSearchTerm;
 	ProgLangManager progLangs = new ProgLangManager();
 	private int position = 0;
 
@@ -64,18 +65,18 @@ public class ProgLang_UI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtPleaseEnterThe = new JTextField();
-		txtPleaseEnterThe.setBackground(new Color(255, 250, 205));
-		txtPleaseEnterThe.setBounds(16, 5, 466, 55);
-		txtPleaseEnterThe.setText("Please Enter The Parameter You Want To Search Here");
-		contentPane.add(txtPleaseEnterThe);
-		txtPleaseEnterThe.setColumns(10);
+		txtSearchTerm = new JTextField();
+		txtSearchTerm.setBackground(new Color(255, 250, 205));
+		txtSearchTerm.setBounds(16, 5, 466, 55);
+		txtSearchTerm.setText("Please Enter The Parameter You Want To Search Here");
+		contentPane.add(txtSearchTerm);
+		txtSearchTerm.setColumns(10);
 		
-		JLabel lblProgrammingLanguagesFound = new JLabel("Programming Languages Found:");
-		lblProgrammingLanguagesFound.setForeground(new Color(25, 25, 112));
-		lblProgrammingLanguagesFound.setBackground(new Color(0, 0, 128));
-		lblProgrammingLanguagesFound.setBounds(5, 386, 687, 37);
-		contentPane.add(lblProgrammingLanguagesFound);
+		JLabel lblProgLangFound = new JLabel("Programming Languages Found:");
+		lblProgLangFound.setForeground(new Color(25, 25, 112));
+		lblProgLangFound.setBackground(new Color(0, 0, 128));
+		lblProgLangFound.setBounds(5, 386, 687, 37);
+		contentPane.add(lblProgLangFound);
 		
 		JButton btnPressToSearch = new JButton("Press to Search");
 		btnPressToSearch.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -89,40 +90,40 @@ public class ProgLang_UI extends JFrame {
 		btnPressToSearch.setContentAreaFilled(true);
 		contentPane.add(btnPressToSearch);
 		
-		JTextArea txtrListOfParameters = new JTextArea();
-		txtrListOfParameters.setBackground(new Color(176, 224, 230));
-		txtrListOfParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		txtrListOfParameters.setBounds(29, 72, 201, 302);
-		txtrListOfParameters.setText( progLangs.getAttributesbyPosition(position).toString() );
-		contentPane.add(txtrListOfParameters);
-		txtrListOfParameters.setLineWrap(true);
+		JTextArea txtrBox1 = new JTextArea();
+		txtrBox1.setBackground(new Color(176, 224, 230));
+		txtrBox1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		txtrBox1.setBounds(29, 72, 201, 302);
+		txtrBox1.setText( progLangs.getAttributesbyIndex(position).toString() );
+		contentPane.add(txtrBox1);
+		txtrBox1.setLineWrap(true);
 		
-		JTextArea txtrListOfParameters_1 = new JTextArea();
-		txtrListOfParameters_1.setBackground(new Color(176, 224, 230));
-		txtrListOfParameters_1.setText( progLangs.getAttributesbyPosition(position+1).toString() );
-		txtrListOfParameters_1.setLineWrap(true);
-		txtrListOfParameters_1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		txtrListOfParameters_1.setBounds(242, 72, 208, 302);
-		contentPane.add(txtrListOfParameters_1);
+		JTextArea txtrBox2 = new JTextArea();
+		txtrBox2.setBackground(new Color(176, 224, 230));
+		txtrBox2.setText( progLangs.getAttributesbyIndex(position+1).toString() );
+		txtrBox2.setLineWrap(true);
+		txtrBox2.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		txtrBox2.setBounds(242, 72, 208, 302);
+		contentPane.add(txtrBox2);
 		
-		JTextArea txtrJavaParameters = new JTextArea();
-		txtrJavaParameters.setBackground(new Color(176, 224, 230));
-		txtrJavaParameters.setText( progLangs.getAttributesbyPosition(position+2).toString()  );
-		txtrJavaParameters.setLineWrap(true);
-		txtrJavaParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		txtrJavaParameters.setBounds(462, 72, 217, 302);
-		contentPane.add(txtrJavaParameters);
+		JTextArea txtrBox3 = new JTextArea();
+		txtrBox3.setBackground(new Color(176, 224, 230));
+		txtrBox3.setText( progLangs.getAttributesbyIndex(position+2).toString()  );
+		txtrBox3.setLineWrap(true);
+		txtrBox3.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		txtrBox3.setBounds(462, 72, 217, 302);
+		contentPane.add(txtrBox3);
 		
 		JButton button = new JButton(">");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				position = progLangs.incrementPositon(position);
-				control_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
-				txtrListOfParameters.setText(a.toString());
-				a = progLangs.getAttributesbyPosition(position+1);
-				txtrListOfParameters_1.setText(a.toString());
-				a = progLangs.getAttributesbyPosition(position+2);
-				txtrJavaParameters.setText(a.toString());
+				control_prog_lang.AttributeModel a = progLangs.getAttributesbyIndex(position);
+				txtrBox1.setText(a.toString());
+				a = progLangs.getAttributesbyIndex(position+1);
+				txtrBox2.setText(a.toString());
+				a = progLangs.getAttributesbyIndex(position+2);
+				txtrBox3.setText(a.toString());
 			}
 		});
 		button.setBounds(679, 197, 27, 55);
@@ -132,19 +133,31 @@ public class ProgLang_UI extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				position = progLangs.decrementPositon(position);
-				control_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
-				txtrListOfParameters.setText(a.toString());
-				a = progLangs.getAttributesbyPosition(position+1);
-				txtrListOfParameters_1.setText(a.toString());
-				a = progLangs.getAttributesbyPosition(position+2);
-				txtrJavaParameters.setText(a.toString());
+				control_prog_lang.AttributeModel a = progLangs.getAttributesbyIndex(position);
+				txtrBox1.setText(a.toString());
+				a = progLangs.getAttributesbyIndex(position+1);
+				txtrBox2.setText(a.toString());
+				a = progLangs.getAttributesbyIndex(position+2);
+				txtrBox3.setText(a.toString());
 			}
 		});
 		button_1.setBounds(0, 197, 27, 55);
 		contentPane.add(button_1);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblProgrammingLanguagesFound.setText(control_prog_lang.AttributesSearch.main(txtPleaseEnterThe.getText()));
+				
+				String Answer="";
+				control_prog_lang.AttributeModel pLang;
+				
+				// Loop to search text within each language within List of Programming Languages
+				for (int i = 0, j = 0; i == j; j = progLangs.incrementPositon(i++)) {
+					pLang = progLangs.getAttributesbyIndex(i);
+					if ( pLang.toString().indexOf( txtSearchTerm.getText() ) > 0 ) {
+						Answer = Answer + " " + pLang.getKey();
+					}	
+				}
+				
+				lblProgLangFound.setText(Answer);					
 			}
 		});
 		

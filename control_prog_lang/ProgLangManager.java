@@ -98,7 +98,7 @@ public class ProgLangManager {
   /**
    *  Locate object by position (optimization would be necessary if large)
    */
-  public AttributeModel getAttributesbyPosition(int position)
+  public AttributeModel getAttributesbyIndex(int position)
   {	  
 	  	// loop until you find object by position
 		progLangs.getFirstObject();
