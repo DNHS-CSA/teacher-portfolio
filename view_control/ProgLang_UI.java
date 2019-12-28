@@ -18,6 +18,8 @@ import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 
+import model_prog_lang.Attributes;
+import model_prog_lang.AttributesManager;
 import model_prog_lang.Java;
 import model_prog_lang.Python;
 import model_prog_lang.Ruby;
@@ -29,6 +31,7 @@ public class ProgLang_UI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtPleaseEnterThe;
+	AttributesManager progLang = new AttributesManager();
 
 	/**
 	 * Launch the application.
@@ -88,13 +91,13 @@ public class ProgLang_UI extends JFrame {
 		txtrListOfParameters.setBackground(new Color(176, 224, 230));
 		txtrListOfParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrListOfParameters.setBounds(5, 72, 217, 302);
-		txtrListOfParameters.setText( new Python().toString() );
+		//txtrListOfParameters.setText( progLang.getAttributesFwd() );
 		contentPane.add(txtrListOfParameters);
 		txtrListOfParameters.setLineWrap(true);
 		
 		JTextArea txtrListOfParameters_1 = new JTextArea();
 		txtrListOfParameters_1.setBackground(new Color(176, 224, 230));
-		txtrListOfParameters_1.setText( new Ruby().toString() );
+		//txtrListOfParameters_1.setText( progLang.getAttributesFwd() );
 		txtrListOfParameters_1.setLineWrap(true);
 		txtrListOfParameters_1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrListOfParameters_1.setBounds(230, 72, 224, 302);
@@ -102,7 +105,7 @@ public class ProgLang_UI extends JFrame {
 		
 		JTextArea txtrJavaParameters = new JTextArea();
 		txtrJavaParameters.setBackground(new Color(176, 224, 230));
-		txtrJavaParameters.setText( new Java().toString() );
+		//txtrJavaParameters.setText( progLang.getAttributesFwd() );
 		txtrJavaParameters.setLineWrap(true);
 		txtrJavaParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrJavaParameters.setBounds(460, 72, 232, 302);
@@ -110,6 +113,15 @@ public class ProgLang_UI extends JFrame {
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblProgrammingLanguagesFound.setText(model_prog_lang.AttributesSearch.main(txtPleaseEnterThe.getText()));
+				
+				model_prog_lang.Attributes a = progLang.getAttributesFwd();
+				txtrListOfParameters.setText(a.toString());
+				a = progLang.getAttributesFwd();
+				txtrListOfParameters_1.setText(a.toString());
+				a = progLang.getAttributesFwd();
+				txtrJavaParameters.setText(a.toString());
+
+				
 			}
 		});
 		

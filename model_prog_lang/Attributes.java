@@ -7,6 +7,7 @@ package model_prog_lang;
  */
 public class Attributes 
 {
+	int ID;
     String ProgLang;
     String BirthDate;
     String Creator;
@@ -22,7 +23,7 @@ public class Attributes
     public String toString() {
     	// Standard Object to String method
     	return "\n"+ 
-    		ProgLang +"\n"+
+    		ID + ". " + ProgLang +"\n"+
     		BirthDate + "\n"+
             Creator + "\n"+
             Owner + "\n"+
@@ -33,6 +34,11 @@ public class Attributes
             ide + "\n"+
             frameworks + "\n";
    	
+    }
+    
+    public void setID(int id)
+    {
+    	this.ID = id;
     }
     
     public String getKey()
