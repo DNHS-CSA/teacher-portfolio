@@ -101,7 +101,7 @@ public class AttributesManager {
   public int decrementPositon(int position)
   {  
 	  if (position <= 0)
-		  position = size;
+		  position = size-1;
 	  else
 		  position--;
 
@@ -114,7 +114,7 @@ public class AttributesManager {
    */
   public int incrementPositon(int position)
   {  
-	  if (position >= size)
+	  if (position >= size-1)
 		  position = 0;
 	  else
 		  position++;
