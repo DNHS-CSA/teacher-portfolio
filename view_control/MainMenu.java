@@ -91,14 +91,13 @@ public class MainMenu extends JFrame {
 		});
 		mnJig.add(mntmCalculator);
 		
-		JMenuItem mntmMethodSearch = new JMenuItem("Method Search");
+		JMenuItem mntmMethodSearch = new JMenuItem("File Search");
 		mntmMethodSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MethodSearchUI frame = new MethodSearchUI();
 				frame.setVisible(true);
 			}
 		});
-		mnJig.add(mntmMethodSearch);
 		
 		JMenuItem mntmPalindrome = new JMenuItem("Palindrome");
 		mntmPalindrome.addActionListener(new ActionListener() {
@@ -108,6 +107,16 @@ public class MainMenu extends JFrame {
 			}
 		});
 		mnJig.add(mntmPalindrome);
+		mnJig.add(mntmMethodSearch);
+		
+		JMenuItem mntmProgrammingLanguages = new JMenuItem("Model Search");
+		mntmProgrammingLanguages.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProgrammingLanguagesUI frame = new ProgrammingLanguagesUI();
+				frame.setVisible(true);
+			}
+		});
+		mnJig.add(mntmProgrammingLanguages);
 		
 		
 	}
