@@ -7,15 +7,16 @@ package model_search;
  */
 public class Ruby extends OOP
 {
-     public void init(){
-		BirthDate="^Mid 1990s^";
-		Creator="^Yukihiro \"Matz\" Matsumoto^";
-		Owner="^open source^Ruby License^";
-		ReasonForDemand="^websites^apps^";
-		GitHubUsageRank="^11^";
-		KeyCompanies="^Airbnb^Github^";
-		AvgSalary="^$123,000^";
-		ide="^RubyMine^Eclipse^Komodo^NetBeans^";
-		frameworks="^Rails^JRuby^";
+     public Ruby() {
+ 		ProgLang="Ruby";
+		BirthDate="Mid 1990s";
+		Creator="Yukihiro \"Matz\" Matsumoto";
+		Owner="Open Source, Ruby License";
+		ReasonForDemand="Websites, Apps";
+		GitHubUsageRank="Rank: 11";
+		KeyCompanies="Airbnb, Github";
+		AvgSalary="$123,000";
+		ide="RubyMine, Eclipse, Komodo, NetBeans";
+		frameworks="Rails, JRuby";
      }
 }

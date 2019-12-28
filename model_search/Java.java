@@ -7,16 +7,17 @@ package model_search;
  */
 public class Java extends OOP
 {
-	public void init() {
-		BirthDate="^Early 1990s^";
-		Creator="^James Gosling^Sun Micro^";
-		Owner="^Oracle^";
-		ReasonForDemand="^Platform Port (WORA)^3 billion devices^";
-		GitHubUsageRank="^3^";
-		KeyCompanies="^Amazon^Twitter^Google^";
-		AvgSalary="^$100,000^";
-		ide="^IntelliJ IDEA^NetBeans^Eclipse^";
-		frameworks="^Spring^Struts^Hibernate";
+	public Java() {
+		ProgLang="Java";
+		BirthDate="Early 1990s";
+		Creator="James Gosling, Sun Micro Systems";
+		Owner="Oracle";
+		ReasonForDemand="Platform Port (WORA), 3 billion devices";
+		GitHubUsageRank="Rank: 3";
+		KeyCompanies="Amazon, Twitter, Google";
+		AvgSalary="$100,000";
+		ide="IntelliJ IDEA, NetBeans, Eclipse";
+		frameworks="Spring, Struts, Hibernate";
 	}
 	
 }

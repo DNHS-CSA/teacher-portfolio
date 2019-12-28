@@ -7,15 +7,16 @@ package model_search;
  */
 public class Swift extends OOP
 {
-    public void init() {
-		BirthDate="^2014^";
-		Creator="^apple^";
-		Owner="^open source^";
-		ReasonForDemand="^Friendly to use Apple iOS development^";
-		GitHubUsageRank="^14^";
-		KeyCompanies="^Apple^";
-		AvgSalary="^$115,000.00^";
-		ide="^Xcode^AppCode^";
-		frameworks="^Cocoa^Cocoa Touch^";
+    public Swift() {
+		ProgLang="Swift";
+		BirthDate="2014";
+		Creator="Apple";
+		Owner="Open Source";
+		ReasonForDemand="Friendly to use Apple iOS development";
+		GitHubUsageRank="Rank: 14";
+		KeyCompanies="Apple";
+		AvgSalary="$115,000.00";
+		ide="Xcode";
+		frameworks="Cocoa";
     }
 }

@@ -17,13 +17,9 @@ import java.util.*;
 	        
 	        // Make Programming Language Objects
 	        Python P = new Python(); 
-	        P.init();
 	        Swift S= new Swift();
-	        S.init();
 	        Ruby R = new Ruby();
-	        R.init();
 	        Java J = new Java();
-	        J.init();
 	        boolean cont = true; /*used in do while loop to keep everything running*/
 	        System.out.println("Hi Welcome To The Programming Languages Program!");
 	        do {

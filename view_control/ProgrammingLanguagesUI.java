@@ -18,7 +18,10 @@ import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 
+import model_search.Java;
 import model_search.ProgrammingLanguagesMain;
+import model_search.Python;
+import model_search.Ruby;
 
 public class ProgrammingLanguagesUI extends JFrame {
 	/**
@@ -48,9 +51,7 @@ public class ProgrammingLanguagesUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ProgrammingLanguagesUI() {
-		
-		ProgrammingLanguagesMain a = new ProgrammingLanguagesMain();
-		
+				
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 706, 457);
 		contentPane = new JPanel();
@@ -88,13 +89,13 @@ public class ProgrammingLanguagesUI extends JFrame {
 		txtrListOfParameters.setBackground(new Color(176, 224, 230));
 		txtrListOfParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrListOfParameters.setBounds(5, 72, 217, 302);
-		txtrListOfParameters.setText(" Python Parameters" + a.printPython());
+		txtrListOfParameters.setText( new Python().toString() );
 		contentPane.add(txtrListOfParameters);
 		txtrListOfParameters.setLineWrap(true);
 		
 		JTextArea txtrListOfParameters_1 = new JTextArea();
 		txtrListOfParameters_1.setBackground(new Color(176, 224, 230));
-		txtrListOfParameters_1.setText(" Ruby Parameters" + a.printRuby());
+		txtrListOfParameters_1.setText( new Ruby().toString() );
 		txtrListOfParameters_1.setLineWrap(true);
 		txtrListOfParameters_1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrListOfParameters_1.setBounds(230, 72, 224, 302);
@@ -102,7 +103,7 @@ public class ProgrammingLanguagesUI extends JFrame {
 		
 		JTextArea txtrJavaParameters = new JTextArea();
 		txtrJavaParameters.setBackground(new Color(176, 224, 230));
-		txtrJavaParameters.setText(" Java Parameters" + a.printJava());
+		txtrJavaParameters.setText( new Java().toString() );
 		txtrJavaParameters.setLineWrap(true);
 		txtrJavaParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrJavaParameters.setBounds(460, 72, 232, 302);

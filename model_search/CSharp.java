@@ -7,15 +7,16 @@ package model_search;
  */
 public class CSharp extends OOP 
 {
-	public void init() {
-		BirthDate="^2000^";
-		Creator="^Anders Hejlsberg^Microsoft^";
-		Owner="^Microsoft^";
-		ReasonForDemand="^Websites^Cool tool for gaming using Unity framework^";
-		GitHubUsageRank="^7^";
-		KeyCompanies="^Microsoft^";
-		AvgSalary="^$110,000^";
-		ide="^Visual Studio^JetBrains Rider^";
-		frameworks="^Unity Game Engine^.Net^APS.Net^";
+	public CSharp() {
+		ProgLang="C#";
+		BirthDate="2000";
+		Creator="Anders Hejlsberg, Microsoft";
+		Owner="Microsoft";
+		ReasonForDemand="Websites, Cool language for gaming using Unity";
+		GitHubUsageRank="Rank: 7";
+		KeyCompanies="Microsoft";
+		AvgSalary="$110,000";
+		ide="Visual Studio, JetBrains, Rider";
+		frameworks="Unity Game Engine, .Net, APS.Net^";	
     }
 }
