@@ -56,8 +56,10 @@ public class AttributesManager {
 	  				break;
 	  			case 2:
 	  				a = new Python();
+	  				break;
 	  			case 3:
 	  				a = new Ruby();
+	  				break;
 	  			case 4:
 	  			default:
 	  				a = new Swift();
@@ -91,13 +93,53 @@ public class AttributesManager {
     ConsoleMethods.println("Last Element: " + progLangs.getLastObject() );
     ConsoleMethods.println("Full Queue: " + progLangs);
   }
+ 
+  
+  /**
+   *  Increase logical position
+   */
+  public int decrementPositon(int position)
+  {  
+	  if (position <= 0)
+		  position = size;
+	  else
+		  position--;
+
+	  return position;
+	  
+  }
+  
+  /**
+   *  Increase logical position
+   */
+  public int incrementPositon(int position)
+  {  
+	  if (position >= size)
+		  position = 0;
+	  else
+		  position++;
+
+	  return position;
+	  
+  }
+  
+  /**
+   *  Get current test question and advance pointer
+   */
+  public Attributes getAttributesbyPosition(int position)
+  {	  
+		progLangs.getFirstObject();
+		for (int i = 0; i < position; i++)
+			progLangs.setNext();
+		return (Attributes)progLangs.getObject();
+  }
   
   /**
    *  Get current test question and advance pointer
    */
   public Attributes getAttributesFwd()
   {
-	  Attributes q;	// put object back into Attributes type
+	  Attributes q;	// variable to put object back into Attributes type
 
 	  if (init) {
 		  q = (Attributes)progLangs.getFirstObject();
@@ -115,7 +157,7 @@ public class AttributesManager {
    */
   public Attributes getAttributesRev()
   {
-	  Attributes q;	// put object back into Attributes type
+	  Attributes q;	// variable to put object back into Attributes type
 
 	  if (init) {
 		  q = (Attributes)progLangs.getLastObject();

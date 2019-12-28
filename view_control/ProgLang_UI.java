@@ -31,7 +31,9 @@ public class ProgLang_UI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtPleaseEnterThe;
-	AttributesManager progLang = new AttributesManager();
+	AttributesManager progLangs = new AttributesManager();
+	private int position = 0;
+
 
 	/**
 	 * Launch the application.
@@ -90,38 +92,59 @@ public class ProgLang_UI extends JFrame {
 		JTextArea txtrListOfParameters = new JTextArea();
 		txtrListOfParameters.setBackground(new Color(176, 224, 230));
 		txtrListOfParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		txtrListOfParameters.setBounds(5, 72, 217, 302);
-		//txtrListOfParameters.setText( progLang.getAttributesFwd() );
+		txtrListOfParameters.setBounds(29, 72, 201, 302);
+		txtrListOfParameters.setText( progLangs.getAttributesbyPosition(position).toString() );
 		contentPane.add(txtrListOfParameters);
 		txtrListOfParameters.setLineWrap(true);
 		
 		JTextArea txtrListOfParameters_1 = new JTextArea();
 		txtrListOfParameters_1.setBackground(new Color(176, 224, 230));
-		//txtrListOfParameters_1.setText( progLang.getAttributesFwd() );
+		txtrListOfParameters_1.setText( progLangs.getAttributesbyPosition(position+1).toString() );
 		txtrListOfParameters_1.setLineWrap(true);
 		txtrListOfParameters_1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		txtrListOfParameters_1.setBounds(230, 72, 224, 302);
+		txtrListOfParameters_1.setBounds(242, 72, 208, 302);
 		contentPane.add(txtrListOfParameters_1);
 		
 		JTextArea txtrJavaParameters = new JTextArea();
 		txtrJavaParameters.setBackground(new Color(176, 224, 230));
-		//txtrJavaParameters.setText( progLang.getAttributesFwd() );
+		txtrJavaParameters.setText( progLangs.getAttributesbyPosition(position+2).toString()  );
 		txtrJavaParameters.setLineWrap(true);
 		txtrJavaParameters.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		txtrJavaParameters.setBounds(460, 72, 232, 302);
+		txtrJavaParameters.setBounds(462, 72, 217, 302);
 		contentPane.add(txtrJavaParameters);
+		
+		JButton button = new JButton(">");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				position = progLangs.incrementPositon(position);
+				model_prog_lang.Attributes a = progLangs.getAttributesbyPosition(position);
+				txtrListOfParameters.setText(a.toString());
+				a = progLangs.getAttributesbyPosition(position+1);
+				txtrListOfParameters_1.setText(a.toString());
+				a = progLangs.getAttributesbyPosition(position+2);
+				txtrJavaParameters.setText(a.toString());
+			}
+		});
+		button.setBounds(679, 197, 27, 55);
+		contentPane.add(button);
+		
+		JButton button_1 = new JButton("<");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				position = progLangs.decrementPositon(position);
+				model_prog_lang.Attributes a = progLangs.getAttributesbyPosition(position);
+				txtrListOfParameters.setText(a.toString());
+				a = progLangs.getAttributesbyPosition(position+1);
+				txtrListOfParameters_1.setText(a.toString());
+				a = progLangs.getAttributesbyPosition(position+2);
+				txtrJavaParameters.setText(a.toString());
+			}
+		});
+		button_1.setBounds(0, 197, 27, 55);
+		contentPane.add(button_1);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblProgrammingLanguagesFound.setText(model_prog_lang.AttributesSearch.main(txtPleaseEnterThe.getText()));
-				
-				model_prog_lang.Attributes a = progLang.getAttributesFwd();
-				txtrListOfParameters.setText(a.toString());
-				a = progLang.getAttributesFwd();
-				txtrListOfParameters_1.setText(a.toString());
-				a = progLang.getAttributesFwd();
-				txtrJavaParameters.setText(a.toString());
-
-				
 			}
 		});
 		
