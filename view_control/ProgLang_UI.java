@@ -32,6 +32,8 @@ public class ProgLang_UI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSearchTerm;
+	
+	// Control variables for data
 	ProgLangManager progLangs = new ProgLangManager();
 	private int position = 0;
 
@@ -144,19 +146,8 @@ public class ProgLang_UI extends JFrame {
 		button_1.setBounds(0, 197, 27, 55);
 		contentPane.add(button_1);
 		btnPressToSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String Answer="";
-				control_prog_lang.AttributeModel pLang;
-				
-				// Loop to search text within each language within List of Programming Languages
-				for (int i = 0, j = 0; i == j; j = progLangs.incrementPositon(i++)) {
-					pLang = progLangs.getAttributesbyIndex(i);
-					if ( pLang.toString().indexOf( txtSearchTerm.getText() ) > 0 ) {
-						Answer = Answer + " " + pLang.getKey();
-					}	
-				}
-				
+			public void actionPerformed(ActionEvent e) {				
+				String Answer = progLangs.searchAttributes(txtSearchTerm.getText());		
 				lblProgLangFound.setText(Answer);					
 			}
 		});

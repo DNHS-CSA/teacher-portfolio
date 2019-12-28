@@ -106,6 +106,34 @@ public class ProgLangManager {
 			progLangs.setNext();
 		return (AttributeModel)progLangs.getObject();
   }
+ 
+  public String searchAttributes(String searchTerm)
+  {
+  	String Answer="";
+	AttributeModel pLang;
+	
+	// Loop to search text within each language within List of Programming Languages
+	for (int i = 0, j = 0; i == j; j = incrementPositon(i++)) {
+		pLang = getAttributesbyIndex(i);
+		if ( pLang.toString().indexOf( searchTerm ) > 0 ) {
+			Answer = Answer + " " + pLang.getKey();
+		}
+	}
+	return (Answer);
+  }
+  
+  public String toString()
+  {
+	  String Answer="";
+	  AttributeModel pLang;
+		
+	  // Loop to search text within each language within List of Programming Languages
+	  for (int i = 0, j = 0; i == j; j = incrementPositon(i++)) {
+			pLang = getAttributesbyIndex(i);
+			Answer = Answer + " " + pLang.toString();
+	  }
+	  return (Answer);
+	}
   
   /* ************************* Test Section below this point ************************* */
  
@@ -114,7 +142,7 @@ public class ProgLangManager {
    *  this is inverse of createProgLang,
    *  deletes references from circle list
    */
-  public void emptyTest()
+  private void emptyTest()
   {
 	  	// remove data off queue
 	  	for (int i = 0; i <= size; i++)
@@ -126,7 +154,7 @@ public class ProgLangManager {
   /**
    *  Displays key elements and the the full list
    */
-  public void displayTest()
+  private void displayTest()
   {
     ConsoleMethods.println("First Element: " + progLangs.getFirstObject() );
     ConsoleMethods.println("Last Element: " + progLangs.getLastObject() );
@@ -138,6 +166,7 @@ public class ProgLangManager {
    *
    * @param  args  The command line arguments (not used)
    */
+  
   public static void main(String[] args)
   {
 	// Initialize and show elements
