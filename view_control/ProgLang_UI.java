@@ -18,12 +18,11 @@ import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 
-import model_search.Java;
-import model_search.ProgrammingLanguagesMain;
-import model_search.Python;
-import model_search.Ruby;
+import model_prog_lang.Java;
+import model_prog_lang.Python;
+import model_prog_lang.Ruby;
 
-public class ProgrammingLanguagesUI extends JFrame {
+public class ProgLang_UI extends JFrame {
 	/**
 	 * 
 	 */
@@ -38,7 +37,7 @@ public class ProgrammingLanguagesUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProgrammingLanguagesUI frame = new ProgrammingLanguagesUI();
+					ProgLang_UI frame = new ProgLang_UI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +49,7 @@ public class ProgrammingLanguagesUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ProgrammingLanguagesUI() {
+	public ProgLang_UI() {
 				
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 706, 457);
@@ -110,7 +109,7 @@ public class ProgrammingLanguagesUI extends JFrame {
 		contentPane.add(txtrJavaParameters);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblProgrammingLanguagesFound.setText(ProgrammingLanguagesMain.main(txtPleaseEnterThe.getText()));
+				lblProgrammingLanguagesFound.setText(model_prog_lang._Search.main(txtPleaseEnterThe.getText()));
 			}
 		});
 		

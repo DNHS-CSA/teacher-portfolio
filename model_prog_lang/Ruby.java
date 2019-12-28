@@ -1,11 +1,11 @@
-package model_search;
+package model_prog_lang;
 /**
  * Write a description of class Ruby here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Ruby extends OOP
+public class Ruby extends _Attributes
 {
      public Ruby() {
  		ProgLang="Ruby";

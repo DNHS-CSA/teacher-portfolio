@@ -1,11 +1,11 @@
-package model_search;
+package model_prog_lang;
 /**
  * Write a description of class Swift here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Swift extends OOP
+public class Swift extends _Attributes
 {
     public Swift() {
 		ProgLang="Swift";

@@ -1,11 +1,11 @@
-package model_search;
+package model_prog_lang;
 /**
  * Write a description of class Java here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Java extends OOP
+public class Java extends _Attributes
 {
 	public Java() {
 		ProgLang="Java";

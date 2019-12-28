@@ -1,11 +1,11 @@
-package model_search;
+package model_prog_lang;
 /**
  * Write a description of class Python here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Python extends OOP
+public class Python extends _Attributes
 {
     public Python() {
 		ProgLang="Python";

@@ -1,4 +1,4 @@
-package model_search;
+package model_prog_lang;
 /**
 	 * Write a description of class ProgrammingLanguages here.
 	 
@@ -6,20 +6,8 @@ package model_search;
 	 * @version (a version number or a date)
 	 */
 import java.util.*;
-public class ProgrammingLanguagesMain 
+public class _Search 
 {
-        
-    public  String printPython() {
-    	 return new Python().toString(); 	         
-    }
-    
-    public  String printRuby() {
-   	 	return new Ruby().toString(); 	         
-    }
-    
-    public  String printJava() {
-   	 	return new Java().toString(); 	         
-    }
             
     public static String main(String input) {
         

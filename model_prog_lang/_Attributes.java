@@ -1,11 +1,11 @@
-package model_search;
+package model_prog_lang;
 /**
  * Write a description of class OOP here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class OOP 
+public class _Attributes 
 {
     String ProgLang;
     String BirthDate;

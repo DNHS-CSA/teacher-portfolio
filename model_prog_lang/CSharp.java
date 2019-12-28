@@ -1,11 +1,11 @@
-package model_search;
+package model_prog_lang;
 /**
  * Write a description of class CSharp here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class CSharp extends OOP 
+public class CSharp extends _Attributes 
 {
 	public CSharp() {
 		ProgLang="C#";

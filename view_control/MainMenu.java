@@ -112,7 +112,7 @@ public class MainMenu extends JFrame {
 		JMenuItem mntmProgrammingLanguages = new JMenuItem("Model Search");
 		mntmProgrammingLanguages.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ProgrammingLanguagesUI frame = new ProgrammingLanguagesUI();
+				ProgLang_UI frame = new ProgLang_UI();
 				frame.setVisible(true);
 			}
 		});
