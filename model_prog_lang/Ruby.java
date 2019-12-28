@@ -5,7 +5,7 @@ package model_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Ruby extends _Attributes
+public class Ruby extends Attributes
 {
      public Ruby() {
  		ProgLang="Ruby";

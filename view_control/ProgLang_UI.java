@@ -109,7 +109,7 @@ public class ProgLang_UI extends JFrame {
 		contentPane.add(txtrJavaParameters);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblProgrammingLanguagesFound.setText(model_prog_lang._Search.main(txtPleaseEnterThe.getText()));
+				lblProgrammingLanguagesFound.setText(model_prog_lang.AttributesSearch.main(txtPleaseEnterThe.getText()));
 			}
 		});
 		

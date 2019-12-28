@@ -5,7 +5,7 @@ package model_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Java extends _Attributes
+public class Java extends Attributes
 {
 	public Java() {
 		ProgLang="Java";

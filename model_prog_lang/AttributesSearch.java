@@ -6,7 +6,7 @@ package model_prog_lang;
 	 * @version (a version number or a date)
 	 */
 import java.util.*;
-public class _Search 
+public class AttributesSearch 
 {
             
     public static String main(String input) {

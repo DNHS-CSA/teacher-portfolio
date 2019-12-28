@@ -85,7 +85,7 @@ import util.ConsoleMethods;
 	                int aa = 1;
 	            } 
 	        
-	            ConsoleMethods.println( model_prog_lang._Search.main(input2));
+	            ConsoleMethods.println( model_prog_lang.AttributesSearch.main(input2));
 	            
 	            break;
 	        

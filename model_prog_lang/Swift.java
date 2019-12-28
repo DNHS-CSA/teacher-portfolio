@@ -5,7 +5,7 @@ package model_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Swift extends _Attributes
+public class Swift extends Attributes
 {
     public Swift() {
 		ProgLang="Swift";
