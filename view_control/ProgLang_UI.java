@@ -18,11 +18,11 @@ import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 
-import model_prog_lang.AttributeModel;
-import model_prog_lang.ProgLangManager;
-import model_prog_lang.Java;
-import model_prog_lang.Python;
-import model_prog_lang.Ruby;
+import control_prog_lang.AttributeModel;
+import control_prog_lang.Java;
+import control_prog_lang.ProgLangManager;
+import control_prog_lang.Python;
+import control_prog_lang.Ruby;
 
 public class ProgLang_UI extends JFrame {
 	/**
@@ -117,7 +117,7 @@ public class ProgLang_UI extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				position = progLangs.incrementPositon(position);
-				model_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
+				control_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
 				txtrListOfParameters.setText(a.toString());
 				a = progLangs.getAttributesbyPosition(position+1);
 				txtrListOfParameters_1.setText(a.toString());
@@ -132,7 +132,7 @@ public class ProgLang_UI extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				position = progLangs.decrementPositon(position);
-				model_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
+				control_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
 				txtrListOfParameters.setText(a.toString());
 				a = progLangs.getAttributesbyPosition(position+1);
 				txtrListOfParameters_1.setText(a.toString());
@@ -144,7 +144,7 @@ public class ProgLang_UI extends JFrame {
 		contentPane.add(button_1);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblProgrammingLanguagesFound.setText(model_prog_lang.AttributesSearch.main(txtPleaseEnterThe.getText()));
+				lblProgrammingLanguagesFound.setText(control_prog_lang.AttributesSearch.main(txtPleaseEnterThe.getText()));
 			}
 		});
 		

@@ -1,4 +1,4 @@
-package model_prog_lang;
+package control_prog_lang;
 
 import model_linkedlists.CircleQueue;
 import util.ConsoleMethods;;
@@ -13,8 +13,6 @@ public class ProgLangManager {
 
   private CircleQueue progLangs;
   private int size = 5;
-  private boolean init = true;
-
 
   /**
    *  APprogLang with default amount of questions
@@ -70,31 +68,6 @@ public class ProgLangManager {
   }
   
   /**
-   *  Removes all the user defined objects from Stack,
-   *  this is inverse of createStack,
-   *  stack pops and values are displayed to console 
-   */
-  public void emptyTest()
-  {
-	  	// popping data off stack with console output
-	  	for (int i = 0; i <= size; i++)
-	  	{
-	  		progLangs.delete();
-	  	}
-  }
-
-  /**
-   *  Display the top element of the list and full stack
-   */
-  public void displayTest()
-  {
-    ConsoleMethods.println("First Element: " + progLangs.getFirstObject() );
-    ConsoleMethods.println("Last Element: " + progLangs.getLastObject() );
-    ConsoleMethods.println("Full Queue: " + progLangs);
-  }
- 
-  
-  /**
    *  Increase logical position
    */
   public int decrementPositon(int position)
@@ -134,7 +107,32 @@ public class ProgLangManager {
 		return (AttributeModel)progLangs.getObject();
   }
   
-
+  /* ************************* Test Section below this point ************************* */
+ 
+  /**
+   *  Removes all the user defined objects from circle list,
+   *  this is inverse of createProgLang,
+   *  deletes references from circle list
+   */
+  public void emptyTest()
+  {
+	  	// remove data off queue
+	  	for (int i = 0; i <= size; i++)
+	  	{
+	  		progLangs.delete();
+	  	}
+  }
+  
+  /**
+   *  Displays key elements and the the full list
+   */
+  public void displayTest()
+  {
+    ConsoleMethods.println("First Element: " + progLangs.getFirstObject() );
+    ConsoleMethods.println("Last Element: " + progLangs.getLastObject() );
+    ConsoleMethods.println("Full List: " + progLangs);
+  }
+ 
   /**
    *  Demonstrates the use of the LinkedList used as storing questions.
    *

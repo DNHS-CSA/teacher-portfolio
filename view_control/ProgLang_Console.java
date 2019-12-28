@@ -2,10 +2,10 @@ package view_control;
 
 import java.util.*;
 
-import model_prog_lang.Java;
-import model_prog_lang.Python;
-import model_prog_lang.Ruby;
-import model_prog_lang.Swift;
+import control_prog_lang.Java;
+import control_prog_lang.Python;
+import control_prog_lang.Ruby;
+import control_prog_lang.Swift;
 import util.ConsoleMethods;
 
 /**
@@ -85,7 +85,7 @@ import util.ConsoleMethods;
 	                int aa = 1;
 	            } 
 	        
-	            ConsoleMethods.println( model_prog_lang.AttributesSearch.main(input2));
+	            ConsoleMethods.println( control_prog_lang.AttributesSearch.main(input2));
 	            
 	            break;
 	        

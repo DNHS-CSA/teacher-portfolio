@@ -1,4 +1,4 @@
-package model_prog_lang;
+package control_prog_lang;
 /**
 	 * Write a description of class ProgrammingLanguages here.
 	 
