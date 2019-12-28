@@ -5,7 +5,7 @@ package model_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Python extends Attributes
+public class Python extends AttributeModel
 {
     public Python() {
 		ProgLang="Python";

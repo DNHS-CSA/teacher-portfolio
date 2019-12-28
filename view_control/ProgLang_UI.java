@@ -18,8 +18,8 @@ import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 
-import model_prog_lang.Attributes;
-import model_prog_lang.AttributesManager;
+import model_prog_lang.AttributeModel;
+import model_prog_lang.ProgLangManager;
 import model_prog_lang.Java;
 import model_prog_lang.Python;
 import model_prog_lang.Ruby;
@@ -31,7 +31,7 @@ public class ProgLang_UI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtPleaseEnterThe;
-	AttributesManager progLangs = new AttributesManager();
+	ProgLangManager progLangs = new ProgLangManager();
 	private int position = 0;
 
 
@@ -117,7 +117,7 @@ public class ProgLang_UI extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				position = progLangs.incrementPositon(position);
-				model_prog_lang.Attributes a = progLangs.getAttributesbyPosition(position);
+				model_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
 				txtrListOfParameters.setText(a.toString());
 				a = progLangs.getAttributesbyPosition(position+1);
 				txtrListOfParameters_1.setText(a.toString());
@@ -132,7 +132,7 @@ public class ProgLang_UI extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				position = progLangs.decrementPositon(position);
-				model_prog_lang.Attributes a = progLangs.getAttributesbyPosition(position);
+				model_prog_lang.AttributeModel a = progLangs.getAttributesbyPosition(position);
 				txtrListOfParameters.setText(a.toString());
 				a = progLangs.getAttributesbyPosition(position+1);
 				txtrListOfParameters_1.setText(a.toString());

@@ -1,6 +1,5 @@
 package model_prog_lang;
 
-import control_ap_exam.APexam;
 import model_linkedlists.CircleQueue;
 import util.ConsoleMethods;;
 
@@ -10,7 +9,7 @@ import util.ConsoleMethods;;
  * @author     John Mortensen
  * @created    December 24, 2019
  */
-public class AttributesManager {
+public class ProgLangManager {
 
   private CircleQueue progLangs;
   private int size = 5;
@@ -20,7 +19,7 @@ public class AttributesManager {
   /**
    *  APprogLang with default amount of questions
    */ 
-  public AttributesManager()
+  public ProgLangManager()
   {
 	  init();
   }
@@ -42,7 +41,7 @@ public class AttributesManager {
    */
   public void createProgLang()
   {	
-	  	Attributes a;
+	  	AttributeModel a;
 
 	  	// pushing data to stack with console output
 	  	for (int i = 0; i <= size-1; i++)
@@ -124,52 +123,17 @@ public class AttributesManager {
   }
   
   /**
-   *  Get current test question and advance pointer
+   *  Locate object by position (optimization would be necessary if large)
    */
-  public Attributes getAttributesbyPosition(int position)
+  public AttributeModel getAttributesbyPosition(int position)
   {	  
+	  	// loop until you find object by position
 		progLangs.getFirstObject();
 		for (int i = 0; i < position; i++)
 			progLangs.setNext();
-		return (Attributes)progLangs.getObject();
+		return (AttributeModel)progLangs.getObject();
   }
   
-  /**
-   *  Get current test question and advance pointer
-   */
-  public Attributes getAttributesFwd()
-  {
-	  Attributes q;	// variable to put object back into Attributes type
-
-	  if (init) {
-		  q = (Attributes)progLangs.getFirstObject();
-		  init = false;
-	  } else {
-		  progLangs.setNext();
-		  q = (Attributes)progLangs.getObject();
-	  }
-	  
-	  return q;	
-  }
-  
-  /**
-   *  Get current test question and advance pointer
-   */
-  public Attributes getAttributesRev()
-  {
-	  Attributes q;	// variable to put object back into Attributes type
-
-	  if (init) {
-		  q = (Attributes)progLangs.getLastObject();
-		  init = false;
-	  } else {
-		  progLangs.setPrevious();
-		  q = (Attributes)progLangs.getObject();
-	  }
-	  
-	  return q;	
-  }
-
 
   /**
    *  Demonstrates the use of the LinkedList used as storing questions.
@@ -180,7 +144,7 @@ public class AttributesManager {
   {
 	// Initialize and show elements
 	ConsoleMethods.println("Initialize progLang");
-	AttributesManager progLang = new AttributesManager();
+	ProgLangManager progLang = new ProgLangManager();
     progLang.displayTest();
     
     // Empty queue and show elements
