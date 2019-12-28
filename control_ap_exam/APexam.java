@@ -1,7 +1,7 @@
 package control_ap_exam;
 
 import model_ap_exam.Question;
-import model_linkedlists.Queue;
+import model_linkedlists.CircleQueue;
 import util.ConsoleMethods;;
 
 /**
@@ -12,7 +12,7 @@ import util.ConsoleMethods;;
  */
 public class APexam {
 
-  private Queue exam;
+  private CircleQueue exam;
   private int size = 3;	// size of test
   private boolean init = true;
 
@@ -38,7 +38,7 @@ public class APexam {
    */
   private void init()
   {
-	  exam = new Queue();
+	  exam = new CircleQueue();
 	  createTest();
   }
   
@@ -86,8 +86,8 @@ public class APexam {
    */
   public void displayTest()
   {
-    ConsoleMethods.println("First Element: " + exam.getFirstValue() );
-    ConsoleMethods.println("Last Element: " + exam.getLastValue() );
+    ConsoleMethods.println("First Element: " + exam.getFirstObject() );
+    ConsoleMethods.println("Last Element: " + exam.getLastObject() );
     ConsoleMethods.println("Full Queue: " + exam);
   }
   
@@ -99,11 +99,11 @@ public class APexam {
 	  Question q;	// put object back into Question type
 
 	  if (init) {
-		  q = (Question)exam.getFirstValue();
+		  q = (Question)exam.getFirstObject();
 		  init = false;
 	  } else {
 		  exam.setNext();
-		  q = (Question)exam.getValue();
+		  q = (Question)exam.getObject();
 	  }
 	  
 	  return q;	
@@ -117,11 +117,11 @@ public class APexam {
 	  Question q;	// put object back into Question type
 
 	  if (init) {
-		  q = (Question)exam.getLastValue();
+		  q = (Question)exam.getLastObject();
 		  init = false;
 	  } else {
 		  exam.setPrevious();
-		  q = (Question)exam.getValue();
+		  q = (Question)exam.getObject();
 	  }
 	  
 	  return q;	

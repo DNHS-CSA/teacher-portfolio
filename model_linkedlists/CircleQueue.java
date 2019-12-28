@@ -8,7 +8,7 @@ import java.util.*;
  * @author     John Mortensen
  * @created    December 24, 2019
  */
-public class Queue
+public class CircleQueue
 {
    private LinkedList headNode;			// 1st element in Queue
    private LinkedList tailNode;			// Last element in Queue
@@ -18,7 +18,7 @@ public class Queue
    *  Constructor for the SinglyLinkedList object
    *  Generates an empty list.
    */
-  public Queue()
+  public CircleQueue()
   {
     headNode = null;
     tailNode = null;
@@ -26,46 +26,46 @@ public class Queue
   }
 
   /**
-   *  Returns the head objects value.
+   *  Returns the head opaqueObject.
    *
-   * @return  the head objects value in Stack.
+   * @return  the head opaqueObject in Stack.
    */
-  public Object getFirstValue()
+  public Object getFirstObject()
   {
   	currentNode = headNode;
 
     if (headNode == null)
     	return null;
     else
-      return headNode.getValue();
+    	return headNode.getObject();
   }
 
   /**
-   *  Returns the tail objects value.
+   *  Returns the tail opaqueObjects.
    *
-   * @return  the current objects value in Stack.
+   * @return  the current opaqueObject in Stack.
    */
-  public Object getLastValue()
+  public Object getLastObject()
   {
 	currentNode = tailNode;
 
     if (tailNode == null)
-  	  return null;
+    	return null;
     else
-      return tailNode.getValue();
+    	return tailNode.getObject();
   }
   
   /**
-   *  Returns the current objects value.
+   *  Returns the current Object
    *
-   * @return  the current objects value in Stack.
+   * @return  the current Object in Stack.
    */
-  public Object getValue()
+  public Object getObject()
   {
     if (currentNode == null)
   	  return null;
     else
-      return currentNode.getValue();
+      return currentNode.getObject();
   }
   
   /**
@@ -98,14 +98,14 @@ public class Queue
   /**
    *  Add a new object at the end of the Queue,
    *
-   * @param  value  is the data to be inserted in the Queue object.
+   * @param  opaqueObject  is the data to be inserted in the Queue object.
    */
-  public void add(Object value)
+  public void add(Object opaqueObject)
   {
 	  // add new object to end of Queue
-	  // set value
+	  // set opaqueObject
 	  // build previous link of tail (as current)
-	  tailNode = new LinkedList(value, currentNode);
+	  tailNode = new LinkedList(opaqueObject, currentNode);
 	  
 	  // build next link of current (as tail)
 	  if (currentNode != null)
@@ -126,10 +126,10 @@ public class Queue
    */
   public Object delete()
   {
-	  Object value = null;
+	  Object opaqueObject = null;
 	  	  
 	  if (headNode != null) {
-		  value = headNode.getValue();
+		  opaqueObject = headNode.getObject();
 		  headNode = headNode.getNext();
 		  if (headNode == null)
 			  tailNode = headNode;
@@ -137,7 +137,7 @@ public class Queue
 			  headNode.setPrevNode(null);
 	  }
 	  		
-	  return value;
+	  return opaqueObject;
   }
   
   /**
@@ -153,7 +153,7 @@ public class Queue
     LinkedList node = headNode;  			// start from the head
     while (node != null)
     {
-    	queueToString += node.getValue(); 	// append the data to output string
+    	queueToString += node.getObject(); 	// append the data to output string
     	node = node.getNext();				// go to next node
     	if (node != null)
     		queueToString += ", ";

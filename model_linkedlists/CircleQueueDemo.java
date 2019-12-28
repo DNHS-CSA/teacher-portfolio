@@ -8,14 +8,14 @@ import util.ConsoleMethods;
  * @author     John Mortensen
  * @created    December 24, 2019
  */
-public class QueueDemo
+public class CircleQueueDemo
 {
-  private Queue myqueue;
+  private CircleQueue myqueue;
   private int size = 26-1;	// alphabet size
 
-  public QueueDemo()
+  public CircleQueueDemo()
   {
-	  myqueue = new Queue();
+	  myqueue = new CircleQueue();
   }
 
   /**
@@ -32,7 +32,7 @@ public class QueueDemo
 			myqueue.add(
 					new String( Character.toString('a' + i)) // push stack (characters, numbers, etc)
 					);  
-			ConsoleMethods.println("Add:" + myqueue.getValue() + " " + myqueue);
+			ConsoleMethods.println("Add:" + myqueue.getObject() + " " + myqueue);
 		}
   }
   
@@ -55,8 +55,8 @@ public class QueueDemo
    */
   public void displayQueue()
   {
-    ConsoleMethods.println("First Element: " + myqueue.getFirstValue() );
-    ConsoleMethods.println("Last Element: " + myqueue.getLastValue() );
+    ConsoleMethods.println("First Element: " + myqueue.getFirstObject() );
+    ConsoleMethods.println("Last Element: " + myqueue.getLastObject() );
     ConsoleMethods.println("Full Queue: " + myqueue);
   }
 
@@ -68,7 +68,7 @@ public class QueueDemo
    */
   public static void main(String[] args)
   {
-    QueueDemo queue = new QueueDemo();
+    CircleQueueDemo queue = new CircleQueueDemo();
 
     queue.createQueue();
     queue.displayQueue();

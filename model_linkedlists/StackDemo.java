@@ -32,7 +32,7 @@ public class StackDemo
 			mystack.push(
 					new String( Character.toString('a' + i)) // push stack (characters, numbers, etc)
 					);  
-			ConsoleMethods.println("Push:" + mystack.getValue() + " " + mystack);
+			ConsoleMethods.println("Push:" + mystack.getObject() + " " + mystack);
 		}
   }
   
@@ -55,7 +55,7 @@ public class StackDemo
    */
   public void displayStack()
   {
-    ConsoleMethods.println("Top Element: " + mystack.getValue());
+    ConsoleMethods.println("Top Element: " + mystack.getObject());
     ConsoleMethods.println("Full Stack: " + mystack);
   }
 

@@ -26,14 +26,14 @@ public class Stack
    *
    * @return  the current objects value in Stack.
    */
-  public Object getValue()
+  public Object getObject()
   {
     if (lifo == null)
     {
       throw new NoSuchElementException();
     }
     else
-      return lifo.getValue();
+      return lifo.getObject();
   }
 
   /**
@@ -58,7 +58,7 @@ public class Stack
 	  Object value = null;
 	  
 	  if (lifo != null) {
-		value = lifo.getValue();
+		value = lifo.getObject();
 	    lifo = lifo.getPrevious();
 	  }
 	  
@@ -78,7 +78,7 @@ public class Stack
     LinkedList node = lifo;  				// start from the back
     while (node != null)
     {
-    	stackToString += node.getValue(); 	// append the data to output string
+    	stackToString += node.getObject(); 	// append the data to output string
     	node = node.getPrevious();    		// go to previous node
     	if (node != null)
     	  stackToString += ", ";

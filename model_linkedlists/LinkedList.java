@@ -1,12 +1,12 @@
 package model_linkedlists;
 /**
- *  Implementation of a node with forward and backward links to previous and next Nodes respectively.
+ *  Implementation of a Linked List with an Object reference as data;  forward and backward links point to adjacent Nodes.
  *
  */
 
 public class LinkedList
 {
-   private Object value;
+   private Object opaqueObject;
    private LinkedList prevNode;
    private LinkedList nextNode;
 
@@ -14,24 +14,23 @@ public class LinkedList
    *  Constructs a new element with object objValue,
    *  followed by object address
    *
-   * @param  valueObj  Value of Object
-   * @param  objAddr   Reference to previous Object in list
+   * @param  opaqueObject  Address of Object
    */
-  public LinkedList(Object value, LinkedList node)
+  public LinkedList(Object opaqueObject, LinkedList node)
   {
-	setValue(value);
+	setObject(opaqueObject);
 	setPrevNode(node);
 	setNextNode(null);
   }
 
   /**
-   *  Setter for value in LinkedList object
+   *  Setter for opaqueObjecg in LinkedList object
    *
-   * @node    Set value of current LinkedList object
+   * @param  opaqueObject  Address of Object
    */
-  public void setValue(Object value)
+  public void setObject(Object opaqueObject)
   {
-    this.value = value;
+    this.opaqueObject = opaqueObject;
   }
   
   /**
@@ -55,13 +54,13 @@ public class LinkedList
   }
   
   /**
-   *  Returns value associated with this element
+   *  Returns opaqueObject for this element
    *
-   * @return    The value associated with this element
+   * @return    The opaqueObject associated with this element
    */
-  public Object getValue()
+  public Object getObject()
   {
-    return value;
+    return opaqueObject;
   }
 
   /**
