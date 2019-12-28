@@ -14,6 +14,7 @@ public class APexam {
 
   private CircleQueue exam;
   private int size = 3;	// size of test
+  private int questionTypes = 3;	// randomization
   private boolean init = true;
 
   /**
@@ -54,13 +55,18 @@ public class APexam {
 	  	// pushing data to stack with console output
 	  	for (int i = 0; i <= size-1; i++)
 		{
-	  		if ((double)i < (double)(size / 3))
-	  			q = new control_ap_exam.MathQuestions();
-	  		else if ((double)i < (double)(2 * (size / 3) ))
-	  			q = new control_ap_exam.DataTypeQuestions();
-	  		else
-	  			q = new control_ap_exam.BinaryMathQuestions();
-	  		
+	  		switch((i)%questionTypes) {
+	  			case 0:
+	  				q = new control_ap_exam.MathQuestions();
+	  				break;
+	  			case 1:
+	  				q = new control_ap_exam.DataTypeQuestions();
+	  				break;
+	  			case 2:
+  				default:
+	  				q = new control_ap_exam.BinaryMathQuestions();
+	  				break;
+	  		}
 	  		q.setID(i+1);
   			exam.add(q);
 		}
