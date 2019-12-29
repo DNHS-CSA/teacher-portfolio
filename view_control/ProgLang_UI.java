@@ -72,7 +72,7 @@ public class ProgLang_UI extends JFrame {
 		txtSearchTerm = new JTextField();
 		txtSearchTerm.setBackground(new Color(255, 250, 205));
 		txtSearchTerm.setBounds(16, 5, 466, 55);
-		txtSearchTerm.setText("Please Enter The Parameter You Want To Search Here");
+		txtSearchTerm.setText("Please Enter Filter Term Here");
 		contentPane.add(txtSearchTerm);
 		txtSearchTerm.setColumns(10);
 		
@@ -82,7 +82,7 @@ public class ProgLang_UI extends JFrame {
 		lblProgLangFound.setBounds(5, 386, 687, 37);
 		contentPane.add(lblProgLangFound);
 		
-		JButton btnPressToSearch = new JButton("Press to Search");
+		JButton btnPressToSearch = new JButton("Press to Filter");
 		btnPressToSearch.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		btnPressToSearch.setBorderPainted(false);
 		btnPressToSearch.setOpaque(true);
@@ -118,55 +118,29 @@ public class ProgLang_UI extends JFrame {
 		txtrBox3.setBounds(462, 72, 217, 302);
 		contentPane.add(txtrBox3);
 		
-		JButton button = new JButton(">");
-		button.addActionListener(new ActionListener() {
+		JButton button_shift_right = new JButton(">");
+		button_shift_right.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Shift position index to right
 				posIndex = pLM.incrementPositon(posIndex);
-				// set labels
-				control_prog_lang.AttributeModel am;
-
-				for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
-					am = pLM.getProgLangByIndex(posIndex+i);
-					switch (i) {
-					case 0:
-						txtrBox1.setText(am.toString());
-						break;
-					case 1:
-						txtrBox2.setText(am.toString());
-						break;
-					case 2:
-						txtrBox3.setText(am.toString());
-						break;
-					}				}
+				// setter
+				setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
 			}
 		});
-		button.setBounds(679, 197, 27, 55);
-		contentPane.add(button);
+		button_shift_right.setBounds(679, 197, 27, 55);
+		contentPane.add(button_shift_right);
 		
-		JButton button_1 = new JButton("<");
-		button_1.addActionListener(new ActionListener() {
+		JButton button_shift_left = new JButton("<");
+		button_shift_left.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Shift position index to left
 				posIndex = pLM.decrementPositon(posIndex);
-				// set labels
-				control_prog_lang.AttributeModel am;
-
-				for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
-					am = pLM.getProgLangByIndex(posIndex+i);
-					switch (i) {
-					case 0:
-						txtrBox1.setText(am.toString());
-						break;
-					case 1:
-						txtrBox2.setText(am.toString());
-						break;
-					case 2:
-						txtrBox3.setText(am.toString());
-						break;
-					}				};
+				// setter
+				setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
 			}
 		});
-		button_1.setBounds(0, 197, 27, 55);
-		contentPane.add(button_1);
+		button_shift_left.setBounds(0, 197, 27, 55);
+		contentPane.add(button_shift_left);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Control variables
@@ -181,31 +155,35 @@ public class ProgLang_UI extends JFrame {
 				
 				// build a filtered list
 				pLM = new ProgLangManager(pLMbak, txtSearchTerm.getText());
-				
-				// set labels
-				control_prog_lang.AttributeModel am;
-
-				txtrBox1.setText("");
-				txtrBox2.setText("");
-				txtrBox3.setText("");
-				for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
-					am = pLM.getProgLangByIndex(posIndex+i);
-					switch (i) {
-					case 0:
-						txtrBox1.setText(am.toString());
-						break;
-					case 1:
-						txtrBox2.setText(am.toString());
-						break;
-					case 2:
-						txtrBox3.setText(am.toString());
-						break;
-					}
-				}
+				// setter
+				setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
 				
 			}
 		});
 		
+	}
+	
+	private void setTextBoxes(JTextArea txtrBox1, JTextArea txtrBox2, JTextArea txtrBox3)
+	{	
+		// set labels
+		control_prog_lang.AttributeModel am;
+		txtrBox1.setText("");
+		txtrBox2.setText("");
+		txtrBox3.setText("");
+		for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
+			am = pLM.getProgLangByIndex(posIndex+i);
+			switch (i) {
+			case 0:
+				txtrBox1.setText(am.toString());
+				break;
+			case 1:
+				txtrBox2.setText(am.toString());
+				break;
+			case 2:
+				txtrBox3.setText(am.toString());
+				break;
+			}
+		}
 	}
 	
 }
