@@ -22,7 +22,7 @@ public class ProgLang_Console
         Scanner scan = new Scanner(System.in);
         
         // Make Programming Language Objects
-        ProgLangManager progLangs = new ProgLangManager();
+        ProgLangManager pLM = new ProgLangManager();
 
         boolean cont = true; /*used in do while loop to keep everything running*/
         ConsoleMethods.println("Hi Welcome To The Programming Languages Program!");
@@ -59,7 +59,7 @@ public class ProgLang_Console
             break;
             
             case 1:
-            ConsoleMethods.println(progLangs);
+            pLM.displayTest();
             break;
             
             case 2:
@@ -74,7 +74,7 @@ public class ProgLang_Console
             } catch(NumberFormatException e) {
                 int aa = 1;
             } 
-            ConsoleMethods.println( progLangs.searchAttributes(input2) );            
+            ConsoleMethods.println( pLM.searchProgLangs(input2) );            
             break;
         
         }

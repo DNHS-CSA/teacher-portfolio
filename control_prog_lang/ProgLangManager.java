@@ -21,7 +21,6 @@ public class ProgLangManager {
   {
 	  init();
   }
-
   
   /**
    *  Constructor helper
@@ -39,32 +38,31 @@ public class ProgLangManager {
    */
   public void createProgLang()
   {	
-	  	AttributeModel a;
+	  	AttributeModel am;
 
 	  	// pushing data to stack with console output
 	  	for (int i = 0; i <= size-1; i++)
 		{
 	  		switch(i) {
 	  			case 0:
-	  				a = new CSharp();
+	  				am = new CSharp();
 	  				break;
 	  			case 1:
-	  				a = new Java();
+	  				am = new Java();
 	  				break;
 	  			case 2:
-	  				a = new Python();
+	  				am = new Python();
 	  				break;
 	  			case 3:
-	  				a = new Ruby();
+	  				am = new Ruby();
 	  				break;
 	  			case 4:
 	  			default:
-	  				a = new Swift();
+	  				am = new Swift();
 	  		}
-	  		a.setID(i+1);
-  			progLangs.add(a);
-		}
-	  	
+	  		am.setID(i+1);
+  			progLangs.add(am);
+		}	  	
   }
   
   /**
@@ -77,8 +75,7 @@ public class ProgLangManager {
 	  else
 		  position--;
 
-	  return position;
-	  
+	  return position;	  
   }
   
   /**
@@ -91,14 +88,13 @@ public class ProgLangManager {
 	  else
 		  position++;
 
-	  return position;
-	  
+	  return position;	  
   }
   
   /**
    *  Locate object by position (optimization would be necessary if large)
    */
-  public AttributeModel getAttributesbyIndex(int position)
+  public AttributeModel getProgLangByIndex(int position)
   {	  
 	  	// loop until you find object by position
 		progLangs.getFirstObject();
@@ -106,43 +102,34 @@ public class ProgLangManager {
 			progLangs.setNext();
 		return (AttributeModel)progLangs.getObject();
   }
- 
-  public String searchAttributes(String searchTerm)
+  
+  /**
+   *  Search term for matching programming language attributes
+   */
+  public String searchProgLangs(String searchTerm)
   {
   	String Answer="";
 	AttributeModel pLang;
 	
 	// Loop to search text within each language within List of Programming Languages
 	for (int i = 0, j = 0; i == j; j = incrementPositon(i++)) {
-		pLang = getAttributesbyIndex(i);
+		pLang = getProgLangByIndex(i);
 		if ( pLang.toString().indexOf( searchTerm ) > 0 ) {
 			Answer = Answer + " " + pLang.getKey();
 		}
 	}
 	return (Answer);
   }
+ 
   
-  public String toString()
-  {
-	  String Answer="";
-	  AttributeModel pLang;
-		
-	  // Loop to search text within each language within List of Programming Languages
-	  for (int i = 0, j = 0; i == j; j = incrementPositon(i++)) {
-			pLang = getAttributesbyIndex(i);
-			Answer = Answer + " " + pLang.toString();
-	  }
-	  return (Answer);
-	}
-  
-  /* ************************* Test Section below this point ************************* */
+  /* ************************* Console or Test methods below this point ************************* */
  
   /**
    *  Removes all the user defined objects from circle list,
    *  this is inverse of createProgLang,
    *  deletes references from circle list
    */
-  private void emptyTest()
+  public void emptyTest()
   {
 	  	// remove data off queue
 	  	for (int i = 0; i <= size; i++)
@@ -154,10 +141,8 @@ public class ProgLangManager {
   /**
    *  Displays key elements and the the full list
    */
-  private void displayTest()
+  public void displayTest()
   {
-    ConsoleMethods.println("First Element: " + progLangs.getFirstObject() );
-    ConsoleMethods.println("Last Element: " + progLangs.getLastObject() );
     ConsoleMethods.println("Full List: " + progLangs);
   }
  
@@ -171,13 +156,13 @@ public class ProgLangManager {
   {
 	// Initialize and show elements
 	ConsoleMethods.println("Initialize progLang");
-	ProgLangManager progLang = new ProgLangManager();
-    progLang.displayTest();
+	ProgLangManager pLs = new ProgLangManager();
+	pLs.displayTest();
     
     // Empty queue and show elements
 	ConsoleMethods.println("Empty progLang");
-    progLang.emptyTest();
-    progLang.displayTest();
+	pLs.emptyTest();
+	pLs.displayTest();
   }
 }
 

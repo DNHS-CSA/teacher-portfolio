@@ -34,8 +34,8 @@ public class ProgLang_UI extends JFrame {
 	private JTextField txtSearchTerm;
 	
 	// Control variables for data
-	ProgLangManager progLangs = new ProgLangManager();
-	private int position = 0;
+	ProgLangManager pLM = new ProgLangManager();
+	private int posIndex = 0;
 
 
 	/**
@@ -96,13 +96,13 @@ public class ProgLang_UI extends JFrame {
 		txtrBox1.setBackground(new Color(176, 224, 230));
 		txtrBox1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrBox1.setBounds(29, 72, 201, 302);
-		txtrBox1.setText( progLangs.getAttributesbyIndex(position).toString() );
+		txtrBox1.setText( pLM.getProgLangByIndex(posIndex).toString() );
 		contentPane.add(txtrBox1);
 		txtrBox1.setLineWrap(true);
 		
 		JTextArea txtrBox2 = new JTextArea();
 		txtrBox2.setBackground(new Color(176, 224, 230));
-		txtrBox2.setText( progLangs.getAttributesbyIndex(position+1).toString() );
+		txtrBox2.setText( pLM.getProgLangByIndex(posIndex+1).toString() );
 		txtrBox2.setLineWrap(true);
 		txtrBox2.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrBox2.setBounds(242, 72, 208, 302);
@@ -110,7 +110,7 @@ public class ProgLang_UI extends JFrame {
 		
 		JTextArea txtrBox3 = new JTextArea();
 		txtrBox3.setBackground(new Color(176, 224, 230));
-		txtrBox3.setText( progLangs.getAttributesbyIndex(position+2).toString()  );
+		txtrBox3.setText( pLM.getProgLangByIndex(posIndex+2).toString()  );
 		txtrBox3.setLineWrap(true);
 		txtrBox3.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		txtrBox3.setBounds(462, 72, 217, 302);
@@ -119,12 +119,12 @@ public class ProgLang_UI extends JFrame {
 		JButton button = new JButton(">");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				position = progLangs.incrementPositon(position);
-				control_prog_lang.AttributeModel a = progLangs.getAttributesbyIndex(position);
+				posIndex = pLM.incrementPositon(posIndex);
+				control_prog_lang.AttributeModel a = pLM.getProgLangByIndex(posIndex);
 				txtrBox1.setText(a.toString());
-				a = progLangs.getAttributesbyIndex(position+1);
+				a = pLM.getProgLangByIndex(posIndex+1);
 				txtrBox2.setText(a.toString());
-				a = progLangs.getAttributesbyIndex(position+2);
+				a = pLM.getProgLangByIndex(posIndex+2);
 				txtrBox3.setText(a.toString());
 			}
 		});
@@ -134,12 +134,12 @@ public class ProgLang_UI extends JFrame {
 		JButton button_1 = new JButton("<");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				position = progLangs.decrementPositon(position);
-				control_prog_lang.AttributeModel a = progLangs.getAttributesbyIndex(position);
+				posIndex = pLM.decrementPositon(posIndex);
+				control_prog_lang.AttributeModel a = pLM.getProgLangByIndex(posIndex);
 				txtrBox1.setText(a.toString());
-				a = progLangs.getAttributesbyIndex(position+1);
+				a = pLM.getProgLangByIndex(posIndex+1);
 				txtrBox2.setText(a.toString());
-				a = progLangs.getAttributesbyIndex(position+2);
+				a = pLM.getProgLangByIndex(posIndex+2);
 				txtrBox3.setText(a.toString());
 			}
 		});
@@ -147,7 +147,7 @@ public class ProgLang_UI extends JFrame {
 		contentPane.add(button_1);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
-				String Answer = progLangs.searchAttributes(txtSearchTerm.getText());		
+				String Answer = pLM.searchProgLangs(txtSearchTerm.getText());		
 				lblProgLangFound.setText(Answer);					
 			}
 		});
