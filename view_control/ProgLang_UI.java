@@ -169,13 +169,17 @@ public class ProgLang_UI extends JFrame {
 		contentPane.add(button_1);
 		btnPressToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// show candidates meeting filter
-				String Answer = pLM.searchProgLangs(txtSearchTerm.getText());		
-				lblProgLangFound.setText(Answer);
-				
-				// filter list
+				// Control variables
 				posIndex = 0;
 				if (pLMbak == null) pLMbak = pLM;
+				
+				// build a string of languages meeting filter
+				String Answer = pLMbak.searchProgLangs(txtSearchTerm.getText());
+				if (Answer.length() <= 1)
+					Answer = "No match";
+				lblProgLangFound.setText(Answer);
+				
+				// build a filtered list
 				pLM = new ProgLangManager(pLMbak, txtSearchTerm.getText());
 				
 				// set labels
