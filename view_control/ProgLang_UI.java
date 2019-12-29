@@ -35,6 +35,8 @@ public class ProgLang_UI extends JFrame {
 	
 	// Control variables for data
 	ProgLangManager pLM = new ProgLangManager();
+	ProgLangManager pLMbak = null;
+	
 	private int posIndex = 0;
 
 
@@ -120,12 +122,22 @@ public class ProgLang_UI extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				posIndex = pLM.incrementPositon(posIndex);
-				control_prog_lang.AttributeModel a = pLM.getProgLangByIndex(posIndex);
-				txtrBox1.setText(a.toString());
-				a = pLM.getProgLangByIndex(posIndex+1);
-				txtrBox2.setText(a.toString());
-				a = pLM.getProgLangByIndex(posIndex+2);
-				txtrBox3.setText(a.toString());
+				// set labels
+				control_prog_lang.AttributeModel am;
+
+				for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
+					am = pLM.getProgLangByIndex(posIndex+i);
+					switch (i) {
+					case 0:
+						txtrBox1.setText(am.toString());
+						break;
+					case 1:
+						txtrBox2.setText(am.toString());
+						break;
+					case 2:
+						txtrBox3.setText(am.toString());
+						break;
+					}				}
 			}
 		});
 		button.setBounds(679, 197, 27, 55);
@@ -135,22 +147,61 @@ public class ProgLang_UI extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				posIndex = pLM.decrementPositon(posIndex);
-				control_prog_lang.AttributeModel a = pLM.getProgLangByIndex(posIndex);
-				txtrBox1.setText(a.toString());
-				a = pLM.getProgLangByIndex(posIndex+1);
-				txtrBox2.setText(a.toString());
-				a = pLM.getProgLangByIndex(posIndex+2);
-				txtrBox3.setText(a.toString());
+				// set labels
+				control_prog_lang.AttributeModel am;
+
+				for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
+					am = pLM.getProgLangByIndex(posIndex+i);
+					switch (i) {
+					case 0:
+						txtrBox1.setText(am.toString());
+						break;
+					case 1:
+						txtrBox2.setText(am.toString());
+						break;
+					case 2:
+						txtrBox3.setText(am.toString());
+						break;
+					}				};
 			}
 		});
 		button_1.setBounds(0, 197, 27, 55);
 		contentPane.add(button_1);
 		btnPressToSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {
+				// show candidates meeting filter
 				String Answer = pLM.searchProgLangs(txtSearchTerm.getText());		
-				lblProgLangFound.setText(Answer);					
+				lblProgLangFound.setText(Answer);
+				
+				// filter list
+				posIndex = 0;
+				if (pLMbak == null) pLMbak = pLM;
+				pLM = new ProgLangManager(pLMbak, txtSearchTerm.getText());
+				
+				// set labels
+				control_prog_lang.AttributeModel am;
+
+				txtrBox1.setText("");
+				txtrBox2.setText("");
+				txtrBox3.setText("");
+				for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
+					am = pLM.getProgLangByIndex(posIndex+i);
+					switch (i) {
+					case 0:
+						txtrBox1.setText(am.toString());
+						break;
+					case 1:
+						txtrBox2.setText(am.toString());
+						break;
+					case 2:
+						txtrBox3.setText(am.toString());
+						break;
+					}
+				}
+				
 			}
 		});
 		
 	}
+	
 }

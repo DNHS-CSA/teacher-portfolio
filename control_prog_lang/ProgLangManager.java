@@ -15,20 +15,32 @@ public class ProgLangManager {
   private int size = 5;
 
   /**
-   *  APprogLang with default amount of questions
+   *  Constructor for Programming Language list
    */ 
   public ProgLangManager()
   {
-	  init();
+	  progLangs = new CircleQueue();
+	  createProgLang();
   }
   
   /**
-   *  Constructor helper
-   */
-  private void init()
+   *  Filtered constructor for Programming Language list
+   */ 
+  public ProgLangManager(ProgLangManager oProgLangs, String searchTerm)
   {
+	  size = 0;
 	  progLangs = new CircleQueue();
-	  createProgLang();
+	  AttributeModel pLang;
+		
+	  // Loop to search text within each language within List of Programming Languages
+	  for (int i = 0, j = 0; i == j; j = oProgLangs.incrementPositon(i++)) {
+		pLang = oProgLangs.getProgLangByIndex(i);
+		if ( pLang.toString().indexOf( searchTerm ) > 0 ) {
+			progLangs.add(pLang);
+			size++;
+		}
+	    ConsoleMethods.println("Growing List: " + progLangs);
+	  }
   }
   
   /**
@@ -63,6 +75,16 @@ public class ProgLangManager {
 	  		am.setID(i+1);
   			progLangs.add(am);
 		}	  	
+  }
+  
+  /**
+   * Getter to inform list size, real import for small conditions
+   * 
+   * @return size of circle list
+   */
+  public int getSize()
+  {
+	  return size;
   }
   
   /**
