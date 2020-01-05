@@ -1,4 +1,4 @@
-package model_ap_exam;
+package model_questions;
 /**
  * Keeps score
  *

@@ -3,8 +3,8 @@ package control_ap_exam;
 
 import java.util.Random;
 
-import model_ap_exam.Question;
-import model_ap_exam.QuestionRandom;
+import model_questions.Question;
+import model_questions.QuestionRandom;
 import util.ConsoleMethods;
 
 /**

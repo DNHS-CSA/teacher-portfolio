@@ -64,7 +64,7 @@ public class AP_UI extends MainMenu {
 		JButton btnMath = new JButton("Math");
 		btnMath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = new control_ap_exam.MathQuestions();
+				model_questions.Question q = new control_ap_exam.MathQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());
@@ -76,7 +76,7 @@ public class AP_UI extends MainMenu {
 		JButton btnDataTypes = new JButton("Data Types");
 		btnDataTypes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = new control_ap_exam.DataTypeQuestions();
+				model_questions.Question q = new control_ap_exam.DataTypeQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());
@@ -88,7 +88,7 @@ public class AP_UI extends MainMenu {
 		JButton btnBinaryMath = new JButton("Binary Math");
 		btnBinaryMath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = new control_ap_exam.BinaryMathQuestions();
+				model_questions.Question q = new control_ap_exam.BinaryMathQuestions();
 				testQuestion.setText(q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());
@@ -100,7 +100,7 @@ public class AP_UI extends MainMenu {
 		JButton btnRev = new JButton("<");
 		btnRev.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = exam.getQuestionRev();
+				model_questions.Question q = exam.getQuestionRev();
 				testQuestion.setText(q.getID() + ". " + q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());
@@ -112,7 +112,7 @@ public class AP_UI extends MainMenu {
 		JButton btnFWD = new JButton(">");
 		btnFWD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = exam.getQuestionFwd();
+				model_questions.Question q = exam.getQuestionFwd();
 				testQuestion.setText(q.getID() + ". " + q.getQuestion());
 				testChoices.setText(q.getChoices());
 				testQuestionAnswer.setText(q.getAnswer());

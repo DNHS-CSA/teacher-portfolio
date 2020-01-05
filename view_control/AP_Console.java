@@ -3,7 +3,7 @@ package view_control;
 import control_ap_exam.BinaryMathQuestions;
 import control_ap_exam.DataTypeQuestions;
 import control_ap_exam.MathQuestions;
-import model_ap_exam.Scoring;
+import model_questions.Scoring;
 import util.ConsoleMethods;
 
 /**

@@ -1,7 +1,7 @@
 package control_ap_exam;
 
-import model_ap_exam.Question;
 import model_linkedlists.CircleQueue;
+import model_questions.Question;
 import util.ConsoleMethods;;
 
 /**
