@@ -5,7 +5,7 @@ package control_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class AttributeModel 
+public class ProgLangAttributes 
 {
 	int ID;
     String ProgLang;

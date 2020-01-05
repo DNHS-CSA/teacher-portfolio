@@ -18,7 +18,7 @@ import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 
-import control_prog_lang.AttributeModel;
+import control_prog_lang.ProgLangAttributes;
 import control_prog_lang.Java;
 import control_prog_lang.ProgLangManager;
 import control_prog_lang.Python;
@@ -166,7 +166,7 @@ public class ProgLang_UI extends JFrame {
 	private void setTextBoxes(JTextArea txtrBox1, JTextArea txtrBox2, JTextArea txtrBox3)
 	{	
 		// set labels
-		control_prog_lang.AttributeModel am;
+		control_prog_lang.ProgLangAttributes am;
 		txtrBox1.setText("");
 		txtrBox2.setText("");
 		txtrBox3.setText("");

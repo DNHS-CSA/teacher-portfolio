@@ -5,7 +5,7 @@ package control_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class CSharp extends AttributeModel 
+public class CSharp extends ProgLangAttributes 
 {
 	public CSharp() {
 		ProgLang="C#";

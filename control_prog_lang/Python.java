@@ -5,7 +5,7 @@ package control_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Python extends AttributeModel
+public class Python extends ProgLangAttributes
 {
     public Python() {
 		ProgLang="Python";

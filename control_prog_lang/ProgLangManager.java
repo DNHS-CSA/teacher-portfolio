@@ -30,7 +30,7 @@ public class ProgLangManager {
   {
 	  size = 0;
 	  progLangs = new CircleQueue();
-	  AttributeModel pLang;
+	  ProgLangAttributes pLang;
 		
 	  // Loop to search text within each language within List of Programming Languages
 	  for (int i = 0, j = 0; i == j; j = oProgLangs.incrementPositon(i++)) {
@@ -50,7 +50,7 @@ public class ProgLangManager {
    */
   public void createProgLang()
   {	
-	  	AttributeModel am;
+	  	ProgLangAttributes am;
 
 	  	// pushing data to stack with console output
 	  	for (int i = 0; i <= size-1; i++)
@@ -116,13 +116,13 @@ public class ProgLangManager {
   /**
    *  Locate object by position (optimization would be necessary if large)
    */
-  public AttributeModel getProgLangByIndex(int position)
+  public ProgLangAttributes getProgLangByIndex(int position)
   {	  
 	  	// loop until you find object by position
 		progLangs.getFirstObject();
 		for (int i = 0; i < position; i++)
 			progLangs.setNext();
-		return (AttributeModel)progLangs.getObject();
+		return (ProgLangAttributes)progLangs.getObject();
   }
   
   /**
@@ -131,7 +131,7 @@ public class ProgLangManager {
   public String searchProgLangs(String searchTerm)
   {
   	String Answer="";
-	AttributeModel pLang;
+	ProgLangAttributes pLang;
 	
 	// Loop to search text within each language within List of Programming Languages
 	for (int i = 0, j = 0; i == j; j = incrementPositon(i++)) {

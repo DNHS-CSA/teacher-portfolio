@@ -5,7 +5,7 @@ package control_prog_lang;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Ruby extends AttributeModel
+public class Ruby extends ProgLangAttributes
 {
      public Ruby() {
  		ProgLang="Ruby";
