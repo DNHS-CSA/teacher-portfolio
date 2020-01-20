@@ -31,7 +31,8 @@ public class Questiontf extends Question {
      * 
      * @param  void
      */
-     protected void setupQuestion() {
+    @Override
+    protected void setupQuestion() {
     	// This outputs constructor being run
         ConsoleMethods.println("Question class setupQuestion method");
         
@@ -60,12 +61,25 @@ public class Questiontf extends Question {
      * @param  void
      * @return String 	content of choices with ABCDEF formatting
      */
-	public String getChoices() {
-		return String.format(
+    @Override
+ 	public String getChoices() {
+    	 return String.format(
             charTrue + ": " + true + "\n"  + 
     	    charFalse + ": " + false + "\n"
             );    
 	}
+    
+    /**
+     * Sensible output
+     *
+     * @param  void
+     */
+    @Override
+    public String toString()
+    {
+    	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
+    	return s;
+    }
     
 	/**
      * Console support wrapper for asking question, getting result, and calculating results
@@ -111,12 +125,6 @@ public class Questiontf extends Question {
         return ansStatus;*/
         return (choice == answerKey);
     }
-
-    public String toString()
-    {
-    	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
-    	return s;
-    }
     
     /**
      * MainTest supports console execution and receiving write or wrong return message
@@ -142,5 +150,6 @@ public class Questiontf extends Question {
     {
     	ConsoleMethods.println(mainTest());
     }
+
   
 }
