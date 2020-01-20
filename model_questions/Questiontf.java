@@ -2,10 +2,7 @@ package model_questions;
 
 import util.ConsoleMethods;
 
-public abstract class Questiontf extends Question {
-
-	// question id or number
-	private int ID;
+public class Questiontf extends Question {
   
     // internal control values, these are never change
     protected final char charTrue = 'T', charFalse = 'F'; 			// True False default letters
@@ -41,6 +38,21 @@ public abstract class Questiontf extends Question {
     	setupQuestionData();	
     }
 	
+     /**
+      * Sets up a Math question according to instance variables (this...) in Question class
+      *
+      * @return void
+      */
+     @Override
+     protected void setupQuestionData()
+     {
+     	// This outputs constructor being run
+         ConsoleMethods.println("ProgLangQuestions setupQuestionData()");
+         
+         this.question = String.format("A linked list is resides in contiguous memory?" );
+         this.answer = "A linked list points to objects in non-continguous memory.";
+         this.answerKey = charFalse;
+     }
 	
 	/**
      * Choices getter for Multiple Choice
@@ -104,6 +116,31 @@ public abstract class Questiontf extends Question {
     {
     	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
     	return s;
+    }
+    
+    /**
+     * MainTest supports console execution and receiving write or wrong return message
+     * 
+     * @param  void
+     * @return score / right or wrong
+     */
+    public static String mainTest()
+    {
+    	Question q = new Questiontf();
+        q.askQuestionConsole();
+        return q.getCounterMsg();
+    }
+ 
+    
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  args		// satisfies default for Java
+     * @return void
+     */
+    public static void main(String[] args)
+    {
+    	ConsoleMethods.println(mainTest());
     }
   
 }
