@@ -4,7 +4,7 @@ package control_ap_exam;
 import java.util.Random;
 
 import model_questions.Question;
-import model_questions.Questiontf;
+import model_questions.QuestionTF;
 import util.ConsoleMethods;
 
 /**
@@ -13,7 +13,7 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.0)
  */
-public class ProgrammingQuestions extends Questiontf
+public class ProgrammingQuestions extends QuestionTF
 { 
 	
     /**

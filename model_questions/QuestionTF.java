@@ -2,7 +2,7 @@ package model_questions;
 
 import util.ConsoleMethods;
 
-public class Questiontf extends Question {
+public class QuestionTF extends Question {
   
     // internal control values, these are never change
     protected final char charTrue = 'T', charFalse = 'F'; 			// True False default letters
@@ -17,7 +17,7 @@ public class Questiontf extends Question {
      * 
      * @param  void
      */
-    public Questiontf()
+    public QuestionTF()
     {
     	// This outputs constructor being run
         ConsoleMethods.println("Question TF class constructor"); 
@@ -134,7 +134,7 @@ public class Questiontf extends Question {
      */
     public static String mainTest()
     {
-    	Question q = new Questiontf();
+    	Question q = new QuestionTF();
         q.askQuestionConsole();
         return q.getCounterMsg();
     }
