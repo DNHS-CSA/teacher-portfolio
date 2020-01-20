@@ -4,7 +4,7 @@ import java.util.Random;
 
 import util.ConsoleMethods;
 
-public abstract class Questionmc extends Question {
+public class QuestionMC extends Question {
 
 	// question id or number
 	private int ID;
@@ -28,7 +28,7 @@ public abstract class Questionmc extends Question {
      * 
      * @param  void
      */
-    public Questionmc()
+    public QuestionMC()
     {
     	// This outputs constructor being run
         ConsoleMethods.println("Question MC class constructor");
@@ -48,7 +48,8 @@ public abstract class Questionmc extends Question {
      * 
      * @param  void
      */
-     protected void setupQuestion() {
+    @Override
+    protected void setupQuestion() {
     	// This outputs constructor being run
         ConsoleMethods.println("Question class setupQuestion method");
     	setupQuestionData();
@@ -93,44 +94,27 @@ public abstract class Questionmc extends Question {
 		ConsoleMethods.println("answerKey scrambled: " +answerKey);
 
     }
- 
+
+
      /**
-      * setup question data default, expectation is this will changed through polymorphism
+      * Sets up a  question according to instance variables in class
       *
-      * @param  void
+      * @return void
       */
-    protected abstract void setupQuestionData();
-    	
+    @Override
+    protected void setupQuestionData() {
+    	// This outputs constructor being run
+        ConsoleMethods.println("Question class setupQuestionData method");
+
+    	question = "What type of programming language is Java?";
+		choiceA = "Data-oriented";
+		choiceB = "Iterative";
+		choiceC = "Object-oriented";
+		choiceD = "Imperative";
+		answer = choiceC;
+		answerKey = charC;
+    }    
     
-    /**
-     * Question ID setter
-     *
-     * @param  id
-     * @return void
-     */
-	public void setID(int id) {
-		this.ID = id;
-	}
-	
-	/**
-     * Question ID getter
-     *
-     * @param  void
-     * @return ID
-     */
-	public int getID() {
-		return ID;
-	}
-	
-	/**
-     * Question getter
-     *
-     * @param  void
-     * @return String	contents of question
-     */
-	public String getQuestion() {
-		return question;
-	}
 	
 	/**
      * Choices getter for Multiple Choice
@@ -138,6 +122,7 @@ public abstract class Questionmc extends Question {
      * @param  void
      * @return String 	content of choices with ABCDEF formatting
      */
+    @Override
 	public String getChoices() {
 		return String.format(
             charA + ": " + choices[0] + "\n"  + 
@@ -148,19 +133,17 @@ public abstract class Questionmc extends Question {
             );    
 	}
 	
-	/**
-     * Answer getter with formatting to correspond to getChoices
+    /**
+     * Sensible output
      *
      * @param  void
-     * @return String 	correct answer with letter prefex of right answer (A or B or C...)
      */
-	public String getAnswer() {	
-		
-		// This outputs randomization of letters
-    	ConsoleMethods.println("Answer:" + answerKey);
-		
-		return answerKey + ": " + answer;
-	}
+    @Override
+    public String toString()
+    {
+    	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
+    	return s;
+    }
     
 	/**
      * Console support wrapper for asking question, getting result, and calculating results
@@ -207,10 +190,30 @@ public abstract class Questionmc extends Question {
         return (choice == answerKey);
     }
 
-    public String toString()
+    
+    /**
+     * MainTest supports console execution and receiving write or wrong return message
+     * 
+     * @param  void
+     * @return score / right or wrong
+     */
+    public static String mainTest()
     {
-    	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
-    	return s;
+    	Question q = new QuestionMC();
+        q.askQuestionConsole();
+        return q.getCounterMsg();
+    }
+ 
+    
+    /**
+     * Main test method to support console execution
+     * 
+     * @param  args		// satisfies default for Java
+     * @return void
+     */
+    public static void main(String[] args)
+    {
+    	ConsoleMethods.println(mainTest());
     }
   
 }

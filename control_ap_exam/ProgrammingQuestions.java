@@ -15,6 +15,8 @@ import util.ConsoleMethods;
  */
 public class ProgrammingQuestions extends QuestionTF
 { 
+	private static int PQCounter = 0;  	// class variable for total correct answers
+
 	
     /**
      * Constructor for objects of class MathQuestions
@@ -24,7 +26,8 @@ public class ProgrammingQuestions extends QuestionTF
     public ProgrammingQuestions()
     {	    	
     	// This outputs constructor being run
-        ConsoleMethods.println("ProgLangQuestions Constructor");
+        ConsoleMethods.println("ProgrammingQuestions Constructor");
+        
     }
     
     /**
@@ -32,14 +35,27 @@ public class ProgrammingQuestions extends QuestionTF
      *
      * @return void
      */
+    @Override
     protected void setupQuestionData()
     {
     	// This outputs constructor being run
-        ConsoleMethods.println("ProgLangQuestions setupQuestionData()");
-        
-        this.question = String.format("A linked list is resides in contiguous memory?" );
-        this.answer = "A linked list points to objects in non-continguous memory.";
-        this.answerKey = charFalse;
+        ConsoleMethods.println("ProgrammingQuestions setupQuestionData()");
+        Random randomGenerator = new Random();
+
+  		switch(randomGenerator.nextInt(3)) {
+  			case 0:
+  				super.setupQuestionData();
+  				break;
+  			case 1:
+  				this.question = String.format("A double linked list contains a previous and next pointer?" );
+  				this.answer = "A double linked list has data and both previous and next pointers.";
+  				this.answerKey = charTrue;
+  				break;
+			default:
+				this.question = String.format("An email viewer resembles a stack implementation?" );
+  				this.answer = "Latest item on top of viewer is resembles pushing on top of the stack.";
+  				this.answerKey = charTrue;	
+  		}
     }
     
     /**

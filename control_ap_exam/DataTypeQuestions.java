@@ -3,7 +3,7 @@ package control_ap_exam;
 import java.util.Random;
 
 import model_questions.Question;
-import model_questions.Questionmc;
+import model_questions.QuestionMC;
 import util.ConsoleMethods;
 
 /**
@@ -12,7 +12,7 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.1)
  */
-public class DataTypeQuestions extends Questionmc
+public class DataTypeQuestions extends QuestionMC
 {
 	
 	/**
@@ -33,6 +33,7 @@ public class DataTypeQuestions extends Questionmc
      * @param  number       number in conversion
      * @return void
      */
+    @Override
     protected void setupQuestionData()
     { 
     	// This outputs constructor being run

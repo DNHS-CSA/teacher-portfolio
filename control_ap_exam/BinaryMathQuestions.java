@@ -3,7 +3,7 @@ package control_ap_exam;
 import java.util.Random;
 
 import model_questions.Question;
-import model_questions.Questionmc;
+import model_questions.QuestionMC;
 import util.ConsoleMethods;
 
 /**
@@ -12,7 +12,7 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.0)
  */
-public class BinaryMathQuestions extends Questionmc
+public class BinaryMathQuestions extends QuestionMC
 {
 
 	/**
@@ -31,6 +31,7 @@ public class BinaryMathQuestions extends Questionmc
      *
      * @return    void
      */
+    @Override
     protected void setupQuestionData()
     {
     	// This outputs constructor being run

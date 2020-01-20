@@ -40,7 +40,7 @@ public class QuestionTF extends Question {
     }
 	
      /**
-      * Sets up a Math question according to instance variables (this...) in Question class
+      * Sets up a  question according to instance variables in class
       *
       * @return void
       */
@@ -56,10 +56,10 @@ public class QuestionTF extends Question {
      }
 	
 	/**
-     * Choices getter for Multiple Choice
+     * Choices getter for True False
      *
      * @param  void
-     * @return String 	content of choices with ABCDEF formatting
+     * @return String 	content of choices with TF formatting
      */
     @Override
  	public String getChoices() {
