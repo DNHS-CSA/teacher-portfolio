@@ -8,8 +8,8 @@ public abstract class Questiontf extends Question {
 	private int ID;
   
     // internal control values, these are never change
-    protected final char charT = 'T', charF = 'F'; 			// True False default letters
-	protected final char[] answers = {charT, charF};		// Multiple choice default order
+    protected final char charTrue = 'T', charFalse = 'F'; 			// True False default letters
+	protected final char[] answers = {charTrue, charFalse};		// Multiple choice default order
     
     // defaults for choice
 	protected String[] choices = {"", ""};
@@ -50,8 +50,8 @@ public abstract class Questiontf extends Question {
      */
 	public String getChoices() {
 		return String.format(
-            charT + ": " + true + "\n"  + 
-    	    charF + ": " + false + "\n"
+            charTrue + ": " + true + "\n"  + 
+    	    charFalse + ": " + false + "\n"
             );    
 	}
     
@@ -83,9 +83,9 @@ public abstract class Questiontf extends Question {
         
         // IO logic of getting answer from console
         do {
-            choice = ConsoleMethods.inputChar("Enter selection (T or F) --> ");
+            choice = ConsoleMethods.inputChar("Enter selection (" + charTrue + " or " + charFalse + ") --> ");
             choice = Character.toUpperCase(choice); // Convert to upper case
-            if (choice == charT || choice == charF) break;
+            if (choice == charTrue || choice == charFalse) break;
             ConsoleMethods.println(" (invalid) ");
         } while ( true );                                               // until valid input
         

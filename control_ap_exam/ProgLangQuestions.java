@@ -39,7 +39,7 @@ public class ProgLangQuestions extends Questiontf
         
         this.question = String.format("A linked list is resides in contiguous memory?" );
         this.answer = "A linked list points to objects in non-continguous memory.";
-        this.answerKey = charF;
+        this.answerKey = charFalse;
     }
     
     /**
