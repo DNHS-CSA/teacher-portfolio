@@ -66,7 +66,7 @@ public class APexam {
 	  				q = new control_ap_exam.BinaryMathQuestions();
 	  				break;
   				default:
-  					q = new control_ap_exam.ProgLangQuestions();
+  					q = new control_ap_exam.ProgrammingQuestions();
 	  		}
 	  		q.setID(i+1);
   			exam.add(q);

@@ -13,7 +13,7 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.0)
  */
-public class ProgLangQuestions extends Questiontf
+public class ProgrammingQuestions extends Questiontf
 { 
 	
     /**
@@ -21,7 +21,7 @@ public class ProgLangQuestions extends Questiontf
      * 
      * @param  void
      */
-    public ProgLangQuestions()
+    public ProgrammingQuestions()
     {	    	
     	// This outputs constructor being run
         ConsoleMethods.println("ProgLangQuestions Constructor");
@@ -61,7 +61,7 @@ public class ProgLangQuestions extends Questiontf
      */
     public static String mainTest()
     {
-    	Question q = new ProgLangQuestions();
+    	Question q = new ProgrammingQuestions();
         q.askQuestionConsole();
         return q.getCounterMsg();
     }
