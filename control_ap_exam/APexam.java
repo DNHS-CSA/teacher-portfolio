@@ -13,8 +13,8 @@ import util.ConsoleMethods;;
 public class APexam {
 
   private CircleQueue exam;
-  private int size = 3;	// size of test
-  private int questionTypes = 3;	// randomization
+  private int size = 4;	// size of test
+  private int questionTypes = 4;	// randomization
   private boolean init = true;
 
   /**
@@ -63,9 +63,10 @@ public class APexam {
 	  				q = new control_ap_exam.DataTypeQuestions();
 	  				break;
 	  			case 2:
-  				default:
 	  				q = new control_ap_exam.BinaryMathQuestions();
 	  				break;
+  				default:
+  					q = new control_ap_exam.ProgLangQuestions();
 	  		}
 	  		q.setID(i+1);
   			exam.add(q);

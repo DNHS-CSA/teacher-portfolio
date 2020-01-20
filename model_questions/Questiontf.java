@@ -2,14 +2,11 @@ package model_questions;
 
 import util.ConsoleMethods;
 
-public class Questiontf extends Question {
+public abstract class Questiontf extends Question {
 
 	// question id or number
 	private int ID;
-
-	// question setup values
-	protected String choiceT, choiceF;
-    
+  
     // internal control values, these are never change
     protected final char charT = 'T', charF = 'F'; 			// True False default letters
 	protected final char[] answers = {charT, charF};		// Multiple choice default order
@@ -27,6 +24,8 @@ public class Questiontf extends Question {
     {
     	// This outputs constructor being run
         ConsoleMethods.println("Question TF class constructor"); 
+        
+        setupQuestion();
     }
     
       
@@ -38,28 +37,8 @@ public class Questiontf extends Question {
      protected void setupQuestion() {
     	// This outputs constructor being run
         ConsoleMethods.println("Question class setupQuestion method");
-    	setupQuestionData();
         
-    	// choice assignment
-    	choices[0] = choiceT;
-    	choices[1] = choiceF;	
-    }
- 
-     /**
-      * setup question data default, expectation is this will changed through polymorphism
-      *
-      * @param  void
-      */
-    protected void setupQuestionData() {
-    	// This outputs constructor being run
-        ConsoleMethods.println("Question class setupQuestionData method");
-        
-    	question = "A Linked List is a linear data structure?";
-		choiceT = "True";
-		choiceF = "False";
-		
-		answer = choiceT;
-		answerKey = charT;
+    	setupQuestionData();	
     }
 	
 	
@@ -71,8 +50,8 @@ public class Questiontf extends Question {
      */
 	public String getChoices() {
 		return String.format(
-            charT + ": " + choices[0] + "\n"  + 
-    	    charF + ": " + choices[1] + "\n"
+            charT + ": " + true + "\n"  + 
+    	    charF + ": " + false + "\n"
             );    
 	}
     
@@ -104,7 +83,7 @@ public class Questiontf extends Question {
         
         // IO logic of getting answer from console
         do {
-            choice = ConsoleMethods.inputChar("Enter selection (A-E) --> ");
+            choice = ConsoleMethods.inputChar("Enter selection (T or F) --> ");
             choice = Character.toUpperCase(choice); // Convert to upper case
             if (choice == charT || choice == charF) break;
             ConsoleMethods.println(" (invalid) ");
