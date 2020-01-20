@@ -3,7 +3,7 @@ package view_control;
 import control_ap_exam.BinaryMathQuestions;
 import control_ap_exam.DataTypeQuestions;
 import control_ap_exam.MathQuestions;
-import model_questions.Scoring;
+import model_questions.Question;
 import util.ConsoleMethods;
 
 /**
@@ -76,15 +76,15 @@ public class AP_Console
         {
             case 1:
               menuMsg[1] = MathQuestions.mainTest();
-              menuTotalMsg = Scoring.getCounterTotalMsg();
+              menuTotalMsg = Question.getCounterTotalMsg();
               break;
             case 2:
               menuMsg[2] = BinaryMathQuestions.mainTest();
-              menuTotalMsg = Scoring.getCounterTotalMsg();
+              menuTotalMsg = Question.getCounterTotalMsg();
               break;
             case 3:
               menuMsg[3] = DataTypeQuestions.mainTest();
-              menuTotalMsg = Scoring.getCounterTotalMsg();
+              menuTotalMsg = Question.getCounterTotalMsg();
               break;
             case 0:
               ConsoleMethods.println("Exit selected");

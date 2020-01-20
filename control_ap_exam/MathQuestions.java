@@ -4,7 +4,7 @@ package control_ap_exam;
 import java.util.Random;
 
 import model_questions.Question;
-import model_questions.QuestionRandom;
+import model_questions.Questionmc;
 import util.ConsoleMethods;
 
 /**
@@ -13,9 +13,8 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.0)
  */
-public class MathQuestions extends QuestionRandom
+public class MathQuestions extends Questionmc
 { 
-	private char[] operators = {'/', '%'};	// operators supported
 	
     /**
      * Constructor for objects of class MathQuestions
@@ -24,8 +23,8 @@ public class MathQuestions extends QuestionRandom
      */
     public MathQuestions()
     {	    	
-    	// Required to organize dynamic structures for Choices after data is defined
-        super.setupQuestion();
+    	// This outputs constructor being run
+        ConsoleMethods.println("MathQuestions Constructor");
     }
     
     /**
@@ -33,11 +32,12 @@ public class MathQuestions extends QuestionRandom
      *
      * @return void
      */
-    @Override
     protected void setupQuestionData()
     {
     	// This outputs constructor being run
-        ConsoleMethods.println("MathQuestion class setupQuestionData method");
+        ConsoleMethods.println("MathQuestions setupQuestionData()");
+        
+    	char[] operators = {'/', '%'};	// operators supported
         
     	// Logic to setup data for Math questions
     	Random rand = new Random();

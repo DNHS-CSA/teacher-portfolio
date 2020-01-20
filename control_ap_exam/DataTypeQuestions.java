@@ -3,7 +3,7 @@ package control_ap_exam;
 import java.util.Random;
 
 import model_questions.Question;
-import model_questions.QuestionRandom;
+import model_questions.Questionmc;
 import util.ConsoleMethods;
 
 /**
@@ -12,11 +12,9 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.1)
  */
-public class DataTypeQuestions extends QuestionRandom
+public class DataTypeQuestions extends Questionmc
 {
-	private String[] datatype = {"int", "float", "char"};		// conversions supported (from double)
-	private int[] multiplier = {10, 100, 1000};					// math multipliers used
-
+	
 	/**
      * Constructor for objects of class DataTypeQuestions
      * 
@@ -26,11 +24,6 @@ public class DataTypeQuestions extends QuestionRandom
     {
     	// This outputs constructor being run
         ConsoleMethods.println("DataTypeQuestions Constructor");
-
-    	
-    	
-    	// Required to organize dynamic structures for Choices after data is defined
-    	super.setupQuestion();
     }
       
     /**
@@ -40,9 +33,14 @@ public class DataTypeQuestions extends QuestionRandom
      * @param  number       number in conversion
      * @return void
      */
-    @Override
     protected void setupQuestionData()
-    {        
+    { 
+    	// This outputs constructor being run
+        ConsoleMethods.println("DataTypeQuestions setupQuestionData()");
+        
+    	String[] datatype = {"int", "float", "char"};		// conversions supported (from double)
+    	int[] multiplier = {10, 100, 1000};					// math multipliers used
+
     	// Logic to setup data for Data Conversion questions
     	Random rand = new Random();
     	double number = rand.nextDouble() * multiplier[rand.nextInt(multiplier.length)];

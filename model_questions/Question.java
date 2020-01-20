@@ -8,25 +8,17 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.0)
  */
-public class Question extends Scoring
+public abstract class Question
 {
 	// question id or number
 	private int ID;
-
-	// question setup values
-	protected String question, choiceA, choiceB, choiceC, choiceD, choiceE, answer;
+	protected String question, answer;
 	protected char answerKey;
+	private static int totalCorrect = 0;  // class variables
+    private static int totalQuestions = 0;
     
-    // internal control values, these are never change
-    protected final char charA = 'A', charB = 'B', charC = 'C', charD = 'D', charE = 'E'; 	// Multiple choice default letters
-	protected final char[] answers = {charA, charB, charC, charD, charE};					// Multiple choice default order
-   	protected int aOffset = 0, bOffset = 1, cOffset = 2, dOffset = 3, eOffset = 4;			// Multiple choice index value
-    
-    // defaults for choice
-   	protected int choiceOffset = 0;						// choiceOffset is used when scrambled to move answers around
-    protected boolean choiceEfixed = true;				// used to keep choice E fixed versus randomization
-	protected String[] choices = {"", "", "", "", ""};
-
+    private int correct;        // correct answers
+    private int questions;      // questions attempted
     
     /**
      * Constructor for objects of class Question
@@ -37,48 +29,78 @@ public class Question extends Scoring
     {
     	// This outputs constructor being run
         ConsoleMethods.println("Question class constructor");
-        
-        // turn scrambled off for backward compatibility
-        choiceOffset = 0;
-        choiceEfixed = true;  
+
+        // Initialize instance variables
+        this.correct = 0;
+        this.questions = 0;
+    }
+     
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public void updateCounters(Boolean isCorrect)
+    {
+        if (isCorrect)
+        {
+            this.correct++;
+            Question.totalCorrect++;
+        }
+        questions++;
+        totalQuestions++;
     }
     
-      
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public void printCounters()
+    {
+        System.out.println(this.getCounterMsg());
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public String getCounterMsg()
+    {
+        return new String("Results: " + this.correct + " of " + this.questions);
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static String getCounterTotalMsg()
+    {
+        return new String("Totals:  " + Question.totalCorrect + " of " + Question.totalQuestions);
+    }
+	     
     /**
      * setup question choices and answer
      * 
      * @param  void
      */
-     protected void setupQuestion() {
-    	// This outputs constructor being run
-        ConsoleMethods.println("Question class setupQuestion method");
-    	setupQuestionData();
-        
-    	// choice assignment
-    	choices[aOffset] = choiceA;
-    	choices[bOffset] = choiceB;
-    	choices[cOffset] = choiceC;
-    	choices[dOffset] = choiceD;
-    	choices[eOffset] = choiceE;   	
-    }
+     protected abstract void setupQuestion();
+
  
      /**
       * setup question data default, expectation is this will changed through polymorphism
       *
       * @param  void
       */
-    protected void setupQuestionData() {
-    	// This outputs constructor being run
-        ConsoleMethods.println("Question class setupQuestionData method");
+    protected abstract void setupQuestionData();
         
-    	question = "What type of programming language is Java?";
-		choiceA = "Data-oriented";
-		choiceB = "Iterative";
-		choiceC = "Object-oriented";
-		choiceD = "Imperative";
-		answer = choiceC;
-		answerKey = charC;
-    }
+    	
     /**
      * Question ID setter
      *
@@ -115,15 +137,7 @@ public class Question extends Scoring
      * @param  void
      * @return String 	content of choices with ABCDEF formatting
      */
-	public String getChoices() {
-		return String.format(
-            charA + ": " + choices[0] + "\n"  + 
-    	    charB + ": " + choices[1] + "\n"  + 
-    	    charC + ": " + choices[2] + "\n"  + 
-    	    charD + ": " + choices[3] + "\n"  + 
-    	    charE + ": " + choices[4] + "\n"
-            );    
-	}
+	public abstract String getChoices();
 	
 	/**
      * Answer getter with formatting to correspond to getChoices
@@ -145,49 +159,14 @@ public class Question extends Scoring
      * @param  void
      * @return void
      */
-    public void  askQuestionConsole()
-    {
-        // getAnswer return true if question is correct
-        updateCounters ( getAnswerConsole() );
-    }
+    public abstract void askQuestionConsole();
     
-    /**
-     * Console support for asking question and getting result
-     *
-     * @param  void
-     * @return void
-     */
-    private boolean getAnswerConsole()
-    {
-        char choice;
-        
-        // Implement this to randomize order
-        ConsoleMethods.println(getQuestion());
-        ConsoleMethods.println(getChoices());
-        
-        // IO logic of getting answer from console
-        do {
-            choice = ConsoleMethods.inputChar("Enter selection (A-E) --> ");
-            choice = Character.toUpperCase(choice); // Convert to upper case
-            if (choice >= charA && choice <= charE) break;
-            ConsoleMethods.println(" (invalid) ");
-        } while ( true );                                               // until valid input
-        
-        if (choice == answerKey) ConsoleMethods.print("(correct) ");
-        else ConsoleMethods.print("(missed it!) ");
-        ConsoleMethods.println(answer);
-        ConsoleMethods.println();
-        
-        /*Boolean ansStatus = (choice == answerKey);
-        calcResult(ansStatus)
-        return ansStatus;*/
-        return (choice == answerKey);
-    }
 
-    public String toString()
-    {
-    	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
-    	return s;
-    }
+    /**
+     * Sensible output
+     *
+     */
+    public abstract String toString();
+
   
 }

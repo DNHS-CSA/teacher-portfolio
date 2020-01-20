@@ -3,7 +3,7 @@ package control_ap_exam;
 import java.util.Random;
 
 import model_questions.Question;
-import model_questions.QuestionRandom;
+import model_questions.Questionmc;
 import util.ConsoleMethods;
 
 /**
@@ -12,9 +12,8 @@ import util.ConsoleMethods;
  * @author (John Mortensen)
  * @version (1.0)
  */
-public class BinaryMathQuestions extends QuestionRandom
+public class BinaryMathQuestions extends Questionmc
 {
-	private char[] operators = {'&', '|', '+', '-'};
 
 	/**
      * Constructor for objects of class BinaryMathQuestions
@@ -22,8 +21,9 @@ public class BinaryMathQuestions extends QuestionRandom
      * @param  void
      */
     public BinaryMathQuestions()
-    {   	  	
-    	super.setupQuestion();
+    {   
+    	// This outputs constructor being run
+        ConsoleMethods.println("BinaryMathQuestions Constructor");
     }
     
     /**
@@ -31,9 +31,13 @@ public class BinaryMathQuestions extends QuestionRandom
      *
      * @return    void
      */
-    @Override
     protected void setupQuestionData()
     {
+    	// This outputs constructor being run
+        ConsoleMethods.println("BinaryMathQuestions setupQuestionData()");
+        
+    	char[] operators = {'&', '|', '+', '-'};
+
     	// Logic to setup data for Binary Math questions
     	Random rand = new Random();
     	Integer arg1 = rand.nextInt(16)+1;
