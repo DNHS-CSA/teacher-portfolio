@@ -116,6 +116,15 @@ public class MainMenu extends JFrame {
 				frame.setVisible(true);
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Method Show");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MethodShowUI frame = new MethodShowUI();
+				frame.setVisible(true);
+			}
+		});
+		mnJig.add(mntmNewMenuItem);
 		mnJig.add(mntmProgrammingLanguages);
 		
 		
