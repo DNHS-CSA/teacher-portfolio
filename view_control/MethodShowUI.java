@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import control_file_search.Method2String;
+import control_file_search.MethodShow;
 import control_file_search.MethodSearch;
 
 import java.awt.GridLayout;
@@ -101,7 +101,7 @@ public class MethodShowUI extends MainMenu {
 		JButton buttonTest = new JButton("Test");
 		buttonTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<String> methods = Method2String.getMethod(filename.getText(), methodName.getText());
+				ArrayList<String> methods = MethodShow.getMethod(filename.getText(), methodName.getText());
 				l1.clear();
 				for (String method: methods) {
 					l1.addElement(method);
@@ -117,7 +117,7 @@ public class MethodShowUI extends MainMenu {
 		buttonTestConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		buttonTestConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Method2String.main(filename.getText(), methodName.getText());
+				MethodShow.main(filename.getText(), methodName.getText());
 			}
 		});
 		buttonTestConsole.setBounds(419, 7, 21, 18);

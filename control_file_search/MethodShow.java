@@ -1,16 +1,10 @@
 package control_file_search;
 
 /**
- * Searches PigLatinator.java for methods that match the input "Vow"
+ * Seaches for Method
  * 
- * Excludes possibilities of calling methods with a dot
- * Checks for curley brackets in line with method and the proceeding line
- * Searches for methods that match and ignores case
- * Returns found methods as the methods (ArrayList)
- * found (boolean) indicates if methods were found or not
- * 
- * @author Sydney Hsieh
- * @version 2
+ * @author Sydney Hsieh, John Mortensen
+ * @version 3
  */
 
 import java.util.ArrayList;
@@ -21,7 +15,7 @@ import util.ConsoleMethods;
 import java.io.*;
 
 
-public class Method2String
+public class MethodShow
 {  
 	 private  boolean Found;
 	 private  ArrayList<String> Lines;   	//Each element of ArrayList contains a line from file
@@ -38,7 +32,7 @@ public class Method2String
     }  
     */ 
     
-    public Method2String()
+    public MethodShow()
     {
     	Found = true;
     	Lines = new ArrayList<String>();
@@ -127,7 +121,7 @@ public class Method2String
     public static ArrayList<String> getMethod(String filenm, String method)	// Business logic driver
     {
         ConsoleMethods.println("In Method2String getMethod");
-        Method2String test = new Method2String();
+        MethodShow test = new MethodShow();
     	test.setTerms(filenm, method);
     	test.scan();
         return test.Method;
