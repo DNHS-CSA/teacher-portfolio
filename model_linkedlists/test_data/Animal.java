@@ -13,6 +13,25 @@ public class Animal {
 		aniColor = color; 
 	}
 	
+	/* key value
+	 * 
+	 */
+	public String getKey()
+	{
+		return aniName;
+	}
+	
+	/* compareTo override
+	 * 
+	 */
+	public int compareTo(Animal a)
+	{
+		return aniName.compareTo(a.getKey());
+	}
+	
+	/* toString override
+	 * 
+	 */
 	public String toString()
 	{
 		return "(name: " + aniName + ", age: " + aniAge + ", color: " + aniColor + ")"; 

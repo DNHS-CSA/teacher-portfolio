@@ -5,7 +5,7 @@ public class Cupcakes {
 	int sprinkles;
 	String flavor;
 	
-	Cupcakes(String flavor, int sprinkles, String frosting)
+	Cupcakes(String frosting, int sprinkles, String flavor)
 	{
 		this.frosting = frosting;
 		this.sprinkles = sprinkles;
@@ -13,8 +13,18 @@ public class Cupcakes {
 		
 	}
 	
+	public String getKey()
+	{
+		return flavor;
+	}
+	
+	public int compareTo(Cupcakes c)
+	{
+		return flavor.compareTo(c.getKey());
+	}
+	
 	public String toString() {
-		String all = this.frosting + ", " + this.sprinkles + ", " + this.flavor;
+		String all = this.flavor + ", " + this.sprinkles + ", " + this.frosting;
 		return (all);
 	}
 	

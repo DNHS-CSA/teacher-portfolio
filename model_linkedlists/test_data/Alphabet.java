@@ -12,6 +12,23 @@ public class Alphabet {
 		this.letter = l;
 	}
 	
+	public char getKey()
+	{
+		return letter;
+	}
+	
+	public int compareTo(Alphabet al)
+	{
+		char a = al.getKey();
+		
+		if (letter == a)
+			return 0;
+		else if (letter > a )
+			return 1;
+		
+		return -1;
+	}
+	
 	public String toString()
 	{
 		return ("" + letter); 
