@@ -1,5 +1,6 @@
-package model_linkedlists;
+package model_linkedlists.testers;
 
+import model_linkedlists.Stack;
 import util.ConsoleMethods;
 
 /**
