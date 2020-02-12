@@ -1,11 +1,20 @@
 package model_linkedlists.test_data;
 
+/*
+ * Animal class
+ */
 public class Animal {
 	
+	/* fields
+	 * 
+	 */
 	private String aniName; 
 	private int aniAge; 
 	private String aniColor;
 	
+	/* constructor
+	 * 
+	 */
 	public Animal(String name, int age, String color)
 	{
 		aniName = name; 
