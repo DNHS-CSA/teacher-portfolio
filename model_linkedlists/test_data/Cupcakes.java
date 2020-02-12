@@ -1,4 +1,4 @@
-package model_linkedlists.testers;
+package model_linkedlists.test_data;
 
 public class Cupcakes {
 	String frosting;

@@ -1,8 +1,14 @@
 package model_linkedlists;
-import model_linkedlists.testers.Alphabet;
-import model_linkedlists.testers.Animal;
-import model_linkedlists.testers.Cupcakes;
+// imports in test data support testing
+import model_linkedlists.test_data.Alphabet;
+import model_linkedlists.test_data.Animal;
+import model_linkedlists.test_data.Cupcakes;
 
+/**
+ * Circle Queue Driver takes a list of Objects and puts them onto the Queue
+ * @author johnmortensen
+ *
+ */
 public class CircleQueueDriver {
 	
 	private CircleQueue cqueue;
@@ -19,10 +25,10 @@ public class CircleQueueDriver {
 		this.dataType = dataType;
 	}
 
-	public void addCQueue(Object[] ob)
+	public void addCQueue(Object[] objects)
 	{
 		System.out.println("Add " + dataType);
-		for (Object o : ob)
+		for (Object o : objects)
 		{
 			cqueue.add(o);
 			System.out.println("Add: " + cqueue.getObject() + " " + cqueue);
@@ -49,6 +55,9 @@ public class CircleQueueDriver {
 		}
 	}
 	
+	/* 
+	 * Illustrate different Objects that can be placed on same Queue
+	 */
 	public static void main(String[] args)
 	
 	{
@@ -72,5 +81,4 @@ public class CircleQueueDriver {
 		trial.deleteCQueue();
 	}
 	
-
 }

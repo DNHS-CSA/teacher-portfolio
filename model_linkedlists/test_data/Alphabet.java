@@ -1,4 +1,4 @@
-package model_linkedlists.testers;
+package model_linkedlists.test_data;
 import java.util.ArrayList;
 import util.ConsoleMethods;
 

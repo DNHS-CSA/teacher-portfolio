@@ -1,8 +1,15 @@
 package model_linkedlists;
-import model_linkedlists.testers.Alphabet;
-import model_linkedlists.testers.Animal;
-import model_linkedlists.testers.Cupcakes;
 
+// imports are required for main testing
+import model_linkedlists.test_data.Alphabet;
+import model_linkedlists.test_data.Animal;
+import model_linkedlists.test_data.Cupcakes;
+
+/**
+ * Stack Driver takes a list of Objects and puts them onto the Stack
+ * @author johnmortensen
+ *
+ */
 public class StackDriver {
 	
 	private Stack stack;
@@ -19,10 +26,10 @@ public class StackDriver {
 		this.dataType = dataType;
 	}
 
-	public void pushStack(Object[] ob)
+	public void pushStack(Object[] objects)
 	{
 		System.out.println("Add " + dataType);
-		for (Object o : ob)
+		for (Object o : objects)
 		{
 			stack.push(o);
 			System.out.println("Push: " + stack.getObject() + " " + stack);
@@ -49,8 +56,10 @@ public class StackDriver {
 		}
 	}
 	
+	/* 
+	 * Illustrate different Objects that can be placed on same Stack
+	 */
 	public static void main(String[] args)
-	
 	{
 		StackDriver trial = new StackDriver();
 		
