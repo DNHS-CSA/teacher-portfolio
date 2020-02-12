@@ -1,4 +1,5 @@
 package model_linkedlists;
+import model_linkedlists.testers.Alphabet;
 import model_linkedlists.testers.Animal;
 import model_linkedlists.testers.Cupcakes;
 
@@ -55,14 +56,18 @@ public class StackDriver {
 		
 		// setup for Animals
 		trial.setDataType("Animals");
-		trial.pushStack((Object[])Animal.animalData());
+		trial.pushStack(Animal.animalData());
 
 		// setup for Cupcakes
 		trial.setDataType("Cupcakes");
-		trial.pushStack((Object[])Cupcakes.cupCakeData());
+		trial.pushStack(Cupcakes.cupCakeData());
+		
+		// setup for Alphabet
+		trial.setDataType("Alphabet");
+		trial.pushStack(Alphabet.alphabetData());
 
 		// mixed stack
-		trial.setDataType("Cupcakes then Animals");
+		trial.setDataType("Alphabet then Cupcakes then Animals");
 		trial.showStack();
 		trial.popStack();
 	}

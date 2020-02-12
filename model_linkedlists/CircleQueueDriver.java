@@ -1,4 +1,5 @@
 package model_linkedlists;
+import model_linkedlists.testers.Alphabet;
 import model_linkedlists.testers.Animal;
 import model_linkedlists.testers.Cupcakes;
 
@@ -60,11 +61,16 @@ public class CircleQueueDriver {
 		// setup for Cupcakes
 		trial.setDataType("Cupcakes");
 		trial.addCQueue((Object[])Cupcakes.cupCakeData());
+		
+		// setup for Alphabet
+		trial.setDataType("Alphabet");
+		trial.addCQueue(Alphabet.alphabetData());
 
 		// mixed data
-		trial.setDataType("Animals then Cupcakes");
+		trial.setDataType("Animals then Cupcakes then Alphabet");
 		trial.showCQueue();
 		trial.deleteCQueue();
 	}
+	
 
 }
