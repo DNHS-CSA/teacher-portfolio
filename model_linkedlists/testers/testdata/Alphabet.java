@@ -1,15 +1,22 @@
-package model_linkedlists.test_data;
+package model_linkedlists.testers.testdata;
 import java.util.ArrayList;
+
 import util.ConsoleMethods;
 
 public class Alphabet extends Generics {
-		
+	public static final String type = "Alphabet";	
 	private char letter;
 	private static final int size = 26;
 	
 	public Alphabet(char l)
 	{
 		this.letter = l;
+	}
+	
+	@Override
+	public String getType()
+	{
+		return type;
 	}
 	
 	@Override

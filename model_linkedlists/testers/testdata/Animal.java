@@ -1,13 +1,13 @@
-package model_linkedlists.test_data;
+package model_linkedlists.testers.testdata;
 
 /*
  * Animal class
  */
-public class Animal extends Generics {
-	
+public class Animal extends Generics {	
 	/* fields
 	 * 
 	 */
+	public static final String type = "Animal";	
 	private String aniName; 
 	private int aniAge; 
 	private String aniColor;
@@ -20,6 +20,15 @@ public class Animal extends Generics {
 		aniName = name; 
 		aniAge = age; 
 		aniColor = color; 
+	}
+	
+	/* identifier of Class Type
+	 * 
+	 */
+	@Override
+	public String getType()
+	{
+		return type;
 	}
 	
 	/* key value

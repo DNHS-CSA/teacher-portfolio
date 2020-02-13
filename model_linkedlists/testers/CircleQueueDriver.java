@@ -1,9 +1,6 @@
-package model_linkedlists;
-// imports in test data support testing
-import model_linkedlists.test_data.Alphabet;
-import model_linkedlists.test_data.Animal;
-import model_linkedlists.test_data.Cupcakes;
-import model_linkedlists.test_data.Generics;
+package model_linkedlists.testers;
+import model_linkedlists.CircleQueue;
+import model_linkedlists.testers.testdata.*;
 
 /**
  * Circle Queue Driver takes a list of Objects and puts them onto the Queue
@@ -44,6 +41,10 @@ public class CircleQueueDriver {
 		System.out.println("First Element: " + cqueue.getFirstObject());
 		System.out.println("Last Element: " + cqueue.getLastObject());
 		System.out.println("Full cqueue: " + cqueue);
+		
+		/* To compare objects you need to have a Type of class
+		 * Generics is abstract but this code does not allow mixed base
+		 */
 		System.out.println("Compare adjacent objects " + dataType);
 		Object c = cqueue.getFirstObject();
 		for (int i = 0; c != null && i < count; i++)
@@ -78,25 +79,27 @@ public class CircleQueueDriver {
 	 */
 	public static void main(String[] args)
 	
-	{
-		CircleQueueDriver trial = new CircleQueueDriver();
-		
+	{		
 		// setup for Animals
-		//trial.setDataType("Animals");
-		//trial.addCQueue(Animal.animalData());
-
+		CircleQueueDriver animals = new CircleQueueDriver();
+		animals.setDataType(Animal.type);
+		animals.addCQueue(Animal.animalData());
+		animals.showCQueue();
+		animals.deleteCQueue();
+		
 		// setup for Cupcakes
-		trial.setDataType("Cupcakes");
-		trial.addCQueue(Cupcakes.cupCakeData());
+		CircleQueueDriver cupcakes = new CircleQueueDriver();
+		cupcakes.setDataType(Cupcakes.type);
+		cupcakes.addCQueue(Cupcakes.cupCakeData());
+		cupcakes.showCQueue();
+		cupcakes.deleteCQueue();
 		
 		// setup for Alphabet
-		//trial.setDataType("Alphabet");
-		//trial.addCQueue(Alphabet.alphabetData());
-
-		// mixed data
-		trial.setDataType("Cupcakes");
-		trial.showCQueue();
-		trial.deleteCQueue();
+		CircleQueueDriver alphabet = new CircleQueueDriver();
+		alphabet.setDataType(Alphabet.type);
+		alphabet.addCQueue(Alphabet.alphabetData());
+		alphabet.showCQueue();
+		alphabet.deleteCQueue();
 	}
 	
 }

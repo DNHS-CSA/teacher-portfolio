@@ -1,9 +1,10 @@
-package model_linkedlists.test_data;
+package model_linkedlists.testers.testdata;
 
 public class Cupcakes extends Generics {
-	String frosting;
-	int sprinkles;
-	String flavor;
+	public static final String type = "Cupcakes";	
+	private String frosting;
+	private int sprinkles;
+	private String flavor;
 	
 	Cupcakes(String frosting, int sprinkles, String flavor)
 	{
@@ -11,6 +12,12 @@ public class Cupcakes extends Generics {
 		this.sprinkles = sprinkles;
 		this.flavor = flavor;
 		
+	}
+	
+	@Override
+	public String getType()
+	{
+		return type;
 	}
 	
 	@Override

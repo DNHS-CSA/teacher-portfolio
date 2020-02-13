@@ -1,9 +1,9 @@
-package model_linkedlists;
+package model_linkedlists.testers;
 
-// imports are required for main testing
-import model_linkedlists.test_data.Alphabet;
-import model_linkedlists.test_data.Animal;
-import model_linkedlists.test_data.Cupcakes;
+import model_linkedlists.Stack;
+import model_linkedlists.testers.testdata.Alphabet;
+import model_linkedlists.testers.testdata.Animal;
+import model_linkedlists.testers.testdata.Cupcakes;
 
 /**
  * Stack Driver takes a list of Objects and puts them onto the Stack
