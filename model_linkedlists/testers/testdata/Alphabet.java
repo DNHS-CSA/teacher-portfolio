@@ -10,14 +10,9 @@ public class Alphabet extends Generics {
 	
 	public Alphabet(char l)
 	{
+		this.setSubType(type);
 		this.letter = l;
-	}
-	
-	@Override
-	public String getType()
-	{
-		return type;
-	}
+	}	
 	
 	@Override
 	public String getKey()

@@ -8,16 +8,10 @@ public class Cupcakes extends Generics {
 	
 	Cupcakes(String frosting, int sprinkles, String flavor)
 	{
+		this.setSubType(type);
 		this.frosting = frosting;
 		this.sprinkles = sprinkles;
 		this.flavor = flavor;
-		
-	}
-	
-	@Override
-	public String getType()
-	{
-		return type;
 	}
 	
 	@Override

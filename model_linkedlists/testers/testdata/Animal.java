@@ -17,19 +17,12 @@ public class Animal extends Generics {
 	 */
 	public Animal(String name, int age, String color)
 	{
+		this.setSubType(type);
 		aniName = name; 
 		aniAge = age; 
 		aniColor = color; 
 	}
 	
-	/* identifier of Class Type
-	 * 
-	 */
-	@Override
-	public String getType()
-	{
-		return type;
-	}
 	
 	/* key value
 	 * 

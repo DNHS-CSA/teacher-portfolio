@@ -19,6 +19,10 @@ public class CircleQueueDriver {
 		cqueue = new CircleQueue();
 	}
 	
+	protected void setCount(int count) {
+		this.count = count;
+	}
+	
 	public void setDataType(String dataType) {
 		this.dataType = dataType;
 	}
@@ -53,7 +57,7 @@ public class CircleQueueDriver {
 			Object n = cqueue.getObject();
 			
 			if (c != null && n != null) {
-				System.out.println( ((Generics) c).getKey() + " compare to " + ((Generics) n).getKey() );
+				System.out.println( ((Generics) c).getKey() + " " + ((Generics) c).getType() + " compare to " + ((Generics) n).getKey() + " " + ((Generics) n).getType() );
 				System.out.println(((Generics) c).compareTo(n));
 			}
 			c = n;
@@ -79,27 +83,40 @@ public class CircleQueueDriver {
 	 */
 	public static void main(String[] args)
 	
-	{		
+	{	
+		
+		// general queue
+		CircleQueueDriver trial = new CircleQueueDriver();
+		
 		// setup for Animals
-		CircleQueueDriver animals = new CircleQueueDriver();
-		animals.setDataType(Animal.type);
-		animals.addCQueue(Animal.animalData());
-		animals.showCQueue();
-		animals.deleteCQueue();
+		trial.setCount(0);
+		trial.setDataType(Animal.type);
+		trial.addCQueue(Animal.animalData());
+		trial.showCQueue();
+		trial.deleteCQueue();
 		
 		// setup for Cupcakes
-		CircleQueueDriver cupcakes = new CircleQueueDriver();
-		cupcakes.setDataType(Cupcakes.type);
-		cupcakes.addCQueue(Cupcakes.cupCakeData());
-		cupcakes.showCQueue();
-		cupcakes.deleteCQueue();
+		trial.setCount(0);
+		trial.setDataType(Cupcakes.type);
+		trial.addCQueue(Cupcakes.cupCakeData());
+		trial.showCQueue();
+		trial.deleteCQueue();
 		
 		// setup for Alphabet
-		CircleQueueDriver alphabet = new CircleQueueDriver();
-		alphabet.setDataType(Alphabet.type);
-		alphabet.addCQueue(Alphabet.alphabetData());
-		alphabet.showCQueue();
-		alphabet.deleteCQueue();
+		trial.setCount(0);
+		trial.setDataType(Alphabet.type);
+		trial.addCQueue(Alphabet.alphabetData());
+		trial.showCQueue();
+		trial.deleteCQueue();
+		
+		// mixed queue
+		trial.setCount(0);
+		trial.setDataType(Generics.type);
+		trial.addCQueue(Animal.animalData());
+		//trial.addCQueue(Cupcakes.cupCakeData());		// Why do these fail?
+		//trial.addCQueue(Alphabet.alphabetData());
+		trial.showCQueue();
+		trial.deleteCQueue();
 	}
 	
 }
