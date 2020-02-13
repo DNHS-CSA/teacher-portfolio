@@ -1,6 +1,6 @@
 package model_linkedlists.test_data;
 
-public class Cupcakes {
+public class Cupcakes extends Generics {
 	String frosting;
 	int sprinkles;
 	String flavor;
@@ -13,14 +13,16 @@ public class Cupcakes {
 		
 	}
 	
+	@Override
 	public String getKey()
 	{
 		return flavor;
 	}
 	
-	public int compareTo(Cupcakes c)
+	@Override
+	public int compareTo(Object o)
 	{
-		return flavor.compareTo(c.getKey());
+		return flavor.compareTo(((Cupcakes) o).getKey());
 	}
 	
 	public String toString() {
@@ -28,8 +30,8 @@ public class Cupcakes {
 		return (all);
 	}
 	
-	public static Cupcakes[] cupCakeData() {
-		Cupcakes[] cc = { 
+	public static Generics[] cupCakeData() {
+		Generics[] cc = { 
 				new Cupcakes("Red", 4, "Red Velvet"),
 			    new Cupcakes("Orange", 5, "Orange"),
 			    new Cupcakes("Yellow", 6, "Lemon"),
@@ -45,7 +47,7 @@ public class Cupcakes {
 	
 	public static void main(String[] args)
 	{
-		Cupcakes[] cc = cupCakeData();
+		Generics[] cc = cupCakeData();
 		for(int i = 0; i < cc.length; i++)
 			System.out.println(cc[i]);
 	}

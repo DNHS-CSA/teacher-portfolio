@@ -2,7 +2,7 @@ package model_linkedlists.test_data;
 import java.util.ArrayList;
 import util.ConsoleMethods;
 
-public class Alphabet {
+public class Alphabet extends Generics {
 		
 	private char letter;
 	private static final int size = 26;
@@ -12,21 +12,16 @@ public class Alphabet {
 		this.letter = l;
 	}
 	
-	public char getKey()
+	@Override
+	public String getKey()
 	{
-		return letter;
+		return String.valueOf(letter);
 	}
 	
-	public int compareTo(Alphabet al)
+	@Override
+	public int compareTo(Object o)
 	{
-		char a = al.getKey();
-		
-		if (letter == a)
-			return 0;
-		else if (letter > a )
-			return 1;
-		
-		return -1;
+		return getKey().compareTo(((Alphabet) o).getKey());
 	}
 	
 	public String toString()
@@ -34,9 +29,9 @@ public class Alphabet {
 		return ("" + letter); 
 	}
 	
-	public static Alphabet[] alphabetData() 
+	public static Generics[] alphabetData() 
 	{	
-		Alphabet[] alphabet = new Alphabet[Alphabet.size];
+		Generics[] alphabet = new Alphabet[Alphabet.size];
 		for (int i = 0; i < Alphabet.size; i++)
 		{
 			alphabet[i] = new Alphabet( (char)('a' + i) );
@@ -49,8 +44,8 @@ public class Alphabet {
 	 */
 	public static void main(String[] args)
 	{
-		Alphabet[] ad = alphabetData();
-		for(Alphabet a : ad)
+		Generics[] ad = alphabetData();
+		for(Generics a : ad)
 			ConsoleMethods.print("" + a);
 	}
 	

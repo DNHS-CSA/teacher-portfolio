@@ -3,7 +3,7 @@ package model_linkedlists.test_data;
 /*
  * Animal class
  */
-public class Animal {
+public class Animal extends Generics {
 	
 	/* fields
 	 * 
@@ -25,6 +25,7 @@ public class Animal {
 	/* key value
 	 * 
 	 */
+	@Override
 	public String getKey()
 	{
 		return aniName;
@@ -33,9 +34,10 @@ public class Animal {
 	/* compareTo override
 	 * 
 	 */
-	public int compareTo(Animal a)
+	@Override
+	public int compareTo(Object o)
 	{
-		return aniName.compareTo(a.getKey());
+		return aniName.compareTo(((Animal) o).getKey());
 	}
 	
 	/* toString override
@@ -49,8 +51,8 @@ public class Animal {
 	/* Initialize Animal data
 	 * 
 	 */
-	public static Animal[] animalData() {
-		Animal[] ad = { 
+	public static Generics[] animalData() {
+		Generics[] ad = { 
 				new Animal("lion", 10, "gold"),
 				new Animal("pig", 10, "pink"),
 				new Animal("robin", 10, "red"),
@@ -64,8 +66,8 @@ public class Animal {
 	 */
 	public static void main(String[] args)
 	{
-		Animal[] ad = animalData();
-		for(Animal a : ad)
+		Generics[] ad = animalData();
+		for(Generics a : ad)
 			System.out.println(a);
 	}
 
