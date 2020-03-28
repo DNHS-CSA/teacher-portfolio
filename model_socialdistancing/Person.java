@@ -8,8 +8,10 @@ import view_control.SocialDistance;
 public class Person {
 	
 	//position extents
-	final int xExt = (int) (SocialDistance.frameX - SocialDistance.frameX*.05);
-	final int yExt = (int) (SocialDistance.frameY - SocialDistance.frameY*.05);
+	final int xExt = (int) (SocialDistance.frameX - SocialDistance.frameX*.03);
+	final int yExt = (int) (SocialDistance.frameY - SocialDistance.frameY*.04);
+	final int ovalWidth = SocialDistance.OvalW;
+	final int ovalHeight = SocialDistance.OvalH;
 	
 	//location
 	int x, y;
@@ -22,7 +24,7 @@ public class Person {
 	virus state = virus.candidate;
 	
 	// simulation control
-	final double estInfected = .08;			// % of population that has virus in simulation
+	final double estInfected = .02;			// % of population that has virus in simulation
 	final double reqToRoam = .10;			// % population that required to roam in simulation
 	final int msHealTimeMin = 5000;			// Minimum time to recover 5 seconds
 	final int msHealTimeMax = 10000;		// Max time to recover 10 seconds
@@ -66,8 +68,8 @@ public class Person {
 	public void collision(Person p2) {
 		
 		//Represent the Person objects asa Rectangles for simple collision detection
-		Rectangle per1 = new Rectangle(p2.x,p2.y, Point.OvalW,Point.OvalH);
-		Rectangle per2 = new Rectangle(this.x,this.y, Point.OvalW,Point.OvalH);
+		Rectangle per1 = new Rectangle(p2.x,p2.y, ovalWidth, ovalHeight);
+		Rectangle per2 = new Rectangle(this.x,this.y, ovalWidth, ovalHeight);
 		
 		//collision check
 		if(per1.intersects(per2)) {
@@ -128,7 +130,7 @@ public class Person {
 		}
 		
 		//draw the oval representing the Person object
-		g.fillOval(x, y, Point.OvalW, Point.OvalH);
+		g.fillOval(x, y, ovalWidth, ovalHeight);
 		
 	}
 	

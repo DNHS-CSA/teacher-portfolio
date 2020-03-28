@@ -1,5 +1,4 @@
 package view_control;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import model_socialdistancing.Person;
-import model_socialdistancing.Point;
 
 /* 
 	SocialDistance extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
@@ -22,10 +20,15 @@ import model_socialdistancing.Point;
 public class SocialDistance extends JPanel implements ActionListener{
 	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
+	private String title="Social Distance Simulation";
 	
 	//frame extents
 	public final static int frameX = 800;
 	public final static int frameY = 600;
+	
+	//oval size
+	public static final int OvalW = 10;	//Height
+	public static final int OvalH = 10;	//Width
 
 	//simulation control values
 	int time = 0; //track time as the simulation runs
@@ -33,11 +36,7 @@ public class SocialDistance extends JPanel implements ActionListener{
 	final int numPeople = 100;
 
 	//store multiple Person and point objects
-	ArrayList<Person> people = new ArrayList<Person>(); //the moving Person objects (circles)
-	
-	//for drawing the graph
-	ArrayList<Point> points = new ArrayList<Point>();
-	
+	ArrayList<Person> people = new ArrayList<Person>(); //the moving Person objects (circles)	
 
 	//runner for the simulation - You can also create a different runner/driver class
 	public static void main(String[] arg) {
@@ -49,7 +48,7 @@ public class SocialDistance extends JPanel implements ActionListener{
 	public SocialDistance() {
 		
 		//Setup the GUI
-		JFrame frame = new JFrame("Simulation");
+		JFrame frame = new JFrame(title);
 		frame.setSize(frameX,frameY); //set the size
 		
 		//add this so that hitting the x button will actually end the program
@@ -75,6 +74,12 @@ public class SocialDistance extends JPanel implements ActionListener{
 		frame.setVisible(true);		
 		
 	}
+	
+	/* This invoked by Timer per milliseconds in timerValue */
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		repaint();
+	}
 
 	/* paint method for drawing the simulation and animation */
 	@Override
@@ -82,68 +87,21 @@ public class SocialDistance extends JPanel implements ActionListener{
 		//this method is invoked by the timer every 16ms. we're tracking the time manually with the time variable
 		time += timerValue;
 		
-		//as time passes (X)
-		//number infected at that time (Y). 
-		//amplitude over time illustrate infection and recovery
-		points.add(new Point(time/timerValue, Person.numInfected));
-		
 		super.paintComponent(g); // a necessary call to the parent paint method for proper screen refreshing
 		
 		//paint the Person objects!
+		int index = 0;
 		for(Person p: people) {
-			p.paint(g); //each Person object has a paint method. We're passing g as the argument
-		}
-		
-		//check for collision by generating unique pairs of people
-		for(Person p1: people)
 			for(Person p2: people)
 				//for each unique pair invoke the collision detection code
-				p1.collision(p2);
-		
-		//draw the points for the graph
-		//to represent amplitude of infection
-		g.setColor(Color.blue);
-		for(Point p: points) {
-			g.fillOval(p.time, (frameY - (int)(frameY*.05))-p.value, Point.OvalW, Point.OvalH);
-		}		
+				p.collision(p2);
+			p.paint(g); //each Person object has a paint method
+			
+			// bar meter to show current state of people, note: color is returned from p.paint
+			g.fillOval((frameX-(int)(frameX*.02)), (int) (frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
+			index++;
+		}	
 		
 	}
-	
-	/* This invoked by Timer per milliseconds in timerValue */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		repaint();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
