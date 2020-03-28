@@ -7,6 +7,9 @@ import java.awt.Graphics;
 public class Point {
 	
 	//a point has a value and the moment in time its value was captured
+	public static final int OvalW = 10;	//Height
+	public static final int OvalH = 10;	//Width
+
 	public int time;
 	public int value;
 	

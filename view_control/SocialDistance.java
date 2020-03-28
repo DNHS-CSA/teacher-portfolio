@@ -13,17 +13,14 @@ import model_socialdistancing.Person;
 import model_socialdistancing.Point;
 
 /* 
-	CFrame extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
+	SocialDistance extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
 	drawing tools of the library! 
 
-	CFrame implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
-	animation timer every 16ms.
+	SocialDistance implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
+	animation timer every timerValue(16ms).
 */
 public class SocialDistance extends JPanel implements ActionListener{
-	
-	/**
-	 * 
-	 */
+	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
 	
 	//frame extents
@@ -32,7 +29,7 @@ public class SocialDistance extends JPanel implements ActionListener{
 
 	//simulation control values
 	int time = 0; //track time as the simulation runs
-	final int timerValue = 16;
+	public final static int timerValue = 16;
 	final int numPeople = 100;
 
 	//store multiple Person and point objects
@@ -74,7 +71,7 @@ public class SocialDistance extends JPanel implements ActionListener{
 		t.restart(); //restart or start
 		
 		//make it visible
-		frame.add(this); //dont forget to add this class (JPanel) to the JFrame
+		frame.add(this); //add this class (JPanel) to the JFrame
 		frame.setVisible(true);		
 		
 	}
@@ -85,15 +82,16 @@ public class SocialDistance extends JPanel implements ActionListener{
 		//this method is invoked by the timer every 16ms. we're tracking the time manually with the time variable
 		time += timerValue;
 		
-		//as time passes, add a new point that keeps a track of the number of infected people
-		//at that time. (to be used for the "graph"
+		//as time passes (X)
+		//number infected at that time (Y). 
+		//amplitude over time illustrate infection and recovery
 		points.add(new Point(time/timerValue, Person.numInfected));
 		
 		super.paintComponent(g); // a necessary call to the parent paint method for proper screen refreshing
 		
 		//paint the Person objects!
 		for(Person p: people) {
-			p.paint(g); //recall that each Person object has a paint method. We're passing g as the argument
+			p.paint(g); //each Person object has a paint method. We're passing g as the argument
 		}
 		
 		//check for collision by generating unique pairs of people
@@ -106,15 +104,14 @@ public class SocialDistance extends JPanel implements ActionListener{
 		//to represent amplitude of infection
 		g.setColor(Color.blue);
 		for(Point p: points) {
-			g.fillOval(p.time, (frameY - (int)(frameY*.05))-p.value, 10, 10);
+			g.fillOval(p.time, (frameY - (int)(frameY*.05))-p.value, Point.OvalW, Point.OvalH);
 		}		
 		
 	}
 	
-	/* This runs every 16ms based on the timer */
+	/* This invoked by Timer per milliseconds in timerValue */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		repaint();
 	}
 	
