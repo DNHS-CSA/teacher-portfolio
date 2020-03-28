@@ -1,4 +1,5 @@
-package view_control;
+package socialdistancing;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import model_socialdistancing.Person;
+import socialdistancing.Person.virus;
 
 /* 
 	SocialDistance extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
@@ -17,7 +18,7 @@ import model_socialdistancing.Person;
 	SocialDistance implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
 	animation timer every timerValue(16ms).
 */
-public class SocialDistance extends JPanel implements ActionListener{
+public class SocialDistanceFrame extends JPanel implements ActionListener{
 	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
 	private String title="Social Distance Simulation";
@@ -26,26 +27,22 @@ public class SocialDistance extends JPanel implements ActionListener{
 	public final static int frameX = 800;
 	public final static int frameY = 600;
 	
-	//oval size
-	public static final int OvalW = 10;	//Height
-	public static final int OvalH = 10;	//Width
-
 	//simulation control values
 	int time = 0; //track time as the simulation runs
 	public final static int timerValue = 16;
 	final int numPeople = 100;
 
 	//store multiple Person and point objects
-	ArrayList<Person> people = new ArrayList<Person>(); //the moving Person objects (circles)	
+	ArrayList<Population> community = new ArrayList<Population>(); //the community of objects (circles)	
 
 	//runner for the simulation - You can also create a different runner/driver class
 	public static void main(String[] arg) {
 		//CFrame c = new CFrame();
-		new SocialDistance();
+		new SocialDistanceFrame();
 	}
 		
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
-	public SocialDistance() {
+	public SocialDistanceFrame() {
 		
 		//Setup the GUI
 		JFrame frame = new JFrame(title);
@@ -60,7 +57,7 @@ public class SocialDistance extends JPanel implements ActionListener{
 		for(int i = 0; i < numPeople; i++) {
 			//instantiate an Person object and add it to the ArrayList
 			//this is the part that actually CREATES objects we can use
-			people.add(new Person());
+			community.add(new Population());
 		}
 		
 		//Timer for animation
@@ -91,17 +88,40 @@ public class SocialDistance extends JPanel implements ActionListener{
 		
 		//paint the Person objects!
 		int index = 0;
-		for(Person p: people) {
-			for(Person p2: people)
+		for(Person p: community) {
+			for(Person p2: community) {
 				//for each unique pair invoke the collision detection code
 				p.collision(p2);
-			p.paint(g); //each Person object has a paint method
+			}
 			
-			// bar meter to show current state of people, note: color is returned from p.paint
-			g.fillOval((frameX-(int)(frameX*.02)), (int) (frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
+			//set the color of the Person object based on the health status
+			switch(p.state) {
+				case candidate: //normal
+					g.setColor(Color.LIGHT_GRAY);
+					break;
+				case infected: //infected
+					g.setColor(Color.red);
+					break;
+				case recovered: //recovered
+					g.setColor(Color.green);
+					break;
+				case died:
+					g.setColor(Color.black);
+					
+			}
+			
+			p.properties(); //each Person object has properties
+			Population prop = (Population)p; prop.areaManager();  //xy and velocity
+			
+			//draw the oval representing the Person object
+			g.fillOval(p.x, p.y, Person.OvalW, Person.OvalH);
+			
+			// bar meter to show current state of people
+			g.fillOval((frameX-(int)(frameX*.02)), (int) (frameY-((numPeople-index)*Person.OvalH)/1.67), Person.OvalW, Person.OvalH);
 			index++;
 		}	
 		
 	}
+	
 	
 }
