@@ -14,13 +14,11 @@ public class Citizen extends Person {
 	
 	//Constructor for the Citizen objects
 	public Citizen() {
-		
-		
+				
 		//randomize the position of the Person object to be within the SocialDistance frame!
 		x = (int)(Math.random()*(Control.xExt)+0);
 		y = (int)(Math.random()*(Control.yExt)+0);
-		
-		
+				
 		//social distancing part - when do the objects have movement vx and vy?
 		//for instance 10% of the time the code below will run to give the objects a non-zero vx and vy
 		//to simulate that 10% of instantiated objects are NOT practicing social distancing

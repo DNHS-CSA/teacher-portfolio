@@ -19,15 +19,15 @@ public class View extends JPanel implements ActionListener{
 	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
 	
+	JFrame frame;
+	Control ctl;
+	
 	//simulation control values
 	int time = 0; //track time as the simulation runs
 	
-	JFrame frame;
-	Control ctl;
-		
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
 	public View(Control ctl, String title) {
-		
+		// used for Control callback
 		this.ctl = ctl;
 		
 		//Setup the GUI
@@ -50,6 +50,7 @@ public class View extends JPanel implements ActionListener{
 		
 	}
 	
+	//activation separated from Constructor 
 	public void setVisible() {
 		frame.setVisible(true);		
 	}
@@ -67,8 +68,8 @@ public class View extends JPanel implements ActionListener{
 		//this method is invoked by the timer every 16ms. we're tracking the time manually with the time variable
 		time += Control.timerValue;
 		
-		super.paintComponent(g); // a necessary call to the parent paint method for proper screen refreshing	
-		ctl.modelPaint(g); // repaint all objects in simulation
+		super.paintComponent(g); // a necessary call to the parent paint method, required for proper screen refreshing	
+		ctl.controlPaint(g); // repaint all objects in simulation
 		
 	}
 	
