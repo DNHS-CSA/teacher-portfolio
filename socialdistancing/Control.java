@@ -52,7 +52,7 @@ public class Control {
 		}
 		
 		// 
-		static public void modelUpdate(Graphics g) {
+		static public void modelPaint(Graphics g) {
 			
 			//paint the Citizen in the Simulation!
 			int index = 0;
@@ -81,10 +81,10 @@ public class Control {
 						
 				}
 				
-				//draw the oval representing the the object
+				//draw the oval in the simulation frame
 				g.fillOval(p.x, p.y, OvalW, OvalH);
 				
-				// bar meter to show current state of all Citizens
+				// draw the oval in meter
 				g.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
 				index++;
 				

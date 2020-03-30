@@ -60,7 +60,7 @@ public class View extends JPanel implements ActionListener{
 		time += Control.timerValue;
 		
 		super.paintComponent(g); // a necessary call to the parent paint method for proper screen refreshing	
-		Control.modelUpdate(g);
+		Control.modelPaint(g); // repaint all objects in simulation
 		
 	}
 	
