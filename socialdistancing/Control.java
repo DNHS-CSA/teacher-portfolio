@@ -35,19 +35,22 @@ public class Control {
 
 		
 		//store multiple Person and point objects
-		ArrayList<Citizen> model = new ArrayList<Citizen>(); //the community of objects	
+		ArrayList<Citizen> model; //the community of objects	
+		View view;
 		
-		public Control(ArrayList<Citizen> model) {
+		public Control() {
 			//Simulation setup
 			//setup the Person objects in the list
+			model = new ArrayList<Citizen>();
 			for(int i = 0; i < Control.numPeople; i++) {
 				//instantiate an Person object and add it to the ArrayList
 				//this is the part that actually CREATES objects we can use
 				model.add(new Citizen());
 			}
-			this.model = model;
 			
-			new View(this, title);
+			View view = new View(this, title);
+			view.setVisible();	
+
 		}
 		
 		// 

@@ -22,6 +22,7 @@ public class View extends JPanel implements ActionListener{
 	//simulation control values
 	int time = 0; //track time as the simulation runs
 	
+	JFrame frame;
 	Control ctl;
 		
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
@@ -30,7 +31,7 @@ public class View extends JPanel implements ActionListener{
 		this.ctl = ctl;
 		
 		//Setup the GUI
-		JFrame frame = new JFrame(title);
+		frame = new JFrame(title);
 		frame.setSize(Control.frameX,Control.frameY); //set the size
 		
 		//add this so that hitting the x button will actually end the program
@@ -46,8 +47,11 @@ public class View extends JPanel implements ActionListener{
 		
 		//make it visible
 		frame.add(this); //add this class (JPanel) to the JFrame
-		frame.setVisible(true);		
 		
+	}
+	
+	public void setVisible() {
+		frame.setVisible(true);		
 	}
 	
 	/* This invoked by Timer per milliseconds in timerValue */
