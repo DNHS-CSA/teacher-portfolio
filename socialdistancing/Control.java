@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Control {
+		static String title = "Social Distance Simulation";
+		
 		// global counters
 		public static int numInfected = 0;
 		public static int numDied= 0;
@@ -29,25 +31,27 @@ public class Control {
 		
 		
 		//refresh timer, also used for age of infection
-		public final static int timerValue = 16;
+		public static final int timerValue = 16;
 
 		
 		//store multiple Person and point objects
 		static ArrayList<Citizen> model = new ArrayList<Citizen>(); //the community of objects	
 		
+		
+		//main loop for simulation
 		public static void main(String[] args) {
 			
-			
+			//Simulation setup
 			//setup the Person objects in the list
 			for(int i = 0; i < Control.numPeople; i++) {
 				//instantiate an Person object and add it to the ArrayList
 				//this is the part that actually CREATES objects we can use
 				model.add(new Citizen());
 			}
-			
-			new View("Social Distance Simulation");
+			new View(title);
 		}
 		
+		// 
 		static public void modelUpdate(Graphics g) {
 			
 			//paint the Citizen in the Simulation!
