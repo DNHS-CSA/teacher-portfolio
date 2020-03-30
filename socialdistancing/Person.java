@@ -10,6 +10,7 @@ public class Person {
 	protected virus state = virus.candidate;
 	protected int sickTime;
 	
+	//person constructed with or without virus, percentage used of infected used to prime simulation
 	public Person() {
 		//code to make percentage of the Person objects infected 
 		if(Math.random() < Control.toBeInfected) {
@@ -17,6 +18,7 @@ public class Person {
 		}
 	}
 	
+	//a series of getters to simplify code reading
 	public boolean isCandidate() {
 		return state == virus.candidate;
 	}
@@ -33,14 +35,16 @@ public class Person {
 		return state == virus.died;
 	}
 	
+	// infected setter and update to infected counter
 	public void setInfected() {
 		state = virus.infected;
 		Control.numInfected++;
 	}
 	
+	//calculates health of person over time
 	public void healthManager() {
 		
-		//If person is infected, they eventually recover so that they don't 
+		//If person is infected, they eventually recover or die so that they don't 
 		//infect people forever. 
 		if(state == virus.infected) {
 			//recoveryTime update
@@ -54,7 +58,7 @@ public class Person {
 				} else {
 					state = virus.recovered;
 				}
-				Control.numInfected--;
+				Control.numInfected--;	// global infected reduced
 			}
 		}			
 	}
