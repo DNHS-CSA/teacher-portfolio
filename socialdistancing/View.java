@@ -21,9 +21,13 @@ public class View extends JPanel implements ActionListener{
 	
 	//simulation control values
 	int time = 0; //track time as the simulation runs
+	
+	Control ctl;
 		
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
-	public View(String title) {
+	public View(Control ctl, String title) {
+		
+		this.ctl = ctl;
 		
 		//Setup the GUI
 		JFrame frame = new JFrame(title);
@@ -60,7 +64,7 @@ public class View extends JPanel implements ActionListener{
 		time += Control.timerValue;
 		
 		super.paintComponent(g); // a necessary call to the parent paint method for proper screen refreshing	
-		Control.modelPaint(g); // repaint all objects in simulation
+		ctl.modelPaint(g); // repaint all objects in simulation
 		
 	}
 	

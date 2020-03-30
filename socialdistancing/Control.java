@@ -5,19 +5,19 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Control {
-		static String title = "Social Distance Simulation";
+		String title = "Social Distance Simulation";
 		
 		// global counters
 		public static int numInfected = 0;
 		public static int numDied= 0;
 		
 		// Citizen simulation control
-		static int numPeople = 100;			// people in the simulation
-		static double toRoam = .10;			// % population that required to roam in simulation (essential workers, rule breakers)
-		static double toBeInfected = .02;	// % of population that has virus in simulation
-		static double toDie = .06;			// % population that would die out of those that get infected
-		static int sickTimeLow = 5000;		// Minimum time to recover 5 seconds
-		static int sickTimeMax = 10000;		// Max time to recover 10 seconds
+		public static int numPeople = 100;	// people in the simulation
+		public static double toRoam = .10;			    // % population that required to roam in simulation (essential workers, rule breakers)
+		public static double toBeInfected = .02;			// % of population that has virus in simulation
+		public static double toDie = .06;					// % population that would die out of those that get infected
+		public static int sickTimeLow = 5000;				// Minimum time to recover 5 seconds
+		public static int sickTimeMax = 10000;			// Max time to recover 10 seconds
 		
 		//frame extents
 		public static final int frameX = 800;
@@ -35,12 +35,9 @@ public class Control {
 
 		
 		//store multiple Person and point objects
-		static ArrayList<Citizen> model = new ArrayList<Citizen>(); //the community of objects	
+		ArrayList<Citizen> model = new ArrayList<Citizen>(); //the community of objects	
 		
-		
-		//main loop for simulation
-		public static void main(String[] args) {
-			
+		public Control(ArrayList<Citizen> model) {
 			//Simulation setup
 			//setup the Person objects in the list
 			for(int i = 0; i < Control.numPeople; i++) {
@@ -48,11 +45,13 @@ public class Control {
 				//this is the part that actually CREATES objects we can use
 				model.add(new Citizen());
 			}
-			new View(title);
+			this.model = model;
+			
+			new View(this, title);
 		}
 		
 		// 
-		static public void modelPaint(Graphics g) {
+		public void modelPaint(Graphics g) {
 			
 			//paint the Citizen in the Simulation!
 			int index = 0;
