@@ -1,6 +1,6 @@
 package socialdistancing;
-import java.awt.Rectangle;
 
+// A person contains properties of Health
 public class Person {
 
 	//health states
@@ -10,67 +10,53 @@ public class Person {
 	protected virus state = virus.candidate;
 	protected int sickTime;
 	
-	//oval size
-	public static final int OvalW = 10;	//Height
-	public static final int OvalH = 10;	//Width
-	//oval location
-	protected int x, y;
-	
 	public Person() {
 		//code to make percentage of the Person objects infected 
-		if(Math.random() < Population.individualsToBeInfected) {
-			state = virus.infected;
-			Population.numInfected++;
+		if(Math.random() < Control.toBeInfected) {
+			this.setInfected();
 		}
 	}
 	
-	/**
-	 * Collision between two person objects for "infections"
-	 * If two Person objects collide they have a possibility of infecting!
-	 * @param p2
-	 */
-	public void collision(Person p2) {
-		
-		//Represent the Person objects asa Rectangles for simple collision detection
-		Rectangle per1 = new Rectangle(p2.x,p2.y, OvalW, OvalH);
-		Rectangle per2 = new Rectangle(this.x,this.y, OvalW, OvalH);
-		
-		//collision check
-		if(per1.intersects(per2)) {
-			//infection only happens if one person is infected and the other has never
-			//been infected before
-			if (this.state == virus.infected && p2.state == virus.candidate) {
-				p2.state = virus.infected;
-				Population.numInfected++; //add to total count of infected people
-			}else if(this.state == virus.candidate && p2.state == virus.infected) {
-				this.state = virus.infected;
-				Population.numInfected++; //add to total count of infected people
-			}
-				
-		}
-
+	public boolean isCandidate() {
+		return state == virus.candidate;
 	}
 	
-	public void properties() {
+	public boolean isInfected() {
+		return state == virus.infected;
+	}
+	
+	public boolean isRecovered() {
+		return state == virus.recovered;
+	}
+	
+	public boolean isDead() {
+		return state == virus.died;
+	}
+	
+	public void setInfected() {
+		state = virus.infected;
+		Control.numInfected++;
+	}
+	
+	public void healthManager() {
 		
 		//If person is infected, they eventually recover so that they don't 
 		//infect people forever. 
 		if(state == virus.infected) {
 			//recoveryTime update
-			sickTime -= SocialDistanceFrame.timerValue;
+			sickTime -= Control.timerValue;
 			
 			//once the person has been given enough time, they will be considered recovered
 			if(sickTime<=0) {
-				if(Math.random() < Population.individualsToDie) {
+				if(Math.random() < Control.toDie) {
 					state = virus.died;
-					Population.numDied++;
+					Control.numDied++;
 				} else {
 					state = virus.recovered;
 				}
-				Population.numInfected--;
+				Control.numInfected--;
 			}
-		}
-			
+		}			
 	}
 	
 	

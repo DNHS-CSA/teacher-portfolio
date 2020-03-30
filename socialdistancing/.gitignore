@@ -3,3 +3,9 @@
 /SocialDistance.class
 /Population.class
 /SocialDistanceFrame.class
+/Citizen.class
+/SocialDistanceControl.class
+/SimulationControl.class
+/Controller.class
+/Control.class
+/View.class
