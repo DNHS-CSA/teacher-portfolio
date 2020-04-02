@@ -3,17 +3,18 @@ import java.awt.Rectangle;
 
 
 //A citizen is a Person and contains properties to support position and movement
-public class Citizen extends Person {
+public abstract class Resident {
 		
 	//location
 	int x, y;
 
 	//velocity
-	protected int vx, vy;
+	protected boolean isRoaming = false;
+	int vx, vy;
 	
 	
 	//Constructor for the Citizen objects
-	public Citizen() {
+	public Resident() {
 				
 		//randomize the position of the Person object to be within the SocialDistance frame!
 		x = (int)(Math.random()*(Control.xExt)+0);
@@ -25,45 +26,42 @@ public class Citizen extends Person {
 		if(Math.random() < Control.toRoam) {
 			vx  = (int)(Math.random()*(10+1)+-5);	// velocity x
 			vy  = (int)(Math.random()*(10+1)+-5);	// velocity y
+			isRoaming = true;
 		}
 		
-		//randomize how long it takes for the Person objects to recover!
-		//for instance between 5-7 (between Min-Max) seconds (numbers are in milliseconds)
-		sickTime = (int)(Math.random()*(Control.sickTimeMax-Control.sickTimeLow+1)+Control.sickTimeLow);
+	}
+
+	
+	/**
+	 * Collision detection between two resident objects
+	 * @param p2
+	 */
+	public void collisionDetector(Resident r2) {
 		
+		//Represent the Person objects asa Rectangles for simple collision detection
+		Rectangle rect1 = new Rectangle(r2.x,r2.y, Control.OvalW, Control.OvalH);
+		Rectangle rect2 = new Rectangle(this.x,this.y, Control.OvalW, Control.OvalH);
+		
+		//collision check
+		if(rect1.intersects(rect2)) {
+			this.collisionAction(r2);
+		}
+						
 	}
 	
 	/**
-	 * Collision between two person objects for "infections"
-	 * If two Person objects collide they have a possibility of infecting!
-	 * @param p2
+	 * Collision detection action must be performed by extending class
+	 * 
 	 */
-	public void collisionDetector(Citizen p2) {
-		
-		//Represent the Person objects asa Rectangles for simple collision detection
-		Rectangle per1 = new Rectangle(p2.x,p2.y, Control.OvalW, Control.OvalH);
-		Rectangle per2 = new Rectangle(this.x,this.y, Control.OvalW, Control.OvalH);
-		
-		//collision check
-		if(per1.intersects(per2)) {
-			//infection only happens if one person is infected and the other has never
-			//been infected before
-			if (this.isInfected() && p2.isCandidate()) {
-				p2.setInfected();
-			}else if(this.isCandidate() && p2.isInfected()) {
-				this.setInfected();
-			}				
-		}
-	}
+	public abstract void collisionAction(Resident r2);
 	
 
-	//Citizen velocity manager
+	/**
+	 * Velocity of an object is conditioned by settings in constructor
+	 * 1. Move x, y position of resident object
+	 * 2. Check if resident object boundary/frame extent is reached, then reflect
+	 */
 	public void velocityManager() {
-		
-		// those that have recovered or died need to stop moving
-		if (this.isRecovered() || this.isDead()) {
-			vx = 0; vy = 0;
-		}
 		
 		//x and y components are updated based on their velocities
 		x += vx;
@@ -79,6 +77,14 @@ public class Citizen extends Person {
 			vy *= -1;
 		}
 
+	}
+	
+	/**
+	 * Velocity of a roaming object is set to stationary
+	 */
+	public void velocityStop() {
+		vx = 0; vy = 0;
+		isRoaming = false;
 	}
 	
 	
