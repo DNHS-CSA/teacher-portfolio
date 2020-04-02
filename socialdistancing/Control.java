@@ -59,8 +59,8 @@ public class Control {
 					p.collisionDetector(p2);
 				}
 				
-				p.healthManager();  //manage health values of each Person
-				p.velocityManager();  //manage position values of Person
+				p.healthManager(); //manage health values of the Person
+				p.velocityManager(); //manage social distancing and/or roaming values of the Person
 				
 				//set the color of the object based on the health status of person
 				switch(p.state) {
