@@ -5,7 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.Timer;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JScrollBar;
+import javax.swing.JLabel;
 
 
 /* 
@@ -32,7 +37,7 @@ public class View extends JPanel implements ActionListener{
 		
 		//Setup the GUI
 		frame = new JFrame(title);
-		frame.setSize(Control.frameX,Control.frameY); //set the size
+		frame.setSize(Control.frameX + 250,Control.frameY); //set the size
 		
 		//add this so that hitting the x button will actually end the program
 		//the program will continue to run behind the scenes and you might end up with 10+ of them
@@ -46,7 +51,8 @@ public class View extends JPanel implements ActionListener{
 		t.restart(); //restart or start
 		
 		//make it visible
-		frame.add(this); //add this class (JPanel) to the JFrame
+		frame.getContentPane().add(this);
+		setLayout(null);
 		
 	}
 	
@@ -72,6 +78,4 @@ public class View extends JPanel implements ActionListener{
 		ctl.controlPaint(g); // repaint all objects in simulation
 		
 	}
-	
-	
 }

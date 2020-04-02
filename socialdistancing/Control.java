@@ -36,7 +36,14 @@ public class Control {
 		public static final int timerValue = 16;
 	
 		//Control for list of citizens in graphic frame
-		public Control() {
+		public Control(int np, double roam, double infected, double die, int sicklow, int sickMax) {
+			numPeople = np;
+			toRoam = roam; 
+			toBeInfected = infected;
+			toDie = die;
+			sickTimeLow = sicklow;
+			sickTimeMax = sickMax; 
+			
 			//setup the Model
 			model = new ArrayList<Citizen>();
 			for(int i = 0; i < Control.numPeople; i++) {
