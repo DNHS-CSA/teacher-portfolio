@@ -9,13 +9,13 @@ import javax.swing.Timer;
 
 
 /* 
-	View extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
+	Simulator extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
 	drawing tools of the library! 
 
-	View implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
+	Simulator implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
 	animation timer every timerValue(16ms).
 */
-public class View extends JPanel implements ActionListener{
+public class Simulator extends JPanel implements ActionListener{
 	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +26,7 @@ public class View extends JPanel implements ActionListener{
 	int time = 0; //track time as the simulation runs
 	
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
-	public View(Control ctl, String title) {
+	public Simulator(Control ctl, String title) {
 		// used for Control callback
 		this.ctl = ctl;
 		

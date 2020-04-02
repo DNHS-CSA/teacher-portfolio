@@ -8,7 +8,7 @@ public class Control {
 		String title = "Social Distance Simulation";
 		//Model and View
 		ArrayList<Person> model; //the community of Person objects	
-		View view; //JPanel graphics window
+		Simulator view; //JPanel graphics window
 		
 		// global counters
 		public static int numInfected = 0;
@@ -44,7 +44,7 @@ public class Control {
 				model.add(new Person());
 			}
 			//setup to View
-			View view = new View(this, title);
+			Simulator view = new Simulator(this, title);
 			view.setVisible();	// activate the View
 		}
 		
