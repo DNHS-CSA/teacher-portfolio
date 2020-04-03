@@ -37,6 +37,7 @@ public class Control {
 	
 		//Control for list of citizens in graphic frame
 		public Control() {
+			
 			//setup the Model
 			model = new ArrayList<Person>();
 			for(int i = 0; i < Control.numPeople; i++) {

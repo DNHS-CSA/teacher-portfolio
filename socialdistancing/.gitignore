@@ -12,5 +12,10 @@
 /main.class
 /covid.class
 /_main.class
+<<<<<<< HEAD
 /Resident.class
 /Simulator.class
+=======
+/Settings.class
+/Settings$1.class
+>>>>>>> branch 'master' of https://github.com/DNHS-CSA/teacher-portfolio.git
