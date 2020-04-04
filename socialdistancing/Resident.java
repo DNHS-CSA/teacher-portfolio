@@ -22,6 +22,9 @@ public abstract class Resident {
 	protected boolean isRoaming = false;
 	double roamingPercent;
 	
+	/*
+	 * Constructor using static values
+	 */
 	public Resident() {
 		// Grid size
 		xExt = Settings.sXExt;
@@ -35,7 +38,9 @@ public abstract class Resident {
 		this.init();
 	}
 	
-	//Constructor for the Citizen objects
+	/*
+	 * Constructor using Control Panel values
+	 */
 	public Resident(Control ctl) {
 		// Settings
 		this.ctl = ctl;
@@ -51,7 +56,10 @@ public abstract class Resident {
 		
 		this.init();
 	}
-		
+	
+	/*
+	 * Constructor helper
+	 */
 	private void init() {
 		
 		//randomize the position of the Person object to be within the SocialDistance frame!

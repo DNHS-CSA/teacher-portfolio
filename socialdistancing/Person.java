@@ -29,7 +29,7 @@ public class Person extends Resident {
 		this.init();
 	}
 
-	//Person constructed with or without virus according to Control Panel settings
+	//Person constructed according to Control Panel settings
 	public Person(Control ctl) {
 		super(ctl);
 		

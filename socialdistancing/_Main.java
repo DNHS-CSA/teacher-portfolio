@@ -18,7 +18,7 @@ public class _Main {
 	}
 	
 	/*
-	 * Call back start a new Control with settings panel reference
+	 * Call back to start a new simulation with user defined simulation Settings
 	 */
 	public void simulation() {
 		//new Simulation for each run from Settings panel

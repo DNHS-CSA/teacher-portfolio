@@ -34,7 +34,7 @@ public class Control {
 		public int timerValue;
 	
 		/*
-		 * Default constructor sets simulation control default values
+		 * Default constructor uses Static/Default simulation values
 		 */
 		public Control() {
 			//This sets defaults in case run with default constructor
@@ -59,7 +59,7 @@ public class Control {
 		}
 
 		/*
-		 * This constructor is set with values from Settings Panel
+		 * This constructor uses user defined simulation Settings
 		 */
 		public Control(Settings sets) {
 			// health settings
@@ -81,7 +81,7 @@ public class Control {
 		
 		/* 
 		 * This method coordinates MVC for Simulation
-		 * - The Simulation is managing People in Graphics frame to simulate a virus pandemic
+		 * - The Simulation is managing People in Graphics frame to simulate a virus
 		 */
 		public void runSimulation() {
 			//Prerequisite: control values are ready
@@ -100,7 +100,9 @@ public class Control {
 			view.setVisible();
 		}
 		
-		//paints/repaints model of citizens in the frame 
+		/*
+		 * paints/repaints model of people in the frame 
+		 */
 		public void controlPaint(Graphics g) {
 			
 			//paint the Person in the Simulation!
@@ -141,7 +143,7 @@ public class Control {
 		}
 		
 		/*
-		 * Tester method to run Simulation without Settings Panel
+		 * Tester method to run Static simulation
 		 */
 		public static void main (String[] args) {
 			Control c = new Control();
