@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Control {
 		String title = "Social Distance Simulation";
 		//Model and View
-		Settings settings; //the settings for the model
 		ArrayList<Person> model; //the community of Person objects	
 		Simulator view; //JPanel graphics window
 		
@@ -15,13 +14,13 @@ public class Control {
 		public static int numInfected = 0;
 		public static int numDied= 0;
 		
-		// Person simulation control
-		public static int numPeople = 100;				// people in the simulation
-		public static double toRoam = .10;			    // % population that required to roam in simulation (essential workers, rule breakers)
-		public static double toBeInfected = .02;		// % of population that has virus in simulation
-		public static double toDie = .06;				// % population that would die out of those that get infected
-		public static int sickTimeLow = 5000;			// Minimum time to recover 5 seconds
-		public static int sickTimeMax = 10000;			// Max time to recover 10 seconds
+		// simulation control starting values
+		public int  numPeople = 100;			// people in the simulation
+		public double toRoam = .10;			    // % population that required to roam in simulation (essential workers, rule breakers)
+		public double toBeInfected = .02;		// % of population that has virus in simulation
+		public double toDie = .06;				// % population that would die out of those that get infected
+		public int sickTimeLow = 5000;			// Minimum time to recover 5 seconds
+		public int sickTimeMax = 10000;			// Max time to recover 10 seconds
 		
 		//frame extents
 		public static final int frameX = 800;
@@ -39,23 +38,27 @@ public class Control {
 		/*
 		 * Constructor call to a Control panel to setup Static values
 		 */
-		public Control() {
-			settings = new Settings(this);
-			//options: we could place setters here, but Static handling seems to reduce busy work
-			settings.setVisible(true);	//activates Settings panel
+		public Control(Settings sets) {
+			//establish Settings when activated
+			numPeople = sets.numPeople;
+			toRoam = sets.toRoam;
+			toBeInfected = sets.toBeInfected;
+			toDie = sets.toDie;
+			sickTimeLow = sets.sickTimeLow;
+			sickTimeMax = sets.sickTimeMax;
 		}
 		
 		/* 
 		 * This method coordinates MVC for Simulation
 		 * - The Simulation is managing People in Graphics frame to simulate a virus pandemic
 		 */
-		public void start() {
+		public void run() {
 			//Prerequisite: control values (Statics) are ready
 			//Setup the People
 			model = new ArrayList<Person>();
-			for(int i = 0; i < Control.numPeople; i++) {
+			for(int i = 0; i < numPeople; i++) {
 				//instantiate Person object and add it to the ArrayList
-				model.add(new Person());
+				model.add(new Person(this));
 			}
 			//Setup to the Simulation Panel
 			Simulator view = new Simulator(this, title);

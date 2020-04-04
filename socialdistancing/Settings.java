@@ -13,8 +13,22 @@ import javax.swing.JButton;
  * JLabel and JSlider work together to get inputs from User
  */
 public class Settings extends JFrame {
+	// simulation control starting values
+	public static final int sNumPeople = 100;			// people in the simulation
+	public static final double sToRoam = .10;			// % population that required to roam in simulation (essential workers, rule breakers)
+	public static final double sToBeInfected = .02;		// % of population that has virus in simulation
+	public static final double sToDie = .06;			// % population that would die out of those that get infected
+	public static final int sSickTimeLow = 5000;		// Minimum time to recover 5 seconds
+	public static final int sSickTimeMax = 10000;		// Max time to recover 10 seconds
+		
+	public int numPeople;
+	public double toRoam;
+	public double toBeInfected;
+	public double toDie;
+	public int sickTimeLow;
+	public int sickTimeMax;
 	
-	public Settings(Control ctl) {
+	public Settings(_Main mainCallBack) {
 		setBounds(100, 100, 350, 650);	
 		getContentPane().setLayout(null);
 		
@@ -93,23 +107,24 @@ public class Settings extends JFrame {
 		btnRunSimulation.setBounds(10, 525, 200, 23);
 		btnRunSimulation.addActionListener( new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Control.numPeople = sliderNumPeople.getValue();
-				Control.toRoam = sliderToRoam.getValue()/100.0;
-				Control.toBeInfected = sliderToBeInfected.getValue()/100.0;
-				Control.toDie = sliderToDie.getValue()/100.0;
-				Control.sickTimeLow = (sliderSickTimeLow.getValue()*1000);
-				Control.sickTimeMax = (sliderSickTimeMax.getValue()*1000);
-				ctl.start();
+				numPeople = sliderNumPeople.getValue();
+				toRoam = sliderToRoam.getValue()/100.0;
+				toBeInfected = sliderToBeInfected.getValue()/100.0;
+				toDie = sliderToDie.getValue()/100.0;
+				sickTimeLow = (sliderSickTimeLow.getValue()*1000);
+				sickTimeMax = (sliderSickTimeMax.getValue()*1000);
+				// call back to main to start new simulation
+				mainCallBack.simulation();
 			}
 		});
 		
 		// initialize values based off of reasonable defaults
-		sliderNumPeople.setValue(Control.numPeople);
-		sliderToRoam.setValue((int) (Control.toRoam*100));
-		sliderToBeInfected.setValue((int) (Control.toBeInfected*100));
-		sliderToDie.setValue((int) (Control.toDie*100));
-		sliderSickTimeLow.setValue((int) (Control.sickTimeLow/1000));
-		sliderSickTimeMax.setValue((int) (Control.sickTimeMax/1000));
+		sliderNumPeople.setValue(sNumPeople);
+		sliderToRoam.setValue((int) (sToRoam*100));
+		sliderToBeInfected.setValue((int) (sToBeInfected*100));
+		sliderToDie.setValue((int) (sToDie*100));
+		sliderSickTimeLow.setValue((int) (sSickTimeLow/1000));
+		sliderSickTimeMax.setValue((int) (sSickTimeMax/1000));
 
 		getContentPane().add(btnRunSimulation);
 			

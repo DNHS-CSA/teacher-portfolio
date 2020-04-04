@@ -2,7 +2,6 @@ package socialdistancing;
 
 // A person contains properties of Health
 public class Person extends Resident {
-
 	//health states
 	protected enum virus {candidate, infected, recovered, died};
 	
@@ -11,15 +10,17 @@ public class Person extends Resident {
 	protected int sickTime;
 	
 	//person constructed with or without virus, percentage used of infected used to prime simulation
-	public Person() {
+	public Person(Control sets) {
+		super(sets);
+		
 		//code to make percentage of the Person objects infected 
-		if(Math.random() < Control.toBeInfected) {
+		if(Math.random() < sets.toBeInfected) {
 			this.setInfected();
 		}
 		
 		//randomize how long it takes for the Person objects to recover!
 		//for instance between 5-7 (between Min-Max) seconds (numbers are in milliseconds)
-		sickTime = (int)(Math.random()*(Control.sickTimeMax-Control.sickTimeLow+1)+Control.sickTimeLow);
+		sickTime = (int)(Math.random()*(sets.sickTimeMax-sets.sickTimeLow+1)+sets.sickTimeLow);
 	}
 	
 	//a series of getters to simplify code reading
@@ -56,7 +57,7 @@ public class Person extends Resident {
 			
 			//once the person has been given enough time, they will be considered recovered
 			if(sickTime<=0) {
-				if(Math.random() < Control.toDie) {
+				if(Math.random() < sets.toDie) {
 					state = virus.died;
 					Control.numDied++;
 				} else {
