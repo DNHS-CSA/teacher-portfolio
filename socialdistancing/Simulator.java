@@ -32,7 +32,7 @@ public class Simulator extends JPanel implements ActionListener{
 		
 		//Setup the GUI
 		frame = new JFrame(title);
-		frame.setSize(Control.frameX,Control.frameY); //set the size
+		frame.setSize(ctl.frameX,ctl.frameY); //set the size
 		
 		//add this so that hitting the x button will actually end the program
 		//the program will continue to run behind the scenes and you might end up with 10+ of them
@@ -40,7 +40,7 @@ public class Simulator extends JPanel implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Timer for animation
-		Timer t = new Timer(Control.timerValue, this); //timerValue is the period in ms. so the timer code runs every 16ms.
+		Timer t = new Timer(ctl.timerValue, this); //timerValue is the period in ms. so the timer code runs every 16ms.
 					       //second argument (parameter) can be any class that implements
 						// ActionListener
 		t.restart(); //restart or start
@@ -66,7 +66,7 @@ public class Simulator extends JPanel implements ActionListener{
 	public void paint(Graphics g) {
 		
 		//this method is invoked by the timer every 16ms. we're tracking the time manually with the time variable
-		time += Control.timerValue;
+		time += ctl.timerValue;
 		
 		super.paintComponent(g); // a necessary call to the parent paint method, required for proper screen refreshing	
 		ctl.controlPaint(g); // repaint all objects in simulation

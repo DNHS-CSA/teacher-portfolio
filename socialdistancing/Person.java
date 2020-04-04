@@ -10,17 +10,17 @@ public class Person extends Resident {
 	protected int sickTime;
 	
 	//person constructed with or without virus, percentage used of infected used to prime simulation
-	public Person(Control sets) {
-		super(sets);
+	public Person(Control ctl) {
+		super(ctl);
 		
 		//code to make percentage of the Person objects infected 
-		if(Math.random() < sets.toBeInfected) {
+		if(Math.random() < ctl.toBeInfected) {
 			this.setInfected();
 		}
 		
 		//randomize how long it takes for the Person objects to recover!
 		//for instance between 5-7 (between Min-Max) seconds (numbers are in milliseconds)
-		sickTime = (int)(Math.random()*(sets.sickTimeMax-sets.sickTimeLow+1)+sets.sickTimeLow);
+		sickTime = (int)(Math.random()*(ctl.sickTimeMax-ctl.sickTimeLow+1)+ctl.sickTimeLow);
 	}
 	
 	//a series of getters to simplify code reading
@@ -43,7 +43,7 @@ public class Person extends Resident {
 	// infected setter and update to infected counter
 	public void setInfected() {
 		state = virus.infected;
-		Control.numInfected++;
+		ctl.numInfected++;
 	}
 	
 	//calculates health of person over time
@@ -53,17 +53,17 @@ public class Person extends Resident {
 		//infect people forever. 
 		if(state == virus.infected) {
 			//recoveryTime update
-			sickTime -= Control.timerValue;
+			sickTime -= ctl.timerValue;
 			
 			//once the person has been given enough time, they will be considered recovered
 			if(sickTime<=0) {
-				if(Math.random() < sets.toDie) {
+				if(Math.random() < ctl.toDie) {
 					state = virus.died;
-					Control.numDied++;
+					ctl.numDied++;
 				} else {
 					state = virus.recovered;
 				}
-				Control.numInfected--;	// global infected reduced
+				ctl.numInfected--;	// global infected reduced
 			}
 		}			
 	}

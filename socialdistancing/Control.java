@@ -10,59 +10,71 @@ public class Control {
 		ArrayList<Person> model; //the community of Person objects	
 		Simulator view; //JPanel graphics window
 		
-		// global counters
-		public static int numInfected = 0;
-		public static int numDied= 0;
+		// counters for simulation instance
+		public int numInfected = 0;
+		public int numDied= 0;
 		
+		//This sets defaults in case run with default constructor
 		// simulation control starting values
-		public int  numPeople = 100;			// people in the simulation
-		public double toRoam = .10;			    // % population that required to roam in simulation (essential workers, rule breakers)
-		public double toBeInfected = .02;		// % of population that has virus in simulation
-		public double toDie = .06;				// % population that would die out of those that get infected
-		public int sickTimeLow = 5000;			// Minimum time to recover 5 seconds
-		public int sickTimeMax = 10000;			// Max time to recover 10 seconds
-		
+		public int  numPeople = Settings.sNumPeople;			
+		public double toRoam = Settings.sToRoam;			    
+		public double toBeInfected = Settings.sToBeInfected;		
+		public double toDie = Settings.sToDie;				
+		public int sickTimeLow = Settings.sSickTimeLow;			
+		public int sickTimeMax = Settings.sSickTimeMax;
 		//frame extents
-		public static final int frameX = 800;
-		public static final int frameY = 600;
+		public int frameX = Settings.sFrameX;
+		public int frameY = Settings.sFrameY;
 		//position extents, keep objects away from the edges
-		public static final int xExt = (int) (frameX - frameX*.04);
-		public static final int yExt = (int) (frameY - frameY*.03);
+		public int xExt = Settings.sXExt;
+		public int yExt = Settings.sYExt;
 		//oval size, represents person in frame
-		public static final int OvalW = 10;	//Height
-		public static final int OvalH = 10;	//Width
-		
+		public int OvalW = Settings.sOvalW;	//Height
+		public int OvalH = Settings.sOvalH;	//Width
 		//refresh timer, also used to calculate time/age of infection
-		public static final int timerValue = 16;
+		public int timerValue = Settings.sTimerValue;
 	
 		/*
 		 * Constructor call to a Control panel to setup Static values
 		 */
 		public Control(Settings sets) {
-			//establish Settings when activated
+			//This constructor sets defaults from Settings actions/event
+			// health settings
 			numPeople = sets.numPeople;
 			toRoam = sets.toRoam;
 			toBeInfected = sets.toBeInfected;
 			toDie = sets.toDie;
 			sickTimeLow = sets.sickTimeLow;
 			sickTimeMax = sets.sickTimeMax;
+			// simulator settings
+			frameX = sets.frameX;
+			frameY = sets.frameY;
+			yExt = sets.yExt;
+			xExt = sets.xExt;
+			OvalW = sets.OvalW;
+			OvalH = sets.OvalH;
+			timerValue = sets.timerValue;
 		}
 		
 		/* 
 		 * This method coordinates MVC for Simulation
 		 * - The Simulation is managing People in Graphics frame to simulate a virus pandemic
 		 */
-		public void run() {
-			//Prerequisite: control values (Statics) are ready
+		public void runSimulation() {
+			//Prerequisite: control values are ready
+			
+			//Setup to the Simulation Panel
+			Simulator view = new Simulator(this, title);
+			
 			//Setup the People
 			model = new ArrayList<Person>();
 			for(int i = 0; i < numPeople; i++) {
 				//instantiate Person object and add it to the ArrayList
 				model.add(new Person(this));
 			}
-			//Setup to the Simulation Panel
-			Simulator view = new Simulator(this, title);
-			view.setVisible();	//Activate the the Simulation
+			
+			// Start Simulation
+			view.setVisible();
 		}
 		
 		//paints/repaints model of citizens in the frame 

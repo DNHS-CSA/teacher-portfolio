@@ -9,20 +9,20 @@ public class _Main {
 	 * Entry point, starts Settings Panel
 	 */
 	public static void main( String[] args ) {
-		//this instance
+		//this is instance of main
 		_Main m = new _Main();
 		
 		//start settings panel
 		m.sets = new Settings(m);
-		m.sets.setVisible(true);	//activates Settings panel
+		m.sets.setVisible(true); //activates Settings panel
 	}
 	
 	/*
 	 * Call back start a new Control with settings panel reference
 	 */
 	public void simulation() {
-		//new simulation for each settings run
-		control = new Control(sets);
-		control.run();
+		//new Simulation for each run from Settings panel
+		control = new Control(sets); // sets are critical for Simulation
+		control.runSimulation();
 	}
 }
