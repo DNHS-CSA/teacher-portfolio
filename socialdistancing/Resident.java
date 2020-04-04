@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 //A citizen is a Person and contains properties to support position and movement
 public abstract class Resident {
 	//dynamic copy of Control instance, used for settings
-	Control ctl;
+	Control ctl = null;
 	
 	//grid boundaries
 	protected int xExt, yExt;
@@ -22,6 +22,18 @@ public abstract class Resident {
 	protected boolean isRoaming = false;
 	double roamingPercent;
 	
+	public Resident() {
+		// Grid size
+		xExt = Settings.sXExt;
+		yExt = Settings.sYExt;
+		// position in grid
+		width = Settings.sOvalW;
+		height = Settings.sOvalH;
+		// roaming probability
+		roamingPercent = Settings.sToRoam;
+		
+		this.init();
+	}
 	
 	//Constructor for the Citizen objects
 	public Resident(Control ctl) {
@@ -37,6 +49,10 @@ public abstract class Resident {
 		// roaming probability
 		roamingPercent = ctl.toRoam;
 		
+		this.init();
+	}
+		
+	private void init() {
 		
 		//randomize the position of the Person object to be within the SocialDistance frame!
 		x = (int)(Math.random()*(xExt)+0);

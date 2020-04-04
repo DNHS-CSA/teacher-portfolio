@@ -141,7 +141,7 @@ public class Control {
 		}
 		
 		/*
-		 * Run simulation without settings panel
+		 * Tester method to run Simulation without Settings Panel
 		 */
 		public static void main (String[] args) {
 			Control c = new Control();

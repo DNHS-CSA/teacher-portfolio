@@ -1,7 +1,10 @@
 package socialdistancing;
 
+import java.util.ArrayList;
+
 // A person contains properties of Health
 public class Person extends Resident {
+	
 	//health states
 	protected enum virus {candidate, infected, recovered, died};
 	
@@ -9,18 +12,46 @@ public class Person extends Resident {
 	protected virus state = virus.candidate;
 	protected int sickTime;
 	
-	//person constructed with or without virus, percentage used of infected used to prime simulation
+	//control variables
+	double toRoam, toBeInfected, toDie;
+	int sickTimeLow, sickTimeMax;
+
+	/*
+	 * Default Person constructor from Static values
+	 */
+	public Person() {
+		toRoam = Settings.sToRoam;			    
+		toBeInfected = Settings.sToBeInfected;		
+		toDie = Settings.sToDie;				
+		sickTimeLow = Settings.sSickTimeLow;			
+		sickTimeMax = Settings.sSickTimeMax;
+		
+		this.init();
+	}
+
+	//Person constructed with or without virus according to Control Panel settings
 	public Person(Control ctl) {
 		super(ctl);
 		
+		toRoam = ctl.toRoam;			    
+		toDie = ctl.toDie;		
+		toBeInfected = ctl.toBeInfected;
+		sickTimeLow = ctl.sickTimeLow;
+		sickTimeMax = ctl.sickTimeMax;
+
+		this.init();
+	}
+		
+	private void init() {
+		
 		//code to make percentage of the Person objects infected 
-		if(Math.random() < ctl.toBeInfected) {
+		if(Math.random() < toBeInfected) {
 			this.setInfected();
 		}
 		
 		//randomize how long it takes for the Person objects to recover!
 		//for instance between 5-7 (between Min-Max) seconds (numbers are in milliseconds)
-		sickTime = (int)(Math.random()*(ctl.sickTimeMax-ctl.sickTimeLow+1)+ctl.sickTimeLow);
+		sickTime = (int)(Math.random()*(sickTimeMax-sickTimeLow+1)+sickTimeLow);
 	}
 	
 	//a series of getters to simplify code reading
@@ -43,7 +74,7 @@ public class Person extends Resident {
 	// infected setter and update to infected counter
 	public void setInfected() {
 		state = virus.infected;
-		ctl.numInfected++;
+		if (ctl != null) ctl.numInfected++;
 	}
 	
 	//calculates health of person over time
@@ -57,13 +88,13 @@ public class Person extends Resident {
 			
 			//once the person has been given enough time, they will be considered recovered
 			if(sickTime<=0) {
-				if(Math.random() < ctl.toDie) {
+				if(Math.random() < toDie) {
 					state = virus.died;
-					ctl.numDied++;
+					if (ctl != null) ctl.numDied++;
 				} else {
 					state = virus.recovered;
 				}
-				ctl.numInfected--;	// global infected reduced
+				if (ctl != null) ctl.numInfected--;
 			}
 		}			
 	}
@@ -106,6 +137,30 @@ public class Person extends Resident {
 				super.velocityManager();
 		}
 			
+	}
+	
+	/*
+	 * Key properties of person
+	 */
+	public String toString() {
+		
+		return ( "" + state + "\t" + sickTime + "\tx:" + x + "\t" + vx + "\ty:" + y + "\t" + vy ); 
+	}
+	
+	/*
+	 * Main Tester method
+	 */
+	public static void main (String[] args) {
+		int numOfPeople = 25;
+		
+		ArrayList<Person> pl = new ArrayList<Person>();
+		for (int i = 0; i < numOfPeople; i++) {
+			Person p = new Person();
+			pl.add(p);
+		}
+		for (Person p : pl) {
+			System.out.println( p );
+		}
 	}
 	
 	
