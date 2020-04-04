@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Control {
 		String title = "Social Distance Simulation";
 		//Model and View
+		Settings settings; //the settings for the model
 		ArrayList<Person> model; //the community of Person objects	
 		Simulator view; //JPanel graphics window
 		
@@ -35,18 +36,30 @@ public class Control {
 		//refresh timer, also used to calculate time/age of infection
 		public static final int timerValue = 16;
 	
-		//Control for list of citizens in graphic frame
+		/*
+		 * Constructor call to a Control panel to setup Static values
+		 */
 		public Control() {
-			
-			//setup the Model
+			settings = new Settings(this);
+			//options: we could place setters here, but Static handling seems to reduce busy work
+			settings.setVisible(true);	//activates Settings panel
+		}
+		
+		/* 
+		 * This method coordinates MVC for Simulation
+		 * - The Simulation is managing People in Graphics frame to simulate a virus pandemic
+		 */
+		public void start() {
+			//Prerequisite: control values (Statics) are ready
+			//Setup the People
 			model = new ArrayList<Person>();
 			for(int i = 0; i < Control.numPeople; i++) {
 				//instantiate Person object and add it to the ArrayList
 				model.add(new Person());
 			}
-			//setup to View
+			//Setup to the Simulation Panel
 			Simulator view = new Simulator(this, title);
-			view.setVisible();	// activate the View
+			view.setVisible();	//Activate the the Simulation
 		}
 		
 		//paints/repaints model of citizens in the frame 

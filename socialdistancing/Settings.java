@@ -9,17 +9,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+/* Setting control Panel for Simulation
+ * JLabel and JSlider work together to get inputs from User
+ */
 public class Settings extends JFrame {
 	
-	public Settings() {
-		setBounds(100, 100, 350, 650);
-		
+	public Settings(Control ctl) {
+		setBounds(100, 100, 350, 650);	
 		getContentPane().setLayout(null);
 		
-		JLabel lblTotalNumberOf = new JLabel("Total Number of People: ");
-		lblTotalNumberOf.setBounds(10, 11, 200, 14);
-		getContentPane().add(lblTotalNumberOf);
-		
+		// Number of people in Simulation
+		JLabel labelNumPeople = new JLabel("Total Number of People in Simulation: ");
+		labelNumPeople.setBounds(10, 11, 200, 14);
+		getContentPane().add(labelNumPeople);
 		JSlider sliderNumPeople = new JSlider(0,500,20);
 		sliderNumPeople.setMajorTickSpacing(100);
 		sliderNumPeople.setMinorTickSpacing(50);
@@ -28,10 +30,10 @@ public class Settings extends JFrame {
 		sliderNumPeople.setBounds(10, 36, 200, 45);
 		getContentPane().add(sliderNumPeople);
 		
-		JLabel lblNumberOfPeople = new JLabel("Percentage of People to be Infected:");
-		lblNumberOfPeople.setBounds(10, 92, 233, 14);
-		getContentPane().add(lblNumberOfPeople);
-		
+		// Percentage of people initially infected
+		JLabel labelToBeInfected = new JLabel("Percentage of People initially Infected:");
+		labelToBeInfected.setBounds(10, 92, 233, 14);
+		getContentPane().add(labelToBeInfected);
 		JSlider sliderToBeInfected = new JSlider(0,100,5);
 		sliderToBeInfected.setMajorTickSpacing(25);
 		sliderToBeInfected.setMinorTickSpacing(10);
@@ -40,10 +42,9 @@ public class Settings extends JFrame {
 		sliderToBeInfected.setBounds(10, 117, 200, 45);
 		getContentPane().add(sliderToBeInfected);
 		
-		JLabel lblNumberOfMoving = new JLabel("Percentage of Moving People:");
-		lblNumberOfMoving.setBounds(10, 173, 233, 14);
-		getContentPane().add(lblNumberOfMoving);
-		
+		// Percentage of people initially roaming in Simulation 
+		JLabel labelToRoam = new JLabel("Percentage of People initially Roaming: ");
+		getContentPane().add(labelToRoam);	
 		JSlider sliderToRoam = new JSlider(0,100,5);
 		sliderToRoam.setMajorTickSpacing(25);
 		sliderToRoam.setMinorTickSpacing(10);
@@ -52,10 +53,10 @@ public class Settings extends JFrame {
 		sliderToRoam.setBounds(10, 198, 200, 45);
 		getContentPane().add(sliderToRoam);
 		
-		JLabel lblFastestRecoveryTime = new JLabel("Fastest Recovery Time:");
-		lblFastestRecoveryTime.setBounds(10, 254, 200, 14);
-		getContentPane().add(lblFastestRecoveryTime);
-		
+		// The fastest recovery time after being infected
+		JLabel labelSickTimeLow = new JLabel("Fastest Recovery Time in Seconds:");
+		labelSickTimeLow.setBounds(10, 254, 200, 14);
+		getContentPane().add(labelSickTimeLow);
 		JSlider sliderSickTimeLow = new JSlider(0,100,5);
 		sliderSickTimeLow.setMajorTickSpacing(25);
 		sliderSickTimeLow.setMinorTickSpacing(10);
@@ -64,10 +65,10 @@ public class Settings extends JFrame {
 		sliderSickTimeLow.setBounds(10, 279, 200, 45);
 		getContentPane().add(sliderSickTimeLow);
 		
-		JLabel lblSlowestRecoveryTime = new JLabel("Slowest Recovery Time:");
-		lblSlowestRecoveryTime.setBounds(10, 335, 244, 14);
-		getContentPane().add(lblSlowestRecoveryTime);
-		
+		// The longest recovery time after being infected
+		JLabel labelSickTimeMax = new JLabel("Slowest Recovery Time in Seconds:");
+		labelSickTimeMax.setBounds(10, 335, 244, 14);
+		getContentPane().add(labelSickTimeMax);	
 		JSlider sliderSickTimeMax = new JSlider(0,100,5);
 		sliderSickTimeMax.setMajorTickSpacing(25);
 		sliderSickTimeMax.setMinorTickSpacing(10);
@@ -75,10 +76,11 @@ public class Settings extends JFrame {
 		sliderSickTimeMax.setPaintLabels(true);
 		sliderSickTimeMax.setBounds(10, 360, 200, 45);
 		getContentPane().add(sliderSickTimeMax);
-		JLabel lblPercentageOfPeople = new JLabel("Percentage of People to Die:");
-		lblPercentageOfPeople.setBounds(20, 416, 260, 14);
-		getContentPane().add(lblPercentageOfPeople);
 		
+		// The percentage of people that don't recover from infection
+		JLabel labelToDie = new JLabel("Percentage of People that Die after being infected:");
+		labelToDie.setBounds(20, 416, 260, 14);
+		getContentPane().add(labelToDie);		
 		JSlider sliderToDie = new JSlider(0,100,5);
 		sliderToDie.setMajorTickSpacing(25);
 		sliderToDie.setMinorTickSpacing(10);
@@ -96,11 +98,12 @@ public class Settings extends JFrame {
 				Control.toBeInfected = sliderToBeInfected.getValue()/100.0;
 				Control.toDie = sliderToDie.getValue()/100.0;
 				Control.sickTimeLow = (sliderSickTimeLow.getValue()*1000);
-				Control.sickTimeMax = (sliderSickTimeMax.getValue()*1000);		
-				new Control();
-
+				Control.sickTimeMax = (sliderSickTimeMax.getValue()*1000);
+				ctl.start();
 			}
 		});
+		
+		// initialize values based off of reasonable defaults
 		sliderNumPeople.setValue(Control.numPeople);
 		sliderToRoam.setValue((int) (Control.toRoam*100));
 		sliderToBeInfected.setValue((int) (Control.toBeInfected*100));
