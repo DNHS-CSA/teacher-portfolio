@@ -10,35 +10,58 @@ public class Control {
 		ArrayList<Person> model; //the community of Person objects	
 		Simulator view; //JPanel graphics window
 		
-		// counters for simulation instance
+		// counters for "this" simulation instance
 		public int numInfected = 0;
 		public int numDied= 0;
 		
-		//This sets defaults in case run with default constructor
-		// simulation control starting values
-		public int  numPeople = Settings.sNumPeople;			
-		public double toRoam = Settings.sToRoam;			    
-		public double toBeInfected = Settings.sToBeInfected;		
-		public double toDie = Settings.sToDie;				
-		public int sickTimeLow = Settings.sSickTimeLow;			
-		public int sickTimeMax = Settings.sSickTimeMax;
+		// simulation control values
+		public int  numPeople;			
+		public double toRoam;			    
+		public double toBeInfected;		
+		public double toDie;				
+		public int sickTimeLow;			
+		public int sickTimeMax;
 		//frame extents
-		public int frameX = Settings.sFrameX;
-		public int frameY = Settings.sFrameY;
+		public int frameX;
+		public int frameY;
 		//position extents, keep objects away from the edges
-		public int xExt = Settings.sXExt;
-		public int yExt = Settings.sYExt;
+		public int xExt;
+		public int yExt;
 		//oval size, represents person in frame
-		public int OvalW = Settings.sOvalW;	//Height
-		public int OvalH = Settings.sOvalH;	//Width
+		public int OvalW;	//Height
+		public int OvalH;	//Width
 		//refresh timer, also used to calculate time/age of infection
-		public int timerValue = Settings.sTimerValue;
+		public int timerValue;
 	
 		/*
-		 * Constructor call to a Control panel to setup Static values
+		 * Default constructor sets simulation control default values
+		 */
+		public Control() {
+			//This sets defaults in case run with default constructor
+			// simulation control starting values
+			numPeople = Settings.sNumPeople;			
+			toRoam = Settings.sToRoam;			    
+			toBeInfected = Settings.sToBeInfected;		
+			toDie = Settings.sToDie;				
+			sickTimeLow = Settings.sSickTimeLow;			
+			sickTimeMax = Settings.sSickTimeMax;
+			//frame extents
+			frameX = Settings.sFrameX;
+			frameY = Settings.sFrameY;
+			//position extents, keep objects away from the edges
+			xExt = Settings.sXExt;
+			yExt = Settings.sYExt;
+			//oval size, represents person in frame
+			OvalW = Settings.sOvalW;	//Height
+			OvalH = Settings.sOvalH;	//Width
+			//refresh timer, also used to calculate time/age of infection
+			timerValue = Settings.sTimerValue;
+		}
+
+		/*
+		 * This constructor is set with values from Settings Panel
 		 */
 		public Control(Settings sets) {
-			//This constructor sets defaults from Settings actions/event
 			// health settings
 			numPeople = sets.numPeople;
 			toRoam = sets.toRoam;
@@ -115,6 +138,14 @@ public class Control {
 				index++;
 				
 			}	
+		}
+		
+		/*
+		 * Run simulation without settings panel
+		 */
+		public static void main (String[] args) {
+			Control c = new Control();
+			c.runSimulation();
 		}
 		
 }
