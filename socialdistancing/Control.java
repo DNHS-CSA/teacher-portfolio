@@ -79,6 +79,14 @@ public class Control {
 			timerValue = sets.timerValue;
 		}
 		
+		/*
+		 * Tester method to run simulation
+		 */
+		public static void main (String[] args) {
+			Control c = new Control();
+			c.runSimulation();
+		}
+		
 		/* 
 		 * This method coordinates MVC for Simulation
 		 * - The Simulation is managing People in Graphics frame to simulate a virus
@@ -101,53 +109,46 @@ public class Control {
 		}
 		
 		/*
-		 * paints/repaints model of people in the frame 
+		 * Call Back method for View
+		 * paints/repaints model of graphic objects repressing person objects in the frame 
 		 */
-		public void controlPaint(Graphics g) {
+		public void controlPaint(Graphics gDot1) {
 			
-			//paint the Person in the Simulation!
+			//find the Person in the Model!
 			int index = 0;
-			for(Person p: model) {
-				for(Person p2: model) {
+			for(Person pDot1: model) {
+				for(Person pDot2: model) {
 					//for each unique pair invoke the collision detection code
-					p.collisionDetector(p2);
+					pDot1.collisionDetector(pDot2);
 				}
 				
-				p.healthManager(); //manage health values of the Person
-				p.velocityManager(); //manage social distancing and/or roaming values of the Person
+				pDot1.healthManager(); //manage health values of the Person
+				pDot1.velocityManager(); //manage social distancing and/or roaming values of the Person
 				
-				//set the color of the object based on the health status of person
-				switch(p.state) {
+				//set the color of the for the person oval based on the health status of person object
+				switch(pDot1.state) {
 					case candidate:
-						g.setColor(Color.LIGHT_GRAY);
+						gDot1.setColor(Color.LIGHT_GRAY);
 						break;
 					case infected:
-						g.setColor(Color.red);
+						gDot1.setColor(Color.red);
 						break;
 					case recovered:
-						g.setColor(Color.green);
+						gDot1.setColor(Color.green);
 						break;
 					case died:
-						g.setColor(Color.black);
+						gDot1.setColor(Color.black);
 						
 				}
 				
-				//draw the oval in the simulation frame
-				g.fillOval(p.x, p.y, OvalW, OvalH);
+				//draw the person oval in the simulation frame
+				gDot1.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
 				
-				// draw the oval in meter/bar indicator
-				g.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
+				// draw the person oval in meter/bar indicator
+				gDot1.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
 				index++;
 				
 			}	
-		}
-		
-		/*
-		 * Tester method to run Static simulation
-		 */
-		public static void main (String[] args) {
-			Control c = new Control();
-			c.runSimulation();
 		}
 		
 }
