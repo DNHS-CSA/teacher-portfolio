@@ -89,12 +89,11 @@ public class Control {
 		
 		/* 
 		 * This method coordinates MVC for Simulation
-		 * - The Simulation is managing People in Graphics frame to simulate a virus
+		 * - The Simulation is managing People in a Graphics frame to simulate a virus outbreak
+		 * - Prerequisite: Control values from constructor are ready
 		 */
 		public void runSimulation() {
-			//Prerequisite: control values are ready
-			
-			//Setup to the Simulation Panel
+			//Setup to the Simulation Panel/Frame
 			Simulator view = new Simulator(this, title);
 			
 			//Setup the People
@@ -104,15 +103,15 @@ public class Control {
 				model.add(new Person(this));
 			}
 			
-			// Start Simulation
-			view.setVisible();
+			// Start the Simulation
+			view.activate();
 		}
 		
 		/*
 		 * Call Back method for View
 		 * paints/repaints model of graphic objects repressing person objects in the frame 
 		 */
-		public void controlPaint(Graphics gDot1) {
+		public void paintPersons(Graphics gDot1) {
 			
 			//find the Person in the Model!
 			int index = 0;

@@ -19,16 +19,16 @@ public class Simulator extends JPanel implements ActionListener{
 	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
 	
+	//simulation control objects/values
 	JFrame frame;
-	Control ctl;
-	
-	//simulation control values
-	int time = 0; //track time as the simulation runs
+	Control control; //
+	Timer timer; //Event control	
+	int time = 0; //Track time as the simulation runs
 	
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
 	public Simulator(Control ctl, String title) {
 		// used for Control callback
-		this.ctl = ctl;
+		this.control = ctl;
 		
 		//Setup the GUI
 		frame = new JFrame(title);
@@ -39,37 +39,40 @@ public class Simulator extends JPanel implements ActionListener{
 		//without realizing it
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//Timer for animation
-		Timer t = new Timer(ctl.timerValue, this); //timerValue is the period in ms. so the timer code runs every 16ms.
-					       //second argument (parameter) can be any class that implements
-						// ActionListener
-		t.restart(); //restart or start
-		
 		//make it visible
 		frame.add(this); //add this class (JPanel) to the JFrame
 		
 	}
 	
-	//activation separated from Constructor 
-	public void setVisible() {
+	//activation of Simulator separated from Constructor 
+	public void activate() {
+		//Timer for animation
+		//Argument 1: timerValue is a period in milliseconds to fire event
+		//Argument 2:t any class that "implements ActionListener"
+		timer = new Timer(control.timerValue, this); //timer constructor
+		timer.restart(); //restart or start
+		
+		// frame becomes visible
 		frame.setVisible(true);		
 	}
 	
-	/* This invoked by Timer per milliseconds in timerValue */
+	/* This invoked by Timer per period in milliseconds in timerValue */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		repaint();
+		//Triggers paint call through polymorphism
+		repaint();	
 	}
 
 	/* paint method for drawing the simulation and animation */
 	@Override
 	public void paint(Graphics g) {
 		
-		//this method is invoked by the timer every 16ms. we're tracking the time manually with the time variable
-		time += ctl.timerValue;
+		//tracking total time manually with the time variable
+		time += control.timerValue;
 		
+		//events
 		super.paintComponent(g); // a necessary call to the parent paint method, required for proper screen refreshing	
-		ctl.controlPaint(g); // repaint all objects in simulation
+		control.paintPersons(g); // repaint all objects in simulation
 		
 	}
 	
