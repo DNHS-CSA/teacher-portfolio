@@ -15,17 +15,6 @@ public class Alphabet extends Generics {
 	}	
 	
 	@Override
-	public String getKey()
-	{
-		return String.valueOf(letter);
-	}
-	
-	@Override
-	public int compareTo(Object o)
-	{
-		return getKey().compareTo(((Alphabet) o).getKey());
-	}
-	
 	public String toString()
 	{
 		return ("" + letter); 

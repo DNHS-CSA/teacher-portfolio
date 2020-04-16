@@ -24,7 +24,7 @@ public class CircleQueue
     tailNode = null;
     currentNode = null;
   }
-
+  
   /**
    *  Returns the head opaqueObject.
    *
@@ -140,6 +140,7 @@ public class CircleQueue
 	  return opaqueObject;
   }
   
+  
   /**
    *  Returns a string representation of this Queue,
    *  polymorphic nature of toString overrides of standard System.out.print behavior
@@ -162,5 +163,49 @@ public class CircleQueue
     return queueToString;
   }
   
-    
+  /**
+   * 
+   */
+  public void sort() {	
+	
+	//two nodes needed to sort
+    LinkedList node1 = headNode;
+    LinkedList node2 = (node1 == null) ? null : node1.getNext();
+       
+    while (node1 != null && node2 != null) {	
+    	LinkedList slot1 = node1;
+    	LinkedList slot2 = node2;
+    		
+		String text1 = node1.getObject().toString();
+		String text2 = node2.getObject().toString();
+		
+		if ( text1.compareTo(text2) > 0 ) {
+			
+			LinkedList key = new LinkedList(node2);
+			String keyText = node2.getObject().toString();
+			System.out.println(keyText);
+
+			while ( text1.compareTo(keyText) > 0 ) {
+		    	
+	    		slot2.setObject(slot1.getObject());
+
+				// move pointers
+				slot1 = slot1.getPrevious();
+				slot2 = slot2.getPrevious();
+				if (slot1 == null)
+					break;
+				text1 = slot1.getObject().toString();
+				
+	    	}
+			
+	    	slot2.setObject(key.getObject());
+
+		}
+    	
+    	node1 = node1.getNext();
+    	node2 = node2.getNext();
+    } 	
+  } 
+  
 }
+

@@ -12,8 +12,13 @@ public abstract class Generics {
 		return subType + " from " + type;
 	}
 	
-	// public abstract String getType();
-	public abstract String getKey();
-	public abstract int compareTo(Object o);
+	// force toString
+	public abstract String toString();
+	
+	// object comparison
+	public int compareTo(Object o) {
+	
+		return this.toString().compareTo(o.toString());
+	}
 
 }

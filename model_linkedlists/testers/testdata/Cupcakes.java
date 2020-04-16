@@ -15,17 +15,6 @@ public class Cupcakes extends Generics {
 	}
 	
 	@Override
-	public String getKey()
-	{
-		return flavor;
-	}
-	
-	@Override
-	public int compareTo(Object o)
-	{
-		return flavor.compareTo(((Cupcakes) o).getKey());
-	}
-	
 	public String toString() {
 		String all = this.flavor + ", " + this.sprinkles + ", " + this.frosting;
 		return (all);

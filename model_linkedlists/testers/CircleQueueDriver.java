@@ -39,6 +39,7 @@ public class CircleQueueDriver {
 		System.out.println();			
 	}
 	
+	
 	public void showCQueue()
 	{
 		System.out.println("Size: " + count);
@@ -47,7 +48,7 @@ public class CircleQueueDriver {
 		System.out.println("Full cqueue: " + cqueue);
 		
 		/* To compare objects you need to have a Type of class
-		 * Generics is abstract but this code does not allow mixed base
+		 * Generic is abstract but this code does not allow mixed base
 		 */
 		System.out.println("Compare adjacent objects " + dataType);
 		Object c = cqueue.getFirstObject();
@@ -57,8 +58,9 @@ public class CircleQueueDriver {
 			Object n = cqueue.getObject();
 			
 			if (c != null && n != null) {
-				System.out.println( ((Generics) c).getKey() + " " + ((Generics) c).getType() + " compare to " + ((Generics) n).getKey() + " " + ((Generics) n).getType() );
-				System.out.println(((Generics) c).compareTo(n));
+				System.out.println( c + " compare to " + n );
+				System.out.println(( c.toString().compareTo(n.toString()) ));
+
 			}
 			c = n;
 			
@@ -78,6 +80,7 @@ public class CircleQueueDriver {
 		}
 	}
 	
+	
 	/* 
 	 * Illustrate different Objects that can be placed on same Queue
 	 */
@@ -92,31 +95,34 @@ public class CircleQueueDriver {
 		trial.setCount(0);
 		trial.setDataType(Animal.type);
 		trial.addCQueue(Animal.animalData());
+		Animal.key = Animal.KeyType.name;
+		trial.showCQueue();
+		trial.cqueue.sort();
 		trial.showCQueue();
 		trial.deleteCQueue();
 		
 		// setup for Cupcakes
-		trial.setCount(0);
-		trial.setDataType(Cupcakes.type);
-		trial.addCQueue(Cupcakes.cupCakeData());
-		trial.showCQueue();
-		trial.deleteCQueue();
+		//trial.setCount(0);
+		//trial.setDataType(Cupcakes.type);
+		//trial.addCQueue(Cupcakes.cupCakeData());
+		//trial.showCQueue();
+		//trial.deleteCQueue();
 		
 		// setup for Alphabet
-		trial.setCount(0);
-		trial.setDataType(Alphabet.type);
-		trial.addCQueue(Alphabet.alphabetData());
-		trial.showCQueue();
-		trial.deleteCQueue();
+		//trial.setCount(0);
+		//trial.setDataType(Alphabet.type);
+		//trial.addCQueue(Alphabet.alphabetData());
+		//trial.showCQueue();
+		//trial.deleteCQueue();
 		
 		// mixed queue
-		trial.setCount(0);
-		trial.setDataType(Generics.type);
-		trial.addCQueue(Animal.animalData());
+		//trial.setCount(0);
+		//trial.setDataType(Generics.type);
+		//trial.addCQueue(Animal.animalData());
 		//trial.addCQueue(Cupcakes.cupCakeData());		// Why do these fail?
 		//trial.addCQueue(Alphabet.alphabetData());
-		trial.showCQueue();
-		trial.deleteCQueue();
+		//trial.showCQueue();
+		//trial.deleteCQueue();
 	}
 	
 }

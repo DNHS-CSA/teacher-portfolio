@@ -56,7 +56,7 @@ public class Simulator extends JPanel implements ActionListener{
 		frame.setVisible(true);		
 	}
 	
-	/* This invoked by Timer per period in milliseconds in timerValue */
+	/* This invoked by Timer per period in milliseconds in timerValue  */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Triggers paint call through polymorphism
@@ -73,7 +73,7 @@ public class Simulator extends JPanel implements ActionListener{
 		//events
 		super.paintComponent(g); // a necessary call to the parent paint method, required for proper screen refreshing	
 		control.paintPersons(g); // repaint all objects in simulation	
-	}
+	} 
 	
 	
 }

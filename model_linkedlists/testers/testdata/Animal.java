@@ -7,7 +7,9 @@ public class Animal extends Generics {
 	/* fields
 	 * 
 	 */
+	public enum KeyType {combo, name, age, color};
 	public static final String type = "Animal";	
+	public static KeyType key = KeyType.combo;
 	private String aniName; 
 	private int aniAge; 
 	private String aniColor;
@@ -23,31 +25,29 @@ public class Animal extends Generics {
 		aniColor = color; 
 	}
 	
-	
-	/* key value
-	 * 
-	 */
-	@Override
-	public String getKey()
-	{
-		return aniName;
-	}
-	
-	/* compareTo override
-	 * 
-	 */
-	@Override
-	public int compareTo(Object o)
-	{
-		return aniName.compareTo(((Animal) o).getKey());
-	}
-	
 	/* toString override
 	 * 
 	 */
+	@Override
 	public String toString()
 	{
-		return "(name: " + aniName + ", age: " + aniAge + ", color: " + aniColor + ")"; 
+		String output="";
+		switch(key) {
+		case name:
+			output += this.aniName;
+			break;
+		case age:
+			output += this.aniAge;
+			break;
+		case color:
+			output += this.aniColor;
+			break;
+		case combo:
+		default:
+			output += "(name: " + aniName + ", age: " + aniAge + ", color: " + aniColor + ")"; 
+		}
+		return output;
+		
 	}
 	
 	/* Initialize Animal data

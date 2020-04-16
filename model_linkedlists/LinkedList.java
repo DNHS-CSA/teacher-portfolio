@@ -24,6 +24,18 @@ public class LinkedList
   }
 
   /**
+   *  Clone an object,
+   *
+   * @param  node  object to clone
+   */
+  public LinkedList(LinkedList node)
+  {
+	opaqueObject = node.opaqueObject;
+	prevNode = node.prevNode;
+	nextNode = node.nextNode;
+  }
+  
+  /**
    *  Setter for opaqueObjecg in LinkedList object
    *
    * @param  opaqueObject  Address of Object
@@ -82,4 +94,5 @@ public class LinkedList
   {
     return nextNode;
   }
+  
 }
