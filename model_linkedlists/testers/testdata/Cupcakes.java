@@ -32,7 +32,7 @@ public class Cupcakes extends Generics {
 			break;
 		case combo:
 		default:
-			output = this.flavor + ", " + this.frosting + ", " + this.sprinkles;
+			output = type + ": " + this.flavor + ", " + this.frosting + ", " + this.sprinkles;
 		}
 		return output;
 	}

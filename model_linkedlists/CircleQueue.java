@@ -154,7 +154,7 @@ public class CircleQueue
     LinkedList node = headNode;  			// start from the head
     while (node != null)
     {
-    	queueToString += node.getObject(); 	// append the data to output string
+    	queueToString += "("+node.getObject()+")"; 	// append the data to output string
     	node = node.getNext();				// go to next node
     	if (node != null)
     		queueToString += ", ";
@@ -164,43 +164,43 @@ public class CircleQueue
   }
   
   /**
-   * Performs insertion sort based off of the contents of toString()
+   * Performs insertion sort based off of the contents of object
    */
   public void insertionSort() {	
 	
-	//two nodes needed for insertion sort
+	//two nodes needed for insertion sort indexes
     LinkedList node1 = headNode;
     LinkedList node2 = (node1 == null) ? null : node1.getNext();
     
-    //continue while nodes are in bounds
+    //continue while nodes remain in bounds
     while (node2 != null) {	
     	
-    	//pointer for compares and shifts
+    	//inner loop pointers for compares and shifts
     	LinkedList slot1 = node1;
     	LinkedList slot2 = node2;
     		
 		//key to be inserted into sorted slot
-		LinkedList key = new LinkedList(node2);
+		LinkedList key = new LinkedList(node2);		//note: make key a different object, persistent/static in value (node2 moves)
 		String keyText = node2.getObject().toString();
 
-		//walk slots and shift until key position in found
+		//walks slots backwards until key position in found
 		while ( slot1.getObject().toString().compareTo(keyText) > 0 ) {
-	    	//shift objects
+	    	//shifts object greater than key value to the right in list
     		slot2.setObject(slot1.getObject());
 
-			//move pointers
+			//moves inner loop pointers
 			slot1 = slot1.getPrevious();
 			slot2 = slot2.getPrevious();
 			
-			//stop at front of list
+			//stop at the front of list
 			if (slot1 == null)
 				break;
 			
     	}
-		//place key in correct position	
+		//place key in insertion position
     	slot2.setObject(key.getObject());
 
-    	//advance in list
+    	//advance insertion sort indexes
     	node1 = node1.getNext();
     	node2 = node2.getNext();
     } 

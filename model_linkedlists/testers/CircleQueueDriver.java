@@ -10,7 +10,6 @@ import model_linkedlists.testers.testdata.*;
 public class CircleQueueDriver {
 	
 	private CircleQueue cqueue;
-	private String dataType="";
 	private int count;
 
 	public CircleQueueDriver()
@@ -18,18 +17,10 @@ public class CircleQueueDriver {
 		count = 0;		
 		cqueue = new CircleQueue();
 	}
-	
-	protected void setCount(int count) {
-		this.count = count;
-	}
-	
-	public void setDataType(String dataType) {
-		this.dataType = dataType;
-	}
 
 	public void addCQueue(Object[] objects)
 	{
-		System.out.println("Add " + dataType);
+		System.out.println("Add " + objects.length);
 		for (Object o : objects)
 		{
 			cqueue.add(o);
@@ -54,10 +45,13 @@ public class CircleQueueDriver {
 	 */
 	public void deleteCQueue()
 	{
-		System.out.println("Delete " + dataType);
-		for (int x = 0; x<count; x++)
+		int length = this.count;
+		System.out.println("Delete " + length);
+		
+		for (int i = 0; i<length; i++)
 		{
-			System.out.println("Delete: " + cqueue.delete() + " " + cqueue);		
+			System.out.println("Delete: " + cqueue.delete() + " " + cqueue);
+			this.count--;
 		}
 	}
 	
@@ -69,19 +63,30 @@ public class CircleQueueDriver {
 	
 	{	
 		
-		// queue
+		//queue
 		CircleQueueDriver trial = new CircleQueueDriver();
 		
-		// mixed queue
-		trial.setCount(0);
-		trial.setDataType(Generics.type);
-		Animal.key = Animal.KeyType.name;
+		//add different types of objects to the same opaque queue
 		trial.addCQueue(Animal.animalData());
+		trial.addCQueue(Cupcakes.cupCakeData());
+		trial.addCQueue(Alphabet.alphabetData());		
+		//display queue objects in queue order
+		trial.showCQueue();
+		
+		//sort queue objects by specific element within the object and display in sort order
+		Animal.key = Animal.KeyType.name;
 		Cupcakes.key = Cupcakes.KeyType.flavor;
-		trial.addCQueue(Cupcakes.cupCakeData());		// Why do these fail?
-		trial.addCQueue(Alphabet.alphabetData());
+		Alphabet.key = Alphabet.KeyType.letter;
 		trial.cqueue.insertionSort();
 		trial.showCQueue();
+		
+		//display queue objects
+		Animal.key = Animal.KeyType.combo;
+		Cupcakes.key = Cupcakes.KeyType.combo;
+		Alphabet.key = Alphabet.KeyType.combo;
+		trial.showCQueue();
+		
+		//delete queue objects
 		trial.deleteCQueue();
 	}
 	

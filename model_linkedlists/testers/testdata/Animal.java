@@ -10,9 +10,9 @@ public class Animal extends Generics {
 	public static final String type = "Animal";
 	public enum KeyType {combo, name, age, color};
 	public static KeyType key = KeyType.combo;
-	private String aniName; 
-	private int aniAge; 
-	private String aniColor;
+	private String name; 
+	private int age; 
+	private String color;
 	
 	/* constructor
 	 * 
@@ -20,9 +20,9 @@ public class Animal extends Generics {
 	public Animal(String name, int age, String color)
 	{
 		this.setSubType(type);
-		aniName = name; 
-		aniAge = age; 
-		aniColor = color; 
+		this.name = name; 
+		this.age = age; 
+		this.color = color; 
 	}
 	
 	/* toString override
@@ -34,17 +34,18 @@ public class Animal extends Generics {
 		String output="";
 		switch(key) {
 		case name:
-			output += this.aniName;
+			output += this.name;
 			break;
 		case age:
-			output += this.aniAge;
+			output += "000" + this.age;
+			output = output.substring(output.length()-3);
 			break;
 		case color:
-			output += this.aniColor;
+			output += this.color;
 			break;
 		case combo:
 		default:
-			output += "(name: " + aniName + ", age: " + aniAge + ", color: " + aniColor + ")"; 
+			output += type + ": " + this.name  + ", " + this.color + ", " + this.age; 
 		}
 		return output;
 		
@@ -55,11 +56,12 @@ public class Animal extends Generics {
 	 */
 	public static Generics[] animalData() {
 		Generics[] ad = { 
-				new Animal("lion", 8, "gold"),
-				new Animal("pig", 3, "pink"),
-				new Animal("robin", 7, "red"),
-				new Animal("cat", 10, "black"),
-				new Animal("kitty", 1, "calico")
+				new Animal("Lion", 8, "Gold"),
+				new Animal("Pig", 3, "Pink"),
+				new Animal("Robin", 7, "Red"),
+				new Animal("Cat", 10, "Black"),
+				new Animal("Kitty", 1, "Calico"),
+				new Animal("Dog", 14, "Brown")
 		};
 		return ad;
 	}
