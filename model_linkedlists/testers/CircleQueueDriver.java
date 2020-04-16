@@ -95,9 +95,10 @@ public class CircleQueueDriver {
 		trial.setCount(0);
 		trial.setDataType(Animal.type);
 		trial.addCQueue(Animal.animalData());
-		Animal.key = Animal.KeyType.name;
 		trial.showCQueue();
+		Animal.key = Animal.KeyType.name;
 		trial.cqueue.sort();
+		Animal.key = Animal.KeyType.combo;
 		trial.showCQueue();
 		trial.deleteCQueue();
 		

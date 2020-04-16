@@ -55,10 +55,11 @@ public class Animal extends Generics {
 	 */
 	public static Generics[] animalData() {
 		Generics[] ad = { 
-				new Animal("lion", 10, "gold"),
-				new Animal("pig", 10, "pink"),
-				new Animal("robin", 10, "red"),
-				new Animal("cat", 10, "black")
+				new Animal("lion", 8, "gold"),
+				new Animal("pig", 3, "pink"),
+				new Animal("robin", 7, "red"),
+				new Animal("cat", 10, "black"),
+				new Animal("kitty", 1, "calico")
 		};
 		return ad;
 	}
