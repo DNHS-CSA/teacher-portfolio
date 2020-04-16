@@ -164,7 +164,7 @@ public class CircleQueue
   }
   
   /**
-   * 
+   * Performs insertion sort based off of the contents of toString()
    */
   public void insertionSort() {	
 	
@@ -203,7 +203,8 @@ public class CircleQueue
     	//advance in list
     	node1 = node1.getNext();
     	node2 = node2.getNext();
-    } 	
+    } 
+    
   } 
   
 }
