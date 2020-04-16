@@ -3,21 +3,27 @@ import model_linkedlists.CircleQueue;
 import model_linkedlists.testers.testdata.*;
 
 /**
- * Circle Queue Driver takes a list of Objects and puts them onto the Queue
- * @author johnmortensen
+ * Circle Queue Driver takes a list of Objects and puts them into a Queue
+ * @author     John Mortensen
  *
  */
 public class CircleQueueDriver {
 	
-	private CircleQueue cqueue;
-	private int count;
+	private CircleQueue cqueue;	// circle queue object
+	private int count; // number of objects in circle queue
 
+	/* 
+	 * Circle queue constructor
+	 */
 	public CircleQueueDriver()
 	{
 		count = 0;		
 		cqueue = new CircleQueue();
 	}
 
+	/*
+	 * Add any array of objects to the queue
+	 */
 	public void addCQueue(Object[] objects)
 	{
 		System.out.println("Add " + objects.length);
@@ -30,7 +36,9 @@ public class CircleQueueDriver {
 		System.out.println();			
 	}
 	
-	
+	/* 
+	 * Show key objects/properties of circle queue
+	 */
 	public void showCQueue()
 	{
 		System.out.println("Size: " + count);
@@ -41,7 +49,7 @@ public class CircleQueueDriver {
 	}
 	
 	/* 
-	 * Illustrate different Objects that can be placed on same Queue
+	 * Delete/Clear all object in circle queue
 	 */
 	public void deleteCQueue()
 	{
@@ -61,8 +69,7 @@ public class CircleQueueDriver {
 	 */
 	public static void main(String[] args)
 	
-	{	
-		
+	{			
 		//queue
 		CircleQueueDriver trial = new CircleQueueDriver();
 		

@@ -3,17 +3,23 @@ import util.ConsoleMethods;
 
 public class Alphabet extends Generics {
 	public static final String type = "Alphabet";
+	private static final int size = 26;
 	public enum KeyType {combo, letter};
 	public static KeyType key = KeyType.combo;
 	private char letter;
-	private static final int size = 26;
 	
+	/*
+	 * single letter object
+	 */
 	public Alphabet(char l)
 	{
-		this.setSubType(type);
+		this.setType(type);
 		this.letter = l;
 	}	
 	
+	/* 
+	 * toString provides output based off of key setting
+	 */
 	@Override
 	public String toString()
 	{
@@ -25,11 +31,14 @@ public class Alphabet extends Generics {
 			break;
 		case combo:
 		default:
-			output += type + ": " + letter;
+			output += type + ": " + this.letter;
 		}
 		return output;
 	}
 	
+	/*
+	 * upper case alphabet array
+	 */
 	public static Generics[] alphabetData() 
 	{	
 		Generics[] alphabet = new Alphabet[Alphabet.size];
@@ -40,8 +49,8 @@ public class Alphabet extends Generics {
 		return alphabet;
 	}
 	
-	/* main to test Animal class
-	 * 
+	/* 
+	 * main to test Animal class
 	 */
 	public static void main(String[] args)
 	{

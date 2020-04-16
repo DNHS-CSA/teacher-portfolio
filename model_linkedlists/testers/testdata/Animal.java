@@ -19,14 +19,14 @@ public class Animal extends Generics {
 	 */
 	public Animal(String name, int age, String color)
 	{
-		this.setSubType(type);
+		this.setType(type);
 		this.name = name; 
 		this.age = age; 
 		this.color = color; 
 	}
 	
-	/* toString override
-	 * 
+	/* 
+	 * toString provides output based off of this.key setting
 	 */
 	@Override
 	public String toString()

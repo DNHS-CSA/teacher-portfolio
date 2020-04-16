@@ -10,15 +10,17 @@ public class Cupcakes extends Generics {
 	
 	Cupcakes(String frosting, int sprinkles, String flavor)
 	{
-		this.setSubType(type);
+		this.setType(type);
 		this.frosting = frosting;
 		this.sprinkles = sprinkles;
 		this.flavor = flavor;
 	}
 	
+	/* 
+	 * toString provides output based off of this.key setting
+	 */
 	@Override
-	public String toString() {
-		
+	public String toString() {		
 		String output="";
 		switch(key) {
 		case flavor:

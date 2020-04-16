@@ -4,12 +4,12 @@ public abstract class Generics {
 	public static final String type = "Generic";
 	private String subType;
 
-	protected void setSubType(String type) {
+	protected void setType(String type) {
 		this.subType = type;
 	}
 	
 	public String getType() {
-		return subType + " from " + type;
+		return subType;
 	}
 	
 	// force toString
