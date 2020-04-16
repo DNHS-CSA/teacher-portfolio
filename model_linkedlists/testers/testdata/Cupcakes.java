@@ -1,7 +1,9 @@
 package model_linkedlists.testers.testdata;
 
 public class Cupcakes extends Generics {
-	public static final String type = "Cupcakes";	
+	public static final String type = "Cupcakes";
+	public enum KeyType {combo, flavor, frosting, sprinkles};
+	public static KeyType key = KeyType.combo;
 	private String frosting;
 	private int sprinkles;
 	private String flavor;
@@ -16,8 +18,23 @@ public class Cupcakes extends Generics {
 	
 	@Override
 	public String toString() {
-		String all = this.flavor + ", " + this.sprinkles + ", " + this.frosting;
-		return (all);
+		
+		String output="";
+		switch(key) {
+		case flavor:
+			output += this.flavor;
+			break;
+		case frosting:
+			output += this.frosting;
+			break;
+		case sprinkles:
+			output += this.sprinkles;
+			break;
+		case combo:
+		default:
+			output = this.flavor + ", " + this.frosting + ", " + this.sprinkles;
+		}
+		return output;
 	}
 	
 	public static Generics[] cupCakeData() {

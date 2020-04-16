@@ -7,8 +7,8 @@ public class Animal extends Generics {
 	/* fields
 	 * 
 	 */
+	public static final String type = "Animal";
 	public enum KeyType {combo, name, age, color};
-	public static final String type = "Animal";	
 	public static KeyType key = KeyType.combo;
 	private String aniName; 
 	private int aniAge; 

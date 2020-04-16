@@ -46,25 +46,6 @@ public class CircleQueueDriver {
 		System.out.println("First Element: " + cqueue.getFirstObject());
 		System.out.println("Last Element: " + cqueue.getLastObject());
 		System.out.println("Full cqueue: " + cqueue);
-		
-		/* To compare objects you need to have a Type of class
-		 * Generic is abstract but this code does not allow mixed base
-		 */
-		System.out.println("Compare adjacent objects " + dataType);
-		Object c = cqueue.getFirstObject();
-		for (int i = 0; c != null && i < count; i++)
-		{
-			cqueue.setNext();
-			Object n = cqueue.getObject();
-			
-			if (c != null && n != null) {
-				System.out.println( c + " compare to " + n );
-				System.out.println(( c.toString().compareTo(n.toString()) ));
-
-			}
-			c = n;
-			
-		}
 		System.out.println();
 	}
 	
@@ -88,42 +69,20 @@ public class CircleQueueDriver {
 	
 	{	
 		
-		// general queue
+		// queue
 		CircleQueueDriver trial = new CircleQueueDriver();
 		
-		// setup for Animals
+		// mixed queue
 		trial.setCount(0);
-		trial.setDataType(Animal.type);
-		trial.addCQueue(Animal.animalData());
-		trial.showCQueue();
+		trial.setDataType(Generics.type);
 		Animal.key = Animal.KeyType.name;
+		trial.addCQueue(Animal.animalData());
+		Cupcakes.key = Cupcakes.KeyType.flavor;
+		trial.addCQueue(Cupcakes.cupCakeData());		// Why do these fail?
+		trial.addCQueue(Alphabet.alphabetData());
 		trial.cqueue.insertionSort();
-		Animal.key = Animal.KeyType.combo;
 		trial.showCQueue();
 		trial.deleteCQueue();
-		
-		// setup for Cupcakes
-		//trial.setCount(0);
-		//trial.setDataType(Cupcakes.type);
-		//trial.addCQueue(Cupcakes.cupCakeData());
-		//trial.showCQueue();
-		//trial.deleteCQueue();
-		
-		// setup for Alphabet
-		//trial.setCount(0);
-		//trial.setDataType(Alphabet.type);
-		//trial.addCQueue(Alphabet.alphabetData());
-		//trial.showCQueue();
-		//trial.deleteCQueue();
-		
-		// mixed queue
-		//trial.setCount(0);
-		//trial.setDataType(Generics.type);
-		//trial.addCQueue(Animal.animalData());
-		//trial.addCQueue(Cupcakes.cupCakeData());		// Why do these fail?
-		//trial.addCQueue(Alphabet.alphabetData());
-		//trial.showCQueue();
-		//trial.deleteCQueue();
 	}
 	
 }
