@@ -166,41 +166,41 @@ public class CircleQueue
   /**
    * 
    */
-  public void sort() {	
+  public void insertionSort() {	
 	
-	//two nodes needed to sort
+	//two nodes needed for insertion sort
     LinkedList node1 = headNode;
     LinkedList node2 = (node1 == null) ? null : node1.getNext();
-       
-    while (node1 != null && node2 != null) {	
+    
+    //continue while nodes are in bounds
+    while (node2 != null) {	
+    	
+    	//pointer for compares and shifts
     	LinkedList slot1 = node1;
     	LinkedList slot2 = node2;
     		
-		String text1 = node1.getObject().toString();
-		String text2 = node2.getObject().toString();
-		
-		if ( text1.compareTo(text2) > 0 ) {
+		//key to be inserted into sorted slot
+		LinkedList key = new LinkedList(node2);
+		String keyText = node2.getObject().toString();
+
+		//walk slots and shift until key position in found
+		while ( slot1.getObject().toString().compareTo(keyText) > 0 ) {
+	    	//shift objects
+    		slot2.setObject(slot1.getObject());
+
+			//move pointers
+			slot1 = slot1.getPrevious();
+			slot2 = slot2.getPrevious();
 			
-			LinkedList key = new LinkedList(node2);  //new-clone required as we want the key to be persistent
-			String keyText = node2.getObject().toString();
-
-			while ( text1.compareTo(keyText) > 0 ) {
-		    	
-	    		slot2.setObject(slot1.getObject());
-
-				// move pointers
-				slot1 = slot1.getPrevious();
-				slot2 = slot2.getPrevious();
-				if (slot1 == null)
-					break;
-				text1 = slot1.getObject().toString();
-				
-	    	}
+			//stop at front of list
+			if (slot1 == null)
+				break;
 			
-	    	slot2.setObject(key.getObject());
+    	}
+		//place key in correct position	
+    	slot2.setObject(key.getObject());
 
-		}
-    	
+    	//advance in list
     	node1 = node1.getNext();
     	node2 = node2.getNext();
     } 	
