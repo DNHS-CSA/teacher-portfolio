@@ -181,7 +181,7 @@ public class CircleQueue
 		
 		if ( text1.compareTo(text2) > 0 ) {
 			
-			LinkedList key = new LinkedList(node2);
+			LinkedList key = new LinkedList(node2);  // clone required as we want the key to be persistent
 			String keyText = node2.getObject().toString();
 			System.out.println(keyText);
 
