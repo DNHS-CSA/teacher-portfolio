@@ -1,6 +1,7 @@
 package socialdistancing;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -15,15 +16,6 @@ public class Control {
 		public int numInfected = 0;
 		public int numDied= 0;
 		
-		Wall vWall1 = Simulator.vWall1;
-		Wall vWall2 = Simulator.vWall2;
-		Wall vWall3 = Simulator.vWall3;
-		Wall vWall4 = Simulator.vWall4;
-		
-		Wall hWall1 = Simulator.hWall1;
-		Wall hWall2 = Simulator.hWall2;
-		Wall hWall3 = Simulator.hWall3;
-		Wall hWall4 = Simulator.hWall4;
 		
 		// simulation control values
 		public int  numPeople;			
@@ -122,7 +114,7 @@ public class Control {
 		 * Call Back method for View
 		 * paints/repaints model of graphic objects repressing person objects in the frame 
 		 */
-		public void paintPersons(Graphics gDot1) {
+		public void paintPersons(Graphics g) {
 			
 			//find the Person in the Model!
 			int index = 0;
@@ -131,44 +123,83 @@ public class Control {
 					//for each unique pair invoke the collision detection code
 					pDot1.collisionDetector(pDot2);
 				}
-				checkWallCollision(pDot1);
+				personToWallCollision(pDot1);
 				pDot1.healthManager(); //manage health values of the Person
 				pDot1.velocityManager(); //manage social distancing and/or roaming values of the Person
 				
 				//set the color of the for the person oval based on the health status of person object
 				switch(pDot1.state) {
 					case candidate:
-						gDot1.setColor(Color.LIGHT_GRAY);
+						g.setColor(Color.LIGHT_GRAY);
 						break;
 					case infected:
-						gDot1.setColor(Color.red);
+						g.setColor(Color.red);
 						break;
 					case recovered:
-						gDot1.setColor(Color.green);
+						g.setColor(Color.green);
 						break;
 					case died:
-						gDot1.setColor(Color.black);
+						g.setColor(Color.black);
 						
 				}
 				
 				//draw the person oval in the simulation frame
-				gDot1.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
+				g.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
 				
 				// draw the person oval in meter/bar indicator
-				gDot1.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
+				g.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
 				index++;
 				
 			}
 		}
+		
+		//Declares Wall sprites and positions of walls
+		static Wall vWall1 = new Wall(550, 0, "SocialDistancingImages/wall2.png", true);
+		static Wall vWall2 = new Wall(200, 0, "SocialDistancingImages/wall2.png", true);
+		static Wall vWall3 = new Wall(550, 400, "SocialDistancingImages/wall2.png", true);
+		static Wall vWall4 = new Wall(200, 400, "SocialDistancingImages/wall2.png", true);
+		
+		static Wall hWall1 = new Wall(620, 160, "SocialDistancingImages/wall1.png", false);
+		static Wall hWall2 = new Wall(-25, 160, "SocialDistancingImages/wall1.png", false);
+		static Wall hWall3 = new Wall(620, 400, "SocialDistancingImages/wall1.png", false);
+		static Wall hWall4 = new Wall(-25, 400, "SocialDistancingImages/wall1.png", false);
+		static Wall[] walls = {vWall1, hWall1, vWall2, hWall2, vWall3, hWall3, vWall4, hWall4};
+		static Rectangle[] r = {vWall1.getBounds(), hWall1.getBounds(), vWall2.getBounds(), hWall2.getBounds(),
+				vWall3.getBounds(), hWall3.getBounds(), vWall4.getBounds(), hWall4.getBounds()};
+		
+		
+		public void paintWalls(Graphics g) {
 
-		public void checkWallCollision(Person p) {
-			Wall[] walls = {vWall1, hWall1, vWall2, hWall2, vWall3, hWall3, vWall4, hWall4};
-			Rectangle[] r = {vWall1.getBounds(), hWall1.getBounds(), vWall2.getBounds(), hWall2.getBounds(),
-					vWall3.getBounds(), hWall3.getBounds(), vWall4.getBounds(), hWall4.getBounds()};
-			Rectangle rect1 = new Rectangle(p.x,p.y, p.width, p.height);
+			//draws vertical walls
+			g.drawImage(vWall1.getImage(), vWall1.getX(), vWall1.getY(), view);
+			g.drawImage(vWall2.getImage(), vWall2.getX(), vWall2.getY(), view);
+			g.drawImage(vWall3.getImage(), vWall3.getX(), vWall3.getY(), view);
+			g.drawImage(vWall4.getImage(), vWall4.getX(), vWall4.getY(), view);
+			
+			//draws horizontal walls
+			g.drawImage(hWall1.getImage(), hWall1.getX(), hWall1.getY(), view);
+			g.drawImage(hWall2.getImage(), hWall2.getX(), hWall2.getY(), view);
+			g.drawImage(hWall3.getImage(), hWall3.getX(), hWall3.getY(), view);
+			g.drawImage(hWall4.getImage(), hWall4.getX(), hWall4.getY(), view);
+			
+			//sets text color
+			g.setColor(Color.BLACK);
+			g.setFont(new Font("Roboto", Font.BOLD, 20));
+			
+			g.drawString("Sprouts", 610, 50);
+			g.drawString("Scripps Medical", 5, 50);
+			g.drawString("Board and Brew", 5, 440);
+			g.drawString("Mr. M's House", 590, 440);
+			
+		}
+		
+
+		public void personToWallCollision(Person p) {
+			
+			Rectangle personRect = new Rectangle(p.x,p.y, p.width, p.height);
 			for(int i = 0; i < walls.length;i++)
 			{
-				if(r[i].intersects(rect1))
+				if(r[i].intersects(personRect))
 					if(walls[i].vertical)
 					{
 						p.vx *= -1;
