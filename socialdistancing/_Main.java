@@ -23,6 +23,6 @@ public class _Main {
 	public void simulation() {
 		//new Simulation for each run from Settings panel
 		control = new Control(sets); // sets are critical for Simulation
-		control.runSimulation();
+		control.simulation();
 	}
 }

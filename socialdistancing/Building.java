@@ -1,85 +1,82 @@
 package socialdistancing;
-import java.awt.Color;
-import java.awt.Font;
+
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Rectangle;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+public class Building {
+	
+	//Name of Building
+	String name;
+	
+	//Front facing walls of Building
+	Wall vWall;
+	Wall hWall;
+	
+	//Building constraints
+	int vx, vy, hx, hy;
+	Rectangle vWRect;
+	Rectangle hWRect;
+		
+    public Building(String name, int vx, int vy, int hx, int hy) {
+    	this.name = name;
+    	this.vx = vx;
+    	this.vy = vy;
+    	this.hx = hx;
+    	this.hy = hy;
+    	
+    	vWall = new Wall(vx, vy, "SocialDistancingImages/wall2.png", true);
+    	hWall = new Wall(hx, hy, "SocialDistancingImages/wall1.png", false);
+    	
+		this.vWRect = vWall.getBounds();
+	    this.hWRect = hWall.getBounds();
+    }
+    
+    public String getName() {
+    	return name;
+    }
+    
+    public Wall getVWall() {
+    	return vWall;
+    }
+    
+    public Wall getHWall() {
+    	return hWall;
+    }
+    
+    public void drawImage(Graphics g, Panel panel) {
+    	
+    	int xoffset = vx < hx ? vx : hx;
+		g.drawString(name, xoffset + 50 , vy + 50);
 
 
-/* 
-	Building extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
-	drawing tools of the library! 
-	Simulator implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
-	animation timer every timerValue(16ms).
-*/
-public class Building extends JPanel implements ActionListener{
-	// serial suppresses warning
-	private static final long serialVersionUID = 1L;
-	
-	//simulation control objects/values
-	JFrame frame;
-	Control control; //
-	Timer timer; //Event control	
-	int time = 0; //Track time as the simulation runs
-	
-	/* constructor will setup our main Graphic User Interface - a simple Frame! */
-	public Building(Control ctl, String title) {
-		// used for Control callback
-		this.control = ctl;
-		
-		//Setup the GUI
-		frame = new JFrame(title);
-		frame.setSize(ctl.frameX,ctl.frameY); //set the size
-		
-		//add this so that hitting the x button will actually end the program
-		//the program will continue to run behind the scenes and you might end up with 10+ of them
-		//without realizing it
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//make it visible
-		frame.setVisible(true);
-		frame.add(this); //add this class (JPanel) to the JFrame
-	}
-	
-	//activation of Simulator separated from Constructor 
-	public void activate() {
-		//Timer for animation
-		//Argument 1: timerValue is a period in milliseconds to fire event
-		//Argument 2:t any class that "implements ActionListener"
-		timer = new Timer(control.timerValue, this); //timer constructor
-		timer.restart(); //restart or start
-		
-		// frame becomes visible
-		frame.setVisible(true);		
-	}
-	
-	/* This invoked by Timer per period in milliseconds in timerValue  */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//Triggers paint call through polymorphism
-		repaint();	
-	}
+    	g.drawImage(vWall.getImage(), vWall.getX(), vWall.getY(), panel);
+    	g.drawImage(hWall.getImage(), hWall.getX(), hWall.getY(), panel);
 
-	/* paint method for drawing the simulation and animation */
-	@Override
-	public void paint(Graphics g) {
+    }
+    
+    public boolean vCollision(Rectangle rect) {
 		
-		//tracking total time manually with the time variable
-		time += control.timerValue;
+		if(vWRect.intersects(rect)) {
+			return true;
+		}	
+		return false;
+    } 
+    
+    public boolean hCollision(Rectangle rect) {
 		
-		//events
-		super.paintComponent(g); // a necessary call to the parent paint method, required for proper screen refreshing
-		control.paintWalls(g);
-		control.paintPersons(g); // repaint all objects in simulation
+		if(hWRect.intersects(rect)) {
+			return true;
+		}	
+		return false;
+    } 
+    
+    public boolean collision(Rectangle rect) {
+
+		if(vWRect.intersects(rect) || hWRect.intersects(rect)) {
+			return true;
+		}
+		return false;
 		
-	} 
-		
-	
+    } 
+
 }

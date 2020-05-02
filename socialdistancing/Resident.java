@@ -133,5 +133,20 @@ public abstract class Resident {
 		isRoaming = false;
 	}
 	
+	/*
+	 * Collision Detection for Persons colliding with Building walls
+	 */	
+	public void wallCollision(Building b) {
+		Rectangle rect = new Rectangle(x,y,width,height);
+		
+		//reflection tests
+		if (b.vCollision(rect))
+			vx *= -1;
+
+		if (b.hCollision(rect))
+			vy *= -1;
+
+	}
+	
 	
 }
