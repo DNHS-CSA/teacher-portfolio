@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public class Control {
 		String title = "Social Distance Simulation";
 		//Model and View
-		ArrayList<Person> model; //the community of Person objects	
-		ArrayList<Building> buildings; //the community of Person objects	
-
+		ArrayList<Person> model; //the community of Person objects
 		Panel view; //JPanel graphics window
+		Community community;  //the object in simulation
+
 		
 		// counters for "this" simulation instance
 		public int numInfected = 0;
@@ -99,14 +99,8 @@ public class Control {
 		public void simulation() {
 			//Setup the Panel and Timer
 			Panel view = new Panel(title, frameX, frameY);
+			community = new Community();
 		
-			//Setup the Buildings
-			buildings = new ArrayList<Building>();
-			buildings.add(new Building("Sprouts",550,0,620,160));
-			buildings.add(new Building("Scripps Medical",200,0,-25,160));
-			buildings.add(new Building("Board and Brew",550,400,620,400));
-			buildings.add(new Building("Mr M's House",200,400,-25,400));
-			
 			//Setup the People
 			model = new ArrayList<Person>();
 			for(int i = 0; i < numPeople; i++) {
@@ -135,7 +129,7 @@ public class Control {
 			g.setColor(Color.BLACK);
 			g.setFont(new Font("Roboto", Font.BOLD, 20));
 			
-			for (Building b: buildings) {
+			for (Building b: community.buildings) {
 				b.drawImage(g, view);
 
 			}
@@ -158,7 +152,7 @@ public class Control {
 				}
 				
 				//person colliding with buildings
-				for (Building b: buildings) {
+				for (Building b: community.buildings) {
 					p1.wallCollision(b);
 				}
 				
