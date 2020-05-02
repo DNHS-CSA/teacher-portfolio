@@ -9,9 +9,7 @@ public class Control {
 		String title = "Social Distance Simulation";
 		//Model and View
 		ArrayList<Person> model; //the community of Person objects
-		Panel view; //JPanel graphics window
-		Community community;  //the object in simulation
-
+		Community view;
 		
 		// counters for "this" simulation instance
 		public int numInfected = 0;
@@ -97,9 +95,8 @@ public class Control {
 		 * - Prerequisite: Control values from constructor are ready
 		 */
 		public void simulation() {
-			//Setup the Panel and Timer
-			Panel view = new Panel(title, frameX, frameY);
-			community = new Community();
+			//Setup the Community and Refresh Timer
+			view = new Community(title, frameX, frameY);
 		
 			//Setup the People
 			model = new ArrayList<Person>();
@@ -111,36 +108,12 @@ public class Control {
 			// Start the Simulation
 			view.activate(this);
 		}
-		
+			
 		/*
-		 * Call back method from Panel to Control
+		 * Draw method for Panel
+		 * paints/repaints model of objects representing person objects in the frame 
 		 */
 		public void paint(Graphics g) {
-			paintBuildings(g);
-			paintPersons(g);
-		}
-		
-		/*
-		 * Draw method for Panel
-		 * paints/repaints buildings in the frame 
-		 */	
-		private void paintBuildings(Graphics g) {	
-			//sets text color
-			g.setColor(Color.BLACK);
-			g.setFont(new Font("Roboto", Font.BOLD, 20));
-			
-			for (Building b: community.buildings) {
-				b.drawImage(g, view);
-
-			}
-
-		}
-		
-		/*
-		 * Draw method for Panel
-		 * paints/repaints model of graphic objects repressing person objects in the frame 
-		 */
-		private void paintPersons(Graphics g) {
 			
 			//get each Person from the Model!
 			int index = 0;
@@ -152,7 +125,7 @@ public class Control {
 				}
 				
 				//person colliding with buildings
-				for (Building b: community.buildings) {
+				for (Building b: view.getBuildings()) {
 					p1.wallCollision(b);
 				}
 				
