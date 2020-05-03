@@ -45,4 +45,14 @@ public class Wall extends Entity {
         this.visible = visible;
     }
     
+    /**
+	 * Collision between two person objects has been detected
+	 * If two Person objects collide they have a possibility of infecting!
+	 * @param p2
+	 */
+	@Override
+	public void collisionAction(Entity e2) {
+		// no operation
+	}
+    
 }

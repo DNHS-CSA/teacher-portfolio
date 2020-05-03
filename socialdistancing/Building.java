@@ -40,8 +40,7 @@ public class Building {
     public Wall getHWall() {
     	return hWall;
     }
-    
-    
+     
     public void drawImage(Graphics g, Panel panel) {
     	
     	int xoffset = vx < hx ? vx : hx;
@@ -51,30 +50,5 @@ public class Building {
     	g.drawImage(hWall.getImage(), hWall.getX(), hWall.getY(), panel);
 
     }
-    
-    public boolean vCollision(Rectangle rect) {
-		
-		if(vWRect.intersects(rect)) {
-			return true;
-		}	
-		return false;
-    } 
-    
-    public boolean hCollision(Rectangle rect) {
-		
-		if(hWRect.intersects(rect)) {
-			return true;
-		}	
-		return false;
-    } 
-    
-    public boolean collision(Rectangle rect) {
-
-		if(vWRect.intersects(rect) || hWRect.intersects(rect)) {
-			return true;
-		}
-		return false;
-		
-    } 
 
 }

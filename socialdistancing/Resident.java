@@ -72,32 +72,7 @@ public abstract class Resident extends Entity {
 		rect = new Rectangle(x,y,width,height);
 		
 	}
-
 	
-	/**
-	 * Collision detection between two resident objects
-	 * @param p2
-	 */
-	public void collisionDetector(Resident r2) {
-		
-		//Represent the Person objects as Rectangles for simple collision detection
-		Rectangle rect1 = new Rectangle(r2.x,r2.y, width, height);
-		Rectangle rect2 = new Rectangle(this.x,this.y, width, height);
-		
-		//collision check
-		if(rect1.intersects(rect2)) {
-			this.collisionAction(r2);
-		}
-						
-	}
-	
-	/**
-	 * Collision detection action must be performed by extending class
-	 * 
-	 */
-	public abstract void collisionAction(Resident r2);
-	
-
 	/**
 	 * Velocity of an object is conditioned by settings in constructor
 	 * 1. Move x, y position of resident object
@@ -129,20 +104,6 @@ public abstract class Resident extends Entity {
 		isRoaming = false;
 	}
 	
-	/*
-	 * Collision Detection for Persons colliding with Building walls
-	 */	
-	public void wallCollision(Building b) {
-		Rectangle rect = new Rectangle(x,y,width,height);
-		
-		//reflection tests
-		if (b.vCollision(rect))
-			vx *= -1;
 
-		if (b.hCollision(rect))
-			vy *= -1;
-
-	}
-	
 	
 }

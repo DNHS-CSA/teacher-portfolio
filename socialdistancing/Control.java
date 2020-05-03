@@ -2,6 +2,7 @@ package socialdistancing;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class Control {
@@ -128,14 +129,18 @@ public class Control {
 			int index = 0;
 			for(Person p1: model) {
 				
-				//Person colliding with others
+				//Person colliding with other persons
 				for(Person p2: model) {
 					p1.collisionDetector(p2);
 				}
 				
 				//person colliding with buildings
 				for (Building b: view.getBuildings()) {
-					p1.wallCollision(b);
+					if (b.getVWall().collisionDetectorTF(p1))
+						p1.vx *= -1;
+
+					if (b.getHWall().collisionDetectorTF(p1))
+						p1.vy *= -1;
 				}
 				
 				//update person health
@@ -166,7 +171,6 @@ public class Control {
 				index++;
 				
 			}
-		}
-				
+		}		
 		
 }
