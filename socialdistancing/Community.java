@@ -23,11 +23,13 @@ public class Community extends Panel {
 	int time = 0; //Track time as the simulation runs
 	
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
-    public Community(String title, int frameX, int frameY) {
-		
+    public Community(Control c) {
+		//link Community to control
+    	this.control = c;
+
 		//Setup the GUI
-		frame = new JFrame(title);
-		frame.setSize(frameX,frameY); //set the size
+		frame = new JFrame(control.title);
+		frame.setSize(control.frameX,control.frameY); //set the size
 		
 		//add this so that hitting the x button will actually end the program
 		//the program will continue to run behind the scenes and you might end up with 10+ of them
@@ -38,14 +40,14 @@ public class Community extends Panel {
 		frame.setVisible(true);
 		frame.add(this); //add this class (JPanel) to the JFrame
 		
-        AddBuildings();
-
 	}
     
 	//activation of Simulator separated from Constructor 
-	public void activate(Control c) {
+	public void activate() {
 		
-		this.control = c;
+		
+		//Prior to activation add objects to Community
+        addBuildings();
 
 		//Timer for animation
 		//Argument 1: timerValue is a period in milliseconds to fire event
@@ -71,13 +73,14 @@ public class Community extends Panel {
 	
 	} 
 
-    void AddBuildings() {
+    void addBuildings() {
     	//Setup the Buildings
-		buildings = new ArrayList<Building>();
-		buildings.add(new Building("Sprouts",550,0,620,160));
-		buildings.add(new Building("Scripps Medical",200,0,-25,160));
-		buildings.add(new Building("Board and Brew",550,400,620,400));
-		buildings.add(new Building("Mr M's House",200,400,-25,400));
+		this.buildings = new ArrayList<Building>();
+
+    	Building[] buildings = control.buildings();  //settings values
+    	for (Building b: buildings) {
+    		this.buildings.add(b);
+    	}
     }
     
     public ArrayList<Building> getBuildings() {

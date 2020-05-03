@@ -1,7 +1,6 @@
 package socialdistancing;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -11,12 +10,11 @@ public class Control {
 		ArrayList<Person> model; //the community of Person objects
 		Community view;
 		
-		// counters for "this" simulation instance
+		//counters for "this" simulation instance
 		public int numInfected = 0;
 		public int numDied= 0;
 		
-		
-		// simulation control values
+		//simulation control values
 		public int  numPeople;			
 		public double toRoam;			    
 		public double toBeInfected;		
@@ -34,6 +32,17 @@ public class Control {
 		public int OvalH;	//Width
 		//refresh timer, also used to calculate time/age of infection
 		public int timerValue;
+		
+		//simulation properties for Buildings
+		public Building[] buildings() {
+			Building[] b = { 
+					new Building("Rubber Chicken",550,0,620,160),
+					new Building("Sprouts",200,0,-25,160),
+					new Building("Wuhan",550,400,620,400),
+					new Building("CollegeBoard",200,400,-25,400),
+			};
+			return b;
+		}
 	
 		/*
 		 * Default constructor uses Static/Default simulation values
@@ -96,7 +105,7 @@ public class Control {
 		 */
 		public void simulation() {
 			//Setup the Community and Refresh Timer
-			view = new Community(title, frameX, frameY);
+			view = new Community(this);
 		
 			//Setup the People
 			model = new ArrayList<Person>();
@@ -106,7 +115,7 @@ public class Control {
 			}
 			
 			// Start the Simulation
-			view.activate(this);
+			view.activate();
 		}
 			
 		/*
