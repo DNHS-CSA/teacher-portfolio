@@ -136,10 +136,10 @@ public class Control {
 				
 				//person colliding with buildings
 				for (Building b: view.getBuildings()) {
-					if (b.getVWall().collisionDetector(p1))
+					if (p1.collisionDetector(b.getVWall()))
 						p1.vx *= -1;
 
-					if (b.getHWall().collisionDetector(p1))
+					if (p1.collisionDetector(b.getHWall()))
 						p1.vy *= -1;
 				}
 				
