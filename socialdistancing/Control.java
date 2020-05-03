@@ -137,10 +137,10 @@ public class Control {
 				//person colliding with buildings
 				for (Building b: view.getBuildings()) {
 					if (p1.collisionDetector(b.getVWall()))
-						p1.vx *= -1;
+						p1.collisionActionWithVerticalObstacle();
 
 					if (p1.collisionDetector(b.getHWall()))
-						p1.vy *= -1;
+						p1.collisionActionWithHorizontalObstacle();
 				}
 				
 				//update person health
@@ -164,7 +164,7 @@ public class Control {
 				}
 				
 				//paint/repaint the person oval in the simulation frame
-				g.fillOval(p1.x, p1.y, OvalW, OvalH);
+				g.fillOval(p1.x, p1.y, p1.width, p1.height);
 				
 				//paint/repaint the person oval in meter/bar indicator
 				g.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);

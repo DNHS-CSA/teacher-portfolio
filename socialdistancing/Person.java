@@ -115,6 +115,14 @@ public class Person extends Resident {
 		}				
 	}
 	
+	public void collisionActionWithVerticalObstacle() {
+		vx *= -1;
+	}
+	
+	public void collisionActionWithHorizontalObstacle() {
+		vy *= -1;
+	}
+	
 	/*
 	 * Perform velocity manager updates on person
 	*/
