@@ -164,7 +164,7 @@ public class Control {
 				}
 				
 				//paint/repaint the person oval in the simulation frame
-				g.fillOval(p1.x, p1.y, p1.width, p1.height);
+				g.fillOval(p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
 				
 				//paint/repaint the person oval in meter/bar indicator
 				g.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);

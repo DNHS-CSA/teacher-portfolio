@@ -1,8 +1,6 @@
 package socialdistancing;
 
 import java.awt.Image;
-import java.awt.Rectangle;
-
 import javax.swing.ImageIcon;
 
 public class Wall extends Entity {
@@ -28,8 +26,7 @@ public class Wall extends Entity {
     
     protected void setWallDimensions() {
         this.width = image.getWidth(null);
-        this.height = image.getHeight(null);
-        
+        this.height = image.getHeight(null);       
     }    
 
     public Image getImage() {

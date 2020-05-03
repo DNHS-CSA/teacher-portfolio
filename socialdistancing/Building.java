@@ -10,10 +10,6 @@ public class Building {
 	//Front facing walls of Building
 	Wall vWall;
 	Wall hWall;
-	
-	//Building constraints
-	//Rectangle vWRect;
-	//Rectangle hWRect;
 		
     public Building(String name, int vx, int vy, int hx, int hy) {
     	this.name = name;
@@ -23,10 +19,7 @@ public class Building {
     	this.hy = hy;
     	
     	vWall = new Wall(vx, vy, "SocialDistancingImages/wall2.png", true);
-    	hWall = new Wall(hx, hy, "SocialDistancingImages/wall1.png", false);
-    	
-		//this.vWRect = vWall.getBounds();
-	    //this.hWRect = hWall.getBounds();
+    	hWall = new Wall(hx, hy, "SocialDistancingImages/wall1.png", false);   	
     }
     
     public String getName() {
@@ -42,7 +35,7 @@ public class Building {
     }
      
     public void drawImage(Graphics g, Panel panel) {
-    	
+    	//xoffset is orientation of wall from top or from bottom
     	int xoffset = vx < hx ? vx : hx;
 		g.drawString(name, xoffset + 30 , vy + 50);
     	g.drawImage(vWall.getImage(), vWall.getX(), vWall.getY(), panel);
