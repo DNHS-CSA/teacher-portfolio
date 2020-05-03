@@ -12,8 +12,8 @@ public class Building {
 	Wall hWall;
 	
 	//Building constraints
-	Rectangle vWRect;
-	Rectangle hWRect;
+	//Rectangle vWRect;
+	//Rectangle hWRect;
 		
     public Building(String name, int vx, int vy, int hx, int hy) {
     	this.name = name;
@@ -25,8 +25,8 @@ public class Building {
     	vWall = new Wall(vx, vy, "SocialDistancingImages/wall2.png", true);
     	hWall = new Wall(hx, hy, "SocialDistancingImages/wall1.png", false);
     	
-		this.vWRect = vWall.getBounds();
-	    this.hWRect = hWall.getBounds();
+		//this.vWRect = vWall.getBounds();
+	    //this.hWRect = hWall.getBounds();
     }
     
     public String getName() {
@@ -45,7 +45,6 @@ public class Building {
     	
     	int xoffset = vx < hx ? vx : hx;
 		g.drawString(name, xoffset + 30 , vy + 50);
-
     	g.drawImage(vWall.getImage(), vWall.getX(), vWall.getY(), panel);
     	g.drawImage(hWall.getImage(), hWall.getX(), hWall.getY(), panel);
 

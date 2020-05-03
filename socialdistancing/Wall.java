@@ -30,7 +30,6 @@ public class Wall extends Entity {
         this.width = image.getWidth(null);
         this.height = image.getHeight(null);
         
-        rect = new Rectangle(x, y, width, height);
     }    
 
     public Image getImage() {
@@ -44,15 +43,5 @@ public class Wall extends Entity {
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
-    
-    /**
-	 * Collision between two person objects has been detected
-	 * If two Person objects collide they have a possibility of infecting!
-	 * @param p2
-	 */
-	@Override
-	public void collisionAction(Entity e2) {
-		// no operation
-	}
     
 }

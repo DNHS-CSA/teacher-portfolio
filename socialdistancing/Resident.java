@@ -68,9 +68,7 @@ public abstract class Resident extends Entity {
 			vy  = (int)(Math.random()*(10+1)+-5);	// velocity y
 			isRoaming = true;
 		}
-		
-		rect = new Rectangle(x,y,width,height);
-		
+				
 	}
 	
 	/**

@@ -99,23 +99,13 @@ public class Person extends Resident {
 		}			
 	}
 	
-	/*
-	 * Check if collision between two person objects has occurred
-	*/
-	@Override
-	public void collisionDetector(Entity e2) {
-		super.collisionDetector(e2);
-	}
 	
 	/**
 	 * Collision between two person objects has been detected
 	 * If two Person objects collide they have a possibility of infecting!
 	 * @param p2
 	 */
-	@Override
-	public void collisionAction(Entity e2) {
-	
-		Person p2 = (Person)e2;
+	public void collisionAction(Person p2) {
 		//infection only happens if one person is infected and the other has never
 		//been infected before
 		if (this.isInfected() && p2.isCandidate()) {
