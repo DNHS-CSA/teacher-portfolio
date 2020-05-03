@@ -3,6 +3,11 @@ package socialdistancing;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+/**
+ * Building is logical container for Walls, it has Walls which are Entities in Simulation
+ * @author johnmortensen
+ *
+ */
 public class Building {	
 	String name;
 	int vx, vy, hx, hy;
@@ -10,7 +15,15 @@ public class Building {
 	//Front facing walls of Building
 	Wall vWall;
 	Wall hWall;
-		
+	
+	/**
+	 * Building has a name, vertical and horizontal coordinates
+	 * @param name
+	 * @param vx - vertical x
+	 * @param vy - vertical y
+	 * @param hx - horizontal x
+	 * @param hy - horizontal y
+	 */
     public Building(String name, int vx, int vy, int hx, int hy) {
     	this.name = name;
     	this.vx = vx;
@@ -35,12 +48,11 @@ public class Building {
     }
      
     public void drawImage(Graphics g, Panel panel) {
-    	//xoffset is orientation of wall from top or from bottom
+    	//xoffset is to orient walls
     	int xoffset = vx < hx ? vx : hx;
 		g.drawString(name, xoffset + 30 , vy + 50);
     	g.drawImage(vWall.getImage(), vWall.getX(), vWall.getY(), panel);
     	g.drawImage(hWall.getImage(), hWall.getX(), hWall.getY(), panel);
-
     }
 
 }

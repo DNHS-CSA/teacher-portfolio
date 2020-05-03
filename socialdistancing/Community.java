@@ -11,6 +11,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+/*
+ * The Community is a Panel, the Community has Buildings, and the Community coordinates events on a Timer such as paints/repaints. 
+ * 
+ */
 public class Community extends Panel {
 	private static final long serialVersionUID = 1L;
 

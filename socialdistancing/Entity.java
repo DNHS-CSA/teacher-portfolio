@@ -2,7 +2,7 @@ package socialdistancing;
 import java.awt.Rectangle;
 
 /**
- * The primary purpose of Entity Class is to detect rectangle intersections in common fashion
+ * The primary purpose of Entity Class is to detect rectangle intersections
  * 
  */
 public class Entity {
