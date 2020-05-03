@@ -5,12 +5,8 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-public class Wall{
+public class Wall extends Entity {
 
-    protected int x;
-    protected int y;
-    protected int width;
-    protected int height;
     protected boolean visible;
     protected Image image;
     protected boolean vertical;
@@ -22,31 +18,23 @@ public class Wall{
         visible = true;
         this.vertical = vertical;
         loadImage(imageS);
-        getImageDimensions();
+        setWallDimensions();
     }
 
     protected void loadImage(String imageName) {
-
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
     }
     
-    protected void getImageDimensions() {
-
+    protected void setWallDimensions() {
         this.width = image.getWidth(null);
         this.height = image.getHeight(null);
+        
+        rect = new Rectangle(x, y, width, height);
     }    
 
     public Image getImage() {
         return image;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 
     public boolean isVisible() {
@@ -57,7 +45,4 @@ public class Wall{
         this.visible = visible;
     }
     
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, width, height);
-    }
 }

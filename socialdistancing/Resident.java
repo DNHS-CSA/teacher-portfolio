@@ -3,18 +3,12 @@ import java.awt.Rectangle;
 
 
 //A citizen is a Person and contains properties to support position and movement
-public abstract class Resident {
+public abstract class Resident extends Entity {
 	//dynamic copy of Control instance, used for settings
-	Control ctl = null;
+	Control control = null;
 	
 	//grid boundaries
 	protected int xExt, yExt;
-	
-	//object size
-	protected int width, height;
-	
-	//location
-	int x, y;
 
 	//velocity
 	int vx, vy;
@@ -41,18 +35,18 @@ public abstract class Resident {
 	/*
 	 * Constructor using Control Panel values
 	 */
-	public Resident(Control ctl) {
+	public Resident(Control control) {
 		// Settings
-		this.ctl = ctl;
+		this.control = control;
 		
 		// Grid size
-		xExt = ctl.xExt;
-		yExt = ctl.yExt;
+		xExt = control.xExt;
+		yExt = control.yExt;
 		// position in grid
-		width = ctl.OvalW;
-		height = ctl.OvalH;
+		width = control.OvalW;
+		height = control.OvalH;
 		// roaming probability
-		roamingPercent = ctl.toRoam;
+		roamingPercent = control.toRoam;
 		
 		this.init();
 	}
@@ -74,6 +68,8 @@ public abstract class Resident {
 			vy  = (int)(Math.random()*(10+1)+-5);	// velocity y
 			isRoaming = true;
 		}
+		
+		rect = new Rectangle(x,y,width,height);
 		
 	}
 

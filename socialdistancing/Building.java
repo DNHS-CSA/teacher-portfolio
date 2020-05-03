@@ -3,8 +3,10 @@ package socialdistancing;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Building extends Obstacle {
-	
+public class Building {	
+	String name;
+	int vx, vy, hx, hy;
+
 	//Front facing walls of Building
 	Wall vWall;
 	Wall hWall;
@@ -14,7 +16,11 @@ public class Building extends Obstacle {
 	Rectangle hWRect;
 		
     public Building(String name, int vx, int vy, int hx, int hy) {
-    	super(name, vx, vy, hx, hy);
+    	this.name = name;
+    	this.vx = vx;
+    	this.vy = vy;
+    	this.hx = hx;
+    	this.hy = hy;
     	
     	vWall = new Wall(vx, vy, "SocialDistancingImages/wall2.png", true);
     	hWall = new Wall(hx, hy, "SocialDistancingImages/wall1.png", false);

@@ -30,14 +30,14 @@ public class Person extends Resident {
 	}
 
 	//Person constructed according to Control Panel settings
-	public Person(Control ctl) {
-		super(ctl);
+	public Person(Control control) {
+		super(control);
 		
-		toRoam = ctl.toRoam;			    
-		toDie = ctl.toDie;		
-		toBeInfected = ctl.toBeInfected;
-		sickTimeLow = ctl.sickTimeLow;
-		sickTimeMax = ctl.sickTimeMax;
+		toRoam = control.toRoam;			    
+		toDie = control.toDie;		
+		toBeInfected = control.toBeInfected;
+		sickTimeLow = control.sickTimeLow;
+		sickTimeMax = control.sickTimeMax;
 
 		this.init();
 	}
@@ -74,7 +74,7 @@ public class Person extends Resident {
 	// infected setter and update to infected counter
 	public void setInfected() {
 		state = virus.infected;
-		if (ctl != null) ctl.numInfected++;
+		if (control != null) control.numInfected++;
 	}
 	
 	//calculates health of person over time
@@ -84,17 +84,17 @@ public class Person extends Resident {
 		//infect people forever. 
 		if(state == virus.infected) {
 			//recoveryTime update
-			sickTime -= ctl.timerValue;
+			sickTime -= control.timerValue;
 			
 			//once the person has been given enough time, they will be considered recovered
 			if(sickTime<=0) {
 				if(Math.random() < toDie) {
 					state = virus.died;
-					if (ctl != null) ctl.numDied++;
+					if (control != null) control.numDied++;
 				} else {
 					state = virus.recovered;
 				}
-				if (ctl != null) ctl.numInfected--;
+				if (control != null) control.numInfected--;
 			}
 		}			
 	}
